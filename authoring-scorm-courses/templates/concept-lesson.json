@@ -1,0 +1,37 @@
+{
+  "_note": "Pattern B blueprint — conceptual/theory lesson (no specific tool). Chunk with tabs/accordion, end with an open reflection (fill_blank as a soft prompt or a content slide asking to reflect), not a graded quiz. Add narration_asset_id to every screen.",
+  "title": "<KAVRAM>",
+  "scorm_version": "2004",
+  "language": "tr",
+  "theme": "academic",
+  "tracking": { "completion_rule": "viewed_all", "passing_score": 0 },
+  "screens": [
+    { "id": "intro", "type": "title_slide", "title": "<KAVRAM>",
+      "subtitle": "~5 dk", "body_html": "<p>Bu bölümde <kavramın> temellerini öğreneceksin.</p>" },
+
+    { "id": "what", "type": "content_slide", "title": "Nedir?", "layout": "text",
+      "body_html": "<p><tanım. tek fikir, net.></p>" },
+
+    { "id": "facets", "type": "tabs", "title": "Boyutlar",
+      "prompt_html": "<p>Sekmelerde gez:</p>",
+      "tabs": [
+        { "label": "<A>", "body_html": "<p>…</p>" },
+        { "label": "<B>", "body_html": "<p>…</p>" },
+        { "label": "<C>", "body_html": "<p>…</p>" }
+      ] },
+
+    { "id": "terms", "type": "flashcards", "title": "Terimler",
+      "prompt_html": "<p>Kartları çevir:</p>",
+      "cards": [
+        { "front_html": "<b><terim></b>", "back_html": "<p><tanım></p>" }
+      ] },
+
+    { "id": "reflect", "type": "fill_blank", "title": "Düşün",
+      "prompt_html": "<p><Açık uçlu refleksiyon sorusu — öğrenci kendi cümlesiyle yanıtlar.></p>",
+      "points": 0,
+      "blanks": [ { "id": "r", "accepted": ["*"] } ] },
+
+    { "id": "summary", "type": "summary", "title": "Özet",
+      "body_html": "<p><Ana fikirlerin kısa özeti.></p>", "show_completion": true }
+  ]
+}

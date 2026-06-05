@@ -1,0 +1,46 @@
+{
+  "_note": "Pattern A blueprint — adapt: replace TOOL/topic, screenshots (add_asset), narration, and the Watch→Apply→Your-Turn block per sub-skill. Add narration_asset_id to every screen in a real build.",
+  "title": "<TOOL> ile Çalışmak",
+  "scorm_version": "2004",
+  "language": "tr",
+  "theme": "modern-light",
+  "tracking": { "completion_rule": "viewed_all_and_passed", "passing_score": 60 },
+  "variables": [
+    { "name": "name", "type": "text", "default": "Öğrenci" },
+    { "name": "points", "type": "number", "default": 0 }
+  ],
+  "points_var": "points",
+  "screens": [
+    { "id": "intro", "type": "title_slide", "title": "Merhaba {{name}}",
+      "subtitle": "<TOOL> · ~6 dk · puan topla",
+      "body_html": "<p>Bu bölümde <b><TOOL></b> ile <konu> öğreneceksin.</p>" },
+
+    { "id": "izle1", "type": "video", "title": "İzle: <görev>", "video_asset_id": "demo1",
+      "caption": "Gerçek arayüzde adım adım gösterim" },
+
+    { "id": "uygula1", "type": "simulation", "title": "Uygula: <görev>",
+      "prompt_html": "<p>Şimdi sen yap — adımları takip et:</p>", "points": 20,
+      "feedback": { "correct_html": "Harika, doğru yaptın!", "incorrect_html": "Tekrar dene." },
+      "steps": [
+        { "image_asset_id": "shot1", "instruction_html": "<p><b>1.</b> <butona> tıkla</p>",
+          "hint_html": "<p>İpucu: …</p>",
+          "regions": [ { "id": "r1", "shape": "rect", "coords": [440,300,400,150], "correct": true } ] },
+        { "image_asset_id": "shot2", "instruction_html": "<p><b>2.</b> başlığı yaz</p>",
+          "input_accepted": ["beklenen cevap","eşanlamlı"], "input_label": "Buraya yaz" }
+      ] },
+
+    { "id": "ss1", "type": "mcq", "title": "Sıra Sizde (+20)",
+      "prompt_html": "<p><soru?></p>", "points": 20,
+      "options": [
+        { "id": "a", "text_html": "<doğru>", "correct": true },
+        { "id": "b", "text_html": "<çeldirici>" },
+        { "id": "c", "text_html": "<çeldirici>" }
+      ],
+      "feedback": { "correct_html": "Doğru!", "incorrect_html": "Tekrar İzle'ye dön ve incele." },
+      "on_correct": [ { "var": "points", "op": "add", "value": 20 } ],
+      "on_wrong":   [ { "var": "needs_review", "op": "set", "value": true } ] },
+
+    { "id": "summary", "type": "summary", "title": "Skorun: {{points}}",
+      "body_html": "<p><TOOL> bölümünü tamamladın!</p>", "show_score": true, "show_completion": true }
+  ]
+}

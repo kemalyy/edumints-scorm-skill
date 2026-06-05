@@ -1,0 +1,83 @@
+{
+  "_note": "A complete, high-quality build_from_spec reference course (Pattern A + gamification). Stage modu + timeline reveal VARSAYILANDIR: içerik ekranları narration_text + reveal ile akışlı görünür. Study the structure: varied screen types, narration intent, a simulation with click+input steps, points HUD, branching, and a celebration animation gated by score. In a real build, add narration_asset_id to each screen (timeline sese senkron olsun) ve real screenshot/video/lottie assets via add_asset.",
+  "title": "Siber Güvenlik Temelleri",
+  "description": "Çalışan farkındalık mikro-eğitimi",
+  "scorm_version": "2004",
+  "language": "tr",
+  "layout_mode": "stage",
+  "theme": "modern-light",
+  "tracking": { "completion_rule": "viewed_all_and_passed", "passing_score": 60 },
+  "variables": [
+    { "name": "name", "type": "text", "default": "Öğrenci" },
+    { "name": "points", "type": "number", "default": 0 }
+  ],
+  "points_var": "points",
+  "screens": [
+    { "id": "intro", "type": "title_slide", "section": "Giriş", "title": "Merhaba {{name}}",
+      "subtitle": "Siber Güvenlik Temelleri · 6 dk · puan topla",
+      "body_html": "<p>Phishing, parola ve veri korumayı oyunlaştırılmış şekilde öğren.</p>",
+      "animation": "zoom",
+      "narration_text": "Bu mikro-eğitimde phishing, parola güvenliği ve veri korumayı oyun gibi öğreneceksin. Hazırsan başlayalım." },
+
+    { "id": "why", "type": "content_slide", "section": "Giriş", "title": "Neden önemli?", "layout": "text",
+      "body_html": "<p>Veri ihlallerinin <strong>%80'i</strong> insan hatasından kaynaklanır.</p><p>Sen ilk savunma hattısın — küçük bir dikkat büyük fark yaratır.</p>",
+      "narration_text": "Veri ihlallerinin çoğu teknik açıktan değil, insan hatasından kaynaklanır. Yani en güçlü savunma sensin." },
+
+    { "id": "concepts", "type": "accordion", "section": "Giriş", "title": "Temel kavramlar",
+      "prompt_html": "<p>Başlığa tıkla, aç/kapa:</p>",
+      "items": [
+        { "title": "Phishing", "body_html": "<p>Güvenilir görünüp seni hassas bilgi paylaşmaya kandıran sahte mesaj.</p>" },
+        { "title": "2FA / MFA", "body_html": "<p>İkinci doğrulama katmanı — parolan çalınsa bile hesabını korur.</p>" },
+        { "title": "Ransomware", "body_html": "<p>Dosyalarını şifreleyip fidye isteyen zararlı yazılım.</p>" }
+      ] },
+
+    { "id": "izle", "type": "video", "section": "Uygulama", "title": "İzle: Şüpheli e-postayı tanı",
+      "video_asset_id": "demo1", "caption": "Gerçek bir phishing örneğinin incelenmesi" },
+
+    { "id": "uygula", "type": "simulation", "section": "Uygulama", "title": "Uygula: Phishing'i raporla",
+      "prompt_html": "<p>Adımları takip et:</p>", "points": 20,
+      "feedback": { "correct_html": "Mükemmel — doğru raporladın!", "incorrect_html": "Tekrar dene." },
+      "steps": [
+        { "image_asset_id": "mail", "instruction_html": "<p><b>1.</b> Şüpheli e-postada 'Bildir' butonuna tıkla</p>",
+          "hint_html": "<p>Sağ üstteki butona bak.</p>",
+          "regions": [ { "id": "r1", "shape": "rect", "coords": [980,80,180,60], "correct": true } ] },
+        { "image_asset_id": "report", "instruction_html": "<p><b>2.</b> Sebep olarak 'phishing' yaz</p>",
+          "input_accepted": ["phishing", "oltalama"], "input_label": "Sebebi yaz" }
+      ] },
+
+    { "id": "q1", "type": "mcq", "section": "Değerlendirme", "title": "Sıra Sizde (+20)",
+      "prompt_html": "<p>En güçlü phishing işareti hangisidir?</p>", "points": 20,
+      "options": [
+        { "id": "a", "text_html": "Tanıdık bir gönderen adı" },
+        { "id": "b", "text_html": "\"Acil! 2 saat içinde parolanı doğrula\" baskısı", "correct": true },
+        { "id": "c", "text_html": "Şirket logosu içermesi" }
+      ],
+      "feedback": { "correct_html": "Doğru — aciliyet baskısı klasik bir tuzaktır.", "incorrect_html": "İzle bölümüne dön ve işaretleri tekrar gözden geçir." },
+      "on_correct": [ { "var": "points", "op": "add", "value": 20 } ] },
+
+    { "id": "match", "type": "matching", "section": "Değerlendirme", "title": "Eşleştir (+20)",
+      "prompt_html": "<p>Tehdidi doğru savunmayla eşleştir:</p>", "points": 20,
+      "pairs": [
+        { "id": "p1", "left_html": "Phishing", "right_html": "Linke tıklamadan doğrula" },
+        { "id": "p2", "left_html": "Zayıf parola", "right_html": "Parola yöneticisi + MFA" }
+      ],
+      "feedback": { "correct_html": "Hepsi doğru!", "incorrect_html": "Tekrar dene." },
+      "on_correct": [ { "var": "points", "op": "add", "value": 20 } ] },
+
+    { "id": "celebrate", "type": "lottie", "section": "Değerlendirme", "title": "Tebrikler, ustalaşıyorsun!",
+      "prompt_html": "<p>60+ puana ulaştın:</p>", "lottie_asset_id": "trophy",
+      "visible_if": { "var": "points", "cmp": ">=", "value": 60 } },
+
+    { "id": "scenario", "type": "branching", "section": "Kapanış", "title": "Senaryo: CEO'dan acil havale",
+      "prompt_html": "<p>CEO'dan acil bir havale isteyen e-posta aldın. Ne yaparsın?</p>",
+      "choices": [
+        { "id": "c1", "text_html": "Hemen havaleyi yap", "goto_screen_id": "summary" },
+        { "id": "c2", "text_html": "Başka kanaldan (telefon) doğrula", "goto_screen_id": "summary",
+          "set_vars": [ { "var": "points", "op": "add", "value": 10 } ] }
+      ] },
+
+    { "id": "summary", "type": "summary", "section": "Kapanış", "title": "Skorun: {{points}}",
+      "body_html": "<p>Siber güvenlik temellerini tamamladın. Daima <strong>dur · düşün · doğrula</strong>.</p>",
+      "show_score": true, "show_completion": true }
+  ]
+}
