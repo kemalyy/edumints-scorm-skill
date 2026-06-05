@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate JSON templates/examples + skill structure
+        run: |
+          python - <<'PY'
+          import json, sys, pathlib
+          root = pathlib.Path("authoring-scorm-courses")
+          assert (root / "SKILL.md").exists(), "SKILL.md missing"
+          bad = []
+          for p in root.rglob("*.json"):
+              try:
+                  json.loads(p.read_text(encoding="utf-8"))
+              except Exception as e:
+                  bad.append(f"{p}: {e}")
+          if bad:
+              print("Invalid JSON:"); [print(" -", b) for b in bad]; sys.exit(1)
+          print("OK: SKILL.md present and all JSON valid")
+          PY

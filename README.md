@@ -3,7 +3,7 @@
 > A **Claude Agent Skill** that teaches an AI client how to author high-quality, interactive,
 > SCORM-compliant e-learning courses with the **[edumints SCORM MCP](https://github.com/kemalyy/edumints-scorm-mcp)** server.
 
-🇹🇷 **Türkçe:** [README.tr.md](README.tr.md)
+**🌐 Languages:** [English](README.md) · [Türkçe](README.tr.md) · [Español](README.es.md) · [Русский](README.ru.md) · [简体中文](README.zh-CN.md) · [Azərbaycanca](README.az.md) · [Қазақша](README.kk.md) · [Кыргызча](README.ky.md)
 
 Open-source, developed by the **[edumints.com](https://edumints.com)** platform. Open to contribution.
 

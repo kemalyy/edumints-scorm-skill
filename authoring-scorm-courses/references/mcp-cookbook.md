@@ -1,6 +1,6 @@
 # scorm-mcp cookbook — exact tool calls
 
-Connector: `https://scorm.edumints.com/mcp`. Prefer **`build_from_spec`** (one JSON → project + package,
+Connector: your scorm-mcp server — e.g. `http://localhost:8000/mcp` when self-hosting (replace with your own endpoint). Prefer **`build_from_spec`** (one JSON → project + package,
 token-efficient). Use the granular tools (`create_project`, `add_screen`, …) only for incremental edits.
 
 ## build_from_spec — the main tool
