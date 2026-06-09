@@ -1,6 +1,6 @@
 ---
 name: authoring-scorm-courses
-description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp). Covers instructional design, screen-type selection, assessment, theming, variables/gamification, media (TTS/ffmpeg), animation, and the build→preview→feedback→fix loop.
+description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp). Covers instructional design, screen-type selection, assessment, theming, variables/gamification, media (TTS/ffmpeg), animation, and the build→preview→feedback→fix loop. Enforces an anti-slop discipline: a one-line Training Read (Bölüm 0), parametric dials, and a mechanical pre-flight gate.
 ---
 
 # Authoring SCORM courses with scorm-mcp
@@ -9,6 +9,62 @@ You are the **author**; the scorm-mcp server is the **assembler**. You design th
 structure; the server validates, renders, and packages a self-contained SCORM zip that runs on any LMS.
 Aim for courses that rival professional e-learning authoring tools — varied, interactive, accessible,
 on-brand, slide-stage with a player and timed content reveal — not generic "click-next" modules.
+
+## Bölüm 0: EĞİTİM OKUMASI (workflow'dan ÖNCE — en yüksek kaldıraç)
+
+Tasarıma başlamadan, briefi tek satırlık bir **beyana** indir:
+
+> "Bunu şöyle okuyorum: **\<kitle\>** için **\<hedef davranış\>** kazandıran, **\<ton\>** dilinde,
+> **\<X dk\>** mikroöğrenme; baskın mod **\<keşif | uygulama | değerlendirme\>**."
+
+Brief belirsizse **TEK** soru sor (yalnız en kritik eksik), varsayma. Çıkarabiliyorsan sorma — beyan
+et ve devam et. Bu beyan dial'ları (aşağı) ve tüm ekran kararlarını yönlendirir; pre-flight Madde 0
+bunu sorar.
+
+### Anti-Default Disiplini
+SCORM'da modelin default reach ettiği kalıplar **slop**'tur. İsimlerini bil ve **bilinçli olarak
+gitme** (somut yasaklar + ÖNCE/SONRA: `references/anti-slop.md`):
+- Üst üste `content_slide` + madde-işareti duvarı (tek-fikir/ekran değil).
+- "Hoş geldiniz, bu kursta şunları öğreneceksiniz" müfredat açılışı.
+- Ekran metnini birebir okuyan `narration_text`.
+- "Doğru!"/"Yanlış" tek-kelime (şema varsayılanı) feedback.
+- Klişe stok görsel (el sıkışma, ampul, dişli), keyfi koyu tema, tek animasyonun tekrarı.
+- Rozet / liderlik tablosu / "+10 puan!" patlaması.
+
+**Bir ekran üretmeden önce** `anti-slop.md`'yi oku; teslimden önce `pre-flight.md`'yi çalıştır.
+
+## DIALS — parametrik ayar (Eğitim Okuması override etmedikçe baseline)
+
+Briefi dört dial'a (1–10) eşle. Bu adlar **sabittir** (cross-reference için):
+
+| Dial | 1 (düşük) | 10 (yüksek) |
+|---|---|---|
+| `INTERACTIVITY` | pasif okuma, seyrek yoklama | her ekranda challenge/simülasyon |
+| `COGNITIVE_DENSITY` | tek fikir/ekran, havadar | yoğun referans, çok bilgi/ekran |
+| `TONE` | resmi kurumsal CPD | oyunlaştırılmış, samimi/çocuk |
+| `VISUAL_RICHNESS` | metin-ağırlıklı, tipografi | video/animasyon-ağırlıklı |
+
+**Kitleye göre baseline preset** (Eğitim Okuması farklı söylemedikçe bunu kullan):
+
+| Kitle | INTERACTIVITY | COGNITIVE_DENSITY | TONE | VISUAL_RICHNESS |
+|---|---|---|---|---|
+| Çocuk (7–9 yaş) | 8 | 2 | 8 | 8 |
+| Üniversite öğrencisi | 6 | 6 | 4 | 5 |
+| Sağlık-profesyoneli CPD | 5 | 7 | 2 | 4 |
+| Kurumsal zorunlu eğitim | 6 | 4 | 3 | 5 |
+
+Dial → karar (örnek eşleme):
+- **INTERACTIVITY** yüksek → İzle→Uygula→Sıra Sizde + ~her içerik ekranında bir etkileşim; düşük →
+  ~3 ekranda 1 yoklama. (Yine de anti-slop A1 tavanı geçerli: ardışık `content_slide` ≤ 2.)
+- **COGNITIVE_DENSITY** düşük → `reveal:"click"`, ekran başına 1–2 fikir, çok ekran; yüksek →
+  accordion/tabs ile katmanla. (A2 ≤ 4 madde yine geçerli.)
+- **TONE** düşük → düz başlık, ölçülü anlatım; yüksek → soru-başlık, oyun mekaniği. (D1
+  patronlaştırıcı oyunlaştırma her tonda yasak.)
+- **VISUAL_RICHNESS** yüksek → video/lottie/`render_motion_video`; düşük → tipografi-güçlü stage,
+  gerçek ekran görüntüsü. (C4 öğretmeyen medya yine yasak.)
+
+Dial'lar anti-slop'u **gevşetmez** — yalnız izin verilen aralık içinde tonu ayarlar. Seçtiğin
+değerleri pre-flight Madde 1'de gerekçele.
 
 ## Workflow
 
@@ -26,14 +82,10 @@ on-brand, slide-stage with a player and timed content reveal — not generic "cl
    `resolve_feedback`. Re-preview. See `references/mcp-cookbook.md`.
 6. **Validate & package**: `validate_package` then `build_package` → download URL for the LMS.
 
-## Quality bar (check before delivering)
-- [ ] Objective is measurable (Bloom verb); every chunk maps to it.
-- [ ] At least one interaction per ~2 content screens (quiz, drag, accordion, tabs, flashcards, matching…).
-- [ ] Assessment is aligned, with feedback on both correct and incorrect.
-- [ ] Visual variety (different screen types, not 8 identical content slides).
-- [ ] Accessible: alt text on images, clear language, sufficient contrast (themes handle this).
-- [ ] Lightweight: only add heavy capabilities (animation, video) where they teach something.
-- [ ] Anlatımlı ekranlara `narration_text` (altyazı) + uygun `reveal`; quiz dışı içerik stage modunda akışlı (3–6 reveal bloğu, ölçülü animasyon). Detay: `references/authoring-recommendations.md`.
+## Quality gate (teslimden önce ZORUNLU)
+Kısa bir checklist değil — **mekanik denetim matrisi** çalıştır: `references/pre-flight.md`. Bir kutu
+bile dürüstçe işaretlenemiyorsa kurs teslime hazır DEĞİL. Matris niyet (Eğitim Okuması + dial gerekçesi),
+anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını sayılabilir biçimde kapsar.
 
 ## When to reach for advanced capabilities
 - **Variables/state + conditional** (`references/interactivity-and-gamification.md`): personalization
@@ -50,7 +102,9 @@ on-brand, slide-stage with a player and timed content reveal — not generic "cl
   intros, animated data viz, summaries — passive content that teaches, not for assessment.
 
 ## Reference files (load as needed)
-- `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim, kalite çıtası. Önce bunu oku.
+- `references/anti-slop.md` — **ÖNCE BUNU OKU.** SCORM slop'unun somut/ikili yasakları + override yolları + ÖNCE/SONRA JSON. Her ekran üretmeden önce buna karşı denetle.
+- `references/pre-flight.md` — teslim öncesi **zorunlu** mekanik denetim matrisi (sayılabilir). Quality gate burada.
+- `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
 - `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 18 screen types) + the feedback loop.
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).
 - `references/instructional-design.md` — objectives, structure, microlearning, anti-template-fatigue.
