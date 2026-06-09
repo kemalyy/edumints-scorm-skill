@@ -161,6 +161,13 @@ puan/sıralama amaçlıdır, dekoratif değil.
 değerlendirmede** anlamlıdır ve geçme eşiğiyle (`tracking.passing_score`) tutarlı olmalı.
 → *Override:* yok.
 
+**D3 — Sahte karar senaryosu YASAK** (`decision_scenario`). Şunlar YASAK: (a) bir seçenek bariz
+doğru, ötekiler saçma → gerçek ikilem yok; (b) tüm seçenekler aynı düğüme gider, `score_delta`'lar
+eşit → dallanma sahte; (c) `feedback_html` sonucu/gerekçeyi söylemiyor (B3 senaryoya da uygulanır);
+(d) tek düğüm (≥2 düğüm + en az bir gerçek dallanma olmalı). Kötü kararın `score_delta`'sı **negatif**
+olmalı (sonuç gerçek olsun).
+→ *Override:* yok. Gerçek ikilem yoksa `mcq` kullan, senaryo numarası yapma.
+
 #### ÖNCE / SONRA — kapanış
 ```jsonc
 // SLOP — kutlama spam'i

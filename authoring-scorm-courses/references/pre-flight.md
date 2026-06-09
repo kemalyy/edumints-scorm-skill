@@ -27,8 +27,9 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
   mu?** (B4) **Jenerik senaryo yok mu?** (B5)
 - [ ] **9. Klişe stok görsel yok mu** (C1) · **tek-animasyon ardışık tekrarı ≤ 2 mi** (C2) · **keyfi
   koyu tema yok mu** (C3) · **ağır medya yalnız öğretiyorsa mı** (C4)?
-- [ ] **9b. Patronlaştırıcı oyunlaştırma yok mu** (rozet/liderlik/"+10!"/konfeti — D1) ve **puan yalnız
-  skorlanan değerlendirmede mi** (D2)?
+- [ ] **9b. Patronlaştırıcı oyunlaştırma yok mu** (rozet/liderlik/"+10!"/konfeti — D1) · **puan yalnız
+  skorlanan değerlendirmede mi** (D2) · **`decision_scenario` gerçek ikilem mi** (bariz-doğru/sahte-
+  dallanma/sonuçsuz-feedback/tek-düğüm yok; kötü karar negatif `score_delta` — D3)?
 
 ## Mekanik & teslim
 - [ ] **10. Sahne ritmi:** anlatımlı ekranlarda `narration_text` + uygun `reveal`; ekran başına

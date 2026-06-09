@@ -85,6 +85,22 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 // Each step = a screenshot + EITHER a click region (correct=true) OR a text input (input_accepted). The
 // learner works through; wrong → hint, correct → next; completing all steps scores it. Provide screenshots
 // via add_asset. This is the in-software "try it" practice — pair it with a "video" demo (İzle) before it.
+// Faz 12 (G2) — branching DECISION_SCENARIO (stateful narrative game; "what would you do?"). Scored.
+{ "type": "decision_scenario", "title":"Acil transfer talebi", "points":20, "pass_score":10,
+  "intro_html":"<p>Muhasebedesin; CFO'dan acil bir transfer e-postası geldi.</p>",
+  "start_node_id":"n1",                                  // ops.; yoksa ilk düğüm
+  "nodes":[
+    { "id":"n1", "prompt_html":"<p>İlk hamlen?</p>", "choices":[
+        // her choice: sonuç (feedback_html = NEDEN) + score_delta (negatif olabilir) + goto_node_id
+        {"id":"a","text_html":"Hemen öde","feedback_html":"<p>Aceleyle ödeme = en sık BEC tuzağı.</p>","score_delta":-15,"goto_node_id":"n2"},
+        {"id":"b","text_html":"Telefonla doğrula","feedback_html":"<p>Doğru — ikinci kanaldan teyit altın kural.</p>","score_delta":15,"goto_node_id":"n2"} ] },
+    { "id":"n2", "prompt_html":"<p>Sonra ne yaparsın?</p>", "choices":[
+        {"id":"c","text_html":"IT güvenliğe bildir","feedback_html":"<p>İyi — paylaşılan istihbarat başkalarını korur.</p>","score_delta":5,"goto_node_id":null},
+        {"id":"d","text_html":"Görmezden gel","feedback_html":"<p>Bildirmemek saldırının yayılmasına yol açar.</p>","score_delta":-5,"goto_node_id":null} ] }
+  ] }
+// Düğümler tek ekranda; seçim → sonuç gösterilir → "Devam" sonraki düğüme gider. goto_node_id=null →
+// senaryo biter; toplam skor ≥ pass_score (yoksa >0) → points kazanılır. branching (ekranlar-arası) ve
+// simulation (yazılım dene) ile tamamlayıcı. Tasarım/skorlama deseni: docs/GAME-PATTERNS.md.
 ```
 
 For full course structures (Watch→Apply→Your-Turn, concept lessons, gamified, branching), see
