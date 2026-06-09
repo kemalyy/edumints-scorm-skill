@@ -1,4 +1,4 @@
-# Screen-type decision guide (19 types)
+# Screen-type decision guide (23 types)
 
 Pick by *intent*, not habit. Vary them.
 
@@ -25,6 +25,16 @@ Pick by *intent*, not habit. Vary them.
 - **decision_scenario** — branching **decision game** in one screen: stateful (score) narrative
   try-mode. Each choice carries a consequence + score delta; ends at a terminal node; scored by
   `pass_score`. Use for compliance/soft-skills/triage "what would you do?" practice.
+- **term_match_race** — timed term↔definition matching **game** (gamified `matching` with a
+  countdown + speed bonus). Vocabulary, terminology drilling under time pressure.
+- **escape_room** — locked puzzle chain **game**: solve to unlock the next; lives + hints. High
+  engagement for review/recall; keep puzzles answerable from the taught content.
+- **labeled_diagram** — place labels onto positioned pins on an image (anatomy/diagram/map).
+  Visual learning; scored. Needs an image asset + pins at normalized (x,y) 0–1000.
+
+## Visual content
+- **data_chart** — server-side inline SVG chart (`bar`/`line`/`pie`). Passive data presentation /
+  comparison; **not scored**. Use real data to make a point, not decoration.
 
 ## Decision / scenario
 - **branching** — choices → different *screens*; consequence-based routing. Add `set_vars` to track

@@ -101,6 +101,21 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 // Düğümler tek ekranda; seçim → sonuç gösterilir → "Devam" sonraki düğüme gider. goto_node_id=null →
 // senaryo biter; toplam skor ≥ pass_score (yoksa >0) → points kazanılır. branching (ekranlar-arası) ve
 // simulation (yazılım dene) ile tamamlayıcı. Tasarım/skorlama deseni: docs/GAME-PATTERNS.md.
+// Faz 13 (G3) — yeni oyun + görsel tipler:
+{ "type": "term_match_race", "title":"Terimleri eşleştir", "time_limit_sec":45, "points":15,
+  "pairs":[ {"id":"a","term_html":"Phishing","definition_html":"Sahte e-postayla kimlik avı"},
+            {"id":"b","term_html":"Ransomware","definition_html":"Dosyaları şifreleyip fidye isteyen yazılım"} ] }
+{ "type": "escape_room", "title":"Güvenlik Kilidi", "intro_html":"<p>Üç kilidi çöz.</p>", "lives":3, "points":20,
+  "puzzles":[ {"id":"p1","prompt_html":"<p>İki faktörlü doğrulamanın kısaltması?</p>","accepted":["2FA","MFA"],"hint_html":"<p>iki kez doğrula</p>"},
+              {"id":"p2","prompt_html":"<p>HTTPS hangi portu kullanır?</p>","accepted":["443"]} ] }
+{ "type": "labeled_diagram", "title":"Kalbi etiketle", "image_asset_id":"heart", "points":15,
+  // x,y = 0–1000 normalize konum (görselin sol-üstü 0,0)
+  "labels":[ {"id":"l1","text":"Sol ventrikül","x":620,"y":540}, {"id":"l2","text":"Aort","x":480,"y":210} ] }
+{ "type": "data_chart", "title":"Saldırı türleri 2024", "chart_type":"bar",   // bar|line|pie
+  "data":[ {"label":"Oltalama","value":42}, {"label":"Fidye","value":28}, {"label":"İçeriden","value":15} ],
+  "caption":"Olay başına oran (%)" }
+// term_match_race/escape_room/labeled_diagram SKORLANIR (QUIZ_TYPES); data_chart İÇERİK (skorlanmaz,
+// sunucuda inline-SVG). Oyun tasarımı/skorlama: docs/GAME-PATTERNS.md.
 ```
 
 For full course structures (Watch→Apply→Your-Turn, concept lessons, gamified, branching), see
