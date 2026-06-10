@@ -116,6 +116,19 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
   "caption":"Olay başına oran (%)" }
 // term_match_race/escape_room/labeled_diagram SKORLANIR (QUIZ_TYPES); data_chart İÇERİK (skorlanmaz,
 // sunucuda inline-SVG). Oyun tasarımı/skorlama: docs/GAME-PATTERNS.md.
+// Faz 14 — özelleştirilmiş sonuç + katılım + görsel karşılaştırma (hepsi İÇERİK, skorlanmaz):
+{ "type": "results_breakdown", "title":"Sonuçların", "body_html":"<p>Hedef bazlı performansın:</p>",
+  "weak_threshold":60, "show_total":true,
+  // her bölüm = bir hedef; screen_ids o hedefe ait QUIZ ekran id'leri (skor onlardan hesaplanır)
+  "sections":[ {"title":"Oltalama","screen_ids":["q_phish1","q_phish2"],"advice_html":"<p>'Bağlantıyı Doğrula' bölümüne dön.</p>"},
+               {"title":"Parola","screen_ids":["q_pass1"]} ] }
+{ "type": "poll", "title":"Görüşün", "prompt_html":"<p>En faydalı bölüm hangisiydi?</p>", "multi":false,
+  "options":[ {"id":"a","text_html":"Senaryo"}, {"id":"b","text_html":"Oyun"} ],
+  "allow_text":false, "reflection_html":"<p>Geri bildirimin için teşekkürler.</p>" }
+{ "type": "image_compare", "title":"Önce / Sonra", "before_asset_id":"before", "after_asset_id":"after",
+  "before_label":"Önce", "after_label":"Sonra", "caption":"Sürükleyerek karşılaştır" }
+// results_breakdown: bölüm oranı, öğrencinin cevaplarından GÖSTERİM-ZAMANINDA hesaplanır; eşik altı →
+// advice gösterilir. poll: İleri'yi engellemez. image_compare: sürüklenebilir slider (2 görsel asset).
 ```
 
 For full course structures (Watch→Apply→Your-Turn, concept lessons, gamified, branching), see

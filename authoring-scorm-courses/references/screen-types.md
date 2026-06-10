@@ -1,4 +1,4 @@
-# Screen-type decision guide (23 types)
+# Screen-type decision guide (26 types)
 
 Pick by *intent*, not habit. Vary them.
 
@@ -35,6 +35,15 @@ Pick by *intent*, not habit. Vary them.
 ## Visual content
 - **data_chart** — server-side inline SVG chart (`bar`/`line`/`pie`). Passive data presentation /
   comparison; **not scored**. Use real data to make a point, not decoration.
+- **image_compare** — draggable before/after slider (two images). Change/contrast (medical,
+  design, before-after). Not scored.
+
+## Results & participation
+- **results_breakdown** — **customized results**: per-objective score breakdown computed on-show
+  from the learner's answers + adaptive advice for weak sections. Map each section to its quiz
+  `screen_ids`. Use as a richer, personalized alternative to `summary`. Not scored.
+- **poll** — ungraded reflection/opinion (single/multi/open text) → reveals a reflection message.
+  Self-assessment / engagement; doesn't gate Next.
 
 ## Decision / scenario
 - **branching** — choices → different *screens*; consequence-based routing. Add `set_vars` to track
