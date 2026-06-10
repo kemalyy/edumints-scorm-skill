@@ -19,6 +19,9 @@ token-efficient). Use the granular tools (`create_project`, `add_screen`, …) o
     { "name": "points","type": "number", "default": 0 }
   ],
   "points_var": "points",             // Faz 6 — shows a points HUD in header
+  // Faz 15 (G1) — birleşik oyunlaştırma HUD'u (içsel ustalaşma; rozet/liderlik DEĞİL):
+  "levels": [ {"name":"Çırak","min_points":0}, {"name":"Usta","min_points":100} ],  // puan→seviye rozeti
+  "lives_var": "can", "max_lives": 3,  // can değişkeni → kalp HUD (on_wrong: [{var:"can",op:"add",value:-1}])
   "screens": [ /* see screen catalog below */ ],
   "assets": [                         // optional; source = data-URI OR https URL
     { "id": "slide1", "filename": "slide1.png", "source": "https://…/img.png" }
