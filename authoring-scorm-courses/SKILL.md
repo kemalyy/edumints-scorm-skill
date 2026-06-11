@@ -73,9 +73,11 @@ değerleri pre-flight Madde 1'de gerekçele.
 2. **Design the outline** before building. Map objective → chunks → practice → assessment → summary.
    Pick screen types deliberately (see `references/screen-types.md`). Vary them — avoid repetition
    (template fatigue is the #1 learner complaint).
-3. **Theme**: pick a standard preset (`default`, `academic`, `modern-light`, `high-contrast`, `agency`,
-   `dark`) and optionally override brand tokens. Light/neutral/high-contrast is the e-learning standard —
-   never an arbitrary dark theme. See `references/themes.md`.
+3. **Theme**: arayüz **konuya göre farklılaşsın** — her kursu aynı varsayılana düşürme. Eğitim Okuması'ndaki
+   kitle/tona göre konu-uygun bir görsel kimlik seç (çocuk → `playground`, beşeri/akademik → `editorial`,
+   sağlık → `clinical-calm`, kurumsal → marka/`default`); gerekirse vurgu rengini markayla override et.
+   Tema = renk + başlık fontu + radii + desen + `custom_css`. Açık/nötr/AA standardı; keyfi koyu tema yok.
+   **Konu→tema eşlemesi ve kaldıraçlar: `references/themes.md`.**
 4. **Build** with `build_from_spec` (one JSON, token-efficient, preferred). See `references/mcp-cookbook.md`.
 5. **Preview → review → fix loop**: call `preview`, share the hosted URL. The reviewer leaves comments on
    screens; you read them with `list_feedback` (no args = all pending across projects), apply edits, then

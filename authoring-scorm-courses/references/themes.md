@@ -1,28 +1,45 @@
-# Themes
+# Themes — konuya göre FARKLI görünüm seç
 
-E-learning standard = light/neutral background, high-contrast text, one or two accent colors, generous
-whitespace, WCAG AA. **Never an arbitrary dark theme** unless the brand truly calls for it.
+E-öğrenme standardı = açık/nötr zemin, yüksek-kontrast metin, 1-2 vurgu rengi, ferah boşluk, WCAG AA.
+**Keyfi koyu tema YOK** (marka gerçekten istemedikçe).
 
-## Presets (pass the name as `theme`)
-- **default** — clean blue, white bg, professional. Safe corporate default.
-- **modern-light** — teal accent, crisp, generous spacing. Modern/product training.
-- **academic** — serif headings, warm neutral, navy/gold. Education/scholarly.
-- **high-contrast** — WCAG AA+, Atkinson Hyperlegible, black/white/strong accent. Accessibility-critical.
-- **agency** — bold indigo, Sora headings. Marketing/creative.
-- **dark** — tasteful dark; only when intended (e.g., dev/IT audience).
+> **EN ÖNEMLİ KURAL (anti-tekdüze):** Her kursu `default`/`modern-light` ile YAPMA. Arayüz **konuya göre
+> farklılaşmalı** — çocuk kursu, akademik ders ve kurumsal uyum eğitimi birbirine benzemesin. Eğitim
+> Okumasındaki kitle/ton + VISUAL_RICHNESS dial'ına göre **konuya uygun bir görsel kimlik seç** (aşağıdaki
+> eşleme), gerekirse vurgu rengini markayla override et. Tema sadece renk değil: başlık fontu, köşe
+> yuvarlaklığı (radii), arka plan deseni ve `custom_css` ile his değişir.
 
-## Customization (preset + brand overrides)
-Pick a preset, then override only the tokens you need via `set_theme` (deep-merge — unset tokens keep the
-preset's values), or pass a full ThemeTokens object as `theme`.
+## Konu → tema eşlemesi (önce buradan seç)
+
+| Konu / kitle | Tema | Kimlik |
+|---|---|---|
+| Çocuk / K12 / oyunlaştırılmış | **playground** | yuvarlak köşeler, canlı mor-pembe, zıplayan butonlar, dot deseni |
+| Üniversite / beşeri bilimler / tarih / edebiyat | **editorial** | serif başlık, düz çift-çizgi kart (gölgesiz), drop-cap, ferah |
+| Akademik/bilimsel (klasik) | **academic** | serif başlık, lacivert/altın, sıcak nötr |
+| Sağlık / klinik CPD | **clinical-calm** | teal, sakin, ferah, profesyonel |
+| Kurumsal uyum / onboarding | **corporate** marka paketi (themes/corporate/*) ya da **default** | rafine, marka rengi, logo alanı |
+| Ürün/yazılım eğitimi (modern) | **modern-light** | teal vurgu, crisp |
+| Pazarlama / yaratıcı | **agency** | cesur indigo |
+| Erişilebilirlik-kritik | **high-contrast** | WCAG AA+, Atkinson Hyperlegible |
+| Sıcak/ilkokul, dil öğrenimi | **warm-education** | sıcak turuncu, dostane |
+| Dev/IT (istenirse koyu) | **dark** | ölçülü koyu — yalnız bilinçli |
+
+Eğitim Okuması farklı bir ton söylüyorsa onu izle; ama **bilinçli bir kimlik seç** — varsayılana düşme.
+
+## Özelleştirme (preset + marka override)
+Preset seç, sonra yalnız gereken token'ı `set_theme` ile override et (deep-merge), ya da `theme` olarak
+tam ThemeTokens objesi geç.
 ```jsonc
-// build_from_spec with a preset, then brand the primary color:
 set_theme(project_id, { "color": { "primary": "#FF6B00", "primary_hover": "#e85f00" } })
 ```
-ThemeTokens groups: `typography` (fonts, scale, weights, line-height), `color` (primary/secondary/accent
-+ bg/surface/border/text/state colors + focus_ring), `spacing`, `radii`, `elevation`, `motion`
-(durations/easing, `reduce_motion_respect`), `background_pattern` (none/dots/grid/gradient), `custom_css`.
+**Görünümü gerçekten ayrıştırmak için renk yetmez** — şu kaldıraçları kullan (hepsi render'da bağlı):
+- `typography.font_heading` — serif (Georgia stack) / rounded-sans / refined-sans → ayrı his.
+- `radii` — keskin (2-4px editöryel) vs yuvarlak (20-28px çocuk) → karakter.
+- `background_pattern` — none (yoğun okuma) / dots / grid / gradient.
+- `custom_css` — bileşen tedavisini ez: kart stili (gölge vs çizgi), buton şekli, başlık dekoru,
+  drop-cap. (editorial/playground temalarına örnek olarak bak.)
 
-## Tips
-- Match the accent to the brand; keep text near-black on near-white for contrast.
-- `background_pattern: "gradient"` adds subtle depth on title-heavy courses; "none" for dense reading.
-- Don't override so much that you break contrast — verify against the high-contrast baseline if unsure.
+## İpuçları
+- Vurgu rengini markaya uydur; metni açık zeminde neredeyse-siyah tut (kontrast).
+- Aşırı override edip kontrastı bozma — emin değilsen high-contrast taban çizgisine karşı doğrula.
+- WCAG AA: metin/zemin ≥ 4.5:1. Yeni custom_css ile kontrastı düşürme.
