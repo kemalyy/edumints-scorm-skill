@@ -1,4 +1,4 @@
-# Screen-type decision guide (26 types)
+# Screen-type decision guide (28 types)
 
 Pick by *intent*, not habit. Vary them.
 
@@ -31,6 +31,16 @@ Pick by *intent*, not habit. Vary them.
   engagement for review/recall; keep puzzles answerable from the taught content.
 - **labeled_diagram** — place labels onto positioned pins on an image (anatomy/diagram/map).
   Visual learning; scored. Needs an image asset + pins at normalized (x,y) 0–1000.
+- **game** — **composable serious game** (not a fixed type): compose mechanic primitives
+  (`score`/`lives`/`timer`/`hints`) + declarative `when event if cond then action` rules + branching
+  content `nodes`. Templates: `case_sim` (branching case/decision), `escape_room` (locked chain). Use
+  when the mechanic should *carry* the learning (intrinsic integration), e.g. clinical triage, incident
+  response. Game a11y is enforced (hint text, timer extend/disable — WCAG 2.2.1). Scored by `pass_score`.
+- **adaptive_practice** — competency-adaptive question bank: after each answer it estimates ability
+  (**`elo`** — closest-to-target difficulty, flow) or mastery (**`bkt`** — Bayesian Knowledge Tracing,
+  mastery + early stop) and serves the next item at the right difficulty. Give ≥4 items with spread
+  `difficulty` (logit; harder = higher) + an `explain_html` each. Use for drill/review that should fit
+  each learner instead of a fixed quiz.
 
 ## Visual content
 - **data_chart** — server-side inline SVG chart (`bar`/`line`/`pie`). Passive data presentation /
@@ -52,6 +62,9 @@ Pick by *intent*, not habit. Vary them.
 
 **Selection heuristics:** sequence → timeline; terms → flashcards/term recall; categorize →
 drag_drop/matching; process order → sorting; software "do it" → simulation; "what would you do?" /
-consequence game → decision_scenario; cross-screen routing → branching; dense optional detail →
-accordion/tabs; visual concept → lottie/video. After 1–2 content screens, insert a practice type.
-Game design patterns & scoring: see the server's `docs/GAME-PATTERNS.md`.
+consequence game → decision_scenario; **mechanic-driven serious game** (score/lives/timer/hints +
+branching, intrinsic integration) → game; **adapt difficulty to the learner** → adaptive_practice;
+cross-screen routing → branching; dense optional detail → accordion/tabs; visual concept →
+lottie/video. After 1–2 content screens, insert a practice type.
+Game design patterns & scoring: see the server's `docs/GAME-PATTERNS.md`, `docs/GAME-ECD.md`,
+`docs/GAME-ADAPTIVE.md`. Before publishing a game/adaptive course, run `lint_course` (anti-slop gate).

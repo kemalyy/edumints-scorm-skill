@@ -156,6 +156,36 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   → Türkçe mp3 narration asset (ücretsiz, çevrimdışı). Üst kalite/başka dil için kendi TTS MCP'n +
   `add_asset` (birincil). Detay: **`references/media.md`**.
 - `preview(project_id)` → `{ inline_html, hosted_url }`. `validate_package` then `build_package` → download.
+- `list_screen_types()` / `list_themes()` — discovery: the 28 screen types + theme presets (no auth).
+- **`lint_course(project_id)`** → `{ error_count, warn_count, clean, issues[] }`. Anti-slop quality gate for
+  game/adaptive screens (intrinsic integration, no fake choice, scaffolding, adaptive spread, a11y).
+  Structural bugs are errors (also block the build); pedagogical smells are warnings. **Run before publishing
+  any game/adaptive course** — aim for `clean: true`.
+- **`export_qti(project_id)`** → `{ count, items: [{ filename, xml }] }`. Exports mcq/true_false/fill_blank
+  to IMS QTI 2.1 `assessmentItem` XML for QTI-compatible LMS / item banks (other types are skipped).
+
+## Game & adaptive spec shapes (brief)
+```jsonc
+// game (composable serious game)
+{ "type": "game", "id": "g1", "title": "Triage", "template": "case_sim", "points": 50, "pass_score": 35,
+  "mechanics": { "score": {"id":"sc"}, "lives": {"id":"lv","start":3},
+                 "hints": {"id":"h","hints":[{"text":"…","cost":5}]} },
+  "rules": [ { "when":"choice.taken", "then":[{"do":"var.add","var":"step","value":1}] } ],
+  "start_node_id": "n1",
+  "nodes": [ { "id":"n1", "content_html":"<p>…</p>", "choices":[
+      { "id":"a", "text_html":"Right", "to":"n2", "feedback_html":"<p>Because…</p>",
+        "on_choose":[{"do":"score.correct","points":15}] },
+      { "id":"b", "text_html":"Wrong", "to":null, "feedback_html":"<p>Risky…</p>",
+        "on_choose":[{"do":"lives.lose","n":1},{"do":"score.wrong"}] } ] } ] }
+
+// adaptive_practice
+{ "type": "adaptive_practice", "id": "ap1", "title": "Drill", "points": 40, "pass_ratio": 0.6,
+  "adaptive": { "strategy": "elo", "ability": 0.0 },   // or {"strategy":"bkt","mastery_stop":0.9}
+  "target_success": 0.7,
+  "items": [ { "id":"q1", "difficulty":-1.5, "prompt_html":"<p>…</p>", "explain_html":"<p>…</p>",
+      "options":[{"id":"a","text_html":"…","correct":true},{"id":"b","text_html":"…"}] } /* ≥4, spread */ ] }
+```
+Optional course-level telemetry: `"xapi": { "enabled": true, "mode": "cmi5" }` (default off; no LRS → no-op).
 
 ## Preview → feedback → fix loop
 1. `preview(project_id)` → give the user `hosted_url`. They click the feedback button on any screen.

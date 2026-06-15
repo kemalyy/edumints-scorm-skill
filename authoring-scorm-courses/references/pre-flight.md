@@ -40,6 +40,10 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
   `completion_rule` tutarlı?
 - [ ] **13. Loop çalıştırıldı:** `preview` → gözden geçir/`list_feedback` → düzelt/`resolve_feedback` →
   `validate_package` yeşil → `build_package`?
+- [ ] **14. Oyun/adaptif varsa `lint_course` `clean: true`:** `game`/`adaptive_practice` ekranı içeren
+  kurslarda **teslimden önce `lint_course(project_id)`** çalıştır. ERROR = yapısal bug (ulaşılamaz düğüm,
+  sahte seçim — build'i de bloklar); WARN = pedagojik koku (süs skor, bedava ipucu, gerekçesiz ceza, dar
+  zorluk). Uyarıları temizle — mekanik öğrenme hedefini *taşımalı* (içsel-bütünleşme), süs olmamalı.
 
 ---
 
