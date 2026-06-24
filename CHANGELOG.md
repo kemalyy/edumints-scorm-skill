@@ -2,6 +2,20 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.2.0] — 2026-06-24
+
+Richer media authoring + screen reorder (matches scorm-mcp 1.2.0 / W9).
+
+### Added
+- `content_slide` **`blocks[]`** — interleave `paragraph → image → paragraph` in one screen
+  (instead of consecutive content slides).
+- **Per-item images** — `image_asset_id` on accordion/tabs items and timeline events;
+  `front_asset_id` / `back_asset_id` on flashcard faces.
+- **Inline assets** — `{{asset:<id>}}` interpolation in any `*_html` (embed a packaged asset in
+  flowing text) and inline base64 `data:` URI `<img>`.
+- **`reorder_screens`** tool documented (set an explicit screen order; `add_screen` appends).
+- `references/mcp-cookbook.md` + `references/screen-types.md` updated for all of the above.
+
 ## [1.1.0] — 2026-06-15
 
 Composable game engine + adaptive learning + telemetry guidance (matches scorm-mcp 1.1.0).
