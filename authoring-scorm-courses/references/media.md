@@ -45,6 +45,10 @@ ffmpeg is opt-in: it only runs when you call these tools; courses without media 
 
 ## Canva cross-MCP pipeline (image → SCORM asset)
 
+> **This is client-side orchestration.** Canva is a **client-side MCP connector in Claude** — the scorm
+> server cannot call it. So *you* (the client) call both connectors: Canva MCP to make/export the image,
+> then scorm MCP `add_asset` to pull it into the package. There is no server-side `canva_design_id`.
+
 The correct order to bring a Canva image into a SCORM course:
 
 ```
