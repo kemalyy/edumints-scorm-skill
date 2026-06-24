@@ -2,6 +2,16 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Added
+- `references/media.md` — **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id;
+  TTL/signed-URL rules; Turkish-prompt + instructional-image rules).
+- `references/mcp-cookbook.md` — `auto_tts` in `build_from_spec`; `content_slide` `blocks[].width`;
+  `add_asset` return shape (`{ id, … }`) + "callable directly (may not surface in tool-search)" note;
+  Canva/TTL note on `assets[]`.
+- `SKILL.md` reference-file descriptions updated.
+
 ## [1.2.0] — 2026-06-24
 
 Richer media authoring + screen reorder (matches scorm-mcp 1.2.0 / W9).

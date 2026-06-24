@@ -107,13 +107,13 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/anti-slop.md` — **ÖNCE BUNU OKU.** SCORM slop'unun somut/ikili yasakları + override yolları + ÖNCE/SONRA JSON. Her ekran üretmeden önce buna karşı denetle.
 - `references/pre-flight.md` — teslim öncesi **zorunlu** mekanik denetim matrisi (sayılabilir). Quality gate burada.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
-- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 28 screen types) + game/adaptive shapes + `lint_course`/`export_qti` + the feedback loop.
+- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 28 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).
 - `references/instructional-design.md` — objectives, structure, microlearning, anti-template-fatigue.
 - `references/screen-types.md` — decision guide for all 28 screen types (incl. simulation, decision_scenario, **composable game**, **adaptive practice**).
 - `references/assessment.md` — question/feedback/scoring design.
 - `references/interactivity-and-gamification.md` — variables, conditions, timer, points, branching, **composable game engine** (game), **adaptive practice** (Elo/BKT), **xAPI/cmi5** telemetry.
-- `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie.
+- `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie, **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id).
 - `references/video-generation.md` — programatik video (VideoSpec → HyperFrames MP4): motion-graphic, veri-viz, slayt→video.
 - `references/themes.md` — preset themes + customization.
 

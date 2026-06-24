@@ -42,3 +42,32 @@ ffmpeg is opt-in: it only runs when you call these tools; courses without media 
 ## Guidance
 - Keep media purposeful (it should teach, not decorate). Compress large media; the asset size counts
   against quota. Provide alt text / captions for accessibility.
+
+## Canva cross-MCP pipeline (image → SCORM asset)
+
+The correct order to bring a Canva image into a SCORM course:
+
+```
+1. Canva:generate-design (design_type, query — for Turkish content WRITE A TURKISH PROMPT)
+     → returns job_id + candidate_id(s)
+2. Canva:create-design-from-candidate (job_id + chosen candidate_id)
+     → returns design_id (e.g. "DAHNeYb8aDE")
+3. Canva:export-design (design_id, format: { type:"png", width:1280 })
+     → returns a signed download URL
+4. scorm:add_asset (project_id, signed_url, filename)   ← CALL IMMEDIATELY
+     → returns asset id (e.g. "asset_01KVW8GM…")
+5. Use that id in build_from_spec / add_screen:
+     media_asset_id · image_asset_id · front_asset_id · back_asset_id · blocks[].asset_id …
+```
+
+**Critical rules**
+- Canva export URLs are **TTL'd AWS S3 signed URLs (~1–12 h)**. Call `add_asset` **immediately** after
+  export. Do **not** put the signed URL directly in `build_from_spec` `assets[].source` — it will be
+  expired by the time the course is (re)built or previewed. `add_asset` downloads + embeds the bytes,
+  so the package stays self-contained regardless of the source URL's TTL.
+- Use the **`id`** returned by granular `add_asset`. (`build_from_spec` `assets[].id` is an author-chosen
+  local alias for bulk pre-load; the granular tool's returned id is the real asset id.)
+- **Turkish content → Turkish Canva prompt.** The template language follows the prompt language.
+- The image must be **instructional** (anti-slop C1/C4): a diagram, flow chart, or step-by-step
+  infographic that shows the concept — not a decorative poster or stock photo.
+- `add_asset` may not appear in tool-search but is directly callable — call it directly.

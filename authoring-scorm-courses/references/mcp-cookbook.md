@@ -23,8 +23,12 @@ token-efficient). Use the granular tools (`create_project`, `add_screen`, …) o
   "levels": [ {"name":"Çırak","min_points":0}, {"name":"Usta","min_points":100} ],  // puan→seviye rozeti
   "lives_var": "can", "max_lives": 3,  // can değişkeni → kalp HUD (on_wrong: [{var:"can",op:"add",value:-1}])
   "screens": [ /* see screen catalog below */ ],
+  "auto_tts": false,                  // opt-in: true → narration_text dolu her ekrana otomatik Piper TTS
+                                      // üretip narration_asset_id'yi set eder (Piper yoksa sessizce atlanır)
   "assets": [                         // optional; source = data-URI OR https URL
     { "id": "slide1", "filename": "slide1.png", "source": "https://…/img.png" }
+    // NOT: Canva export URL'leri TTL'lidir (~1-12 saat). Doğrudan source vermek yerine önce
+    // add_asset ile yükle; dönen id'yi ekran alanlarında kullan. Bkz. references/media.md → Canva pipeline.
   ]
 }
 ```
@@ -52,9 +56,11 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 { "type": "title_slide", "title": "Merhaba {{name}}", "subtitle": "8 dk", "body_html": "<p>…</p>" }
 { "type": "content_slide", "title": "Konu", "body_html": "<p>…</p>", "layout": "text_media", "media_asset_id": "slide1" }
 // W9 — content_slide blocks[]: paragraf→görsel→paragraf akışını TEK ekranda (3 ardışık slayt yerine).
-//   blocks verilirse body_html/media_asset_id yerine sırayla render edilir; her blok {html} VEYA {asset_id,caption?}.
+//   blocks verilirse body_html/media_asset_id yerine sırayla render edilir; her blok {html} VEYA
+//   {asset_id, caption?, width?} (width örn "60%" → görsel ortalanıp o genişlikte; boşsa tam genişlik).
 { "type": "content_slide", "title": "Adımlar", "blocks": [
-    {"html":"<p>1. Veri toplanır</p>"}, {"asset_id":"slide1","caption":"Şekil 1"}, {"html":"<p>2. Model eğitilir</p>"} ] }
+    {"html":"<p>1. Veri toplanır</p>"}, {"asset_id":"slide1","caption":"Şekil 1","width":"60%"},
+    {"html":"<p>2. Model eğitilir</p>"} ] }
 { "type": "mcq", "title": "Soru", "prompt_html": "<p>…?</p>", "points": 10, "multi_select": false,
   "options": [ {"id":"a","text_html":"4","correct":true}, {"id":"b","text_html":"5"} ],
   "on_correct": [ {"var":"points","op":"add","value":10} ] }            // gamification hook
@@ -153,7 +159,11 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
 - **W9 — `reorder_screens(project_id, screen_ids_in_order)`**: `add_screen` always appends; use this to
   set the final screen order (the list must contain every existing screen id exactly once).
 - `set_tracking(project_id, completion_rule, passing_score)`.
-- `add_asset(project_id, source, filename)` — source = `data:<mime>;base64,…` OR `https://…` (SSRF-guarded).
+- `add_asset(project_id, source, filename)` → `{ id, filename, mime, size_bytes, sha256, rel_path }`.
+  source = `data:<mime>;base64,…` OR `https://…` (SSRF-guarded). Use the returned **`id`** in
+  `media_asset_id` / `image_asset_id` / `narration_asset_id` / `video_asset_id` / `lottie_asset_id` /
+  `front_asset_id` / `back_asset_id`. ⚠️ May not surface in tool-search but is directly callable —
+  call it directly (don't rely on search). Primary path for Canva/TTL'd URLs (see references/media.md).
 - `make_video_from_image_audio(project_id, image_asset_id, audio_asset_id, filename)` → video asset (ffmpeg).
 - `normalize_audio_asset(project_id, audio_asset_id, filename)` → mp3.
 - **Faz 10 — programatik video (HyperFrames):** `render_motion_video(project_id, video_spec, filename,
