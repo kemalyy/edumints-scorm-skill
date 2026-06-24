@@ -5,10 +5,15 @@ Pick by *intent*, not habit. Vary them.
 ## Content / presentation
 - **title_slide** — open the course; set relevance. Supports `{{var}}` + background.
 - **content_slide** — one idea. `layout`: text / text_media / media_text / full_media. Don't overload.
-- **accordion** — dense reference / FAQ; let learners expand on demand (native, accessible).
-- **tabs** — parallel facets of one topic (e.g., "What / Why / How").
-- **flashcards** — term ↔ definition; vocabulary; self-test recall.
-- **timeline** — chronology, process steps, history.
+  **W9:** use `blocks[]` to interleave `paragraph → image → paragraph` in ONE screen instead of 3
+  consecutive content slides.
+- **accordion** — dense reference / FAQ; let learners expand on demand (native, accessible). *(W9: per-item `image_asset_id`.)*
+- **tabs** — parallel facets of one topic (e.g., "What / Why / How"). *(W9: per-tab `image_asset_id`.)*
+- **flashcards** — term ↔ definition; vocabulary; self-test recall. *(W9: `front_asset_id`/`back_asset_id`.)*
+- **timeline** — chronology, process steps, history. *(W9: per-event `image_asset_id`.)*
+
+> **Inline media (W9):** any `*_html` field accepts `{{asset:<id>}}` to embed a packaged asset inline in
+> flowing text, plus inline base64 `<img src="data:image/…">`. Reorder screens with `reorder_screens`.
 - **video** — demonstrations, talking-head, screen capture. `require_complete` to gate.
 - **lottie** — designer-made animation (concept reveal, celebration, illustration). Opt-in/lazy.
 

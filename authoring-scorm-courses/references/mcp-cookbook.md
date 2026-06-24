@@ -51,6 +51,10 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 ```jsonc
 { "type": "title_slide", "title": "Merhaba {{name}}", "subtitle": "8 dk", "body_html": "<p>…</p>" }
 { "type": "content_slide", "title": "Konu", "body_html": "<p>…</p>", "layout": "text_media", "media_asset_id": "slide1" }
+// W9 — content_slide blocks[]: paragraf→görsel→paragraf akışını TEK ekranda (3 ardışık slayt yerine).
+//   blocks verilirse body_html/media_asset_id yerine sırayla render edilir; her blok {html} VEYA {asset_id,caption?}.
+{ "type": "content_slide", "title": "Adımlar", "blocks": [
+    {"html":"<p>1. Veri toplanır</p>"}, {"asset_id":"slide1","caption":"Şekil 1"}, {"html":"<p>2. Model eğitilir</p>"} ] }
 { "type": "mcq", "title": "Soru", "prompt_html": "<p>…?</p>", "points": 10, "multi_select": false,
   "options": [ {"id":"a","text_html":"4","correct":true}, {"id":"b","text_html":"5"} ],
   "on_correct": [ {"var":"points","op":"add","value":10} ] }            // gamification hook
@@ -65,15 +69,15 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
   "choices":[ {"id":"c1","text_html":"…","goto_screen_id":"end","set_vars":[{"var":"points","op":"add","value":5}]} ] }
 { "type": "video", "title":"…", "video_asset_id":"vid", "caption":"…", "require_complete": false }
 { "type": "summary", "title":"Tebrikler", "show_score": true, "show_completion": true }
-// Faz 1b content interactions:
-{ "type": "accordion", "title":"SSS", "items":[ {"title":"Soru","body_html":"<p>Cevap</p>"} ] }
-{ "type": "tabs", "title":"…", "tabs":[ {"label":"Genel","body_html":"<p>…</p>"} ] }
-{ "type": "flashcards", "title":"…", "cards":[ {"front_html":"<b>Term</b>","back_html":"<p>Def</p>"} ] }
+// Faz 1b content interactions (W9 — her item'a ops. görsel: image_asset_id / front_asset_id / back_asset_id):
+{ "type": "accordion", "title":"SSS", "items":[ {"title":"Soru","body_html":"<p>Cevap</p>","image_asset_id":"img1"} ] }
+{ "type": "tabs", "title":"…", "tabs":[ {"label":"Genel","body_html":"<p>…</p>","image_asset_id":"img1"} ] }
+{ "type": "flashcards", "title":"…", "cards":[ {"front_html":"<b>Term</b>","back_html":"<p>Def</p>","front_asset_id":"ikon1","back_asset_id":"img2"} ] }
 { "type": "matching", "title":"Eşleştir", "prompt_html":"…", "points":10,
   "pairs":[ {"id":"p1","left_html":"Türkiye","right_html":"Ankara"} ] }
 { "type": "sorting", "title":"Sırala", "prompt_html":"…", "points":10,    // items in CORRECT order
   "items":[ {"id":"i1","text_html":"1"}, {"id":"i2","text_html":"2"} ] }
-{ "type": "timeline", "title":"Tarihçe", "events":[ {"date":"2020","title":"E1","body_html":"<p>…</p>"} ] }
+{ "type": "timeline", "title":"Tarihçe", "events":[ {"date":"2020","title":"E1","body_html":"<p>…</p>","image_asset_id":"img1"} ] }
 { "type": "lottie", "title":"Animasyon", "lottie_asset_id":"anim", "loop": true, "autoplay": true }
 // Faz 8 — guided software SIMULATION (the "Uygula" / try-mode step). Steps can be CLICK or TYPE:
 { "type": "simulation", "title":"Uygula: Soru ekle", "prompt_html":"<p>Adımları takip et</p>", "points":20,
@@ -137,12 +141,17 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 For full course structures (Watch→Apply→Your-Turn, concept lessons, gamified, branching), see
 **`references/course-patterns.md`** and the ready blueprints in `templates/` + `examples/`.
 
-`{{var}}` in any text interpolates the live variable value. `visible_if`: `{"var":"points","cmp":">=","value":100}`
+`{{var}}` in any text interpolates the live variable value. **W9 — `{{asset:<id>}}` in any `*_html`**
+embeds a packaged asset inline in flowing text (self-contained, hydrated at runtime) — use it for inline
+icons/figures inside a paragraph; inline `<img src="data:image/…">` (base64) is also allowed in `*_html`.
+`visible_if`: `{"var":"points","cmp":">=","value":100}`
 skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[{"var":"x","op":"set|add","value":…}]`.
 
 ## Granular & utility tools
 - `create_project(title, scorm_version, language)` → project_id; then `add_screen(project_id, screen)`,
   `update_screen`, `remove_screen`, `list_screens`, `set_theme(project_id, theme_tokens)` (deep-merges).
+- **W9 — `reorder_screens(project_id, screen_ids_in_order)`**: `add_screen` always appends; use this to
+  set the final screen order (the list must contain every existing screen id exactly once).
 - `set_tracking(project_id, completion_rule, passing_score)`.
 - `add_asset(project_id, source, filename)` — source = `data:<mime>;base64,…` OR `https://…` (SSRF-guarded).
 - `make_video_from_image_audio(project_id, image_asset_id, audio_asset_id, filename)` → video asset (ffmpeg).
