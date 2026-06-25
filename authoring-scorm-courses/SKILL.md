@@ -117,6 +117,15 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/video-generation.md` — programatik video (VideoSpec → HyperFrames MP4): motion-graphic, veri-viz, slayt→video.
 - `references/themes.md` — preset themes + customization.
 
+## Known limits (Claude → SCORM pipeline)
+- **No raw `<svg>`/`<canvas>`/`<script>` in `body_html`** — the sanitizer strips them. Diagrams go
+  through the asset pipeline: `svg_to_asset` (preferred) or `add_asset` → `media_asset_id`/`image_asset_id`/
+  block `asset_id` (rendered as `<img>`). See `references/media.md` → "SVG diagrams".
+- **Animations** — canvas/JS animations don't survive packaging. Use a **Lottie** asset or an **MP4**
+  (`render_motion_video` / `make_video_from_image_audio`).
+- **`render_motion_video`** — needs Chromium on the server; if absent it returns `render_unavailable`.
+  Fallbacks: `make_video_from_image_audio` (PNG+TTS→MP4), a static SVG/PNG asset, or local render.
+
 ## Templates & examples (copy and adapt)
 - `templates/tool-training.json` — Watch→Apply→Your-Turn blueprint for teaching an app/tool.
 - `templates/concept-lesson.json` — narrated concept/theory lesson blueprint.

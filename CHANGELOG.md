@@ -11,6 +11,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   `add_asset` return shape (`{ id, … }`) + "callable directly (may not surface in tool-search)" note;
   Canva/TTL note on `assets[]`.
 - `SKILL.md` reference-file descriptions updated.
+- **SVG diagrams** — `references/media.md` "SVG diagrams" section, `mcp-cookbook.md` `svg_to_asset`,
+  anti-slop **C5** (no raw `<svg>`/`<canvas>`/`<script>` in `body_html`), and a "Known limits" section
+  in `SKILL.md` (SVG-as-asset, animations → Lottie/MP4, `render_motion_video` Chromium fallback).
 
 ## [1.2.0] — 2026-06-24
 

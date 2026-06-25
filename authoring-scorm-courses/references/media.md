@@ -75,3 +75,26 @@ The correct order to bring a Canva image into a SCORM course:
 - The image must be **instructional** (anti-slop C1/C4): a diagram, flow chart, or step-by-step
   infographic that shows the concept — not a decorative poster or stock photo.
 - `add_asset` may not appear in tool-search but is directly callable — call it directly.
+
+## SVG diagrams (Claude-generated)
+
+Claude can produce instructional SVG diagrams. The **only** way into a SCORM course is the asset
+pipeline — **never inline `<svg>` in `body_html`**: the sanitizer strips `<svg>`/`<canvas>`/`<script>`,
+so the visual silently disappears.
+
+**Preferred — `svg_to_asset`** (no base64, validates, optional rasterize):
+```
+svg_to_asset(project_id, svg_content="<svg …>…</svg>", filename="token-vektor.svg")
+  → { id: "asset_…", mime: "image/svg+xml" }
+# then: content_slide(media_asset_id=id, layout="text_media") · or blocks[].asset_id · or image_asset_id
+# Max LMS compatibility (rare): svg_to_asset(..., rasterize=true) → PNG (needs cairosvg server-side).
+```
+
+**Alternative — `add_asset` with a data-URI** (equivalent; `image/svg+xml` is already allowed):
+```
+add_asset(project_id, "data:image/svg+xml;base64,<b64>", "diagram.svg") → { id }
+```
+
+The server packages it as `assets/…/diagram.svg`; the screen renders `<img src="…diagram.svg">`
+(responsive `max-width:100%`). SVG renders via `<img>` in all modern LMS browsers, so `rasterize` is
+seldom needed. The diagram must be **instructional** (anti-slop C1/C5) — a concept diagram/flow, not decoration.

@@ -146,6 +146,13 @@ için seyrek. Mekanik: ardışık aynı-animation zincirini say; > 2 ise fail.
 **bir şey öğretiyorsa** girer (explainer, veri-viz, demo). Dekoratif intro/outro videosu YASAK.
 → *Override:* brief marka açılış sting'i istiyorsa ≤ birkaç sn, tek yerde.
 
+**C5 — `body_html`/`*_html` içine ham `<svg>` / `<canvas>` / `<script>` YASAK (hard ban).** Sanitizer
+bunları siler → görsel hiç çıkmaz. Diyagramı her zaman asset pipeline'ından geçir: **`svg_to_asset`**
+(ham SVG ver, tercih edilen) veya `add_asset` (`data:image/svg+xml;base64,…`) → dönen `id`'yi
+`media_asset_id` / `image_asset_id` / blok `asset_id`'de kullan; ekran `<img>` ile render eder.
+Animasyon için Lottie asset veya MP4 (`render_motion_video` / `make_video_from_image_audio`).
+→ *Override:* yok.
+
 ---
 
 ## D. Oyunlaştırma

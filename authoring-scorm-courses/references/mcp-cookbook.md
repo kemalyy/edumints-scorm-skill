@@ -164,6 +164,10 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   `media_asset_id` / `image_asset_id` / `narration_asset_id` / `video_asset_id` / `lottie_asset_id` /
   `front_asset_id` / `back_asset_id`. ⚠️ May not surface in tool-search but is directly callable —
   call it directly (don't rely on search). Primary path for Canva/TTL'd URLs (see references/media.md).
+- `svg_to_asset(project_id, svg_content, filename="diagram.svg", rasterize=false, width, height)` → AssetRef.
+  Package a **Claude-generated SVG** without base64 — pass the raw `<svg>…</svg>` string. Validates SVG,
+  returns `id` for `media_asset_id`/`image_asset_id`/block `asset_id`. `rasterize=true` → PNG (needs
+  cairosvg). **NEVER inline `<svg>` in `body_html`** — it is sanitized away; this is the correct path.
 - `make_video_from_image_audio(project_id, image_asset_id, audio_asset_id, filename)` → video asset (ffmpeg).
 - `normalize_audio_asset(project_id, audio_asset_id, filename)` → mp3.
 - **Faz 10 — programatik video (HyperFrames):** `render_motion_video(project_id, video_spec, filename,
