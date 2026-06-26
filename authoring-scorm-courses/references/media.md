@@ -98,3 +98,12 @@ add_asset(project_id, "data:image/svg+xml;base64,<b64>", "diagram.svg") → { id
 The server packages it as `assets/…/diagram.svg`; the screen renders `<img src="…diagram.svg">`
 (responsive `max-width:100%`). SVG renders via `<img>` in all modern LMS browsers, so `rasterize` is
 seldom needed. The diagram must be **instructional** (anti-slop C1/C5) — a concept diagram/flow, not decoration.
+
+**Per-diagram workflow (mandatory, no exception):** `svg_to_asset()` → `id` → set `media_asset_id`
+(or block `asset_id` / `image_asset_id`) → bind the screen → **`preview` and confirm the image renders**.
+*(Mechanism: in preview the asset is embedded as base64 in the page's `__ASSETS__` map and the runtime
+sets `img.src`; in the built package it is a real `assets/…/diagram.svg` file referenced by `<img>`.)*
+
+**Animation (not a static diagram)?** `render_motion_video` needs Chromium on the server; if it's absent
+the tool returns `render_unavailable`. Fallbacks: a static `svg_to_asset` image, `make_video_from_image_audio`
+(PNG + TTS → MP4), or a Lottie asset. Never try to animate via inline `<canvas>`/`<script>` — it's stripped.
