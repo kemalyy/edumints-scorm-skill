@@ -4,6 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [1.3.0] — 2026-06-26
+
+Canva cross-MCP pipeline + SVG diagram pipeline (`svg_to_asset`) + `auto_tts` / `blocks[].width`
+authoring guidance (matches scorm-mcp 1.3.0).
+
 ### Added
 - `references/media.md` — **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id;
   TTL/signed-URL rules; Turkish-prompt + instructional-image rules).
