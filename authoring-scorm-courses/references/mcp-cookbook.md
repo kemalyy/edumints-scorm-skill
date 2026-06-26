@@ -55,6 +55,7 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 ```jsonc
 { "type": "title_slide", "title": "Merhaba {{name}}", "subtitle": "8 dk", "body_html": "<p>…</p>" }
 { "type": "content_slide", "title": "Konu", "body_html": "<p>…</p>", "layout": "text_media", "media_asset_id": "slide1" }
+// SVG diyagram → önce svg_to_asset() → dönen id'yi media_asset_id'ye ver; body_html'e <svg> GÖMME (sanitizer siler).
 // W9 — content_slide blocks[]: paragraf→görsel→paragraf akışını TEK ekranda (3 ardışık slayt yerine).
 //   blocks verilirse body_html/media_asset_id yerine sırayla render edilir; her blok {html} VEYA
 //   {asset_id, caption?, width?} (width örn "60%" → görsel ortalanıp o genişlikte; boşsa tam genişlik).

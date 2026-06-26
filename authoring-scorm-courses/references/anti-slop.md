@@ -151,6 +151,8 @@ bunları siler → görsel hiç çıkmaz. Diyagramı her zaman asset pipeline'ı
 (ham SVG ver, tercih edilen) veya `add_asset` (`data:image/svg+xml;base64,…`) → dönen `id`'yi
 `media_asset_id` / `image_asset_id` / blok `asset_id`'de kullan; ekran `<img>` ile render eder.
 Animasyon için Lottie asset veya MP4 (`render_motion_video` / `make_video_from_image_audio`).
+Script/etkileşim gerekiyorsa `<script>` gömme — `simulation` veya `game` ekran tipini kullan (player
+sandbox'ı içinde güvenle çalışır). Grafik için `data_chart` ekran tipi (sunucu-taraflı güvenli SVG üretir).
 → *Override:* yok.
 
 ---
