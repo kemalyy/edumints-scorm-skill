@@ -23,15 +23,18 @@ matching / sorting / fill_blank / accordion / tabs / flashcards / simulation) gi
 zinciri say; > 2 ise fail.
 → *Override:* yok. Üç fikir varsa üçüncüden önce bir flashcards/accordion ile "keşfe" çevir ya da
 bir yoklama ekle.
+**Artık mekanik denetleniyor:** lint_course → consecutive_content_slides WARN (core/antislop.py, W9 P1).
 
 **A2 — Ekran başına ≤ 4 madde.** Bir ekranın `body_html`'inde 5+ `<li>` YASAK. **Bir ekran = bir
 fikir.** Mekanik: `<li>` say.
 → *Override:* yalnızca açık bir başvuru/checklist ekranı (accordion ya da `flow` modunda) ve brief
 açıkça "referans materyali" istiyorsa.
+**Artık mekanik denetleniyor:** lint_course → too_many_list_items WARN (core/antislop.py, W9 P1).
 
 **A3 — Jenerik başlık YASAK.** "Modül 1: Giriş", "Bölüm 2: Genel Bakış", "Konu 3", "Ünite: Temeller"
 gibi içeriksiz başlık YASAK. `title` ekranın **tek çıkarımını** taşır (mümkünse soru ya da iddia).
 → *Override:* yok. "Giriş" yerine "Neden 8 saniyede karar veriyoruz?" yaz.
+**Artık mekanik denetleniyor:** lint_course → generic_title WARN (core/antislop.py, W9 P1).
 
 **A4 — Sahte "Sonraki adımlar / Kaynaklar" dolgu ekranı YASAK.** İçeriği taşımayan, sırf kursu
 uzatan jenerik kapanış ekranı ekleme. Kapanış = `summary` + tek net çıkarım.
@@ -80,6 +83,7 @@ deneyin."` (şema varsayılanı) ya da salt "Yanlış" OLAMAZ. Her `feedback`: *
 doğru modele bağ** + **(c) ilgili İzle/içerik ekranına yönlendirme** içerir. `correct_html` bile en
 az "neden doğru" tek cümlesini taşır.
 → *Override:* yok.
+**Artık mekanik denetleniyor:** lint_course → default_feedback WARN (core/antislop.py, W9 P1).
 
 **B4 — Filler fiil/sıfat YASAK.** Şu içi boş kalıplar YASAK: "keşfedin", "öğrenin", "harika",
 "kolayca", "sadece birkaç tıkla", "bu çok önemli", "unutmayın ki", "bildiğiniz gibi". Her birini
