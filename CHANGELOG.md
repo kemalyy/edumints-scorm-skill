@@ -4,6 +4,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [1.3.1] — 2026-07-23
+
+`references/anti-slop.md` A1/A2/A3/B3 kurallarının artık scorm-mcp'nin `lint_course`'unda mekanik
+olarak denetlendiğini belirten notlar (matches scorm-mcp 1.4.0's anti-slop mechanization — pre-flight
+bu maddeler için artık modelin dürüstçe saymasına değil, gerçek bir sunucu-taraflı WARN'a dayanıyor).
+
+### Changed
+- `references/anti-slop.md` — A1 (`consecutive_content_slides`), A2 (`too_many_list_items`), A3
+  (`generic_title`), B3 (`default_feedback`) her birine tek satırlık "artık mekanik denetleniyor" notu.
+
 ## [1.3.0] — 2026-06-26
 
 Canva cross-MCP pipeline + SVG diagram pipeline (`svg_to_asset`) + `auto_tts` / `blocks[].width`
