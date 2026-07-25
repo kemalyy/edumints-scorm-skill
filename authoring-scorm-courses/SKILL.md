@@ -106,6 +106,7 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 ## Reference files (load as needed)
 - `references/anti-slop.md` — **ÖNCE BUNU OKU.** SCORM slop'unun somut/ikili yasakları + override yolları + ÖNCE/SONRA JSON. Her ekran üretmeden önce buna karşı denetle.
 - `references/pre-flight.md` — teslim öncesi **zorunlu** mekanik denetim matrisi (sayılabilir). Quality gate burada.
+- `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
 - `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 28 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).

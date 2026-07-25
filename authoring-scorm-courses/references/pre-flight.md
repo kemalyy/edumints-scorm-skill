@@ -31,6 +31,7 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
   skorlanan değerlendirmede mi** (D2) · **`decision_scenario` gerçek ikilem mi** (bariz-doğru/sahte-
   dallanma/sonuçsuz-feedback/tek-düğüm yok; kötü karar negatif `score_delta` — D3)?
 
+- [ ] **9c. Görsel yoğunluk & anlatı** (`references/visual-storytelling.md`): 3+ ardışık görselsiz ekran yok mu (lint `text_only_run`/`visual_poverty` temiz mi)? Kurs tek bir somut sahneyle açılıp aynı sahneyle mi kapanıyor? "N şeyi kontrol et/karşılaştır/sırala" içeriği paragraf yerine simulation/image_compare/timeline'a mı çevrildi?
 ## Mekanik & teslim
 - [ ] **10. Sahne ritmi:** anlatımlı ekranlarda `narration_text` + uygun `reveal`; ekran başına
   **3–6 reveal bloğu**; quiz dışı içerik `stage` modunda akıyor. (`authoring-recommendations.md` §1–3)
