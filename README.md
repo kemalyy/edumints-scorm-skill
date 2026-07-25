@@ -25,7 +25,9 @@ The skill is the **author's playbook**; the scorm-mcp server is the **assembler*
 authoring-scorm-courses/
 ├── SKILL.md                         # entry point: workflow + quality bar
 ├── references/
-│   ├── authoring-recommendations.md # when/how/why decision guide (read first)
+│   ├── anti-slop.md                 # anti-slop discipline: training read + parametric dials (read FIRST)
+│   ├── pre-flight.md                # MANDATORY pre-build quality-gate matrix
+│   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
 │   ├── course-patterns.md           # proven course structures
 │   ├── instructional-design.md      # objectives, microlearning, anti-template-fatigue
