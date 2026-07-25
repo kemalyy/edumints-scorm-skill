@@ -4,6 +4,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — visual storytelling (W11)
+- New `references/visual-storytelling.md` — the anti-ordinariness playbook distilled from the
+  "Spot the Phish" showcase rebuild: narrative thread (one scene, opened and closed),
+  per-screen visual budget, "find don't read" conversions (simulation/image_compare/timeline),
+  realistic artifact mockup-SVG recipe, stat-card pattern, `search_images` → `add_asset` flow.
+- `SKILL.md` reference list + `pre-flight.md` new item 9c (visual density & narrative checks,
+  aligned with the server's new `text_only_run`/`visual_poverty` lint rules).
+
 ## [1.3.1] — 2026-07-23
 
 `references/anti-slop.md` A1/A2/A3/B3 kurallarının artık scorm-mcp'nin `lint_course`'unda mekanik

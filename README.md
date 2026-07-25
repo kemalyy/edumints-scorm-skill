@@ -27,6 +27,7 @@ authoring-scorm-courses/
 ├── references/
 │   ├── anti-slop.md                 # anti-slop discipline: training read + parametric dials (read FIRST)
 │   ├── pre-flight.md                # MANDATORY pre-build quality-gate matrix
+│   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
 │   ├── course-patterns.md           # proven course structures
