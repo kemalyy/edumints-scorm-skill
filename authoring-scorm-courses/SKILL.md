@@ -15,7 +15,10 @@ on-brand, slide-stage with a player and timed content reveal — not generic "cl
 Tasarıma başlamadan, briefi tek satırlık bir **beyana** indir:
 
 > "Bunu şöyle okuyorum: **\<kitle\>** için **\<hedef davranış\>** kazandıran, **\<ton\>** dilinde,
-> **\<X dk\>** mikroöğrenme; baskın mod **\<keşif | uygulama | değerlendirme\>**."
+> **\<X dk\>** mikroöğrenme; baskın mod **\<keşif | gösterim | uygulama | değerlendirme\>**."
+
+(`gösterim` v2.1'de eklendi: çözümlü örnek / adım-adım gösterme ağırlıklı kurslar artık
+adlandırılabilir — "uygulama"ya sıkıştırılmaz.)
 
 Brief belirsizse **TEK** soru sor (yalnız en kritik eksik), varsayma. Çıkarabiliyorsan sorma — beyan
 et ve devam et. Bu beyan dial'ları (aşağı) ve tüm ekran kararlarını yönlendirir; pre-flight Madde 0
@@ -35,7 +38,9 @@ gitme** (somut yasaklar + ÖNCE/SONRA: `references/anti-slop.md`):
 
 ## DIALS — parametrik ayar (Eğitim Okuması override etmedikçe baseline)
 
-Briefi dört dial'a (1–10) eşle. Bu adlar **sabittir** (cross-reference için):
+Briefi dört **sunum kadranına** (1–10) eşle. Bu adlar **sabittir** (cross-reference için;
+geriye-uyumluluk: v1'deki dört ad ve anlam değişmedi — v2.1 yalnız bunları "sunum kadranı"
+olarak sınıflandırdı, çünkü sunumu modüle ederler, yöntemi SEÇMEZLER):
 
 | Dial | 1 (düşük) | 10 (yüksek) |
 |---|---|---|
@@ -66,11 +71,41 @@ Dial → karar (örnek eşleme):
 Dial'lar anti-slop'u **gevşetmez** — yalnız izin verilen aralık içinde tonu ayarlar. Seçtiğin
 değerleri pre-flight Madde 1'de gerekçele.
 
+### YÖNTEM kadranı: `PRIOR_KNOWLEDGE` (1–10) — sunum kadranı DEĞİL
+
+Bu kadran ayrı düzlemdedir: sunumu değil, **Katman 0 yöntem seçimini** besler
+(`references/core/method-selector.md`). "Ton ayarı" sanma — yanlış PK değeri yanlış YÖNTEM seçer.
+
+| Kadran | 1 (düşük) | 10 (yüksek) |
+|---|---|---|
+| `PRIOR_KNOWLEDGE` | konuyu ilk kez görüyor; tam gösterim + çözümlü örnek olmadan ilerleyemez | alanında akıcı; gösterim fazlası zaman çalar ve öğrenmeyi DÜŞÜRÜR (uzmanlık-tersinme) |
+
+Kadran → seçici etkisi (uzmanlık-tersinme etkisi):
+
+| PK | Seçiciye etkisi |
+|---|---|
+| Düşük (1–3) | Gösterim derinliği ve çözümlü-örnek dozu YÜKSEK; gösterim/kılavuzlu-uygulama paketleri öne; problem-önce paketler aralık dışı kalıp elenir. |
+| Orta (4–6) | Gösterim kısalır: tam çözümlü örnek yerine tamamlama/soluk-örnek; keşif paketleri güvenli hata-maliyetinde seçilebilir olur. |
+| Yüksek (7–10) | Çözümlü örnek dozu DÜŞER, problem-önce yaklaşımlar öne geçer; gereksiz gösterim zarar sayılır (`expertise-adaptive` kaplamasını değerlendir). |
+
+**Çapraz referans — sunum kadranlarıyla çelişki taraması (v2.1):**
+- `INTERACTIVITY` ile çelişmez: o etkileşim SIKLIĞINI ayarlar; PK etkileşimin TÜRÜNÜ
+  (gösterim mi, deneme mi) yöntem seçimi üzerinden belirler.
+- `COGNITIVE_DENSITY` ile çelişmez ama bağlaşıktır: **düşük PK + yüksek DENSITY tehlikeli
+  kombinasyondur** — pre-flight Madde 1'de ayrıca gerekçe ister.
+- `TONE` / `VISUAL_RICHNESS` ile dik eksenler: etkileşim yok.
+- Kitle-baseline preset tablosu PK **içermez** (bilinçli): PK kitleden değil kitle×konudan
+  çıkar — sessizce varsayılamaz; bilinmiyorsa 3 varsay ve beyan et (`method-selector.md`).
+
 ## Workflow
 
 1. **Clarify** (briefly): audience, one measurable learning objective, duration (target microlearning:
    3–8 min), source material, SCORM target (1.2 vs 2004 — use **2004** for branching/variables/games).
-2. **Design the outline** before building. Map objective → chunks → practice → assessment → summary.
+2. **Yöntemi seç (Katman 0), sonra outline'ı tasarla.** Önce seçiciyi çalıştır
+   (`references/core/method-selector.md`): kazanım türü (7 tür) + PRIOR_KNOWLEDGE + hata maliyeti +
+   zaman/platform/bağlam → paket(ler) (`references/pedagogy/`) + kaplama(lar) (`references/overlays/`).
+   Sert kısıt elemesinden geçenler arasından gerekçeyle seç ve **YÖNTEM BEYANI**'nı kaydet
+   (pre-flight Madde 1b). Sonra outline: map objective → chunks → practice → assessment → summary.
    Pick screen types deliberately (see `references/screen-types.md`). Vary them — avoid repetition
    (template fatigue is the #1 learner complaint).
 3. **Theme**: arayüz **konuya göre farklılaşsın** — her kursu aynı varsayılana düşürme. Eğitim Okuması'ndaki
@@ -106,10 +141,13 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 ## Reference files (load as needed)
 - `references/anti-slop.md` — **ÖNCE BUNU OKU.** SCORM slop'unun somut/ikili yasakları + override yolları + ÖNCE/SONRA JSON. Her ekran üretmeden önce buna karşı denetle.
 - `references/pre-flight.md` — teslim öncesi **zorunlu** mekanik denetim matrisi (sayılabilir). Quality gate burada.
+- `references/core/method-selector.md` — **Katman 0 seçici:** kazanım türü + PRIOR_KNOWLEDGE + hata maliyeti → paket(ler) + kaplama(lar); sert-kısıt elemesi + gerekçeli seçim + YÖNTEM BEYANI çıktı biçimi. Outline'dan ÖNCE çalıştır.
 - `references/core/evidence-binding.md` — **Katman 1 çekirdeği (yöntemden bağımsız):** skorlanan her soru kurs-içi kanıt kaynağına bağlanır (K1–K3); denetim sorusu + "bağla ya da at" prosedürü. Skorlanan soru içeren HER kursta oku.
 - `references/core/alignment.md` — **Katman 1:** hedef–ölçme hizası (H1–H3): hedef→soru→kanıt eşleme tablosu + "skorlanan > hedef + 1" uyarı eşiği.
 - `references/core/feedback-anatomy.md` — **Katman 1 tabanı:** gerekçeli geri bildirimin 3 zorunlu öğesi (G1–G3): neden doğru + neden yanlış + kanıta geri işaret.
 - `references/core/scoring-timing.md` — **Katman 1:** formatif/summatif ayrımı (Z1–Z3): "kanıt kaynağı üretilmeden skor yok" + skorsuz erken-deneme istisnası.
+- `references/pedagogy/_SCHEMA.md` — **Katman 3 paket sözleşmesi:** her yöntem paketinin ön-madde şeması (`pack-frontmatter.schema.json`); `evidence_phase(s)` ZORUNLU, kanıt beyanı çoğul olabilir; döngü/koşul ifade edilebilir; doğrulama komutu belgeli.
+- `references/overlays/_FRAMEWORK.md` — **Katman 2 kaplama çerçevesi:** 6 kaplama (cognitive-load, udl, arcs, expertise-adaptive, assessment-alignment, accessibility) + "sıra dayatan = paket, sırasız değiştiren = kaplama" ayracı + paket-bağımsızlık kuralı + çakışma bildirim biçimi.
 - `references/eval/blind-test.md` — **kör test protokolü:** kanıt kaynakları çıkarılınca skorlanan sorular hâlâ cevaplanabiliyor mu? Geçme eşiği ≥ 1/2 + sonuç kayıt şablonu + pilot koşu.
 - `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
