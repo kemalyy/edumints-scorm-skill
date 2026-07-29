@@ -78,10 +78,11 @@ tasarımcının kafasında durur, ekranda değil.
 Mekanik: her anlatımlı ekranda narration ile gövde metnini karşılaştır; cümle örtüşmesi varsa fail.
 → *Override:* yok. Birebirse ya metni ya anlatımı yeniden yaz.
 
-**B3 — Tek-kelime / varsayılan feedback YASAK.** Quiz `feedback` alanı `"Doğru!"` / `"Tekrar
-deneyin."` (şema varsayılanı) ya da salt "Yanlış" OLAMAZ. Her `feedback`: **(a) neden** + **(b)
-doğru modele bağ** + **(c) ilgili İzle/içerik ekranına yönlendirme** içerir. `correct_html` bile en
-az "neden doğru" tek cümlesini taşır.
+**B3 — Tek-kelime / varsayılan feedback YASAK (TABAN kuralı).** Quiz `feedback` alanı `"Doğru!"` /
+`"Tekrar deneyin."` (şema varsayılanı) ya da salt "Yanlış" OLAMAZ. Her `feedback` üç zorunlu öğe
+taşır: **(a) neden doğru** + **(b) neden yanlış (yanılgıyı düzelt)** + **(c) cevabın türetildiği
+kurs-içi kanıt kaynağına geri işaret** (ekran başlığı/id). `correct_html` bile en az "neden doğru"
+tek cümlesini taşır. Tam anatomi: `references/core/feedback-anatomy.md` (G1–G3).
 → *Override:* yok.
 **Artık mekanik denetleniyor:** lint_course → default_feedback WARN (core/antislop.py, W9 P1).
 
@@ -193,6 +194,63 @@ olmalı (sonuç gerçek olsun).
   "body_html":"<p>Üç işaret: uyuşmayan alan adı, aciliyet baskısı, alışılmadık ödeme yolu. Şüphedeysen telefonla doğrula.</p>",
   "show_score": true, "show_completion": true }
 ```
+
+---
+
+## T. Tabanlar — asgari varlık kuralları
+
+Yukarıdaki kurallar çoğunlukla **tavan**dır (kötüyü keser). Tabanlar **iyinin var olmasını** zorunlu
+kılar: "kanıt/mekanizma var mı" diye sorar, hangi sırada geleceğini DAYATMAZ — sıra, seçilen öğretim
+yönteminin işidir.
+
+**T1 — Skorlanan her sorunun kurs-içi kanıt kaynağı VAR.** Cevap, kursun kendisinin ürettiği bir
+kaynaktan (çözümlü örnek, öğrenenin kendi keşfi, simülasyon çıktısı, vaka dosyası/artefakt,
+başarısız deneme + kanonik çözüm, veri görseli…) türetilebilir olmalı. Mekanik: skorlanan ekran
+listesi × kanıt-kaynağı `id` eşlemesi; boş satır = fail. Denetim sorusu + "bağla ya da at"
+prosedürü: `references/core/evidence-binding.md` (K1–K3).
+→ *Override:* yok.
+
+**T2 — Her iddia bir mekanizma taşıyıcısıyla desteklenir.** Sayısal iddia ("ihlallerin %80'i…") ya
+da kavram tanımı tek başına ekran dolduramaz — aynı ekranda ya da bağlı bir ekranda **nasıl/neden**'i
+taşıyan bir öğe VAR olmalı: somut örnek, karşı-örnek, mini-vaka, diyagram, karşılaştırma. İddia+olgu
+kelime bütçesine sığar; mekanizma sığmıyorsa ekran böl, iddiayı silme.
+→ *Override:* yalnız açık başvuru/checklist ekranı (A2 override'ı ile aynı koşul).
+
+**T3 — Yanlış-cevap feedback'i kanıt kaynağına geri işaret eder.** Her `incorrect_html`, cevabın
+türetildiği kurs-içi ekrana (başlık/`id`) yönlendirir — hangi ekrana dönüp neye bakacağını söyler.
+Mekanik: `incorrect_html` içinde kurs-içi ekran referansı ara; yoksa fail. Tam anatomi:
+`references/core/feedback-anatomy.md` (G1.3). Kaynak ekran yoksa önce T1 ihlali çözülür.
+→ *Override:* yok.
+
+---
+
+## Tavan / taban sınıflandırması (17 kural)
+
+**Tavan** = kötüyü yasaklar (üst sınır). **Taban** = iyinin varlığını zorunlu kılar (alt sınır).
+"İkame" = kural biçim-düzeyinde bir "bunun yerine şunu yap" cümlesi taşıyor (taban değil, yönlü tavan).
+
+| Kural | Sınıf | Not |
+|---|---|---|
+| A1 ardışık `content_slide` ≤ 2 | tavan | mekanik lint'li |
+| A2 ekran başına ≤ 4 madde | tavan | mekanik lint'li |
+| A3 jenerik başlık yasak | tavan + ikame | "tek çıkarım taşıyan başlık yaz" |
+| A4 dolgu kapanış yasak | tavan | — |
+| B1 müfredat açılışı yasak | tavan + ikame | "relevansla aç" |
+| B2 narration kopyası yasak | tavan + ikame | "genişlet/örnekle/bağla" |
+| B3 varsayılan feedback yasak | **TABAN** | 3 zorunlu öğe → `core/feedback-anatomy.md` |
+| B4 filler dil yasak | tavan + ikame | "somut fiil + somut nesne" |
+| B5 jenerik senaryo yasak | tavan + ikame | "rol + bağlam + çatışma" |
+| C1 klişe stok görsel yasak | tavan + ikame | 4 maddelik "bunun yerine" listesi |
+| C2 animasyon tekrarı ≤ 2 | tavan | — |
+| C3 keyfi koyu tema yasak | tavan | hard ban |
+| C4 öğretmeyen ağır medya yasak | tavan | — |
+| C5 ham svg/canvas/script yasak | tavan | teknik hard ban |
+| D1 patronlaştırıcı oyunlaştırma yasak | tavan + ikame | "içsel ustalaşma mekaniği" |
+| D2 anlamsız puan yasak | tavan | zamanlama tabanı → `core/scoring-timing.md` |
+| D3 sahte karar senaryosu yasak | tavan (kısmi taban) | "≥2 düğüm + gerçek dallanma" varlık şartı |
+
+Tabanların tam seti: yukarıdaki **T1–T3** + `core/` Katman-1 kuralları (kanıt bağlama, hiza,
+feedback anatomisi, skorlama zamanlaması).
 
 ---
 
