@@ -17,6 +17,11 @@ F1/F2) **kapısıdır**: kör test geçilmeden başlamazlar.
    kurs içeriği verilmemiş temiz-bağlam bir LLM oturumu.
 4. **Cevaplat:** okuyucu skorlanan soruları KAYNAKLAR OLMADAN cevaplamayı dener. Soru başına kayıt:
    kaynaksız cevaplanabildi mi (E/H) + tek cümle dayanak.
+   *Sınıflama notu:* okuyucu cevabı **sorunun kendi gövdesinde verili olgudan** (+ alan bilgisi)
+   türetiyorsa bu, kanıttan kopya değildir — dayanağa **[GÖVDE]** yazılır ve soru **E sayılır**
+   (kaynak gerekmedi; `references/core/evidence-binding.md` K4 ihlali). Cevap sökülmeden kalan
+   bir kanıt-dışı ekrandan okunuyorsa dayanağa **[KOPYA]** yazılır ve o da **E sayılır**
+   (ikinci cevap kanalı; K5 ihlali).
 5. **Oranı hesapla:** `kaynak gerektiren soru sayısı / toplam skorlanan soru sayısı`.
 
 ## Geçme eşiği (sayısal)
