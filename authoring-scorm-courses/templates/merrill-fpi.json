@@ -1,0 +1,107 @@
+{
+  "_pack": "merrill-fpi",
+  "_template_version": 1,
+  "_note": "C2 Merrill İlk İlkeler (görev-merkezli) şablonu (references/pedagogy/merrill-fpi.md). Kopyala-uyarla: görevi, vaka varlıklarını ve soru içeriğini değiştir; faz SIRASINI ve skor/kanıt sözleşmesini KORU (skor yalnız uygulama_bagimsiz fazında; skorlu her soru evidence_screen_ids ile gosterim ekranlarına bağlı; etkinlestirme kanıt fazı DEĞİLDİR). assets[] içindeki PLACEHOLDER veri-URI'leri şablonun build_from_spec'ten aynen geçebilmesi içindir — gerçek kursta bunları GERÇEK vaka görselleriyle değiştir (mockup SVG reçetesi: references/visual-storytelling.md) ve alt metinlerini güncelle. Ekranlardaki _phase alanları belgeleme içindir (sunucu yok sayar). Gerçek üretimde her ekrana narration_asset_id ekle.",
+  "_pattern_b_eslemesi": {
+    "_aciklama": "concept-lesson.json (Pattern B: kavram/teori dersi) bu şablona TAŞINDI (issue #20). Denetim bulgusu: eski zincir (intro→definition→tabs→flashcards→fill_blank→summary) hiçbir kanıt üretmeyen iddia+pasif-tur akışıydı. Neden merrill-fpi (5e-inquiry değil): kavram dersi için keşif-önce 5e de doğal adaydır ama requires_platform: [exploration] (F2) henüz platformda yok — seçici paketi eler; merrill-fpi bugün İNŞA EDİLEBİLİR dürüst seçimdir. Eski ekran → paket fazı tablosu:",
+    "intro (title_slide)": "başlık ekranı — korundu",
+    "what (content_slide, tanım iddiası)": "gorev_tanitimi — soyut 'Nedir?' tanımı yerine kavramın sahada patladığı GERÇEK görev/vaka gösterilir",
+    "facets (tabs, boyut anlatımı)": "gosterim — sekmeler artık karşılaştırmalı çözümlü örnek (kötü örnek + neden / iyi örnek + neden): kursun kanıt kaynağı burada üretilir",
+    "terms (flashcards, terim ezberi)": "etkinlestirme — terim listesi yerine ön-bilgiyi yüzeye çıkaran skorsuz yoklama (poll); terim ezberi gerekiyorsa retrieval-spaced paketine bak",
+    "reflect (fill_blank, accepted:['*'])": "butunlestirme — yansıtma poll olarak kaldı (skorsuz); 'her cevabı kabul eden fill_blank' hilesi bırakıldı",
+    "(karşılığı yoktu)": "uygulama_destekli + uygulama_bagimsiz eklendi — eski zincirde öğrenen kavramı hiç UYGULAMIYORDU; skorlu ölçüm artık kanıta bağlı (E1)"
+  },
+  "_yontem_beyani": [
+    "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
+    "- kazanım: O1 (tür: kavram · PK: 4 · hata maliyeti: orta · bütçe: 7 dk)",
+    "  paket: merrill-fpi",
+    "  kaplamalar: []",
+    "  elenenler: [5e-inquiry (requires_platform: exploration karşılanmıyor — F2 henüz yok), rosenshine-di (uygun aday; kazanım gerçek bir değerlendirme GÖREVİNE bağlanabildiği için görev-merkezli döngü tercih edildi), 4cid (requires_platform: worked_example karşılanmıyor; tek kısa görev — görev-sınıfı dizisi gereksiz)]",
+    "  gerekçe: \"Kazanım gerçek, teslim edilebilir bir göreve bağlanıyor ('formun rıza metnini değerlendir'); görev tanıtımı 'neden umursayayım'ı vakayla cevaplar, gösterim ilkesi kanıt üretimini yapısal olarak garanti eder.\""
+  ],
+  "title": "Açık Rıza: Geçerli mi, Değil mi?",
+  "description": "Görev-merkezli kavram mikrokursu — merrill-fpi şablonu (Pattern B halefi)",
+  "scorm_version": "2004",
+  "language": "tr",
+  "theme": "academic",
+  "tracking": { "completion_rule": "viewed_all_and_passed", "passing_score": 70 },
+  "objectives": [
+    { "id": "O1",
+      "description": "Bir formdaki rıza metninin KVKK anlamında 'açık rıza' sayılıp sayılmadığını üç ölçütle (belirli konu, bilgilendirme, özgür irade) değerlendirir.",
+      "success_criteria": "Yeni bir form örneğinde hangi ölçütün aksadığını gerekçesiyle doğru seçer." } ],
+  "assets": [
+    { "id": "form_vaka", "filename": "PLACEHOLDER_form_vaka_DEGISTIR.png",
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" },
+    { "id": "form_vaka_buyuk", "filename": "PLACEHOLDER_form_vaka_buyuk_DEGISTIR.png",
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" } ],
+  "screens": [
+    { "id": "giris", "type": "title_slide",
+      "title": "Açık Rıza: Geçerli mi, Değil mi?",
+      "subtitle": "~7 dk · gerçek görev: bir kayıt formunun rıza metnini değerlendireceksin" },
+
+    { "id": "gorev", "type": "content_slide", "_phase": "gorev_tanitimi",
+      "title": "Görevin bu: bu kutucuk şirkete idari para cezası getirdi",
+      "media_asset_id": "form_vaka",
+      "media_alt": "Üyelik formu ekran görüntüsü: önceden işaretlenmiş 'kişisel verilerimin her türlü işlenmesine izin veriyorum' kutucuğu",
+      "layout": "text_media",
+      "body_html": "<p>Gerçek bir denetim vakası: üyelik formundaki rıza kutucuğu <b>önceden işaretli</b> geldi ve üyelik, rıza verilmeden tamamlanamıyordu. Kurul rızayı geçersiz saydı. Kurs sonunda AYNI formu üç ölçütle değerlendirip neyin aksadığını gösterebileceksin.</p>" },
+
+    { "id": "aktive", "type": "poll", "_phase": "etkinlestirme",
+      "title": "Sen en son ne zaman okumadan 'kabul' dedin?",
+      "prompt_html": "<p>Skorsuz yoklama — kendi deneyimini çağır: bir formda 'kabul ediyorum' kutusunu en çok hangi durumda okumadan işaretliyorsun?</p>",
+      "multi": false,
+      "options": [
+        { "id": "a", "text_html": "Kutu zaten işaretli geldiğinde" },
+        { "id": "b", "text_html": "İşaretlemeden devam edilemediğinde" },
+        { "id": "c", "text_html": "Metin çok uzun ve teknik olduğunda" } ],
+      "reflection_html": "<p>Üç durum da birazdan göreceğin üç ölçütten birine dokunuyor — hangisinin hangisi olduğunu gösterimde eşleyeceksin.</p>" },
+
+    { "id": "gosterim_riza", "type": "tabs", "_phase": "gosterim",
+      "title": "Aynı form, iki rıza metni: neden biri geçersiz?",
+      "prompt_html": "<p>İki sekmeyi karşılaştır — her ölçütün nerede kırıldığına bak.</p>",
+      "tabs": [
+        { "label": "Geçersiz rıza",
+          "body_html": "<p><i>\"Kişisel verilerimin her türlü işlenmesine izin veriyorum\"</i> — kutu önceden işaretli, üyelik işaretsiz tamamlanamıyor. Neden geçersiz: <b>belirli konu yok</b> ('her türlü işleme' battaniye ifadedir), <b>bilgilendirme yok</b> (hangi veri, hangi amaç, kime aktarım — söylenmiyor), <b>özgür irade yok</b> (önceden işaretli kutu + hizmeti rızaya şart koşmak iradeyi ortadan kaldırır).</p>" },
+        { "label": "Geçerli rıza — 3 ölçüt",
+          "body_html": "<p><i>\"Tanıtım e-postası almak için e-posta adresimin pazarlama amacıyla işlenmesine izin veriyorum\"</i> — kutu BOŞ gelir, üyelik işaretsiz de tamamlanır. Ölçüt ölçüt: <b>belirli konu</b> (yalnız e-posta adresi, yalnız pazarlama), <b>bilgilendirme</b> (hangi veri + hangi amaç metnin içinde), <b>özgür irade</b> (boş kutu + hizmete şart koşulmamış — hayır demek mümkün ve maliyetsiz).</p>" } ] },
+
+    { "id": "destekli_riza", "type": "hotspot", "_phase": "uygulama_destekli", "points": 0,
+      "title": "Destekli deneme: özgür iradeyi bozan öge hangisi?",
+      "prompt_html": "<p>Puan yok. İpucu: 'Gösterim' sekmelerindeki üçüncü ölçüte bak — vaka formunda özgür iradeyi ortadan kaldıran ögeyi işaretle.</p>",
+      "image_asset_id": "form_vaka_buyuk",
+      "image_alt": "Vaka formunun büyütülmüş görüntüsü: önceden işaretli rıza kutucuğu ve zorunlu alan yıldızı görünür",
+      "regions": [
+        { "id": "r1", "shape": "rect", "coords": [80, 420, 520, 60], "correct": true,
+          "label_html": "Önceden işaretli rıza kutucuğu (zorunlu alan)" } ],
+      "feedback": {
+        "correct_html": "<p>Evet — önceden işaretli kutu, 'sessiz kalan razı sayılır' demektir; irade beyanı öğrenenden değil formdan gelmiştir. Gösterimdeki geçerli örnekte kutunun BOŞ gelmesi tam bu yüzden.</p>",
+        "incorrect_html": "<p>Metnin uzunluğu bilgilendirme ölçütüne dokunur, iradeye değil — iradeyi bozan, seçimi senin yerine yapan ögedir. 'Aynı form, iki rıza metni' ekranındaki 'özgür irade' karşılaştırmasına geri dön.</p>" } },
+
+    { "id": "q_riza", "type": "mcq", "_phase": "uygulama_bagimsiz", "points": 50,
+      "objective_ids": ["O1"],
+      "evidence_screen_ids": ["gosterim_riza"],
+      "title": "Skorlu: yeni form, değerlendirmeyi sen yap",
+      "prompt_html": "<p>Yeni bir e-ticaret formu: kutu boş geliyor, işaretlemeden alışveriş tamamlanabiliyor; metin şöyle: <i>\"Verilerimin işlenmesini kabul ediyorum.\"</i> Üç ölçütten hangisi aksıyor?</p>",
+      "options": [
+        { "id": "a", "text_html": "Belirli konu + bilgilendirme — hangi verinin hangi amaçla işleneceği söylenmiyor", "correct": true },
+        { "id": "b", "text_html": "Özgür irade — kutu boş gelse de rıza istemek başlı başına baskıdır" },
+        { "id": "c", "text_html": "Hiçbiri — kutu boş geldiğine göre rıza geçerlidir" } ],
+      "feedback": {
+        "correct_html": "<p>Doğru — boş kutu yalnız iradeyi kurtarır; 'verilerim' ve 'işlenme' belirsiz kaldığı sürece belirli-konu ve bilgilendirme ölçütleri açıkta. Gösterimdeki geçersiz örneğin 'her türlü işleme' kalıbının kibar hali bu.</p>",
+        "incorrect_html": "<p>Ölçütleri ayrı ayrı uygula: boş kutu + şart koşulmama iradeyi karşılar; ama metin hangi veriyi, hangi amaçla söylemiyor. 'Aynı form, iki rıza metni' ekranındaki ölçüt-ölçüt karşılaştırmaya geri dön.</p>" } },
+
+    { "id": "entegre", "type": "poll", "_phase": "butunlestirme",
+      "title": "Kendi formlarına taşı",
+      "prompt_html": "<p>Skorsuz yansıtma: bu hafta gözden geçireceğin ilk formda üç ölçütten hangisini denetleyerek başlarsın — sizin formlarda en çok hangisi aksıyor?</p>",
+      "multi": false,
+      "options": [
+        { "id": "a", "text_html": "Belirli konu (battaniye ifadeler)" },
+        { "id": "b", "text_html": "Bilgilendirme (veri + amaç + aktarım)" },
+        { "id": "c", "text_html": "Özgür irade (ön-işaretli / şart koşulmuş kutular)" } ],
+      "reflection_html": "<p>Seçtiğin ölçütü ilk denetimde kontrol listesinin en üstüne yaz — görev tamamlandığında bu kursun çıktısı o listedir.</p>" },
+
+    { "id": "ozet", "type": "summary", "title": "Özet: üç ölçüt, tek görev",
+      "body_html": "<p>Belirli konu + bilgilendirme + özgür irade — üçü birden yoksa rıza yok. Değerlendirme görevini artık kendi formlarında koşabilirsin.</p>",
+      "show_score": true, "show_completion": true }
+  ]
+}

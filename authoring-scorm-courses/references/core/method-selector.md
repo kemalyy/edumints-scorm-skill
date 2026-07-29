@@ -78,7 +78,7 @@ olarak bu adımın yokluğuydu.
 
 - **Kazanım başına seçim yapılır.** Bir kurs birden çok kazanım taşıyorsa kazanımlar farklı
   paketlere düşebilir (örn. O1 prosedür → `rosenshine-di`, O2 tutum → `kolb-experiential`).
-  Paketlerin `conflicts_with` beyanları çakışıyorsa aynı kursta birleştirilemez — kursu böl
+  Paketlerin `conflicts_with (kapsamı HEDEFTİR — aynı hedefte yasak, farklı hedeflerde serbest; bkz. pedagogy/_SCHEMA.md)` beyanları çakışıyorsa aynı kursta birleştirilemez — kursu böl
   ya da tek pakete karar ver (gerekçeyle).
 - **Hiçbir paket kanonik/varsayılan-dayatmalı değildir.** Seçici önerir; "her kurs X paketi"
   kuralı yoktur.

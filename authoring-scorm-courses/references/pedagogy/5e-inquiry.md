@@ -11,7 +11,7 @@ version: 1
 outcome_types: [kavram, ilke]
 prior_knowledge: [3, 7]
 error_cost: [düşük, orta]
-requires_platform: [exploration]
+requires_platform: []
 phases:
   - id: merak
     amac: "Engage — çelişik/şaşırtıcı bir durumla merak tetiklenir ve ön-kavramlar yüzeye çıkarılır; öğretim YAPILMAZ."
@@ -51,25 +51,28 @@ maliyeti (yanılmak güvenli ve ucuz). Derin işleme ve kalıcılık hedefiyle s
 akrabası: deneme + kanonik çözüm karşılaştırması). Skorlu sorular `evidence_screen_ids`
 (ÇOĞUL — scorm-mcp CONTRACTS §1.3 E1) ile her iki fazın ekranlarına birden bağlanabilir.
 
-**Platform şartı (`requires_platform: [exploration]`):** denetim bulgusu — mevcut 28 çekirdek
-ekran tipi öğrenen girdisini SAKLAYIP sonraki ekranda geri oynatamıyor; oysa Explain'in gücü
-"senin az önceki tahminin şuydu, gözlemin bunu gösterdi" atfındadır. `exploration` ekran tipi
-(kemalyy/edumints-scorm-mcp F2 konusu) bu yeteneği sağlar. Yetenek platformda yoksa Katman 0
-seçici bu paketi ELER (varsayılan platform varsayımı altında paket seçilemez — bilinçli beyan;
-kâğıt-üstü 5E üretmek yerine paket kendini eletmeyi seçer).
+**Platform şartı: YOK (`requires_platform: []`, 2026-07-29 doğrulaması).** Keşif fazının
+taahhüt→kayıt→açığa-çıkarma mekaniği bugünkü çekirdek tiplerle karşılanır: **puan-0 formatif
+quiz** (mcq/true_false, `points: 0`) tahmin taahhüdünü alır ve feedback'i açığa-çıkarma işlevini
+görür (Z3 gereği skorsuz; E1 kanıt-taşıyabilir setinde), yanına deney/gözlem verisi taşıyan
+`data_chart`/`simulation`/`image_compare`. Gerçek doğrulama: bu desenle kurulmuş 5E kursu
+`lint_course`'tan 0 hata / 0 uyarı / `evidence_binding_coverage = 1.0` ile geçti.
+`exploration` (F2) artık ön koşul değil **iyileştirmedir**: öğrenen girdisinin sonraki ekranda
+birebir geri gösterimi ("senin tahminin şuydu") F2 ile gelir; F2'siz atıf, feedback + kanıt
+bağı üzerinden yapılır.
 
 ## Faz rehberi
 
 | Faz | Amaç | İzinli ekran tipleri | Skor? |
 |---|---|---|---|
 | `merak` | Engage: çelişik durum + ön-kavramları yüzeye çıkarma | content_slide, video, image_compare, data_chart, poll, lottie | ✗ |
-| `kesfet` | Explore: skorsuz kurcalama; öğrenen çıktısı saklanır — **kanıt 1** | exploration*, simulation, image_compare, data_chart | ✗ |
+| `kesfet` | Explore: tahmin taahhüdü + skorsuz kurcalama — **kanıt 1** | mcq/true_false (points 0 — taahhüt), simulation, image_compare, data_chart, exploration* | ✗ |
 | `acikla` | Explain: kanonik açıklama, keşif çıktısına atıfla — **kanıt 2** | content_slide, accordion, tabs, timeline, video, data_chart | ✗ |
 | `derinlestir` | Elaborate: yeni bağlama skorsuz transfer | mcq, drag_drop, matching, sorting, simulation, decision_scenario, branching | ✗ |
 | `degerlendir` | Evaluate: skorlu ölçüm | hepsi | ✓ |
 
-\* `exploration` = `requires_platform` beyanındaki F2 tipi (çekirdek 28'in dışında; paket ancak
-bu yetenek varken seçilebilir olduğundan listede yer alır). Diğer adlar çekirdek 28'dendir.
+\* `exploration` = F2 iyileştirme tipi (çekirdek 28'in dışında; VARSA taahhüt mekaniğinin yerine
+geçer ve öğrenen girdisinin geri oynatımını ekler — ön koşul değildir). Diğer adlar çekirdek 28'dendir.
 
 Faz notları:
 

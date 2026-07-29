@@ -1,0 +1,98 @@
+{
+  "_pack": "rosenshine-di",
+  "_template_version": 1,
+  "_note": "C1 Doğrudan Öğretim şablonu (references/pedagogy/rosenshine-di.md). Kopyala-uyarla: konuyu, video/ekran görüntüsü varlıklarını ve soru içeriğini değiştir; faz SIRASINI ve skor/kanıt sözleşmesini KORU (skor yalnız bagimsiz_pratik fazında; skorlu her soru evidence_screen_ids ile sunum_model ekranlarına bağlı). assets[] içindeki PLACEHOLDER veri-URI'leri şablonun build_from_spec'ten aynen geçebilmesi içindir — gerçek kursta bunları GERÇEK video/ekran görüntüleriyle değiştir (data URI ya da https kaynağı; caption/alt metinlerini içeriğe göre güncelle). Ekranlardaki _phase alanları belgeleme içindir (sunucu yok sayar). Gerçek üretimde her ekrana narration_asset_id ekle.",
+  "_pattern_a_eslemesi": {
+    "_aciklama": "tool-training.json (Pattern A: İzle→Uygula→Sıra Sende) bu şablona EŞLENDİ, atılmadı (issue #20). Eski adım → paket fazı tablosu:",
+    "izle1 (video, boş dış-varlık slotu)": "sunum_model — İzle adımı kanıt kaynağına dönüştü: caption artık cevabı spec'ten doğrulanabilir biçimde taşıyor (K1 dış-medya şartı); yanına çözümlü-örnek slaytı (model_suzgec) eklendi",
+    "uygula1 (simulation, 20 puan)": "rehberli_pratik — skor KALDIRILDI (points: 0, Z3: rehberli pratik deneme-güvenlidir); salt-onay + salt-ret geri bildirim çifti G1 ihlaliydi (bkz. references/core/feedback-anatomy.md ÖNCE örneği), mekanizma + yanılgı + kanıta-işaret üçlüsüyle değiştirildi",
+    "ss1 (mcq, on_correct ile +20)": "bagimsiz_pratik — skorlu ölçüm buraya taşındı; evidence_screen_ids (ÇOĞUL) ile sunum_model kanıt ekranlarına bağlandı (E1); 'Doğru!' feedback'i gerekçeli feedback'le değiştirildi",
+    "(karşılığı yoktu)": "gunluk_tekrar — İlke 1 gereği eklendi; serinin İLK modülünde atlanabilir (paket faz notu)"
+  },
+  "_yontem_beyani": [
+    "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
+    "- kazanım: O1 (tür: prosedür · PK: 2 · hata maliyeti: orta · bütçe: 6 dk)",
+    "  paket: rosenshine-di",
+    "  kaplamalar: []",
+    "  elenenler: [5e-inquiry (outcome_types kavram/ilke — prosedür kapsam dışı; ayrıca requires_platform: exploration karşılanmıyor), 4cid (requires_platform: worked_example karşılanmıyor; tek-yollu kısa prosedürde görev-sınıfı dizisi gereksiz), sim-drill (requires_platform karşılanmıyor)]",
+    "  gerekçe: \"Kitle aracı ilk kez görüyor (PK 2) ve akış tek-yollu, iyi yapılandırılmış bir prosedür; model-önce gösterim + skorsuz rehberli pratik + iskelesiz skorlu ölçüm en kısa güvenli yol. merrill-fpi de sağ-kalandı; görev tek ve kısa olduğundan görev-döngüsü iskeleti yerine doğrudan öğretim tercih edildi.\""
+  ],
+  "title": "E-Tabloda Süzgeçle Rapor Süzmek",
+  "description": "Doğrudan öğretim mikrokursu — rosenshine-di şablonu (Pattern A halefi)",
+  "scorm_version": "2004",
+  "language": "tr",
+  "theme": "modern-light",
+  "tracking": { "completion_rule": "viewed_all_and_passed", "passing_score": 70 },
+  "variables": [ { "name": "name", "type": "text", "default": "Öğrenci" } ],
+  "objectives": [
+    { "id": "O1",
+      "description": "Bir veri tablosuna süzgeç (filtre) uygulayarak istenen alt kümeyi çıkarır ve görünür kayıt sayısını doğru raporlar.",
+      "success_criteria": "Yeni bir süzgeç senaryosunda raporlanacak sayıyı durum çubuğu okumasından doğru seçer." } ],
+  "assets": [
+    { "id": "demo_suzgec", "filename": "PLACEHOLDER_demo_suzgec_DEGISTIR.mp4",
+      "source": "data:video/mp4;base64,AAAAGGZ0eXBtcDQyAAAAAG1wNDJpc29t" },
+    { "id": "shot_veri_sekmesi", "filename": "PLACEHOLDER_shot_veri_sekmesi_DEGISTIR.png",
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" },
+    { "id": "shot_baslik_oku", "filename": "PLACEHOLDER_shot_baslik_oku_DEGISTIR.png",
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" } ],
+  "screens": [
+    { "id": "intro", "type": "title_slide",
+      "title": "Merhaba {{name}} — süzülen veri, sayılan rapor",
+      "subtitle": "~6 dk · süzgeç uygula → görünür kayıt sayısını raporla" },
+
+    { "id": "tekrar_alan", "type": "flashcards", "_phase": "gunluk_tekrar",
+      "title": "Isınma: geçen modülün iki kavramı",
+      "prompt_html": "<p>Skorsuz geri-getirme — kartları çevirip kendi cevabınla karşılaştır. (Seri İLK modülse bu ekranı sil: geri getirilecek önceki öğrenme yok.)</p>",
+      "cards": [
+        { "front_html": "<b>Sütun başlığı ne işe yarar?</b>",
+          "back_html": "<p>O sütundaki verinin adını taşır — süzgeç ölçütleri sütun başlığındaki ok kutusundan açılır.</p>" },
+        { "front_html": "<b>Durum çubuğu nerede, ne gösterir?</b>",
+          "back_html": "<p>Pencerenin en altında; seçili/görünen kayıt sayısı gibi anlık bilgiyi gösterir.</p>" } ] },
+
+    { "id": "izle_suzgec", "type": "video", "_phase": "sunum_model",
+      "title": "İzle: 214 satırlık tablo 37 satıra nasıl iner?",
+      "video_asset_id": "demo_suzgec",
+      "caption": "Adım adım gösterim: (1) Veri sekmesi → Süzgeç — başlık satırına ok kutuları gelir; ok yoksa ölçüt seçilemez. (2) 'Şehir' başlığındaki oka tıkla, yalnız 'İzmir'i işaretle — tablo 214 satırdan 37 görünür satıra süzülür. (3) Raporlanacak sayıyı durum çubuğundaki 'Kayıt: 37/214' değerinin İLK sayısından oku. Neden iki sayı var: süzgeç veriyi SİLMEZ, yalnız gizler — 214 payda olarak yerinde durur." },
+
+    { "id": "model_suzgec", "type": "content_slide", "_phase": "sunum_model",
+      "title": "Çözümlü örnek: 214 satırdan 37'ye, üç adımda",
+      "blocks": [
+        { "html": "<p><b>Adım 1 — süzgeci aç:</b> Veri sekmesi → Süzgeç. Başlıklara ok kutuları gelir. Neden önce bu: ok kutusu yokken hiçbir sütundan ölçüt seçilemez — sıranın ilk adımı budur.</p>" },
+        { "html": "<p><b>Adım 2 — ölçütü seç:</b> 'Şehir' okuna tıkla, yalnız 'İzmir' işaretli kalsın. Tablo 37 görünür satıra iner. Neden 'yalnız': birden çok değer işaretli kalırsa alt küme değil karışım süzersin.</p>" },
+        { "html": "<p><b>Adım 3 — sayıyı oku:</b> durum çubuğu 'Kayıt: 37/214' der. Rapora İLK sayı (37) yazılır: süzgeçten geçen görünür kayıt. 214 silinmedi, gizlendi — payda olarak durur; birim kontrolün budur.</p>" } ] },
+
+    { "id": "uygula_suzgec", "type": "simulation", "_phase": "rehberli_pratik", "points": 0,
+      "title": "Uygula: aynı üç adımı sen yap",
+      "prompt_html": "<p>Puan yok — dene, yanıl, gör. Takılırsan ipucu, sonra 'Çözümlü örnek' ekranına dön.</p>",
+      "steps": [
+        { "image_asset_id": "shot_veri_sekmesi",
+          "image_alt": "E-tablo şeridi: Veri sekmesi açık, Süzgeç düğmesi görünür",
+          "instruction_html": "<p><b>1.</b> Süzgeci aç: doğru düğmeye tıkla.</p>",
+          "hint_html": "<p>İpucu: Veri sekmesindesin — başlıklara ok kutusu getiren düğme hangisi?</p>",
+          "regions": [ { "id": "r1", "shape": "rect", "coords": [440, 300, 400, 150], "correct": true } ] },
+        { "image_asset_id": "shot_baslik_oku",
+          "image_alt": "Tablo başlık satırı: Şehir sütununda süzgeç ok kutusu açık, değer listesi görünür",
+          "instruction_html": "<p><b>2.</b> 'Şehir' ölçütünü kur: rapora girecek TEK değeri yaz.</p>",
+          "input_accepted": ["İzmir", "izmir"], "input_label": "Ölçüt değeri" } ],
+      "feedback": {
+        "correct_html": "<p>Sıra doğru kuruldu — süzgeç açılmadan başlık oku belirmez, ok olmadan ölçüt seçilemez; adımların sırası bu yüzden değişmez.</p>",
+        "incorrect_html": "<p>Süzgeci açmadan başlığa uzanıyorsun ya da ölçütü tek değere indirmiyorsun — ölçüt tekleşmeden alt küme süzülmez. 'Çözümlü örnek: 214 satırdan 37'ye' ekranındaki Adım 1 ve 2'ye geri dön.</p>" } },
+
+    { "id": "q_suzgec", "type": "mcq", "_phase": "bagimsiz_pratik", "points": 50,
+      "objective_ids": ["O1"],
+      "evidence_screen_ids": ["izle_suzgec", "model_suzgec"],
+      "title": "Skorlu: yeni süzgeç, raporu sen kur",
+      "prompt_html": "<p>Aynı tabloda bu kez 'Durum' sütununu 'Açık' olarak süzdün; durum çubuğu <b>'Kayıt: 58/214'</b> gösteriyor. Rapora hangi sayıyı yazarsın?</p>",
+      "options": [
+        { "id": "a", "text_html": "58 — süzgeçten geçen görünür kayıt; 214 silinmemiş toplamın kendisi", "correct": true },
+        { "id": "b", "text_html": "214 — tablodaki tüm satırlar raporun kapsamıdır" },
+        { "id": "c", "text_html": "156 — süzgecin gizlediği satır sayısı raporlanır" } ],
+      "feedback": {
+        "correct_html": "<p>Doğru — durum çubuğunun ilk sayısı ölçütü karşılayan görünür kayıtları sayar; süzgeç veriyi silmediği için 214 payda olarak kalır. Üç adımı çözümlü örnekteki sırayla uyguladın.</p>",
+        "incorrect_html": "<p>İki sayının rolünü karıştırdın: süzgeç gizler, silmez — rapora giren, ölçütü karşılayan GÖRÜNÜR kayıt sayısıdır. 'Çözümlü örnek' ekranındaki Adım 3'e ve videodaki durum-çubuğu okumasına geri dön.</p>" } },
+
+    { "id": "ozet", "type": "summary", "title": "Özet: süz → tek ölçüt → ilk sayıyı raporla",
+      "body_html": "<p>Süzgeç aç → ölçütü tek değere indir → durum çubuğunun ilk sayısını raporla. Süzgeç siler değil gizler; payda hep yerinde.</p>",
+      "show_score": true, "show_completion": true }
+  ]
+}
