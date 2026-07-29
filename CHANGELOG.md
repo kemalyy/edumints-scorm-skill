@@ -4,6 +4,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed — v2.0 E4 kural revizyonu (kanıt bağlama tabanı)
+- **`references/core/evidence-binding.md` — K4: gövde kendine-yeterliliği yasağı (E4-R1, #52).**
+  Skorlu sorunun gövdesi, cevabın türetilmesi için gereken kursa-özgü kritik olguyu İÇEREMEZ;
+  olgu yalnız `evidence_screen_ids` ekranlarında yaşar, gövde ona atıf yapar ama değerini
+  kopyalamaz. İkili denetim (soru başına 3 adım; transfer gövdeleri dahil) + ÖNCE/SONRA çifti
+  ilk gerçek E4 koşusunun `q_sinir` sorusundan ("salı 16:40" gövdede → damga yalnız çizelgede).
+  Mekanik sayılabilirlik notu: kemalyy/edumints-scorm-mcp E1 lint'ine aday genişletme.
+- **`references/eval/blind-test.md` adım 4 — [GÖVDE] sınıflaması.** Gövdesindeki verili olguyla
+  çözülen soru kanıttan kopya sayılmaz: dayanağa [GÖVDE] yazılır ve E sayılır (K4 ihlali).
+
 ### Added — v2.1 Değerlendirme seti (Wave 4b: E3, #21)
 - **`eval/` (depo kökü)** — belge + fikstür seti (otomasyon değil): 10 test istemi
   (`eval/prompts/`, kazanım türleri × önbilgi düzeyleri matrisi; 3'ü `sıkıştırılmış-referans`
