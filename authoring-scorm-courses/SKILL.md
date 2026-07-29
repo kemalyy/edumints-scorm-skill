@@ -178,10 +178,10 @@ lint clean (0 errors, 0 warns, `evidence_binding_coverage` 1.0) — keep that in
   file's `_pattern_a_eslemesi` table; guided practice is now unscored, scored questions carry
   `evidence_screen_ids`).
 - `templates/merrill-fpi.json` — C2 task-centered micro-course (successor of the old
-  `concept-lesson.json` Pattern B — see `_pattern_b_eslemesi`; chosen over 5E because 5E's
-  `exploration` platform requirement isn't shipped yet).
-- `templates/5e-inquiry.json` — C3 5E inquiry cycle, **`_draft: true`**: uses the `exploration`
-  screen type (F2) which the server doesn't ship yet; build_from_spec rejects it until then.
+  `concept-lesson.json` Pattern B — see `_pattern_b_eslemesi`).
+- `templates/5e-inquiry.json` — C3 5E inquiry cycle using the commit-your-prediction mechanic:
+  explore = unscored MCQ (feedback reveals only the experiment result, no lecturing) + `data_chart`
+  experiment data; the scored question binds to both explore screens and the explain slide.
 - `templates/4cid.json` — C4 4C/ID complex-skill training, **`_draft: true`**: uses the
   `worked_example` screen type (F1); same gate.
 - `examples/example-cybersecurity-course.json` — a complete, high-quality build_from_spec to study and adapt.

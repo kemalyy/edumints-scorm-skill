@@ -14,7 +14,7 @@
     "- kazanım: O1 (tür: prosedür · PK: 2 · hata maliyeti: orta · bütçe: 6 dk)",
     "  paket: rosenshine-di",
     "  kaplamalar: []",
-    "  elenenler: [5e-inquiry (outcome_types kavram/ilke — prosedür kapsam dışı; ayrıca requires_platform: exploration karşılanmıyor), 4cid (requires_platform: worked_example karşılanmıyor; tek-yollu kısa prosedürde görev-sınıfı dizisi gereksiz), sim-drill (requires_platform karşılanmıyor)]",
+    "  elenenler: [5e-inquiry (outcome_types kavram/ilke — prosedür kapsam dışı), 4cid (requires_platform: worked_example karşılanmıyor; tek-yollu kısa prosedürde görev-sınıfı dizisi gereksiz), sim-drill (requires_platform karşılanmıyor)]",
     "  gerekçe: \"Kitle aracı ilk kez görüyor (PK 2) ve akış tek-yollu, iyi yapılandırılmış bir prosedür; model-önce gösterim + skorsuz rehberli pratik + iskelesiz skorlu ölçüm en kısa güvenli yol. merrill-fpi de sağ-kalandı; görev tek ve kısa olduğundan görev-döngüsü iskeleti yerine doğrudan öğretim tercih edildi.\""
   ],
   "title": "E-Tabloda Süzgeçle Rapor Süzmek",

@@ -3,7 +3,7 @@
   "_template_version": 1,
   "_note": "C2 Merrill İlk İlkeler (görev-merkezli) şablonu (references/pedagogy/merrill-fpi.md). Kopyala-uyarla: görevi, vaka varlıklarını ve soru içeriğini değiştir; faz SIRASINI ve skor/kanıt sözleşmesini KORU (skor yalnız uygulama_bagimsiz fazında; skorlu her soru evidence_screen_ids ile gosterim ekranlarına bağlı; etkinlestirme kanıt fazı DEĞİLDİR). assets[] içindeki PLACEHOLDER veri-URI'leri şablonun build_from_spec'ten aynen geçebilmesi içindir — gerçek kursta bunları GERÇEK vaka görselleriyle değiştir (mockup SVG reçetesi: references/visual-storytelling.md) ve alt metinlerini güncelle. Ekranlardaki _phase alanları belgeleme içindir (sunucu yok sayar). Gerçek üretimde her ekrana narration_asset_id ekle.",
   "_pattern_b_eslemesi": {
-    "_aciklama": "concept-lesson.json (Pattern B: kavram/teori dersi) bu şablona TAŞINDI (issue #20). Denetim bulgusu: eski zincir (intro→definition→tabs→flashcards→fill_blank→summary) hiçbir kanıt üretmeyen iddia+pasif-tur akışıydı. Neden merrill-fpi (5e-inquiry değil): kavram dersi için keşif-önce 5e de doğal adaydır ama requires_platform: [exploration] (F2) henüz platformda yok — seçici paketi eler; merrill-fpi bugün İNŞA EDİLEBİLİR dürüst seçimdir. Eski ekran → paket fazı tablosu:",
+    "_aciklama": "concept-lesson.json (Pattern B: kavram/teori dersi) bu şablona TAŞINDI (issue #20). Denetim bulgusu: eski zincir (intro→definition→tabs→flashcards→fill_blank→summary) hiçbir kanıt üretmeyen iddia+pasif-tur akışıydı. Neden merrill-fpi (5e-inquiry değil): kavram dersi için keşif-önce 5e de meşru adaydır; bu şablon 'gerçek görev + gösterim' profilini örnekler (kazanım teslim edilebilir bir değerlendirme görevine bağlanabiliyor), keşif-önce profil için templates/5e-inquiry.json'a bak. Eski ekran → paket fazı tablosu:",
     "intro (title_slide)": "başlık ekranı — korundu",
     "what (content_slide, tanım iddiası)": "gorev_tanitimi — soyut 'Nedir?' tanımı yerine kavramın sahada patladığı GERÇEK görev/vaka gösterilir",
     "facets (tabs, boyut anlatımı)": "gosterim — sekmeler artık karşılaştırmalı çözümlü örnek (kötü örnek + neden / iyi örnek + neden): kursun kanıt kaynağı burada üretilir",
@@ -16,8 +16,8 @@
     "- kazanım: O1 (tür: kavram · PK: 4 · hata maliyeti: orta · bütçe: 7 dk)",
     "  paket: merrill-fpi",
     "  kaplamalar: []",
-    "  elenenler: [5e-inquiry (requires_platform: exploration karşılanmıyor — F2 henüz yok), rosenshine-di (uygun aday; kazanım gerçek bir değerlendirme GÖREVİNE bağlanabildiği için görev-merkezli döngü tercih edildi), 4cid (requires_platform: worked_example karşılanmıyor; tek kısa görev — görev-sınıfı dizisi gereksiz)]",
-    "  gerekçe: \"Kazanım gerçek, teslim edilebilir bir göreve bağlanıyor ('formun rıza metnini değerlendir'); görev tanıtımı 'neden umursayayım'ı vakayla cevaplar, gösterim ilkesi kanıt üretimini yapısal olarak garanti eder.\""
+    "  elenenler: [4cid (requires_platform: worked_example karşılanmıyor; tek kısa görev — görev-sınıfı dizisi gereksiz), retrieval-spaced (yeni kavram — tazeleme değil)]",
+    "  gerekçe: \"Kazanım gerçek, teslim edilebilir bir göreve bağlanıyor ('formun rıza metnini değerlendir'); görev tanıtımı 'neden umursayayım'ı vakayla cevaplar, gösterim ilkesi kanıt üretimini yapısal olarak garanti eder. 5e-inquiry ve rosenshine-di de sağ-kalandı: uyum bağlamında battaniye-ifade/ön-işaretli-kutu örüntülerinin DOĞRU örneklerle karşılaştırmalı gösterimi keşif turundan daha ekonomik; görev bağı rosenshine'a karşı merrill'i öne aldı.\""
   ],
   "title": "Açık Rıza: Geçerli mi, Değil mi?",
   "description": "Görev-merkezli kavram mikrokursu — merrill-fpi şablonu (Pattern B halefi)",
