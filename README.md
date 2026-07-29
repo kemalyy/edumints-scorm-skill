@@ -35,6 +35,10 @@ authoring-scorm-courses/
 │   │   └── scoring-timing.md        # formative/summative + "no score before evidence" (Z1–Z3)
 │   ├── eval/
 │   │   └── blind-test.md            # blind-test protocol (≥ 1/2 pass threshold) — gate for new screen types
+│   ├── pedagogy/                    # Layer 3 — method packs (C series)
+│   │   ├── _SCHEMA.md               # pack front-matter contract (evidence_phase(s) REQUIRED) + validation command
+│   │   ├── _STUB-dogrusal.md        # schema-validation example: linear flow (not a pack)
+│   │   └── _STUB-dongulu.md         # schema-validation example: cyclic flow (not a pack)
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape

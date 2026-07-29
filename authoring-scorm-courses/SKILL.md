@@ -146,6 +146,7 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/core/alignment.md` — **Katman 1:** hedef–ölçme hizası (H1–H3): hedef→soru→kanıt eşleme tablosu + "skorlanan > hedef + 1" uyarı eşiği.
 - `references/core/feedback-anatomy.md` — **Katman 1 tabanı:** gerekçeli geri bildirimin 3 zorunlu öğesi (G1–G3): neden doğru + neden yanlış + kanıta geri işaret.
 - `references/core/scoring-timing.md` — **Katman 1:** formatif/summatif ayrımı (Z1–Z3): "kanıt kaynağı üretilmeden skor yok" + skorsuz erken-deneme istisnası.
+- `references/pedagogy/_SCHEMA.md` — **Katman 3 paket sözleşmesi:** her yöntem paketinin ön-madde şeması (`pack-frontmatter.schema.json`); `evidence_phase(s)` ZORUNLU, kanıt beyanı çoğul olabilir; döngü/koşul ifade edilebilir; doğrulama komutu belgeli.
 - `references/eval/blind-test.md` — **kör test protokolü:** kanıt kaynakları çıkarılınca skorlanan sorular hâlâ cevaplanabiliyor mu? Geçme eşiği ≥ 1/2 + sonuç kayıt şablonu + pilot koşu.
 - `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.

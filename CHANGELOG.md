@@ -20,6 +20,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   problem-önce öne geçer) + dört sunum kadranıyla çelişki taraması (çapraz referans bölümü).
 - **Eğitim Okuması baskın-mod enum'una `gösterim`** (#13) — keşif | gösterim | uygulama |
   değerlendirme; gösterim-ağırlıklı kurslar artık adlandırılabilir.
+- **`references/pedagogy/` paket sözleşmesi** (#14) — `pack-frontmatter.schema.json` (JSON Schema,
+  Türkçe alan açıklamalı) + `_SCHEMA.md` sözleşme belgesi: `pack`, `name`, `outcome_types`,
+  `prior_knowledge` (aralık), `error_cost`, `requires_platform`, `phases` (amaç + izinli ekran
+  tipleri + skorlanabilir; `sonraki`/`tekrar_kosulu` ile döngü-koşul), **`evidence_phase` VEYA
+  `evidence_phases` ZORUNLU** (kanıt üreten faz — çoğul serbest, 1:1 dayatması yok; soru-düzeyi
+  bağ zaten çoğul: `evidence_screen_ids`, scorm-mcp CONTRACTS §1.3 E1 ile terminoloji-uyumlu),
+  `scoring_allowed_from` (Z2'nin paket-düzeyi beyanı), `conflicts_with`. Doğrulama:
+  `scripts/validate_packs.py` (şema + bütünlük denetimleri; CI'da çalışır) + 2 çalışan örnek stub
+  (`_STUB-dogrusal.md` doğrusal, `_STUB-dongulu.md` döngülü).
 
 ### Changed — v2.1 Katman 0 seçici + paket şeması
 - SKILL.md dört mevcut kadranı **"sunum kadranı"** olarak sınıflandırdı (geriye-uyumluluk notu:

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/kemalyy/edumints-scorm-skill/main/authoring-scorm-courses/references/pedagogy/pack-frontmatter.schema.json",
+  "title": "Yöntem paketi ön-madde (frontmatter) sözleşmesi — B3",
+  "description": "references/pedagogy/ altındaki her paket dosyasının YAML ön-maddesi bu şemayı geçmek zorundadır. evidence_phase VEYA evidence_phases (çoğul) zorunludur — Katman 1 kanıt denetimi bu beyanı okur.",
+  "type": "object",
+  "required": [
+    "pack",
+    "name",
+    "outcome_types",
+    "prior_knowledge",
+    "error_cost",
+    "requires_platform",
+    "phases",
+    "scoring_allowed_from",
+    "conflicts_with"
+  ],
+  "anyOf": [
+    { "required": ["evidence_phase"] },
+    { "required": ["evidence_phases"] }
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "pack": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Paket kimliği (kebab-case). Katman 0 seçicinin YÖNTEM BEYANI'nda kullanılan addır; dosya adıyla (<pack>.md) eşleşir."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "İnsan-okur paket adı (Türkçe)."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Paket sözleşme sürümü (kırıcı değişiklikte artar)."
+    },
+    "outcome_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["olgu", "kavram", "prosedür", "ilke", "problem çözme", "tutum", "psikomotor"]
+      },
+      "description": "Paketin uygun olduğu kazanım türleri (7 türün alt kümesi). Seçicide SERT kısıt: kazanımın türü listede yoksa paket elenir."
+    },
+    "prior_knowledge": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "integer", "minimum": 1, "maximum": 10 },
+      "description": "[min, max] — paketin uygun olduğu PRIOR_KNOWLEDGE aralığı (1–10). Seçicide SERT kısıt: kadran değeri aralık dışıysa paket elenir. min ≤ max olmalı (betiksel denetim)."
+    },
+    "error_cost": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["düşük", "orta", "yüksek"] },
+      "description": "Paketin uygun olduğu hata-maliyeti düzeyleri. Seçicide SERT kısıt."
+    },
+    "requires_platform": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Paketin çalışması için zorunlu platform yetenekleri (ekran tipi/araç adları, örn. simulation, adaptive_practice). Boş liste = şart yok. Seçicide SERT kısıt: yetenek yoksa paket elenir."
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Paketin fazları (sıra dayatan yapı — paket olmanın tanımı). Varsayılan akış dizi sırasıdır; 'sonraki' ile döngü/dallanma (doğrusal olmayan paketler) ifade edilir.",
+      "items": {
+        "type": "object",
+        "required": ["id", "amac", "izinli_ekran_tipleri", "skorlanabilir"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$",
+            "description": "Faz kimliği (snake_case, paket içinde benzersiz). Kaplama (overlay) dosyalarında GEÇEMEZ (B4 paket-bağımsızlık kuralı)."
+          },
+          "amac": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Fazın tek-cümle amacı: bu fazda öğrenen/kurs ne üretir?"
+          },
+          "izinli_ekran_tipleri": {
+            "description": "Bu fazda kullanılabilir ekran tipleri: liste ya da \"hepsi\".",
+            "oneOf": [
+              { "const": "hepsi" },
+              { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }
+            ]
+          },
+          "skorlanabilir": {
+            "type": "boolean",
+            "description": "Bu faza skorlu (points > 0 ya da puana yazan) ekran yerleştirilebilir mi? scoring_allowed_from ile tutarlı olmalı (Z1–Z3)."
+          },
+          "sonraki": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" },
+            "description": "İsteğe bağlı geçiş listesi (faz id'leri). Döngü serbest (örn. eşik-altı sonuçta önceki faza dönüş). Yoksa dizideki bir sonraki faz."
+          },
+          "tekrar_kosulu": {
+            "type": "string",
+            "description": "İsteğe bağlı: 'sonraki' birden çok hedef içeriyorsa hangi koşulda hangisine gidileceğinin tek-cümle beyanı."
+          }
+        }
+      }
+    },
+    "evidence_phase": {
+      "type": "string",
+      "description": "Kanıt ÜRETEN faz (tekil biçim; faz id'si). Katman 1 kanıt denetimi (K1/T1, scorm-mcp #110) bu beyanı okur. Birden çok faz kanıt üretiyorsa evidence_phases (çoğul) kullan — ikisinden en az biri ZORUNLU."
+    },
+    "evidence_phases": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" },
+      "description": "Kanıt ÜRETEN fazlar (ÇOĞUL biçim; faz id'leri). Şema 1:1 dayatmaz — bir sorunun kanıtı birden çok fazdan/kaynaktan gelebilir; soru-düzeyi bağ zaten çoğuldur (spec alanı evidence_screen_ids, scorm-mcp CONTRACTS §1.3 E1)."
+    },
+    "scoring_allowed_from": {
+      "type": "string",
+      "description": "Skorun (summatif ekranın) yerleştirilebileceği İLK faz (faz id'si) — Z2'nin ('kanıt üretilmeden skor yok') paket-düzeyi beyanı. Bu fazdan önceki fazlar skorlanabilir: false olmalı."
+    },
+    "conflicts_with": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "description": "Aynı kursta birleştirilemeyeceği paket/kaplama kimlikleri. Boş liste = bilinen çakışma yok. Çakışma bildirim biçimi: references/overlays/_FRAMEWORK.md."
+    }
+  }
+}

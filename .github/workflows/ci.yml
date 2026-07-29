@@ -30,6 +30,10 @@ jobs:
               print("Invalid JSON:"); [print(" -", b) for b in bad]; sys.exit(1)
           print("OK: SKILL.md present and all JSON valid")
           PY
+      - name: Pack front-matter schema (B3 — evidence_phase gate)
+        run: |
+          python3 -m pip install --quiet pyyaml jsonschema
+          python3 scripts/validate_packs.py
       - name: README tree vs real directory (D4 — drift gate)
         run: |
           python - <<'PY'
