@@ -39,6 +39,9 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
   (branching/variables/games → **2004**)?
 - [ ] **12. Değerlendirme hizalı:** sorular "uygula" düzeyinde (senaryo > tanım); `passing_score` ile
   `completion_rule` tutarlı?
+- [ ] **12b. Kanıt bağlama (`core/evidence-binding.md`):** skorlanan her soru için cevabı üreten
+  kurs-içi kanıt kaynağı ekranı var mı (K1) ve her birine denetim sorusu uygulandı mı — "Bu kursu hiç
+  görmemiş ama alanı bilen biri bu soruyu zaten cevaplayabilir mi?" Evet kalan soru: bağla ya da at (K3).
 - [ ] **13. Loop çalıştırıldı:** `preview` → gözden geçir/`list_feedback` → düzelt/`resolve_feedback` →
   `validate_package` yeşil → `build_package`?
 - [ ] **14. Oyun/adaptif varsa `lint_course` `clean: true`:** `game`/`adaptive_practice` ekranı içeren
