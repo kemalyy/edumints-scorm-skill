@@ -13,6 +13,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   uçtan uca build_from_spec örneği (pediatrik doz hesabı; skorlu soru `evidence_screen_ids` ile
   kanıt ekranına bağlı — scorm-mcp CONTRACTS §1.3 E1). Kaynak: Rosenshine (2012), American
   Educator 36(1) — doğrulandı.
+- **`references/pedagogy/merrill-fpi.md`** (#17) — C2 Merrill İlk İlkeler (görev-merkezli):
+  gerçek görev tanıtımı → etkinleştirme (bilinçli olarak kanıt fazı DEĞİL — K2 gerekçesi gövdede)
+  → gösterim (`evidence_phase: gosterim` — gösterimsiz kurs yapısal olarak üretilemez) →
+  destekli uygulama (skorsuz) → bağımsız uygulama (skorlu) → bütünleştirme (skorsuz yansıtma).
+  "Görev tanımlanamıyorsa paket seçilemez" kuralı; 4cid ile ölçek-farkı seçici notu (çakışma
+  değil); `conflicts_with: []`. build_from_spec örneği: hata (bug) raporu yazma görevi. Kaynak:
+  Merrill (2002), ETR&D 50(3), 43–59 — doğrulandı. Dosya adı seçici kimliğiyle hizalı
+  (`merrill-fpi`; şema kuralı: dosya adı == pack).
 
 ### Added — v2.1 Katman 0 seçici + paket şeması (Wave 3: B1–B4)
 - **`references/core/method-selector.md`** (#12) — Katman 0 yöntem seçici: 7 kazanım türü + 5 girdi
