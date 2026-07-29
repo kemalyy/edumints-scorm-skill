@@ -34,6 +34,10 @@ jobs:
         run: |
           python3 -m pip install --quiet pyyaml jsonschema
           python3 scripts/validate_packs.py
+      - name: Overlay pack-independence (B4 — grep-0 gate)
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 scripts/check_overlay_independence.py
       - name: README tree vs real directory (D4 — drift gate)
         run: |
           python - <<'PY'

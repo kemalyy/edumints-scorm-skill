@@ -39,6 +39,8 @@ authoring-scorm-courses/
 │   │   ├── _SCHEMA.md               # pack front-matter contract (evidence_phase(s) REQUIRED) + validation command
 │   │   ├── _STUB-dogrusal.md        # schema-validation example: linear flow (not a pack)
 │   │   └── _STUB-dongulu.md         # schema-validation example: cyclic flow (not a pack)
+│   ├── overlays/                    # Layer 2 — method-orthogonal overlays (D series)
+│   │   └── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape

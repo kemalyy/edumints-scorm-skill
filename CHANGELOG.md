@@ -30,6 +30,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   `scripts/validate_packs.py` (şema + bütünlük denetimleri; CI'da çalışır) + 2 çalışan örnek stub
   (`_STUB-dogrusal.md` doğrusal, `_STUB-dongulu.md` döngülü).
 
+- **`references/overlays/_FRAMEWORK.md`** (#15) — Katman 2 kaplama çerçevesi: "sıra dayatan =
+  paket, sırasız değiştiren = kaplama" ayracı (mastery-learning sınır örneğiyle); 6 kaplamanın
+  (cognitive-load, udl, arcs, expertise-adaptive, assessment-alignment, accessibility) listesi +
+  her birinin kapsam SINIRI; kaplama dosya biçimi (`decision_points` beyanı + 8 karar-noktası
+  sözlüğü); **paket-bağımsızlık kuralı** (kaplama metninde paket faz adı = 0 — mekanik:
+  `scripts/check_overlay_independence.py`, CI'da grep-0 kapısı); çakışma bildirim biçimi
+  (`with` + `decision_point` + `rule`) ve productive-failure örneği.
+
 ### Changed — v2.1 Katman 0 seçici + paket şeması
 - SKILL.md dört mevcut kadranı **"sunum kadranı"** olarak sınıflandırdı (geriye-uyumluluk notu:
   v1 adları ve anlamları sabit); pre-flight Madde 1 PRIOR_KNOWLEDGE beyanını da sorar.
