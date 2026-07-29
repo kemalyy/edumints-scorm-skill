@@ -4,6 +4,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.1 Katman 0 seçici + paket şeması (Wave 3: B1–B4)
+- **`references/core/method-selector.md`** (#12) — Katman 0 yöntem seçici: 7 kazanım türü + 5 girdi
+  (PRIOR_KNOWLEDGE / hata maliyeti / zaman / platform / bağlam) → paket(ler) + kaplama(lar).
+  Mekanizma (KARAR ÖNERİSİ, needs-decision): **LLM muhakemesi + deterministik uyumluluk elemesi** —
+  paket ön-maddesindeki `outcome_types`/`prior_knowledge`/`error_cost`/`requires_platform` sert
+  kısıtları eleyici; sağ-kalanlar arasında gerekçeli seçim; son karar yazarın, gerekçe zorunlu.
+  7 örnek eşleme + eksik-girdi varsayılanları + B3-uyumlu YÖNTEM BEYANI çıktı biçimi. Hiçbir paket
+  kanonik değil; hiçbiri uymazsa belgeli varsayılan `gagne-9` + zorunlu gerekçe.
+- `references/pre-flight.md` — yeni Madde 1b: YÖNTEM BEYANI (paket + kaplamalar + elenenler +
+  gerekçe) kaydı zorunlu.
+
 ### Added — v2.0 Kanıt Bağlama çekirdeği (Wave 1: A1–A5 + E4)
 - **`references/core/` (Katman 1 — yöntemden bağımsız çekirdek kurallar; hiçbir kural bir pedagoji
   paketinin faz adını içermez, sıra dayatmaz):**

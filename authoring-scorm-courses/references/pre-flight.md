@@ -12,6 +12,9 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
   baskın mod tek cümlede). Beyan yoksa dur.
 - [ ] **1. Dial değerleri brief'ten gerekçeli mi**, yoksa sessizce baseline mı kullanıldı? Dört dial
   (INTERACTIVITY / COGNITIVE_DENSITY / TONE / VISUAL_RICHNESS) için seçilen değer + tek satır neden.
+- [ ] **1b. YÖNTEM BEYANI kayıtlı mı** (`core/method-selector.md` çıktı biçimi): kazanım başına
+  paket + kaplama(lar) + elenenler + tek-paragraf gerekçe? Sert kısıt elemesinden geçmeyen paket
+  seçildiyse dur; hiçbir paket uymadıysa varsayılanın (`gagne-9`) zorunlu gerekçesi yazıldı mı?
 - [ ] **2. Tek ölçülebilir hedef** (Bloom fiili) var mı ve **her ekran** ona hizmet ediyor mu? Hizmet
   etmeyen ekranı sil.
 
