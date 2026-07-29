@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   Mekanik sayılabilirlik notu: kemalyy/edumints-scorm-mcp E1 lint'ine aday genişletme.
 - **`references/eval/blind-test.md` adım 4 — [GÖVDE] sınıflaması.** Gövdesindeki verili olguyla
   çözülen soru kanıttan kopya sayılmaz: dayanağa [GÖVDE] yazılır ve E sayılır (K4 ihlali).
+- **`references/core/evidence-binding.md` — K5: cevap sızıntısı yasağı (E4-R2, #53).** Skorlu bir
+  sorunun cevabını, o sorunun `evidence_screen_ids`'i dışındaki hiçbir ekran açıkça ifade edemez
+  (`summary` dahil — özet kavram düzeyinde çerçeve kurabilir, cevap cümlesi kuramaz). İkili
+  denetim (cevap-önermesi × kanıt-dışı ekran taraması) + ÖNCE/SONRA çifti ilk gerçek E4
+  koşusunun kapanış özetinden (üç cevap tek cümlede → kavram-düzeyi çerçeve). Mekanik
+  sayılabilirlik notu: kemalyy/edumints-scorm-mcp E1 lint'ine aday genişletme.
+- **`references/core/evidence-binding.md` — yeni bölüm: kanon-alan içerikleri.** Alanın kuralları
+  kamusal kanonsa (mevzuat/standart/ders kitabı) skorlu soru kanonun kendisini değil kanonun
+  kursa-özgü artefakta uygulanmasını ölçer; 3 dönüştürme örneği (kural-hatırlama →
+  artefakta-uygulama; ikisi E4 koşusunun `q_gecikme`/`q_dil` sorularından).
+- **Kör test adım 4 — [KOPYA] sınıflaması** (blind-test.md): sökülmeden kalan kanıt-dışı ekrandan
+  okunan cevap da E sayılır (ikinci cevap kanalı; K5 ihlali). Çapraz referanslar K1–K5'e
+  güncellendi (SKILL.md, anti-slop.md T1, method-selector.md, README ağacı).
 
 ### Added — v2.1 Değerlendirme seti (Wave 4b: E3, #21)
 - **`eval/` (depo kökü)** — belge + fikstür seti (otomasyon değil): 10 test istemi

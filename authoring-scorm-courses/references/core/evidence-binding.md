@@ -120,3 +120,63 @@ kanıt ekranındaki kritik değerin kopyası mı?" — kemalyy/edumints-scorm-mc
                "incorrect_html":"<p>Sayaç olay anından işlemez ve takvim saatleri hafta sonunda durmaz. Zaman çizelgesindeki damgalı satıra geri dön ve 72 saati oradan say.</p>" } }
 ```
 
+## K5 — Cevap sızıntısı yasağı (kanıt-dışı ekranlar cevabı yeniden söyleyemez)
+
+Skorlanan bir sorunun cevabını, o sorunun `evidence_screen_ids`'i **DIŞINDAKİ hiçbir ekran**
+açıkça ifade edemez — `summary` dahil. Özet, "ne öğrendik" çerçevesini **kavram düzeyinde**
+kurabilir (hangi karar noktalarından geçildi), **cevap cümlesi kuramaz** (o kararların doğru
+cevabını yeniden söyleyemez).
+
+Neden: kör test protokolü yalnız kanıt ekranlarını söker (`references/eval/blind-test.md`
+adım 2). Cevabı yeniden söyleyen kanıt-dışı ekran sökülmeden kalır ve fiilen **ikinci bir cevap
+kanalı** olur. İlk gerçek E4 koşusunda kapanış özeti üç skorlu sorunun cevabını tek cümlede
+taşıyordu — kurs bu kanaldan da düştü.
+
+**İkili denetim (soru başına):**
+1. Doğru cevabı tek önerme olarak yaz (ör. "sayaç iç kayıt damgasından işler").
+2. `evidence_screen_ids` dışındaki TÜM ekran metinlerinde (body / prompt / feedback / narration /
+   caption / seçenek metinleri) bu önermeyi açıkça kuran cümle ara.
+3. **Bir eşleşme → ihlal.** İki çıkış var, sessiz geçiş YASAK: cümleyi kavram-düzeyi çerçeveye
+   indir (cevabı söylemeden karar noktasını adlandır) **ya da** ekranı o sorunun
+   `evidence_screen_ids`'ine ekle — o zaman kanıt olur ve kör testte sökülür.
+
+*Mekanik sayılabilirlik — lint adayı (E1 genişletmesi):* "kanıt-dışı herhangi bir ekran metni,
+doğru seçenek metnini / cevap önermesini içeriyor mu?" (dizgi ya da yüksek-örtüşme araması) —
+kemalyy/edumints-scorm-mcp E1 lint'ine (`lint_course` / `evidence_binding_coverage`, #110) aday
+genişletme; bugün elle denetlenir.
+
+#### ÖNCE / SONRA (E4 koşusundan, `kapanis` özeti)
+```jsonc
+// SLOP — üç skorlu sorunun cevabı tek cümlede ("öğrenme anından say" = q_sinir,
+// "yetişmeyeni gerekçele" = q_gecikme, "beklemeden ve onun dilinde" = q_dil).
+// summary hiçbir sorunun kanıt ekranı değil → kör testte sökülmez, ikinci cevap kanalı kalır.
+{ "type":"summary", "id":"kapanis", "title":"Artık sayacı sen yönetiyorsun",
+  "body_html":"<p>Tek cümlelik çıkarım: damgayı vur, 72'yi öğrenme anından say, yetişmeyeni gerekçele; müşteriye ise beklemeden ve onun dilinde yaz.</p>",
+  "narration_text":"Bir sonraki ihlalde ilk hareketin kayıt defterini açmak olacak — çünkü o damga, sonraki yetmiş iki saatin tek tartışılmaz tanığıdır." }
+```
+```jsonc
+// DÜZELTİLMİŞ — kavram düzeyi çerçeve: HANGİ kararlardan geçildiğini adlandırır,
+// kararların doğru cevabını kurmaz (narration dahil).
+{ "type":"summary", "id":"kapanis", "title":"Artık sayacı sen yönetiyorsun",
+  "body_html":"<p>Bu vakada dört karar noktasından geçtin: sayacı neyin başlattığı, Kurul ve ilgili-kişi kanallarının nasıl yönetildiği, kapsam netleşmeden süre dolarken izlenecek yol ve bildirim metninin kuruluşu. Bir sonraki ihlalde aynı dört karar yine senin.</p>",
+  "narration_text":"Dört karar noktası artık senin: sayaç, kanallar, eksik bilgi, metin. Sıradaki vakada sıra sende." }
+```
+
+## Kanon-alan içerikleri — kanonu değil, kanonun artefakta uygulanmasını ölç
+
+Alanın standart kuralları **kamusal kanonsa** (mevzuat, standartlar, ders kitabı yasaları),
+kursu hiç görmemiş uzman okuyucu bu kuralları tanımı gereği bilir — K2 denetim sorusu bu tür
+sorularda HER ZAMAN "evet" çıkar. Bu alanlarda skorlu soru kanonun KENDİSİNİ soramaz; kanonun
+**kursun ürettiği artefakta uygulanmasını** ölçer: cevabın kritik parçası artefakttan (K1 türü 4)
+gelir, kamusal kural yalnız işlem adımıdır. K4 ve K5 bu alanlarda en sert biter: kural zaten
+uzmanın kafasındadır, geriye tek savunma **kritik olgunun yalnız kanıt ekranında yaşaması** kalır.
+
+Dönüştürme kalıbı: **"kural nedir?" → "kanıt ekranındaki ŞU artefakta göre kural neyi gerektirir?"**
+
+| Kural-hatırlama (SLOP) | Artefakta-uygulama (DÜZELTİLMİŞ) |
+|---|---|
+| (E4, `q_gecikme`) "Süre içinde tüm bilgiler netleşmemişse doğru hamle nedir?" — kademeli bildirim ilkesi kanondur, uzman kaynaksız cevaplar | "Kanıt ekranındaki adli-inceleme e-postasına göre (kapsam ancak 80. saatte netleşiyor) bildirim dosyasında hangi bölüm, hangi gerekçe cümlesiyle açık bırakılır?" — karar, e-posta artefaktının saat ve kapsam ayrıntısına bağlanır; e-posta yalnız kanıt ekranında yaşar |
+| (E4, `q_dil`) "İlgili-kişi bildirimi hangi süre ölçütüyle ve hangi dille yapılır?" — "en kısa sürede + anlaşılır dil" kanondur | "Kanıt ekranındaki ilgili-kişi taslağının hangi cümlesi dil şartını ihlal ediyor? (hotspot)" — ihlalli cümle yalnız taslak artefaktında yaşar; okuyucu kuralı metne uygular |
+| "Parola politikasına göre asgari uzunluk kaçtır?" — politika tablosu kamusal/standart içeriktir | "Denetim ekranında incelediğin üç hesap kaydından hangisi tablodaki politikayı ihlal ediyor?" — kayıtlar yalnız kanıt ekranında yaşar; okuyucu tabloyu kayıtlara uygular |
+
+Bu bölüm rehberdir; zorlayıcı denetim K4 (gövde) ve K5 (sızıntı) ikili kurallarından gelir.
