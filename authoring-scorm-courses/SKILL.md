@@ -142,7 +142,7 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/anti-slop.md` — **ÖNCE BUNU OKU.** SCORM slop'unun somut/ikili yasakları + override yolları + ÖNCE/SONRA JSON. Her ekran üretmeden önce buna karşı denetle.
 - `references/pre-flight.md` — teslim öncesi **zorunlu** mekanik denetim matrisi (sayılabilir). Quality gate burada.
 - `references/core/method-selector.md` — **Katman 0 seçici:** kazanım türü + PRIOR_KNOWLEDGE + hata maliyeti → paket(ler) + kaplama(lar); sert-kısıt elemesi + gerekçeli seçim + YÖNTEM BEYANI çıktı biçimi. Outline'dan ÖNCE çalıştır.
-- `references/core/evidence-binding.md` — **Katman 1 çekirdeği (yöntemden bağımsız):** skorlanan her soru kurs-içi kanıt kaynağına bağlanır (K1–K5); denetim sorusu + "bağla ya da at" prosedürü + gövde kendine-yeterliliği ve cevap sızıntısı yasakları + kanon-alan rehberi. Skorlanan soru içeren HER kursta oku.
+- `references/core/evidence-binding.md` — **Katman 1 çekirdeği (yöntemden bağımsız):** skorlanan her soru kurs-içi kanıt kaynağına bağlanır (K1–K6); denetim sorusu + "bağla ya da at" prosedürü + gövde kendine-yeterliliği, cevap sızıntısı ve çapraz-madde kontaminasyonu yasakları + kanon-alan rehberi. Skorlanan soru içeren HER kursta oku.
 - `references/core/alignment.md` — **Katman 1:** hedef–ölçme hizası (H1–H3): hedef→soru→kanıt eşleme tablosu + "skorlanan > hedef + 1" uyarı eşiği.
 - `references/core/feedback-anatomy.md` — **Katman 1 tabanı:** gerekçeli geri bildirimin 3 zorunlu öğesi (G1–G3): neden doğru + neden yanlış + kanıta geri işaret.
 - `references/core/scoring-timing.md` — **Katman 1:** formatif/summatif ayrımı (Z1–Z3): "kanıt kaynağı üretilmeden skor yok" + skorsuz erken-deneme istisnası.

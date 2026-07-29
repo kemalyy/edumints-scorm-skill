@@ -26,6 +26,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - **Kör test adım 4 — [KOPYA] sınıflaması** (blind-test.md): sökülmeden kalan kanıt-dışı ekrandan
   okunan cevap da E sayılır (ikinci cevap kanalı; K5 ihlali). Çapraz referanslar K1–K5'e
   güncellendi (SKILL.md, anti-slop.md T1, method-selector.md, README ağacı).
+- **`references/core/evidence-binding.md` — K6: çapraz-madde kontaminasyonu yasağı (E4-R3, #55).**
+  Skorlu bir sorunun gövdesi/başlığı/şıkları, BAŞKA bir skorlu sorunun cevabını türetmeye yetecek
+  kursa-özgü olguyu içeremez (K5'ten fark: sızıntı kanalı kanıt-dışı bir ekran değil, başka bir
+  skorlu maddenin kendisi). İkili denetim (madde çifti başına 3 adım) + ÖNCE/SONRA çifti E4 2.
+  koşusunun `q_eksen` sorusundan (başlık tekniği adlandırıp `n_satis` oyun düğümünün teşhisini
+  ele veriyordu → nötr başlık + kanıt ekranına atıf). Mekanik sayılabilirlik notu: aday genişletme.
+- **`references/eval/blind-test.md` adım 4 — [KOPYA] çapraz-madde alt sınıfı.** Sökülmüş kopyada
+  cevap tek bir kanıt-dışı ekrandan değil maddeler ARASI bir çıkarım zinciriyle okunuyorsa dayanak
+  yine [KOPYA] kalır (köken hücresi ekran id yerine soru id taşır); E sayılır (K6 ihlali). Çapraz
+  referanslar K1–K6'ya güncellendi (SKILL.md, anti-slop.md T1, method-selector.md, README ağacı).
 
 ### Added — v2.1 Değerlendirme seti (Wave 4b: E3, #21)
 - **`eval/` (depo kökü)** — belge + fikstür seti (otomasyon değil): 10 test istemi

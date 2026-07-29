@@ -162,6 +162,69 @@ genişletme; bugün elle denetlenir.
   "narration_text":"Dört karar noktası artık senin: sayaç, kanallar, eksik bilgi, metin. Sıradaki vakada sıra sende." }
 ```
 
+## K6 — Çapraz-madde kontaminasyonu yasağı (bir madde başka maddenin cevabını sızdıramaz)
+
+Skorlanan bir sorunun **gövdesi/başlığı/şıkları**, **BAŞKA bir skorlu sorunun** cevabını türetmeye
+yetecek kursa-özgü olguyu içeremez. K5'ten farkı sızıntı kanalıdır: orada kaynak kanıt-dışı bir
+İÇERİK ekranıydı, burada kaynak başka bir SKORLU maddenin kendisi — iki soru birbirini çözer,
+kanıt kaynağına hiç ihtiyaç kalmaz.
+
+Neden: E4 2. koşusunda (`eval/results/2026-07-29-e4-grafik-dedektifi.md`, iterasyon B) bir oyun
+düğümünün teşhis cevabı ayrı bir skorlu sorunun BAŞLIĞINDA açık yazıyordu — kanıt ekranı sökülse
+bile o soru diğerinden okunuyordu.
+
+**İkili denetim (madde çifti başına):**
+1. Skorlanan her sorunun doğru cevabını tek önerme olarak yaz.
+2. Diğer TÜM skorlanan soruların gövde/başlık/şık metinlerinde bu önermeyi (ya da onu türetmeye
+   yetecek kursa-özgü olguyu) açıkça kuran ifade ara.
+3. **Bir eşleşme → ihlal.** İki çıkış var, sessiz geçiş YASAK: sızdıran maddeyi, teşhisi/olguyu
+   adlandırmadan kanıt ekranına geri yönlendirecek şekilde nötrleştir **ya da** iki maddeyi tek
+   skorlu karara birleştir (ikisi zaten aynı olguyu ölçüyorsa).
+
+Kör testte karşılığı: kanıt ekranları sökülse bile cevap **başka bir skorlu maddeden** okunuyorsa
+dayanağa **[KOPYA]** yazılır ve **E** sayılır — çapraz-madde alt türü
+(`references/eval/blind-test.md` adım 4).
+
+*Mekanik sayılabilirlik — lint adayı (E1 genişletmesi):* "X maddesinin doğru cevap metni, Y
+maddesinin gövde/başlık/şık metninde (dizgi ya da yüksek-örtüşme araması) geçiyor mu?" —
+kemalyy/edumints-scorm-mcp E1 lint'ine (`lint_course` / `evidence_binding_coverage`, #110) aday
+genişletme; bugün elle denetlenir.
+
+#### ÖNCE / SONRA (E4 koşusundan, `q_eksen`)
+```jsonc
+// SLOP — q_eksen'in başlığı, dc_satis (satış slaydı) kanıt ekranındaki manipülasyon tekniğinin
+// ADINI taşıyor; bu ad aynı zamanda n_satis oyun düğümünün teşhis sorusunun DOĞRU CEVABI.
+// n_satis'in kanıt ekranı (dc_satis) sökülse de cevap q_eksen'den okunur ([KOPYA] — çapraz-madde).
+{ "type":"mcq", "id":"q_eksen", "points":15,
+  "evidence_screen_ids":["ec_eksen"],
+  "title":"Sayıyı gövdesine geri koy",
+  "prompt_html":"<p>Kesik y-eksenini sıfır tabanına oturtursan eğri nasıl değişir?</p>",
+  "options":[ {"id":"a","text_html":"Fark abartılı görünmeye devam eder"},
+              {"id":"b","text_html":"Fark gözle fark edilmeyecek kadar küçülür","correct":true} ] }
+{ "type":"game", "id":"n_satis", "points":20,
+  "evidence_screen_ids":["dc_satis"],
+  "prompt_html":"<p>Satış slaydındaki grafik hangi manipülasyon tekniğini kullanıyor?</p>",
+  "options":[ {"id":"a","text_html":"Kesik eksen — sıfır tabanı gösterilmeden çizilmiş"},
+              {"id":"b","text_html":"Sayıyı gövdesine geri koy — sıfır tabanı gizlenmiş kesik eksen","correct":true} ] }
+```
+```jsonc
+// DÜZELTİLMİŞ — q_eksen tekniğin adını değil kanıt ekranına dönüşü kurar; n_satis'in cevabı
+// artık yalnız dc_satis'i inceleyerek türetilebilir.
+{ "type":"mcq", "id":"q_eksen", "points":15,
+  "evidence_screen_ids":["ec_eksen"],
+  "title":"Ekseni düzelt, farkı yeniden oku",
+  "prompt_html":"<p>Kesik-eksen ekranındaki grafiği sıfır tabanına oturttuğunda eğri nasıl değişir?</p>",
+  "options":[ {"id":"a","text_html":"Fark abartılı görünmeye devam eder"},
+              {"id":"b","text_html":"Fark gözle fark edilmeyecek kadar küçülür","correct":true} ],
+  "feedback":{ "correct_html":"<p>Doğru — sıfır taban eğriyi düzleştirir; bir sonraki slaytta aynı düzeltmeyi kendin uygula.</p>",
+               "incorrect_html":"<p>Kesik-eksen ekranına dön ve tabanı sıfıra çektiğinde eğrinin ne kadar düzleştiğine bak.</p>" } }
+{ "type":"game", "id":"n_satis", "points":20,
+  "evidence_screen_ids":["dc_satis"],
+  "prompt_html":"<p>Satış slaydındaki grafik hangi manipülasyon tekniğini kullanıyor?</p>",
+  "options":[ {"id":"a","text_html":"Kesik eksen — sıfır tabanı gösterilmeden çizilmiş","correct":true},
+              {"id":"b","text_html":"Yanıltıcı renk kodlaması"} ] }
+```
+
 ## Kanon-alan içerikleri — kanonu değil, kanonun artefakta uygulanmasını ölç
 
 Alanın standart kuralları **kamusal kanonsa** (mevzuat, standartlar, ders kitabı yasaları),
