@@ -29,7 +29,7 @@ authoring-scorm-courses/
 │   ├── pre-flight.md                # MANDATORY pre-build quality-gate matrix
 │   ├── core/                        # Layer 1 — method-independent core rules (+ the Layer-0 selector)
 │   │   ├── method-selector.md       # Layer 0 — outcome type + dials → method pack(s) + overlay(s)
-│   │   ├── evidence-binding.md      # every scored question binds to an in-course evidence source (K1–K5)
+│   │   ├── evidence-binding.md      # every scored question binds to an in-course evidence source (K1–K6)
 │   │   ├── alignment.md             # objective→question→evidence mapping + warn threshold (H1–H3)
 │   │   ├── feedback-anatomy.md      # 3 mandatory feedback elements — floor rule (G1–G3)
 │   │   └── scoring-timing.md        # formative/summative + "no score before evidence" (Z1–Z3)

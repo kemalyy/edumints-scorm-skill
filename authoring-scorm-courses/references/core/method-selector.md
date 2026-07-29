@@ -119,7 +119,7 @@ Geçerli **kaplama kimlikleri** (Katman 2, `references/overlays/` — D1–D6): 
 
 ## Katman 1 ile ilişki (değişmez)
 
-Seçici hangi paketi seçerse seçsin Katman 1 aynen geçerlidir: kanıt bağlama (K1–K5), hiza
+Seçici hangi paketi seçerse seçsin Katman 1 aynen geçerlidir: kanıt bağlama (K1–K6), hiza
 (H1–H3), feedback anatomisi (G1–G3), skorlama zamanlaması (Z1–Z3). Paketin kanıt üreten faz(lar)ı
 ön-maddesindeki `evidence_phase`/`evidence_phases` beyanıdır (çoğul olabilir); soru-düzeyi bağ
 ise HER ZAMAN çoğuldur (`evidence_screen_ids` — bir soru birden çok kanıt kaynağına yaslanabilir).

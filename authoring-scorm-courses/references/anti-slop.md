@@ -207,7 +207,7 @@ yönteminin işidir.
 kaynaktan (çözümlü örnek, öğrenenin kendi keşfi, simülasyon çıktısı, vaka dosyası/artefakt,
 başarısız deneme + kanonik çözüm, veri görseli…) türetilebilir olmalı. Mekanik: skorlanan ekran
 listesi × kanıt-kaynağı `id` eşlemesi; boş satır = fail. Denetim sorusu + "bağla ya da at"
-prosedürü: `references/core/evidence-binding.md` (K1–K5).
+prosedürü: `references/core/evidence-binding.md` (K1–K6).
 → *Override:* yok.
 
 **T2 — Her iddia bir mekanizma taşıyıcısıyla desteklenir.** Sayısal iddia ("ihlallerin %80'i…") ya

@@ -22,6 +22,11 @@ F1/F2) **kapısıdır**: kör test geçilmeden başlamazlar.
    (kaynak gerekmedi; `references/core/evidence-binding.md` K4 ihlali). Cevap sökülmeden kalan
    bir kanıt-dışı ekrandan okunuyorsa dayanağa **[KOPYA]** yazılır ve o da **E sayılır**
    (ikinci cevap kanalı; K5 ihlali).
+   *[KOPYA] alt sınıfı — çapraz-madde:* sökülmüş kopyada cevap tek bir kanıt-dışı ekrandan değil,
+   **maddeler ARASI bir çıkarım zinciriyle** okunuyorsa (bir sorunun gövdesi/başlığı/şıkları
+   BAŞKA bir skorlu sorunun cevabını türetiyorsa) dayanak yine **[KOPYA]** kalır, tek fark
+   köken hücresinde ekran id'si yerine soru id'si yazılması (`q_x → q_y`); bu da **E sayılır**
+   (`references/core/evidence-binding.md` K6 ihlali).
 5. **Oranı hesapla:** `kaynak gerektiren soru sayısı / toplam skorlanan soru sayısı`.
 
 ## Geçme eşiği (sayısal)
