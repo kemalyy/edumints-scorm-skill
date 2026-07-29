@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   kanonik değil; hiçbiri uymazsa belgeli varsayılan `gagne-9` + zorunlu gerekçe.
 - `references/pre-flight.md` — yeni Madde 1b: YÖNTEM BEYANI (paket + kaplamalar + elenenler +
   gerekçe) kaydı zorunlu.
+- **`PRIOR_KNOWLEDGE` yöntem kadranı** (#13) — SKILL.md'de 1–10 ölçek + uç değer betimleri;
+  sunum kadranlarından AYRI düzlemde (Katman 0 seçici girdisi, "ton ayarı" değil); 3 satırlık
+  kadran→seçici etki tablosu (uzmanlık-tersinme: yüksek PK'da çözümlü örnek dozu düşer,
+  problem-önce öne geçer) + dört sunum kadranıyla çelişki taraması (çapraz referans bölümü).
+- **Eğitim Okuması baskın-mod enum'una `gösterim`** (#13) — keşif | gösterim | uygulama |
+  değerlendirme; gösterim-ağırlıklı kurslar artık adlandırılabilir.
+
+### Changed — v2.1 Katman 0 seçici + paket şeması
+- SKILL.md dört mevcut kadranı **"sunum kadranı"** olarak sınıflandırdı (geriye-uyumluluk notu:
+  v1 adları ve anlamları sabit); pre-flight Madde 1 PRIOR_KNOWLEDGE beyanını da sorar.
 
 ### Added — v2.0 Kanıt Bağlama çekirdeği (Wave 1: A1–A5 + E4)
 - **`references/core/` (Katman 1 — yöntemden bağımsız çekirdek kurallar; hiçbir kural bir pedagoji

@@ -10,8 +10,10 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
 ## Niyet & ayar
 - [ ] **0. Eğitim Okuması beyan edildi mi?** (SKILL.md Bölüm 0 — kitle / hedef davranış / ton / süre /
   baskın mod tek cümlede). Beyan yoksa dur.
-- [ ] **1. Dial değerleri brief'ten gerekçeli mi**, yoksa sessizce baseline mı kullanıldı? Dört dial
-  (INTERACTIVITY / COGNITIVE_DENSITY / TONE / VISUAL_RICHNESS) için seçilen değer + tek satır neden.
+- [ ] **1. Dial değerleri brief'ten gerekçeli mi**, yoksa sessizce baseline mı kullanıldı? Dört sunum
+  kadranı (INTERACTIVITY / COGNITIVE_DENSITY / TONE / VISUAL_RICHNESS) + yöntem kadranı
+  (PRIOR_KNOWLEDGE 1–10) için seçilen değer + tek satır neden. PK varsayılan (3) kullanıldıysa
+  beyan edildi mi; düşük PK + yüksek COGNITIVE_DENSITY kombinasyonu ayrıca gerekçelendi mi?
 - [ ] **1b. YÖNTEM BEYANI kayıtlı mı** (`core/method-selector.md` çıktı biçimi): kazanım başına
   paket + kaplama(lar) + elenenler + tek-paragraf gerekçe? Sert kısıt elemesinden geçmeyen paket
   seçildiyse dur; hiçbir paket uymadıysa varsayılanın (`gagne-9`) zorunlu gerekçesi yazıldı mı?
