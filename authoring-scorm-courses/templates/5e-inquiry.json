@@ -1,0 +1,78 @@
+{
+  "_pack": "5e-inquiry",
+  "_template_version": 1,
+  "_draft": true,
+  "_draft_reason": "requires_platform: [exploration] — F2 ekran tipi (öğrenen girdisini saklayıp sonraki ekranda geri oynatma, kemalyy/edumints-scorm-mcp F2) henüz sunucuda YOK. Bu şablon exploration ekranını paket sözleşmesine göre kullanır; F2 yayınlanana dek build_from_spec bu spec'i REDDEDER. Bilinçli karar: exploration'ı mevcut bir ekran tipiyle taklit edip 'kâğıt-üstü 5E' üretmek yerine taslak beyanı (paket de aynı gerekçeyle kendini seçiciden elettirir — references/pedagogy/5e-inquiry.md 'Platform şartı'). F2 gelince: _draft alanlarını sil, build + lint koş, kanıt bağlarını doğrula.",
+  "_note": "C3 5E Sorgulama Döngüsü şablonu (references/pedagogy/5e-inquiry.md). Kopyala-uyarla: kavramı, keşif denemelerini ve soru içeriğini değiştir; faz SIRASINI ve skor/kanıt sözleşmesini KORU (skor yalnız degerlendir fazında; skorlu her soru evidence_screen_ids ile HEM kesfet HEM acikla ekranlarına çoğul bağlı; merak fazı ÖĞRETMEZ). Ekranlardaki _phase alanları belgeleme içindir.",
+  "_yontem_beyani": [
+    "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
+    "- kazanım: O1 (tür: kavram · PK: 4 · hata maliyeti: düşük · bütçe: 8 dk)",
+    "  paket: 5e-inquiry",
+    "  kaplamalar: []",
+    "  elenenler: [rosenshine-di (uygun aday ama conflicts_with: model-önce sıra keşfi öldürür; düşük hata maliyeti + çürütülecek yaygın ön-kavram keşif-önceyi öne çeker), 4cid (outcome_types prosedür/problem çözme — kavram kapsam dışı), retrieval-spaced (yeni kavram — tazeleme değil)]",
+    "  gerekçe: \"'Ortalama = merkez' ön-kavramı yaygın ve çürütülebilir; yanılmak güvenli ve ucuz (hata maliyeti düşük). Öğrenenin kendi tahmininin çürümesi, anlatımdan daha derin işleme üretir. ŞART: exploration (F2) platformda var olmalı — yoksa bu beyan geçersizdir ve seçici paketi eler.\""
+  ],
+  "title": "Ortalama Neden Yanılttı? Medyan Kavramı",
+  "description": "5E sorgulama mikrokursu — 5e-inquiry şablonu (TASLAK: F2/exploration bekliyor)",
+  "scorm_version": "2004",
+  "language": "tr",
+  "theme": "modern-light",
+  "tracking": { "completion_rule": "viewed_all_and_passed", "passing_score": 70 },
+  "objectives": [
+    { "id": "O1",
+      "description": "Uç değer içeren bir veri kümesinde merkezi eğilim ölçüsü olarak ortalama ile medyan arasında gerekçeli seçim yapar.",
+      "success_criteria": "Yeni bir veri kümesinde uç değerin hangi ölçüyü nasıl etkilediğini doğru öngörür." } ],
+  "screens": [
+    { "id": "giris", "type": "title_slide",
+      "title": "Ortalama Neden Yanılttı?",
+      "subtitle": "~8 dk · bir tahminle başlıyoruz — cevap sonra" },
+
+    { "id": "celiski", "type": "content_slide", "_phase": "merak",
+      "title": "Maaş 'ortalaması' 42.000 ₺ — ama 10 kişiden 8'i bunun altında",
+      "body_html": "<p>Bir ekibin ilanı 'ortalama maaş 42.000 ₺' diyor; işe girenler çoğunluğun 30.000 ₺ civarı aldığını görüyor. Kimse yalan söylemedi. Bu nasıl mümkün? Tahminini birazdan kendi ellerinle sınayacaksın — burada cevap verilmiyor.</p>" },
+
+    { "id": "kesif_ortalama", "type": "exploration", "_phase": "kesfet", "points": 0,
+      "title": "Dene: bir uç değer ekle, iki ölçüyü izle",
+      "prompt_html": "<p>9 kişilik takımda herkes 30.000 ₺ alıyor. Denemelerde önce TAHMİN et, sonra sonucu gör — tahminlerin saklanacak ve açıklamada karşına gelecek.</p>",
+      "_f2_sozlesmesi": "Öğrenen girdisi (tahmin + deneme kaydı) saklanır ve sonraki ekranlarda {{exploration:kesif_ortalama.*}} ile geri oynatılır (kemalyy/edumints-scorm-mcp F2).",
+      "trials": [
+        { "id": "t1", "setup_html": "<p>Takıma 150.000 ₺ alan bir yönetici eklenince ORTALAMA ne olur — tahminin?</p>",
+          "options": ["30.000 civarında kalır", "belirgin biçimde yükselir"] },
+        { "id": "t2", "setup_html": "<p>Aynı ekleme MEDYANI (sıralı listenin ortasını) ne yapar — tahminin?</p>",
+          "options": ["değişmez ya da çok az değişir", "belirgin biçimde yükselir"] } ] },
+
+    { "id": "aciklama_medyan", "type": "content_slide", "_phase": "acikla",
+      "title": "Gözleminin adı: uç değere dayanıklılık",
+      "blocks": [
+        { "html": "<p>İlk tahminin şuydu: <b>{{exploration:kesif_ortalama.t1}}</b>. Denemede gördün: tek uç değer ortalamayı 30.000'den 42.000'e çekti — çünkü ortalama HER değeri toplama katar, uç değer payı büyütür.</p>" },
+        { "html": "<p>Medyan denemesinde ise ({{exploration:kesif_ortalama.t2}}) orta nokta yerinde kaldı: medyan sıralı listenin ORTASINI okur, uçtaki değerin büyüklüğü ortayı taşımaz. İlandaki 42.000 işte bu yüzden 'kimse yalan söylemeden' yanıltıyordu.</p>" },
+        { "html": "<p>Seçim kuralı: veri kümesinde uç değer varsa merkez için <b>medyan</b>, simetrik dağılımda ikisi de iş görür — soru 'tipik üye ne alıyor?' ise ortayı, 'toplam ne dağıtılıyor?' ise ortalamayı sor.</p>" } ] },
+
+    { "id": "transfer_ev", "type": "mcq", "_phase": "derinlestir", "points": 0,
+      "title": "Yeni bağlam: mahalledeki ev fiyatları",
+      "prompt_html": "<p>Puan yok. Bir mahallede 19 ev 2-3 milyon ₺ bandında, 1 malikâne 40 milyon ₺. Emlakçı 'ortalama 4,5 milyon' diyor. Alıcıya hangi ölçü 'tipik evi' anlatır?</p>",
+      "options": [
+        { "id": "a", "text_html": "Medyan — malikâne sıralı listenin ortasını taşıyamaz", "correct": true },
+        { "id": "b", "text_html": "Ortalama — bütün evleri hesaba kattığı için daha adildir" } ],
+      "feedback": {
+        "correct_html": "<p>Evet — kendi denemende gördüğün desenin aynısı: tek uç değer ortalamayı çekti, ortayı çekemedi.</p>",
+        "incorrect_html": "<p>'Hepsini hesaba katmak' burada tuzak: uç değer payı şişirir. Denemende 150.000 ₺'nin ortalamaya yaptığını hatırla ve 'Gözleminin adı' ekranındaki seçim kuralına dön.</p>" } },
+
+    { "id": "q_merkez", "type": "mcq", "_phase": "degerlendir", "points": 50,
+      "objective_ids": ["O1"],
+      "evidence_screen_ids": ["kesif_ortalama", "aciklama_medyan"],
+      "title": "Skorlu: hangi ölçü, neden?",
+      "prompt_html": "<p>Bir destek ekibinin çözüm süreleri (dk): 4, 5, 5, 6, 6, 7, 90. Yönetim 'tipik çözüm süresi'ni raporlamak istiyor. Doğru seçim hangisi?</p>",
+      "options": [
+        { "id": "a", "text_html": "Medyan (6 dk) — 90 dk'lık uç vaka ortalamayı ~17,6 dk'ya çeker, ortayı çekemez", "correct": true },
+        { "id": "b", "text_html": "Ortalama (~17,6 dk) — uç vaka da gerçek, hesaba katılmalı" },
+        { "id": "c", "text_html": "İkisi de aynı sonucu verir — veri küçük" } ],
+      "feedback": {
+        "correct_html": "<p>Doğru — uç değer tespiti + ölçü seçimi + gerekçe: denemendeki maaş deseniyle birebir aynı mekanizma. ('Toplam iş yükü' sorulsaydı ortalama meşrulaşırdı — soru 'tipik' diyor.)</p>",
+        "incorrect_html": "<p>Uç vakayı 'hesaba katmak' ile 'tipik olanı raporlamak' farklı sorular — kendi denemende tek uç değerin ortalamaya yaptığını gördün. 'Gözleminin adı: uç değere dayanıklılık' ekranındaki seçim kuralına geri dön.</p>" } },
+
+    { "id": "ozet", "type": "summary", "title": "Özet: uç değer varsa ortayı oku",
+      "body_html": "<p>Ortalama her değeri toplar — uç değer onu taşır; medyan ortayı okur — taşınmaz. 'Tipik' soruluyorsa medyanla başla.</p>",
+      "show_score": true, "show_completion": true }
+  ]
+}

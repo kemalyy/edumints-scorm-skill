@@ -171,6 +171,17 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
   Fallbacks: `make_video_from_image_audio` (PNG+TTS→MP4), a static SVG/PNG asset, or local render.
 
 ## Templates & examples (copy and adapt)
-- `templates/tool-training.json` — Watch→Apply→Your-Turn blueprint for teaching an app/tool.
-- `templates/concept-lesson.json` — narrated concept/theory lesson blueprint.
+One minimal template per first-wave method pack (C1–C4). Each buildable template passes the server
+lint clean (0 errors, 0 warns, `evidence_binding_coverage` 1.0) — keep that invariant when adapting.
+- `templates/rosenshine-di.json` — C1 Direct Instruction micro-course (successor of the old
+  `tool-training.json` Pattern A: the Watch→Apply→Your-Turn steps are mapped to pack phases in the
+  file's `_pattern_a_eslemesi` table; guided practice is now unscored, scored questions carry
+  `evidence_screen_ids`).
+- `templates/merrill-fpi.json` — C2 task-centered micro-course (successor of the old
+  `concept-lesson.json` Pattern B — see `_pattern_b_eslemesi`; chosen over 5E because 5E's
+  `exploration` platform requirement isn't shipped yet).
+- `templates/5e-inquiry.json` — C3 5E inquiry cycle, **`_draft: true`**: uses the `exploration`
+  screen type (F2) which the server doesn't ship yet; build_from_spec rejects it until then.
+- `templates/4cid.json` — C4 4C/ID complex-skill training, **`_draft: true`**: uses the
+  `worked_example` screen type (F1); same gate.
 - `examples/example-cybersecurity-course.json` — a complete, high-quality build_from_spec to study and adapt.

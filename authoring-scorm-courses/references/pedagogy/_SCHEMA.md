@@ -24,7 +24,7 @@ doğrulamasının çalıştırılabilir örnekleridir.
 | `evidence_phase` | ✓* | faz id (tekil) | **Kanıt ÜRETEN faz.** Katman 1 denetiminin okuduğu beyan. |
 | `evidence_phases` | ✓* | faz id listesi (çoğul) | Birden çok faz kanıt üretiyorsa çoğul biçim. *`evidence_phase` VEYA `evidence_phases` — en az biri ZORUNLU.* |
 | `scoring_allowed_from` | ✓ | faz id | Skorlu ekranın yerleşebileceği İLK faz — Z2'nin paket-düzeyi beyanı; öncesindeki fazlar `skorlanabilir: false`. |
-| `conflicts_with` | ✓ | kimlik listesi | Aynı kursta birleştirilemeyen paket/kaplama kimlikleri (boş = bilinen çakışma yok); bildirim biçimi `overlays/_FRAMEWORK.md`. |
+| `conflicts_with` | ✓ | kimlik listesi | **AYNI HEDEF (objective) üzerinde** birleştirilemeyen paket/kaplama kimlikleri (boş = bilinen çakışma yok); bildirim biçimi `overlays/_FRAMEWORK.md`. Kapsam HEDEFTİR, kurs değil: farklı hedeflerde çelişen paketler aynı kursta meşru olarak birlikte yaşar (B2 — kavramsal hedefte productive-failure + prosedürel hedefte rosenshine-di iyi bir karma kursun ta kendisidir). E2 denetleyicisi (kemalyy/edumints-scorm-mcp#111) ihlali hedef başına arar. |
 
 ## Kanıt beyanı ÇOĞULDUR (1:1 dayatması yok)
 
