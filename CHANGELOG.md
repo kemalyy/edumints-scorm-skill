@@ -21,6 +21,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   değil); `conflicts_with: []`. build_from_spec örneği: hata (bug) raporu yazma görevi. Kaynak:
   Merrill (2002), ETR&D 50(3), 43–59 — doğrulandı. Dosya adı seçici kimliğiyle hizalı
   (`merrill-fpi`; şema kuralı: dosya adı == pack).
+- **`references/pedagogy/5e-inquiry.md`** (#18) — C3 5E Sorgulama Döngüsü: merak (Engage) →
+  kesfet (Explore, skorsuz keşif) → acikla (Explain, keşif çıktısına atıflı kanonik açıklama) →
+  derinlestir (Elaborate, skorsuz transfer) → degerlendir (Evaluate, skorlu). ÇOĞUL kanıt beyanı
+  `evidence_phases: [kesfet, acikla]`; `requires_platform: [exploration]` (F2 — öğrenen girdisini
+  saklayıp geri oynatma; yetenek yoksa seçici paketi ELER, kâğıt-üstü 5E üretilmez). "Ne zaman
+  seçilmemeli": yüksek hata maliyeti (sert kısıt dışı), PK<3 (uzmanlık-tersinmenin acemi ucu —
+  Kirschner/Sweller/Clark 2006 atfı), dar bütçe; `conflicts_with: [rosenshine-di]`
+  (productive-failure bilinçli listede değil — aynı deneme-önce ailesi). build_from_spec örneği:
+  yoğunluk kavramı; skorlu soru iki kanıt fazına birden çoğul bağlı. Kaynak: Bybee vd. (2006),
+  The BSCS 5E Instructional Model — doğrulandı.
 
 ### Added — v2.1 Katman 0 seçici + paket şeması (Wave 3: B1–B4)
 - **`references/core/method-selector.md`** (#12) — Katman 0 yöntem seçici: 7 kazanım türü + 5 girdi
