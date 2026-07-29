@@ -4,6 +4,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.1 İlk dalga yöntem paketleri (Wave 4a: C1–C4)
+- **`references/pedagogy/rosenshine-di.md`** (#16) — C1 Doğrudan Öğretim paketi: günlük tekrar →
+  küçük adımlar + model/çözümlü örnek (`evidence_phase: sunum_model`) → rehberli pratik (skorsuz,
+  yüksek soru yoğunluğu) → bağımsız pratik (skorlu). Uzmanlık-tersinme "ne zaman seçilmemeli"
+  bölümü; `conflicts_with: [5e-inquiry, productive-failure]` (aynı kazanımda keşif-önce ↔
+  model-önce zıtlığı); Pattern A (İzle→Uygula→Sıra Sende) eşleme beyanı (şablon işi #20'de);
+  uçtan uca build_from_spec örneği (pediatrik doz hesabı; skorlu soru `evidence_screen_ids` ile
+  kanıt ekranına bağlı — scorm-mcp CONTRACTS §1.3 E1). Kaynak: Rosenshine (2012), American
+  Educator 36(1) — doğrulandı.
+
 ### Added — v2.1 Katman 0 seçici + paket şeması (Wave 3: B1–B4)
 - **`references/core/method-selector.md`** (#12) — Katman 0 yöntem seçici: 7 kazanım türü + 5 girdi
   (PRIOR_KNOWLEDGE / hata maliyeti / zaman / platform / bağlam) → paket(ler) + kaplama(lar).
