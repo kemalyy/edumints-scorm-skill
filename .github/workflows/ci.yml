@@ -39,8 +39,8 @@ jobs:
           tree = re.search(r"## Structure.*?```(.*?)```", readme, re.S)
           assert tree, "README'de Structure kod bloğu yok"
           listed = set(re.findall(r"([\w\-]+\.md)", tree.group(1))) - {"SKILL.md"}
-          # Gerçek dizin
-          real = {p.name for p in pathlib.Path("authoring-scorm-courses/references").glob("*.md")}
+          # Gerçek dizin (core/, eval/ gibi alt dizinler dahil)
+          real = {p.name for p in pathlib.Path("authoring-scorm-courses/references").rglob("*.md")}
           missing = sorted(real - listed)   # dizinde var, README'de yok
           stale = sorted(listed - real)     # README'de var, dizinde yok
           if missing or stale:

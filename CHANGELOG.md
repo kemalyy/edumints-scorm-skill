@@ -4,6 +4,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.0 Kanıt Bağlama çekirdeği (Wave 1: A1–A5 + E4)
+- **`references/core/` (Katman 1 — yöntemden bağımsız çekirdek kurallar; hiçbir kural bir pedagoji
+  paketinin faz adını içermez, sıra dayatmaz):**
+  - `evidence-binding.md` (#6) — K1–K3: skorlanan her soru kurs-içi kanıt kaynağına bağlanır
+    (≥ 6 geçerli kaynak türü); birebir denetim sorusu ("Bu kursu hiç görmemiş ama alanı bilen biri
+    bu soruyu zaten cevaplayabilir mi?") + numaralı "bağla ya da at" prosedürü.
+  - `alignment.md` (#7) — H1–H3: hedef→soru→kanıt eşleme tablosu biçimi + "skorlanan ekran >
+    hedef + 1" sayısal UYARI eşiği (warn, fail değil) + tam eşleme örneği.
+  - `feedback-anatomy.md` (#8) — G1–G3: gerekçeli geri bildirimin 3 zorunlu öğesi (neden doğru /
+    neden yanlış / kanıta geri işaret); anti-slop B3 TABAN statüsüne yükseltildi ve fazsız yazıldı.
+  - `scoring-timing.md` (#9) — Z1–Z3: formatif/summatif tanımları; "kanıt kaynağı üretilmeden skor
+    yok" ilkesi; skorsuz erken-deneme istisnası.
+- **`references/eval/blind-test.md`** (#11) — kör test protokolü: kanıt kaynakları çıkarılmış kursta
+  skorlanan sorular alan-bilgili okuyucu tarafından cevaplanabiliyor mu? Geçme eşiği **≥ 1/2**;
+  sonuç kayıt şablonu; pilot koşu kaydı (amiral gemisi örnek: 1/4 → KALDI). F1/F2 ekran tiplerinin
+  kapısı.
+
+### Changed — v2.0 Kanıt Bağlama çekirdeği
+- `references/anti-slop.md` (#10) — 17 kuralın tavan/taban sınıflandırma tablosu + yeni **T1–T3
+  taban kuralları** (skorlanan soruya kanıt kaynağı VAR; iddiaya mekanizma taşıyıcısı VAR;
+  `incorrect_html` kanıta geri işaret) + B3 taban yükseltmesi (fazsız yeniden yazım).
+- `references/pre-flight.md` — yeni 9d (tabanlar T1–T3) ve 12b (kanıt bağlama) maddeleri; 12'ye
+  hedef→soru→kanıt tablosu + H3 eşiği eklendi.
+- `SKILL.md` — referans listesine `core/` ve `eval/` dosyaları eklendi.
+- CI D4 drift kapısı `references/` alt dizinlerini de sayacak şekilde `rglob`'a çevrildi; README
+  Structure ağacına `core/` ve `eval/` eklendi.
+
 ### Added — visual storytelling (W11)
 - New `references/visual-storytelling.md` — the anti-ordinariness playbook distilled from the
   "Spot the Phish" showcase rebuild: narrative thread (one scene, opened and closed),

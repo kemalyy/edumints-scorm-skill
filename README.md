@@ -27,6 +27,13 @@ authoring-scorm-courses/
 ├── references/
 │   ├── anti-slop.md                 # anti-slop discipline: training read + parametric dials (read FIRST)
 │   ├── pre-flight.md                # MANDATORY pre-build quality-gate matrix
+│   ├── core/                        # Layer 1 — method-independent core rules
+│   │   ├── evidence-binding.md      # every scored question binds to an in-course evidence source (K1–K3)
+│   │   ├── alignment.md             # objective→question→evidence mapping + warn threshold (H1–H3)
+│   │   ├── feedback-anatomy.md      # 3 mandatory feedback elements — floor rule (G1–G3)
+│   │   └── scoring-timing.md        # formative/summative + "no score before evidence" (Z1–Z3)
+│   ├── eval/
+│   │   └── blind-test.md            # blind-test protocol (≥ 1/2 pass threshold) — gate for new screen types
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
