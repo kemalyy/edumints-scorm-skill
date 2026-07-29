@@ -78,10 +78,11 @@ tasarımcının kafasında durur, ekranda değil.
 Mekanik: her anlatımlı ekranda narration ile gövde metnini karşılaştır; cümle örtüşmesi varsa fail.
 → *Override:* yok. Birebirse ya metni ya anlatımı yeniden yaz.
 
-**B3 — Tek-kelime / varsayılan feedback YASAK.** Quiz `feedback` alanı `"Doğru!"` / `"Tekrar
-deneyin."` (şema varsayılanı) ya da salt "Yanlış" OLAMAZ. Her `feedback`: **(a) neden** + **(b)
-doğru modele bağ** + **(c) ilgili İzle/içerik ekranına yönlendirme** içerir. `correct_html` bile en
-az "neden doğru" tek cümlesini taşır.
+**B3 — Tek-kelime / varsayılan feedback YASAK (TABAN kuralı).** Quiz `feedback` alanı `"Doğru!"` /
+`"Tekrar deneyin."` (şema varsayılanı) ya da salt "Yanlış" OLAMAZ. Her `feedback` üç zorunlu öğe
+taşır: **(a) neden doğru** + **(b) neden yanlış (yanılgıyı düzelt)** + **(c) cevabın türetildiği
+kurs-içi kanıt kaynağına geri işaret** (ekran başlığı/id). `correct_html` bile en az "neden doğru"
+tek cümlesini taşır. Tam anatomi: `references/core/feedback-anatomy.md` (G1–G3).
 → *Override:* yok.
 **Artık mekanik denetleniyor:** lint_course → default_feedback WARN (core/antislop.py, W9 P1).
 
