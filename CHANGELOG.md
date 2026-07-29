@@ -4,6 +4,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.1 Değerlendirme seti (Wave 4b: E3, #21)
+- **`eval/` (depo kökü)** — belge + fikstür seti (otomasyon değil): 10 test istemi
+  (`eval/prompts/`, kazanım türleri × önbilgi düzeyleri matrisi; 3'ü `sıkıştırılmış-referans`
+  etiketli — kopya kâğıdı / mevzuat özeti / politika tablosu, "madde sayısı ≈ ekran sayısı"
+  başarısızlık-kökeni girdileri gömülü snippet'lerle). Nicel metrik tanımı: **kanıta bağlı
+  skorlanan soru oranı** = sunucu lint'inin `evidence_binding_coverage` alanı (E1/#110;
+  vakum/ilgisizlik/QUIZ_TYPES-dışı kör noktaları belgeli). Çerçeve kuralı dosyanın en
+  üstünde: **coverage tabandır, hedef değil — tek gerçek kapı E4 kör testidir**; v1↔v2
+  karşılaştırmasında karar sütunu kör testten gelir, coverage yalnız ön koşul satırıdır.
+- **`eval/results/2026-07-29-v1-baseline.md`** — v1 taban çizgisi koşuldu (artefakt-vekilli,
+  gerçek `build_from_spec`+`lint_course`): amiral örnek kursu **coverage 0.0** (0/3 skorlu),
+  `tool-training.json` **0.0** (0/2), `concept-lesson.json` **1.0 (vakum, n=0** — hiç ölçüm
+  yok**)**; v1 kör test pilotu KALDI (1/4). v2 şablonları aynı harness'ta 1.0 (vakumsuz,
+  0 err · 0 warn) — kör testleri ve 10-istem tam koşusu G3'e bırakıldı (kayıtta BEKLEMEDE).
+- **`eval/results/TEMPLATE.md`** — sonuç kaydı + v1↔v2 karşılaştırma tablosu şablonu
+  (vakum yazım kuralı, source_item_parity sütunu, coverage–kör-test tutarsızlık notu).
+
 ### Changed — v2.1 Paket şablonları (Wave 4b: F3, #20)
 - **`templates/` yeniden yazıldı: paket başına bir minimal şablon (C1–C4).** Her şablon
   YÖNTEM BEYANI (`_yontem_beyani`, method-selector çıktı biçimi) + faz açıklamalı ekranlar
