@@ -31,6 +31,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   (productive-failure bilinçli listede değil — aynı deneme-önce ailesi). build_from_spec örneği:
   yoğunluk kavramı; skorlu soru iki kanıt fazına birden çoğul bağlı. Kaynak: Bybee vd. (2006),
   The BSCS 5E Instructional Model — doğrulandı.
+- **`references/pedagogy/4cid.md`** (#19) — C4 4C/ID Karmaşık Beceri Eğitimi: görev sınıfları
+  basit→karmaşık TAM görevler; gorev_tam_destek (çözümlü örnek + destekleyici bilgi) →
+  gorev_soluklastirma (tamamlama problemleri; `sonraki`/`tekrar_kosulu` döngüsüyle destek 0'a
+  inene dek) → gorev_bagimsiz (skorlu). ÇOĞUL kanıt: `evidence_phases: [gorev_tam_destek,
+  gorev_soluklastirma]`; `requires_platform: [worked_example]` (F1 — soluklaştırma düzeyleri).
+  Dört bileşenin fazlara yerleşim haritası (bileşen ≠ faz); "ne zaman seçilmemeli": tekil
+  olgu/kavram, tek-yollu kısa prosedür (rosenshine-di alternatifi — çakışma değil), kısa kurs,
+  yüksek PK; `conflicts_with: []`. build_from_spec örneği: SQL yönetici raporu, 3 görev sınıfı;
+  skorlu soru iki kanıt fazına çoğul bağlı. Kaynak: van Merriënboer & Kirschner (2018), Ten
+  Steps to Complex Learning (3. baskı) — doğrulandı.
 
 ### Added — v2.1 Katman 0 seçici + paket şeması (Wave 3: B1–B4)
 - **`references/core/method-selector.md`** (#12) — Katman 0 yöntem seçici: 7 kazanım türü + 5 girdi

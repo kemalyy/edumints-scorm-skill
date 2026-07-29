@@ -41,7 +41,8 @@ authoring-scorm-courses/
 │   │   ├── _STUB-dongulu.md         # schema-validation example: cyclic flow (not a pack)
 │   │   ├── rosenshine-di.md         # C1 — Direct Instruction: model-first, guided→independent practice
 │   │   ├── merrill-fpi.md           # C2 — Merrill First Principles: task-centered activation→demonstration→application→integration
-│   │   └── 5e-inquiry.md            # C3 — BSCS 5E inquiry cycle: explore-first (requires the exploration screen type)
+│   │   ├── 5e-inquiry.md            # C3 — BSCS 5E inquiry cycle: explore-first (requires the exploration screen type)
+│   │   └── 4cid.md                  # C4 — 4C/ID complex-skill training: whole tasks, simple→complex, fading support
 │   ├── overlays/                    # Layer 2 — method-orthogonal overlays (D series)
 │   │   └── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
