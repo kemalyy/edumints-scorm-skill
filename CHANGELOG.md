@@ -4,6 +4,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.1 İlk dalga yöntem paketleri (Wave 4a: C1–C4)
+- **`references/pedagogy/rosenshine-di.md`** (#16) — C1 Doğrudan Öğretim paketi: günlük tekrar →
+  küçük adımlar + model/çözümlü örnek (`evidence_phase: sunum_model`) → rehberli pratik (skorsuz,
+  yüksek soru yoğunluğu) → bağımsız pratik (skorlu). Uzmanlık-tersinme "ne zaman seçilmemeli"
+  bölümü; `conflicts_with: [5e-inquiry, productive-failure]` (aynı kazanımda keşif-önce ↔
+  model-önce zıtlığı); Pattern A (İzle→Uygula→Sıra Sende) eşleme beyanı (şablon işi #20'de);
+  uçtan uca build_from_spec örneği (pediatrik doz hesabı; skorlu soru `evidence_screen_ids` ile
+  kanıt ekranına bağlı — scorm-mcp CONTRACTS §1.3 E1). Kaynak: Rosenshine (2012), American
+  Educator 36(1) — doğrulandı.
+- **`references/pedagogy/merrill-fpi.md`** (#17) — C2 Merrill İlk İlkeler (görev-merkezli):
+  gerçek görev tanıtımı → etkinleştirme (bilinçli olarak kanıt fazı DEĞİL — K2 gerekçesi gövdede)
+  → gösterim (`evidence_phase: gosterim` — gösterimsiz kurs yapısal olarak üretilemez) →
+  destekli uygulama (skorsuz) → bağımsız uygulama (skorlu) → bütünleştirme (skorsuz yansıtma).
+  "Görev tanımlanamıyorsa paket seçilemez" kuralı; 4cid ile ölçek-farkı seçici notu (çakışma
+  değil); `conflicts_with: []`. build_from_spec örneği: hata (bug) raporu yazma görevi. Kaynak:
+  Merrill (2002), ETR&D 50(3), 43–59 — doğrulandı. Dosya adı seçici kimliğiyle hizalı
+  (`merrill-fpi`; şema kuralı: dosya adı == pack).
+- **`references/pedagogy/5e-inquiry.md`** (#18) — C3 5E Sorgulama Döngüsü: merak (Engage) →
+  kesfet (Explore, skorsuz keşif) → acikla (Explain, keşif çıktısına atıflı kanonik açıklama) →
+  derinlestir (Elaborate, skorsuz transfer) → degerlendir (Evaluate, skorlu). ÇOĞUL kanıt beyanı
+  `evidence_phases: [kesfet, acikla]`; `requires_platform: [exploration]` (F2 — öğrenen girdisini
+  saklayıp geri oynatma; yetenek yoksa seçici paketi ELER, kâğıt-üstü 5E üretilmez). "Ne zaman
+  seçilmemeli": yüksek hata maliyeti (sert kısıt dışı), PK<3 (uzmanlık-tersinmenin acemi ucu —
+  Kirschner/Sweller/Clark 2006 atfı), dar bütçe; `conflicts_with: [rosenshine-di]`
+  (productive-failure bilinçli listede değil — aynı deneme-önce ailesi). build_from_spec örneği:
+  yoğunluk kavramı; skorlu soru iki kanıt fazına birden çoğul bağlı. Kaynak: Bybee vd. (2006),
+  The BSCS 5E Instructional Model — doğrulandı.
+- **`references/pedagogy/4cid.md`** (#19) — C4 4C/ID Karmaşık Beceri Eğitimi: görev sınıfları
+  basit→karmaşık TAM görevler; gorev_tam_destek (çözümlü örnek + destekleyici bilgi) →
+  gorev_soluklastirma (tamamlama problemleri; `sonraki`/`tekrar_kosulu` döngüsüyle destek 0'a
+  inene dek) → gorev_bagimsiz (skorlu). ÇOĞUL kanıt: `evidence_phases: [gorev_tam_destek,
+  gorev_soluklastirma]`; `requires_platform: [worked_example]` (F1 — soluklaştırma düzeyleri).
+  Dört bileşenin fazlara yerleşim haritası (bileşen ≠ faz); "ne zaman seçilmemeli": tekil
+  olgu/kavram, tek-yollu kısa prosedür (rosenshine-di alternatifi — çakışma değil), kısa kurs,
+  yüksek PK; `conflicts_with: []`. build_from_spec örneği: SQL yönetici raporu, 3 görev sınıfı;
+  skorlu soru iki kanıt fazına çoğul bağlı. Kaynak: van Merriënboer & Kirschner (2018), Ten
+  Steps to Complex Learning (3. baskı) — doğrulandı.
+
 ### Added — v2.1 Katman 0 seçici + paket şeması (Wave 3: B1–B4)
 - **`references/core/method-selector.md`** (#12) — Katman 0 yöntem seçici: 7 kazanım türü + 5 girdi
   (PRIOR_KNOWLEDGE / hata maliyeti / zaman / platform / bağlam) → paket(ler) + kaplama(lar).
