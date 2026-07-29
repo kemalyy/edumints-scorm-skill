@@ -32,6 +32,11 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
   dallanma/sonuçsuz-feedback/tek-düğüm yok; kötü karar negatif `score_delta` — D3)?
 
 - [ ] **9c. Görsel yoğunluk & anlatı** (`references/visual-storytelling.md`): 3+ ardışık görselsiz ekran yok mu (lint `text_only_run`/`visual_poverty` temiz mi)? Kurs tek bir somut sahneyle açılıp aynı sahneyle mi kapanıyor? "N şeyi kontrol et/karşılaştır/sırala" içeriği paragraf yerine simulation/image_compare/timeline'a mı çevrildi?
+- [ ] **9d. Tabanlar (anti-slop T1–T3):** skorlanan soru × kanıt-kaynağı eşlemesinde boş satır yok mu
+  (T1; ayrıntı 12b'de) · her sayısal iddia / kavram tanımının yanında bir mekanizma taşıyıcısı
+  (örnek / karşı-örnek / mini-vaka / diyagram / karşılaştırma) var mı (T2) · her `incorrect_html`
+  kurs-içi bir kanıt ekranına işaret ediyor mu (T3)?
+
 ## Mekanik & teslim
 - [ ] **10. Sahne ritmi:** anlatımlı ekranlarda `narration_text` + uygun `reveal`; ekran başına
   **3–6 reveal bloğu**; quiz dışı içerik `stage` modunda akıyor. (`authoring-recommendations.md` §1–3)
