@@ -38,7 +38,8 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
 - [ ] **11. Tema açık/nötr/kontrast**, görsellerde `alt` tam, dil sade, `scorm_version` doğru
   (branching/variables/games → **2004**)?
 - [ ] **12. Değerlendirme hizalı:** sorular "uygula" düzeyinde (senaryo > tanım); `passing_score` ile
-  `completion_rule` tutarlı?
+  `completion_rule` tutarlı? Hedef→soru→kanıt eşleme tablosu dolu mu (`core/alignment.md` H2);
+  skorlanan ekran sayısı > hedef + 1 ise tek cümle gerekçe yazıldı mı (H3)?
 - [ ] **12b. Kanıt bağlama (`core/evidence-binding.md`):** skorlanan her soru için cevabı üreten
   kurs-içi kanıt kaynağı ekranı var mı (K1) ve her birine denetim sorusu uygulandı mı — "Bu kursu hiç
   görmemiş ama alanı bilen biri bu soruyu zaten cevaplayabilir mi?" Evet kalan soru: bağla ya da at (K3).
