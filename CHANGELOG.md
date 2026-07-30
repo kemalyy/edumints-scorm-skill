@@ -40,6 +40,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   BEYAN: doyum ≠ dekoratif oyunlaştırma — anti-slop D1/D2 kaplamanın altında aynen geçerli,
   ARCS kutlama efekti gerekçesi yapılamaz. TONE kadranıyla 5 satırlık üslup↔yapı ayrım tablosu
   (TONE 2'de de 8'de de ARCS kararları aynı).
+- **`references/overlays/expertise-adaptive.md` — D4 Uzmanlığa Uyarlanır Tasarım (#33).**
+  Uzmanlık-tersinme etkisi (Kalyuga vd. 2003; Kalyuga 2007 EPR 19(4) 509–539 — doğrulandı)
+  kaplandı; karar noktaları `[destek_dozu, gezinme, ekran_secimi]`. KURUCU KURAL epikten:
+  "atlanabilen şey DESTEKTİR, KANIT değildir" — `evidence_screen_ids`'te geçen hiçbir ekran
+  `visible_if`/atlama dalına konamaz (mekanik denetim: visible_if'li id'ler × kanıt id'leri
+  kesişimi boş; aksi K1/T1/Z2 ihlali). PK→doz tablosu: düşük `fading:"full"`, orta `"partial"`,
+  yüksek `"problem_only"` + problem-önce varyant; taşıyıcılar = worked_example soluklaştırma
+  dizisi (doğal taşıyıcı), skorsuz tanılama `set_vars` → destek ekranı `visible_if` (uzman
+  yolu), `adaptive_practice` bkt kipi (ustalık kestirimli erken durdurma). C10-bayraklı karar
+  ön-maddede bildirildi: mevzuat bağlamında kaplama içerik ATLATAMAZ, yalnız EK destek ekleyip
+  çıkarabilir (gezinme, karar-noktası düzeyi); ayrıca deneme-önce (destek enjekte etmez) ve
+  model-önce (gösterim kısalır ama kanıt ekranı kalkmaz) bildirimleri.
 
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat

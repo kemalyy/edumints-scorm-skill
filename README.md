@@ -55,7 +55,8 @@ authoring-scorm-courses/
 │   │   ├── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
 │   │   ├── cognitive-load.md        # D1 — cognitive-load management: segmenting/pre-training/modality/coherence/redundancy/signaling → screen decisions
 │   │   ├── udl.md                   # D2 — UDL (CAST 3.0): multiply representations of the SAME evidence source; response-format options; honest audio/caption limits
-│   │   └── arcs.md                  # D3 — Keller ARCS: attention/relevance/confidence/satisfaction as STRUCTURAL decisions (not tone); no decorative gamification
+│   │   ├── arcs.md                  # D3 — Keller ARCS: attention/relevance/confidence/satisfaction as STRUCTURAL decisions (not tone); no decorative gamification
+│   │   └── expertise-adaptive.md    # D4 — Kalyuga expertise reversal: PK → support dose (worked_example fading), expert paths via visible_if; "skippable = SUPPORT, never EVIDENCE"
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
