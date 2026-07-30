@@ -19,7 +19,7 @@ phases:
     skorlanabilir: false
   - id: sunum_model
     amac: "Yeni malzeme küçük adımlarla sunulur ve model/çözümlü örnekle GÖSTERİLİR (İlke 2+4) — kursun kanıt kaynağı burada üretilir."
-    izinli_ekran_tipleri: [content_slide, video, timeline, accordion, tabs, image_compare, data_chart]
+    izinli_ekran_tipleri: [worked_example, content_slide, video, timeline, accordion, tabs, image_compare, data_chart]
     skorlanabilir: false
   - id: rehberli_pratik
     amac: "Yüksek soru yoğunluğuyla deneme-güvenli pratik: anlama kontrol edilir, yanlış anlama skor cezasız düzeltilir (İlke 3+5+6+8)."
