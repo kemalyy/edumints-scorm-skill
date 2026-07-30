@@ -66,6 +66,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   Skor ağırlığı: hedefe orantılı pay + `passing_score` tutarlılığı (tek ucuz soruyla eşik
   aşılamaz — D2 uyumu). Çakışma bildirimi: tazeleme paketinde hatırlama-düzeyi geri getirme
   paketin özü — düzey itirazı yalnız hedef fiili uygulama+ iken işler.
+- **`references/overlays/accessibility.md` — D6 Erişilebilirlik (#35).** WCAG 2.2 AA (W3C
+  Recommendation 5 Ekim 2023 — kullanılan kriterler doğrulandı: 1.1.1/1.2.2/1.4.1/1.4.3/
+  2.1.1/2.2.1/2.5.7) yazım-zamanı kararlarına çevrildi; karar noktaları `[ekran_secimi, medya,
+  dil_ton]`. Platform lint'i/doğrulayıcısı TEKRARLANMADI — kaplama, sunucunun dürüst KISMİ
+  uygunluk beyanının (`docs/ACCESSIBILITY-CONFORMANCE.md`) belgeli sınırlarına ÇARPMAYAN
+  seçimleri kurar: `drag_drop` işaretçi-bağımlı → klavye gereken bağlamda aynı görev
+  `matching`/`sorting`; `term_match_race`/ekran-düzeyi `timer_sec` süre denetimsiz → süreli
+  mekanik yalnız `game` bileşimi `allow_extend`/`allow_disable` ile (timeout ile içerik
+  kilitleme yasak karar); `hotspot` bölgelerine içerik adlandıran `label`; alt metin KALİTESİ
+  (varlığı lint uyarır, içeriği yazar karar verir): öğreten görselin alt metni kanıt taşır —
+  yalnız alt metni okuyan öğrenen için soru cevaplanabilir kalır (K5 alt metne de uygulanır);
+  `data_chart` caption zorunlu (SVG programatik adsız); konuşmalı video ancak caption+
+  `narration_text` içeriği tam taşıyorsa; lottie döngüsü kritik içerik taşıyamaz. `dil_ton`:
+  sade dil, işleve-atıf ("yeşil düğme" değil "Bildir düğmesi"). Çakışma bildirimleri: udl
+  (sınır: çelişkide teknik uyum öncelikli) + arcs (süre baskısı motivasyonla
+  gerekçelendirilemez — yalnız öğrenen-denetimli zamanlayıcı).
 
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat

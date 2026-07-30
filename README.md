@@ -57,7 +57,8 @@ authoring-scorm-courses/
 │   │   ├── udl.md                   # D2 — UDL (CAST 3.0): multiply representations of the SAME evidence source; response-format options; honest audio/caption limits
 │   │   ├── arcs.md                  # D3 — Keller ARCS: attention/relevance/confidence/satisfaction as STRUCTURAL decisions (not tone); no decorative gamification
 │   │   ├── expertise-adaptive.md    # D4 — Kalyuga expertise reversal: PK → support dose (worked_example fading), expert paths via visible_if; "skippable = SUPPORT, never EVIDENCE"
-│   │   └── assessment-alignment.md  # D5 — Bloom-revised/SOLO level ↔ question-type mapping; "a recall question cannot measure an apply objective"; score-weight distribution
+│   │   ├── assessment-alignment.md  # D5 — Bloom-revised/SOLO level ↔ question-type mapping; "a recall question cannot measure an apply objective"; score-weight distribution
+│   │   └── accessibility.md         # D6 — WCAG 2.2 AA authoring-time decisions on top of the platform's honest conformance statement (alt-text quality, keyboard-safe types, learner-controlled timers)
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
