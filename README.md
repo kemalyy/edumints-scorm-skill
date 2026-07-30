@@ -52,7 +52,13 @@ authoring-scorm-courses/
 │   │   ├── cognitive-apprenticeship.md  # C11 — Collins/Brown/Newman: expert think-aloud model → coaching → fading → articulation → reflection → exploration
 │   │   └── retrieval-spaced.md      # C12 — retrieval practice + spacing (refresher-only; evidence = the re-exposure reference artifact)
 │   ├── overlays/                    # Layer 2 — method-orthogonal overlays (D series)
-│   │   └── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
+│   │   ├── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
+│   │   ├── cognitive-load.md        # D1 — cognitive-load management: segmenting/pre-training/modality/coherence/redundancy/signaling → screen decisions
+│   │   ├── udl.md                   # D2 — UDL (CAST 3.0): multiply representations of the SAME evidence source; response-format options; honest audio/caption limits
+│   │   ├── arcs.md                  # D3 — Keller ARCS: attention/relevance/confidence/satisfaction as STRUCTURAL decisions (not tone); no decorative gamification
+│   │   ├── expertise-adaptive.md    # D4 — Kalyuga expertise reversal: PK → support dose (worked_example fading), expert paths via visible_if; "skippable = SUPPORT, never EVIDENCE"
+│   │   ├── assessment-alignment.md  # D5 — Bloom-revised/SOLO level ↔ question-type mapping; "a recall question cannot measure an apply objective"; score-weight distribution
+│   │   └── accessibility.md         # D6 — WCAG 2.2 AA authoring-time decisions on top of the platform's honest conformance statement (alt-text quality, keyboard-safe types, learner-controlled timers)
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape

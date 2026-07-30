@@ -4,6 +4,85 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 Katman-2 kaplamaları (D1–D6)
+- **`references/overlays/cognitive-load.md` — D1 Bilişsel Yük Yönetimi (#30).** İçsel/konu-dışı/
+  üretken yük ayrımı; karar noktaları `[ekran_secimi, icerik_dozu, medya, destek_dozu]`. Denetim
+  bulgusunun cevabı merkezde: kelime bütçesi mekanizmayı kesiyorsa karar BÖLMEKTİR, kısaltmak
+  değil (segmenting → `blocks[]`/`worked_example` adımları/`reveal:"click"`; ön-eğitim →
+  terimler mekanizmadan önce ayrı düşük-yük ekranda). Kip/gereksizlik/tutarlılık/işaretleme
+  ilkeleri anti-slop B2/C1/C4/A3'ün yük-kuramsal gerekçesi olarak bağlandı; bölünmüş-dikkat
+  kuralı ("soru, artefaktıyla aynı ekranda") `ekran_secimi`'nde. `destek_dozu` çakışma bildirimi
+  C6'nın beklediği biçimde yazıldı: deneme bölümünde destek düşük kalır (kasıtlı zorluk = üretken
+  yük, kaplama susar), kanonik çözüm bölümünde yükselir (Sinha & Kapur 2021 sınır koşulları);
+  ayrıca vaka-dosyası zenginliği (icerik_dozu) ve dikkat-medyası (medya, coherence öncelikli)
+  bildirimleri. Literatür doğrulandı: Sweller 1988 + Sweller/van Merriënboer/Paas 1998 + Mayer &
+  Fiorella (Eds.) 2022 Handbook 3. baskı (altı ilke adı ve kategorileri) + Mayer & Moreno 2003.
+- **`references/overlays/udl.md` — D2 Evrensel Tasarım (#31).** CAST UDL Guidelines 3.0 (yayın
+  30 Temmuz 2024 — üç ilke doğrulandı) kaplama diline çevrildi; karar noktaları `[ekran_secimi,
+  medya, olcme, gezinme]`. Kurucu kural: UDL kanıt kaynağını ÇOĞALTIR, icat etmez — ikinci kip
+  aynı kanıtın kipidir ve skorlu sorunun `evidence_screen_ids`'ine EKLENİR (kör test iki kipi de
+  söker; K5 güvenliği). 30 tipin temsil-kanalı haritası (yazılı/görsel/işitsel/hareketli/keşif);
+  işitsel kanal DÜRÜSTLÜK sınırı sunucunun uygunluk belgesine bağlandı: anlatım her zaman
+  `narration_text` ile (metinsiz ses = transkriptsiz kanal), video senkron altyazı taşımaz →
+  konuşmalı video ancak K1 dış-medya şartını karşılıyorsa temsil sayılır. Eylem/ifade: aynı
+  beceriye biçim seçenekleri (drag_drop ↔ matching, fill_blank hedef-fiile bağlı, exploration/
+  poll ifade kanalı). Katılım: `branching` bağlam seçimi (iki kol aynı kanıt yapısı). Çakışma
+  bildirimleri: cognitive-load (temsil sayısı ≤ 2/ekran, bölmede o öncelikli) + accessibility
+  (sınır: çelişkide teknik uyum önceliklidir — erişilemeyen temsil çeşitlilik sayılmaz).
+- **`references/overlays/arcs.md` — D3 ARCS Motivasyon Tasarımı (#32).** Keller (1987, JID
+  10(3) 2–10 — dört bileşen doğrulandı) üslup değil YAPISAL karar olarak kaplandı; karar
+  noktaları `[ekran_secimi, medya, dil_ton, destek_dozu, geri_bildirim]`. Dikkat = bilişsel
+  çatışma taşıyan artefakt (soru-başlık, sezgi-kıran data_chart) — süs görsel dikkat tasarımı
+  DEĞİL (E1 öğreten-artefakt denetimiyle uyum; cognitive-load çakışması: coherence öncelikli).
+  İlgililik = B1'in yapısal hali (bedel/çatışma açılışı, hedef-değer bağı). Güven = erken
+  skorsuz kazanım (ilk üçte bir, points:0/Z1) + `adaptive_practice` elo rampası (yayılmış
+  difficulty) + şeffaf beklenti. Doyum = transfer fırsatı + içsel ustalaşma kapanışı; AÇIK
+  BEYAN: doyum ≠ dekoratif oyunlaştırma — anti-slop D1/D2 kaplamanın altında aynen geçerli,
+  ARCS kutlama efekti gerekçesi yapılamaz. TONE kadranıyla 5 satırlık üslup↔yapı ayrım tablosu
+  (TONE 2'de de 8'de de ARCS kararları aynı).
+- **`references/overlays/expertise-adaptive.md` — D4 Uzmanlığa Uyarlanır Tasarım (#33).**
+  Uzmanlık-tersinme etkisi (Kalyuga vd. 2003; Kalyuga 2007 EPR 19(4) 509–539 — doğrulandı)
+  kaplandı; karar noktaları `[destek_dozu, gezinme, ekran_secimi]`. KURUCU KURAL epikten:
+  "atlanabilen şey DESTEKTİR, KANIT değildir" — `evidence_screen_ids`'te geçen hiçbir ekran
+  `visible_if`/atlama dalına konamaz (mekanik denetim: visible_if'li id'ler × kanıt id'leri
+  kesişimi boş; aksi K1/T1/Z2 ihlali). PK→doz tablosu: düşük `fading:"full"`, orta `"partial"`,
+  yüksek `"problem_only"` + problem-önce varyant; taşıyıcılar = worked_example soluklaştırma
+  dizisi (doğal taşıyıcı), skorsuz tanılama `set_vars` → destek ekranı `visible_if` (uzman
+  yolu), `adaptive_practice` bkt kipi (ustalık kestirimli erken durdurma). C10-bayraklı karar
+  ön-maddede bildirildi: mevzuat bağlamında kaplama içerik ATLATAMAZ, yalnız EK destek ekleyip
+  çıkarabilir (gezinme, karar-noktası düzeyi); ayrıca deneme-önce (destek enjekte etmez) ve
+  model-önce (gösterim kısalır ama kanıt ekranı kalkmaz) bildirimleri.
+- **`references/overlays/assessment-alignment.md` — D5 Ölçme Hizası (#34).** A2/H1–H3'ün
+  pratiğe dökülmüş karar seti; karar noktaları `[olcme, ekran_secimi]`. Kurucu kural:
+  "hatırlama düzeyinde soruyla uygulama hedefi ölçülemez" — skorlu sorunun düzeyi hedef
+  FİİLİNİN düzeyine eşit (Anderson & Krathwohl 2001 altı düzey doğrulandı; alt-düzey madde
+  yalnız skorsuz ısınma olarak meşru, Z1). SOLO (Biggs & Collis 1982 doğrulandı) çeldirici
+  cetveli olarak bağlandı (doğru seçenek ilişkisel, çeldiriciler tek-/çok-yönlü okumalar).
+  H2 tablosuna iki DÜZEY sütunu eklendi (hedef fiili ↔ soru; eşitsiz satır = düzelt ya da
+  hedefi daralt). Soru sorabilen tiplerin (sunucu QUIZ_TYPES kümesi) tip × rahat-taşıdığı-düzey
+  tablosu + kazanım türü → doğru/yanlış biçim eşlemesi (prosedür→sorting/simulation,
+  kavram→yeni-örnek sınıflama, tutum→davranış seçimi; olguyu senaryoya sarmak = uygulama
+  tiyatrosu). Kanon-alan bağı: artefakta-uygulama kalıbı düzeyi kendiliğinden yükseltir.
+  Skor ağırlığı: hedefe orantılı pay + `passing_score` tutarlılığı (tek ucuz soruyla eşik
+  aşılamaz — D2 uyumu). Çakışma bildirimi: tazeleme paketinde hatırlama-düzeyi geri getirme
+  paketin özü — düzey itirazı yalnız hedef fiili uygulama+ iken işler.
+- **`references/overlays/accessibility.md` — D6 Erişilebilirlik (#35).** WCAG 2.2 AA (W3C
+  Recommendation 5 Ekim 2023 — kullanılan kriterler doğrulandı: 1.1.1/1.2.2/1.4.1/1.4.3/
+  2.1.1/2.2.1/2.5.7) yazım-zamanı kararlarına çevrildi; karar noktaları `[ekran_secimi, medya,
+  dil_ton]`. Platform lint'i/doğrulayıcısı TEKRARLANMADI — kaplama, sunucunun dürüst KISMİ
+  uygunluk beyanının (`docs/ACCESSIBILITY-CONFORMANCE.md`) belgeli sınırlarına ÇARPMAYAN
+  seçimleri kurar: `drag_drop` işaretçi-bağımlı → klavye gereken bağlamda aynı görev
+  `matching`/`sorting`; `term_match_race`/ekran-düzeyi `timer_sec` süre denetimsiz → süreli
+  mekanik yalnız `game` bileşimi `allow_extend`/`allow_disable` ile (timeout ile içerik
+  kilitleme yasak karar); `hotspot` bölgelerine içerik adlandıran `label`; alt metin KALİTESİ
+  (varlığı lint uyarır, içeriği yazar karar verir): öğreten görselin alt metni kanıt taşır —
+  yalnız alt metni okuyan öğrenen için soru cevaplanabilir kalır (K5 alt metne de uygulanır);
+  `data_chart` caption zorunlu (SVG programatik adsız); konuşmalı video ancak caption+
+  `narration_text` içeriği tam taşıyorsa; lottie döngüsü kritik içerik taşıyamaz. `dil_ton`:
+  sade dil, işleve-atıf ("yeşil düğme" değil "Bildir düğmesi"). Çakışma bildirimleri: udl
+  (sınır: çelişkide teknik uyum öncelikli) + arcs (süre baskısı motivasyonla
+  gerekçelendirilemez — yalnız öğrenen-denetimli zamanlayıcı).
+
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat
   paketi (psikomotor/prosedür): brifing (hedef + akıcılık ölçütü) → gösterim turu (worked_example
