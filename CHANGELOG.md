@@ -4,6 +4,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
+- **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:
+  ünite sunumu → skorsuz formatif eşik (%80, BKT ustalık kestirimi) → eşik-altı DÜZELTİCİ tur
+  (aynı içerik, FARKLI temsil) → paralel yeniden-yoklama → eşik-üstü summatif. Şemanın
+  `sonraki`/`tekrar_kosulu` döngü mekaniğiyle ifade edildi; `requires_platform: [branching,
+  adaptive_practice]` (koşullu dallanma olmadan eşik zorlanamaz — beyan sert kısıt).
+  `evidence_phases: [unite_sunumu, duzeltici_dongu]` (ÇOĞUL — düzeltici temsil ikinci kanıt
+  kanalı). build_from_spec örneği döngünün SCORM simülasyonunu gösterir: `branching` eşik-karar
+  ekranı iki yol açar, düzeltici kol paralel formatif ile ana hatta geri bağlanır. Birincil
+  kaynak doğrulandı: Bloom (1968) *Learning for Mastery*, Evaluation Comment 1(2) + Keller
+  (1968) PSI.
+
 ### Changed — v2.1 F1/F2 entegrasyonu (worked_example + exploration YAYINDA)
 - **`references/pedagogy/4cid.md` — F1 gerçek şemaya geçiş.** build_from_spec örneği eski
   taslak alanlardan (`fading_level`, `steps[].html`, `blank_accepted`, worked_example üstünde
