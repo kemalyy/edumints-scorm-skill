@@ -27,6 +27,43 @@ La skill es el **manual del autor**; el servidor scorm-mcp es el **ensamblador**
 authoring-scorm-courses/
 ├── SKILL.md                         # punto de entrada: flujo + criterio de calidad
 ├── references/
+│   ├── anti-slop.md                 # disciplina anti-slop: lectura de entrenamiento + diales paramétricos (leer PRIMERO)
+│   ├── pre-flight.md                # matriz OBLIGATORIA de puertas de calidad previas a la construcción
+│   ├── core/                        # Capa 1 — reglas núcleo independientes del método (+ el selector de Capa 0)
+│   │   ├── method-selector.md       # Capa 0 — tipo de resultado + diales → pack(s) de método + overlay(s)
+│   │   ├── evidence-binding.md      # cada pregunta puntuada se vincula a una fuente de evidencia del curso (K1–K6)
+│   │   ├── alignment.md             # mapeo objetivo→pregunta→evidencia + umbral de aviso (H1–H3)
+│   │   ├── feedback-anatomy.md      # 3 elementos de retroalimentación obligatorios — regla de piso (G1–G3)
+│   │   └── scoring-timing.md        # formativo/sumativo + "sin puntuación antes de la evidencia" (Z1–Z3)
+│   ├── eval/
+│   │   └── blind-test.md            # protocolo de prueba ciega (umbral ≥ 1/2) — puerta para nuevos tipos de pantalla
+│   ├── pedagogy/                    # Capa 3 — packs de método (serie C)
+│   │   ├── _SCHEMA.md               # contrato de front-matter del pack (evidence_phase(s) OBLIGATORIO) + comando de validación
+│   │   ├── _STUB-dogrusal.md        # ejemplo de validación de esquema: flujo lineal (no es un pack)
+│   │   ├── _STUB-dongulu.md         # ejemplo de validación de esquema: flujo cíclico (no es un pack)
+│   │   ├── rosenshine-di.md         # C1 — Instrucción Directa: modelo primero, práctica guiada→independiente
+│   │   ├── merrill-fpi.md           # C2 — Primeros Principios de Merrill: activación→demostración→aplicación→integración centrada en la tarea
+│   │   ├── 5e-inquiry.md            # C3 — ciclo de indagación 5E de BSCS: explorar primero (requiere el tipo de pantalla de exploración)
+│   │   ├── 4cid.md                  # C4 — 4C/ID formación en habilidades complejas: tareas completas, simple→complejo, apoyo decreciente
+│   │   ├── mastery-learning.md      # C5 — aprendizaje para el dominio de Bloom: unidad → umbral formativo → bucle de correctivos → sumativo
+│   │   ├── productive-failure.md    # C6 — fracaso productivo de Kapur: lucha sin puntuar → consolidación (requiere exploración; piso PK 4)
+│   │   ├── pbl-case.md              # C7 — aprendizaje basado en casos/problemas de Barrows: archivo de caso = familia de artefactos de evidencia (PK alto)
+│   │   ├── kolb-experiential.md     # C8 — ciclo experiencial de Kolb: experiencia concreta → reflexión → conceptos → experimentación activa (actitudes)
+│   │   ├── sim-drill.md             # C9 — ejercicio de simulación: ejecución modelo → modo-prueba sin puntuar → debriefing → bucle de tarea-parcial → escenario puntuado
+│   │   ├── gagne-9.md               # C10 — los nueve eventos de Gagné (formación de cumplimiento/obligatoria; predeterminado de respaldo documentado)
+│   │   ├── cognitive-apprenticeship.md  # C11 — Collins/Brown/Newman: modelo experto en voz alta → coaching → desvanecimiento → articulación → reflexión → exploración
+│   │   └── retrieval-spaced.md      # C12 — práctica de recuperación + espaciado (solo-repaso; evidencia = el artefacto de referencia de re-exposición)
+│   ├── overlays/                    # Capa 2 — overlays ortogonales al método (serie D)
+│   │   ├── _FRAMEWORK.md            # formato de archivo de overlay + regla de independencia del pack + formato de conflicto
+│   │   ├── cognitive-load.md        # D1 — gestión de carga cognitiva: segmentación/pre-entrenamiento/modalidad/coherencia/redundancia/señalización → decisiones de pantalla
+│   │   ├── udl.md                   # D2 — DUA (CAST 3.0): múltiples representaciones de la MISMA fuente de evidencia; opciones de formato de respuesta; límites honestos de audio/subtítulos
+│   │   ├── arcs.md                  # D3 — ARCS de Keller: atención/relevancia/confianza/satisfacción como decisiones ESTRUCTURALES (no de tono); sin gamificación decorativa
+│   │   ├── expertise-adaptive.md    # D4 — reversión de la pericia de Kalyuga: PK → dosis de apoyo (desvanecimiento de worked_example), rutas expertas vía visible_if; "saltable = APOYO, nunca EVIDENCIA"
+│   │   ├── assessment-alignment.md  # D5 — nivel Bloom-revisado/SOLO ↔ mapeo de tipo de pregunta; "una pregunta de recuerdo no puede medir un objetivo de aplicar"; distribución de peso de puntuación
+│   │   └── accessibility.md         # D6 — decisiones WCAG 2.2 AA en tiempo de autoría sobre la declaración honesta de conformidad de la plataforma (calidad de texto alternativo, tipos seguros con teclado, temporizadores controlados por el aprendiz)
+│   ├── migration-v1-to-v2.md        # guía de migración v1→v2: cambios disruptivos + recetas + mapeo Patrón A→rosenshine-di + el manual de 3-demos
+│   ├── source-expansion.md          # expansión de fuente comprimida: línea de chuleta → pregunta de mecanismo → artefacto → pregunta vinculada (2 conversiones trabajadas)
+│   ├── visual-storytelling.md       # hilo narrativo + presupuesto visual por pantalla + recetas de mockup-SVG
 │   ├── authoring-recommendations.md # guía de decisiones cuándo/cómo/por qué (leer primero)
 │   ├── mcp-cookbook.md              # llamadas exactas + forma completa de build_from_spec
 │   ├── course-patterns.md           # estructuras de curso probadas
@@ -38,7 +75,7 @@ authoring-scorm-courses/
 │   ├── video-generation.md          # vídeo programático de motion-graphics / datos
 │   └── themes.md
 ├── templates/                       # plantillas para copiar y adaptar
-└── examples/                        # una especificación de curso completa y de alta calidad
+└── examples/                        # ejemplo insignia multi-pack (vinculado a evidencia, prueba ciega superada) + piloto v1 obsoleto
 ```
 
 ## Requisitos
