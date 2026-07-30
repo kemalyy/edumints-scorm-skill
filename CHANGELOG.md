@@ -4,6 +4,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
+- **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:
+  ünite sunumu → skorsuz formatif eşik (%80, BKT ustalık kestirimi) → eşik-altı DÜZELTİCİ tur
+  (aynı içerik, FARKLI temsil) → paralel yeniden-yoklama → eşik-üstü summatif. Şemanın
+  `sonraki`/`tekrar_kosulu` döngü mekaniğiyle ifade edildi; `requires_platform: [branching,
+  adaptive_practice]` (koşullu dallanma olmadan eşik zorlanamaz — beyan sert kısıt).
+  `evidence_phases: [unite_sunumu, duzeltici_dongu]` (ÇOĞUL — düzeltici temsil ikinci kanıt
+  kanalı). build_from_spec örneği döngünün SCORM simülasyonunu gösterir: `branching` eşik-karar
+  ekranı iki yol açar, düzeltici kol paralel formatif ile ana hatta geri bağlanır. Birincil
+  kaynak doğrulandı: Bloom (1968) *Learning for Mastery*, Evaluation Comment 1(2) + Keller
+  (1968) PSI.
+- **`references/pedagogy/productive-failure.md` — C6 Üretken Başarısızlık (Kapur) (#23,
+  needs-decision ÇÖZÜM ÖNERİLİ).** Deneme-ÖNCE paket: problem_deneme (kanonsuz skorsuz boğuşma —
+  exploration/F2 denemeyi SAKLAR) → deneme_karsilastirma (geri oynatma; kanon sızdırmaz, K5) →
+  konsolidasyon (kanonik çözüm denemeye AÇIK atıfla — worked_example) → uygulama (skorlu).
+  Kanıt = K1 türü 5'in iki ayağı: `evidence_phases: [problem_deneme, konsolidasyon]` (ÇOĞUL).
+  `requires_platform: [exploration]` SERT (F2'siz "kendi denemenle karşılaştır" taklide düşer).
+  **Karar önerisi (kullanıcı onayına):** PK tabanı 4/10 bağlayıcı (`prior_knowledge: [4, 8]`) —
+  Kapur örneklemlerinin önkoşul-bilgi profili + Sinha & Kapur (2021) sınır koşulları + Kirschner
+  vd. (2006) acemi ucu; `error_cost: [düşük]` yalnız; cognitive-load çakışması hedef-düzeyi
+  değil karar-noktası düzeyinde (kaplama tarafında `destek_dozu` bildirimi) çözülür.
+  `conflicts_with: [rosenshine-di]` — C1'in tek taraflı beyanı KARŞILIKLI hale geldi. Birincil
+  kaynak doğrulandı: Kapur (2008) C&I 26(3) + Kapur & Bielaczyc (2012) JLS 21(1) faz adları.
+- **`references/pedagogy/pbl-case.md` — C7 Vaka/Problem Temelli Öğrenme (Barrows) (#24).**
+  Problem-önce paket: vaka_dosyasi (kursun inşa ettiği artefakt ailesi + bütün-vaka sürükleyici
+  soru) → problem_tanimlama (hipotez, skorsuz) → analiz_arastirma (aşamalı ifşa: ek belgeler —
+  kanıt ailesi 2) → cozum_onerisi (skorlu vaka kararı) → karsilastirma_genelleme (uzman
+  karşılaştırması + transfer). `evidence_phases: [vaka_dosyasi, analiz_arastirma]` (ÇOĞUL);
+  amiral-gemisi bulgusunun panzehiri: skorlu soru vaka dosyasına bağlanmak ZORUNDA, kritik olgu
+  yalnız dosya ekranlarında yaşar (K4) — kanon-alan kalıbı paketin yerlisi. PK 6–10 (vaka
+  zenginliği acemiye gürültü); `requires_platform: []` (F2 hipotez notu için opsiyonel
+  iyileştirme). `conflicts_with: []` gerekçeli: gösterim-önce adaylarla PK aralıkları ayrık —
+  aynı hedefte zaten birlikte sağ kalamazlar. Birincil kaynak doğrulandı: Barrows (1986)
+  Medical Education 20(6), 481–486.
+- **`references/pedagogy/kolb-experiential.md` — C8 Kolb Deneyimsel Öğrenme Döngüsü (#25).**
+  Deneyim-önce döngü: somut_deneyim (karar + bedel, anlatı içinde — puanlanmaz) →
+  yansitici_gozlem (açık uçlu, exploration/F2 tercihli — SAKLANIR, kanıt fazı DEĞİL: köprü) →
+  soyut_kavramsallastirma (deneyime atıflı kanonik çerçeve) → aktif_deneme (YENİ senaryoda
+  skorlu DAVRANIŞ seçimi — tutumun davranışsal kanıtı, "iddia+quiz" zincirinin panzehiri).
+  `evidence_phases: [somut_deneyim, soyut_kavramsallastirma]` (ÇOĞUL). PK [1,10] ve error_cost
+  tam liste — gerekçeli: deneyim malzemesini kurs üretir, saha bedeli simülasyona taşınmaz.
+  `requires_platform: []` (decision_scenario/branching çekirdek; F2 yansıtma geri-oynatması
+  iyileştirme). `arcs` kaplaması doğal eş (yalnız eşleme notu — kaplama uygulanmadı).
+  `conflicts_with: []` gerekçeli (tutumda yarışan paket yok; outcome kesişimi boş). Birincil
+  kaynak doğrulandı: Kolb (1984) *Experiential Learning*, Prentice-Hall — dört evre adı;
+  öğrenme-stilleri iddiası paket DIŞI bırakıldı (Pashler vd. 2008 sınır notu).
+
 ### Changed — v2.1 F1/F2 entegrasyonu (worked_example + exploration YAYINDA)
 - **`references/pedagogy/4cid.md` — F1 gerçek şemaya geçiş.** build_from_spec örneği eski
   taslak alanlardan (`fading_level`, `steps[].html`, `blank_accepted`, worked_example üstünde
