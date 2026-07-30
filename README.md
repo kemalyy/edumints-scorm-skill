@@ -60,6 +60,7 @@ authoring-scorm-courses/
 │   │   ├── assessment-alignment.md  # D5 — Bloom-revised/SOLO level ↔ question-type mapping; "a recall question cannot measure an apply objective"; score-weight distribution
 │   │   └── accessibility.md         # D6 — WCAG 2.2 AA authoring-time decisions on top of the platform's honest conformance statement (alt-text quality, keyboard-safe types, learner-controlled timers)
 │   ├── migration-v1-to-v2.md        # v1→v2 migration guide: breaking changes + recipes + Pattern A→rosenshine-di mapping + the 3-demo playbook
+│   ├── source-expansion.md          # compressed-source expansion: cheat-sheet line → mechanism question → artifact → bound question (2 worked conversions)
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
