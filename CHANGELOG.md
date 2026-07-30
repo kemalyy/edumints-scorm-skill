@@ -4,6 +4,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 son paketler (C9–C12, ikinci yarı)
+- **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat
+  paketi (psikomotor/prosedür): brifing (hedef + akıcılık ölçütü) → gösterim turu (worked_example
+  model icra — kanıt 1) → serbest deneme (simulation `points: 0` + deneme gözlemi exploration ile
+  SAKLANIR) → çıktı çözümleme (deneme ↔ model karşılaştırması, zayıf alt-görev teşhisi — kanıt 2)
+  → parça-görev döngüsü (`sonraki`/`tekrar_kosulu`: yalnız teşhisli alt-görev tekrar edilir,
+  Wightman & Lintern fractionation) → senaryolu skorlu ölçüm (YENİ varyant, bütün görev).
+  `evidence_phases: [gosterim_turu, cikti_cozumleme]` (ÇOĞUL — simülasyon ekranı çift şapkalı:
+  pratik aracı + çıktısı kanıt). `requires_platform: [simulation, worked_example, exploration]`
+  SERT (F2'siz "denemeni modelle karşılaştır" taklide düşer — issue denetim bulgusunun beyanı).
+  Süreli oyun varyantı yalnız `allow_extend` + `allow_disable` ile (WCAG 2.2.1 — platform
+  doğrulayıcısı zorlar). Birincil kaynaklar doğrulandı: de Jong & van Joolingen (1998) RER 68(2)
+  + Ericsson, Krampe & Tesch-Römer (1993) Psych. Review 100(3) + Wightman & Lintern (1985)
+  Human Factors 27(3).
+
 ### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
 - **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:
   ünite sunumu → skorsuz formatif eşik (%80, BKT ustalık kestirimi) → eşik-altı DÜZELTİCİ tur
