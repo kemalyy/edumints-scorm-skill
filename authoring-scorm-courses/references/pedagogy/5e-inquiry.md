@@ -51,28 +51,37 @@ maliyeti (yanılmak güvenli ve ucuz). Derin işleme ve kalıcılık hedefiyle s
 akrabası: deneme + kanonik çözüm karşılaştırması). Skorlu sorular `evidence_screen_ids`
 (ÇOĞUL — scorm-mcp CONTRACTS §1.3 E1) ile her iki fazın ekranlarına birden bağlanabilir.
 
-**Platform şartı: YOK (`requires_platform: []`, 2026-07-29 doğrulaması).** Keşif fazının
-taahhüt→kayıt→açığa-çıkarma mekaniği bugünkü çekirdek tiplerle karşılanır: **puan-0 formatif
-quiz** (mcq/true_false, `points: 0`) tahmin taahhüdünü alır ve feedback'i açığa-çıkarma işlevini
-görür (Z3 gereği skorsuz; E1 kanıt-taşıyabilir setinde), yanına deney/gözlem verisi taşıyan
-`data_chart`/`simulation`/`image_compare`. Gerçek doğrulama: bu desenle kurulmuş 5E kursu
-`lint_course`'tan 0 hata / 0 uyarı / `evidence_binding_coverage = 1.0` ile geçti.
-`exploration` (F2) artık ön koşul değil **iyileştirmedir**: öğrenen girdisinin sonraki ekranda
-birebir geri gösterimi ("senin tahminin şuydu") F2 ile gelir; F2'siz atıf, feedback + kanıt
-bağı üzerinden yapılır.
+**Platform şartı: YOK (`requires_platform: []` — paket F2'siz de kurulur).** Keşif fazının
+taahhüt→kayıt→açığa-çıkarma mekaniği için sıralama artık şudur:
+
+1. **TERCİH — `exploration` (F2 #113, YAYINDA):** öğrenen girdisi (tahmin taahhüdü
+   `input_kind: "prediction"`, sınıflama `"choice"`, gözlem notu `"text"`) `store_key` altında
+   SAKLANIR ve `acikla` ekranları `<span data-exploration-ref="store_key"></span>` ile birebir
+   GERİ OYNATIR — "senin tahminin şuydu" atfı artık gerçektir, feedback metniyle taklit değil.
+   Yapısal skorsuz (puan alanı yok — Z3), koşulsuz kanıt-taşıyabilir (K1 türü 2).
+2. **YEDEK — puan-0 formatif quiz:** F2 taşımayan (eski) hedeflerde mcq/true_false
+   (`points: 0`) tahmin taahhüdünü alır, feedback açığa-çıkarma işlevini görür; atıf
+   feedback + kanıt bağı üzerinden dolaylı yapılır. Bu desen doğrulanmıştır (0 hata /
+   0 uyarı / coverage 1.0) ve geçerli kalır — ama geri oynatma sunamaz.
+
+Her iki desende yanına deney/gözlem verisi taşıyan `data_chart`/`simulation`/`image_compare`
+gelir. `requires_platform` boş kalır: F2 iyileştirmedir, ön koşul değil.
 
 ## Faz rehberi
 
 | Faz | Amaç | İzinli ekran tipleri | Skor? |
 |---|---|---|---|
 | `merak` | Engage: çelişik durum + ön-kavramları yüzeye çıkarma | content_slide, video, image_compare, data_chart, poll, lottie | ✗ |
-| `kesfet` | Explore: tahmin taahhüdü + skorsuz kurcalama — **kanıt 1** | mcq/true_false (points 0 — taahhüt), simulation, image_compare, data_chart, exploration* | ✗ |
+| `kesfet` | Explore: tahmin taahhüdü + skorsuz kurcalama — **kanıt 1** | exploration* (TERCİH — taahhüt + geri oynatma), simulation, image_compare, data_chart; yedek: mcq/true_false (points 0) | ✗ |
 | `acikla` | Explain: kanonik açıklama, keşif çıktısına atıfla — **kanıt 2** | content_slide, accordion, tabs, timeline, video, data_chart | ✗ |
 | `derinlestir` | Elaborate: yeni bağlama skorsuz transfer | mcq, drag_drop, matching, sorting, simulation, decision_scenario, branching | ✗ |
 | `degerlendir` | Evaluate: skorlu ölçüm | hepsi | ✓ |
 
-\* `exploration` = F2 iyileştirme tipi (çekirdek 28'in dışında; VARSA taahhüt mekaniğinin yerine
-geçer ve öğrenen girdisinin geri oynatımını ekler — ön koşul değildir). Diğer adlar çekirdek 28'dendir.
+\* `exploration` = F2 tipi — YAYINDA (sunucu çekirdeğinde, 30 tipin 30.'su; şema: `prompt_html`,
+`input_kind: "text" | "choice" | "prediction"`, choice/prediction'da `choices` ≥2, `store_key`
+`[a-z0-9_-]+` ≤64 ve kurs genelinde TEKİL). Taahhüt mekaniğinin tercih edilen taşıyıcısıdır ve
+öğrenen girdisinin geri oynatımını ekler; `requires_platform` yine boş — puan-0 quiz yedeği
+F2'siz hedeflerde geçerli kalır.
 
 Faz notları:
 
@@ -132,19 +141,26 @@ kütle-hacim ilişkisiyle (yoğunluk) açıklar."* Kitle: ortaokul fen; "ağır 
     { "type": "content_slide", "id": "celiski", "title": "300.000 tonluk çelik gemi yüzüyor; 20 gramlık çakıl batıyor",
       "body_html": "<p>Çelik, çakıldan çok daha ağır bir malzeme. Gemi yüzüyor, çakıl batıyor. \"Ağır olan batar\" kuralı burada neden çalışmadı? Tahminini birazdan sınayacaksın.</p>" },
 
-    // ── FAZ kesfet (Explore — KANIT 1: öğrenenin KENDİ tahmin/gözlem çıktısı; exploration = F2 tipi) ──
-    { "type": "exploration", "id": "kesif_yuzme", "title": "Dene: kütleyi ve hacmi değiştir", "points": 0,
-      "prompt_html": "<p>Sanal küpün kütlesini ve hacmini ayrı ayrı değiştir, suya bırak, ne olduğunu kaydet. Önce TAHMİN et, sonra dene — tahminlerin saklanacak ve birazdan karşına gelecek.</p>",
-      // F2 sözleşmesi: öğrenen girdisi (tahmin + deneme kaydı) saklanır ve sonraki ekranlarda
-      // {{exploration:kesif_yuzme.*}} ile geri oynatılır (kemalyy/edumints-scorm-mcp F2)
-      "trials": [
-        { "id": "t1", "setup_html": "<p>Kütle 2×, hacim sabit → tahminin?</p>", "options": ["yüzer", "batar"] },
-        { "id": "t2", "setup_html": "<p>Kütle sabit, hacim 2× → tahminin?</p>", "options": ["yüzer", "batar"] } ] },
+    // ── FAZ kesfet (Explore — KANIT 1: öğrenenin KENDİ tahmin/gözlem çıktısı; exploration = F2, YAYINDA) ──
+    // Taahhüt: prediction — girdi store_key altında saklanır (PUAN ALANI YOK: yapısal skorsuz, Z3)
+    { "type": "exploration", "id": "kesif_yuzme", "title": "Tahmin et: kütle 2×, hacim sabit",
+      "input_kind": "prediction", "store_key": "tahmin_kutle2x",
+      "prompt_html": "<p>Sanal küpün <b>kütlesini iki katına</b> çıkarıyoruz, hacmi aynı kalıyor. Suya bırakınca ne olur? Önce taahhüt et — tahminin saklanacak ve birazdan karşına gelecek.</p>",
+      "choices": [
+        { "id": "yuzer", "text_html": "Yüzer" },
+        { "id": "batar", "text_html": "Batar" } ] },
+    // Deneme kaydı: text — gözlem notu da saklanır ve acikla'da geri oynatılır
+    { "type": "exploration", "id": "kesif_gozlem", "title": "Deneme notun: ne gözlemledin?",
+      "input_kind": "text", "store_key": "gozlem_notu", "min_length": 20,
+      "placeholder": "Kütleyi/hacmi değiştirince ne oldu? Kendi cümlelerinle…",
+      "prompt_html": "<p>Kütleyi ve hacmi ayrı ayrı değiştirip denedin. Gözlemini <b>kendi cümlelerinle</b> kaydet — bu not senin kanıtın; açıklama ekranında birlikte kullanacağız.</p>" },
 
     // ── FAZ acikla (Explain — KANIT 2: kanonik açıklama, keşif çıktısına AÇIK atıfla) ──
+    // Geri oynatma: <span data-exploration-ref="store_key"> — runtime saklanan değeri textContent
+    // olarak enjekte eder ("senin tahminin şuydu" atfı GERÇEK; boş değer i18n yer tutucusuna düşer)
     { "type": "content_slide", "id": "aciklama_yogunluk", "title": "Gözleminin adı: yoğunluk",
       "blocks": [
-        { "html": "<p>İlk tahminin şuydu: <b>{{exploration:kesif_yuzme.t1}}</b>. Denemede gördün: kütle tek başına sonucu belirlemedi — hacmi büyüttüğünde AYNI kütle yüzdü.</p>" },
+        { "html": "<p>İlk tahminin şuydu: <b><span data-exploration-ref=\"tahmin_kutle2x\"></span></b> · kendi gözlem notun: <em><span data-exploration-ref=\"gozlem_notu\"></span></em>. Denemede gördün: kütle tek başına sonucu belirlemedi — hacmi büyüttüğünde AYNI kütle yüzdü.</p>" },
         { "html": "<p>Belirleyici oran: <b>yoğunluk = kütle ÷ hacim</b>. Suyunkinden (1 g/cm³) büyükse batar, küçükse yüzer. Gemi çeliği ağırdır ama gövdesi devasa bir hacme (içi hava) yayılır → ortalama yoğunluk suyun altına iner.</p>" } ] },
 
     // ── FAZ derinlestir (Elaborate — YENİ bağlama skorsuz transfer) ──
@@ -159,7 +175,7 @@ kütle-hacim ilişkisiyle (yoğunluk) açıklar."* Kitle: ortaokul fen; "ağır 
 
     // ── FAZ degerlendir (Evaluate — SKORLU; kanıt bağı AÇIK ve ÇOĞUL: iki faza birden) ──
     { "type": "mcq", "id": "q_yogunluk", "title": "Skorlu: hangi cisim yüzer?", "points": 50,
-      "evidence_screen_ids": ["kesif_yuzme", "aciklama_yogunluk"],  // E1 — kanıt: keşif çıktısı + kanonik açıklama (evidence_phases: [kesfet, acikla])
+      "evidence_screen_ids": ["kesif_yuzme", "kesif_gozlem", "aciklama_yogunluk"],  // E1 — kanıt: keşif çıktıları + kanonik açıklama (evidence_phases: [kesfet, acikla])
       "prompt_html": "<p>A cismi: 60 g / 40 cm³. B cismi: 30 g / 50 cm³. Suya bırakılırsa ne olur?</p>",
       "options": [
         { "id": "a", "text_html": "A batar (1,5 g/cm³ &gt; 1), B yüzer (0,6 g/cm³ &lt; 1)", "correct": true },
@@ -175,8 +191,12 @@ kütle-hacim ilişkisiyle (yoğunluk) açıklar."* Kitle: ortaokul fen; "ağır 
 ```
 
 Denetim izi: skorlu tek ekran (`q_yogunluk`) → `evidence_screen_ids: ["kesif_yuzme",
-"aciklama_yogunluk"]` — ÇOĞUL bağ, iki kanıt fazına birden (`evidence_phases: [kesfet, acikla]`).
-Keşif ve transfer denemeleri `points: 0` (Z3); skor yalnız `degerlendir` fazında.
+"kesif_gozlem", "aciklama_yogunluk"]` — ÇOĞUL bağ, iki kanıt fazına birden
+(`evidence_phases: [kesfet, acikla]`). `exploration` ekranları yapısal olarak skorsuzdur
+(puan alanı YOK — Z3); transfer denemesi `points: 0`; skor yalnız `degerlendir` fazında.
+`store_key`'ler kurs genelinde TEKİL olmalıdır (`validate_project` çakışmayı sert hatayla
+keser). Lint-temiz tam fikstür: sunucu deposunda `examples/exploration-5e.tr.json`
+(prediction + choice + text, geri oynatma + kanıt bağı).
 
 ## Literatür
 
