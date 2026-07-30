@@ -1,19 +1,17 @@
 {
   "_pack": "4cid",
-  "_template_version": 1,
-  "_draft": true,
-  "_draft_reason": "requires_platform: [worked_example] — F1 ekran tipi (soluklaştırma düzeyli çözümlü örnek: full → completion → yalnız görev, kemalyy/edumints-scorm-mcp F1) henüz sunucuda YOK. Soluklaştırma bu paketin motorudur; F1 yayınlanana dek build_from_spec bu spec'i REDDEDER. Bilinçli karar: worked_example'ı content_slide + fill_blank ile taklit etmek yerine taslak beyanı — o yaklaşım gerekiyorsa dürüst seçim rosenshine-di şablonudur (references/pedagogy/4cid.md 'Platform şartı'). F1 gelince: _draft alanlarını sil, build + lint koş, kanıt bağlarını doğrula.",
-  "_note": "C4 4C/ID Karmaşık Beceri şablonu (references/pedagogy/4cid.md). Kopyala-uyarla: görev sınıflarını, çözümlü örnekleri ve soru içeriğini değiştir; görev sınıflarının basit→karmaşık dizisini ve skor/kanıt sözleşmesini KORU (skor yalnız gorev_bagimsiz fazında — destekli denemeyi puanlamak desteği ölçer; skorlu soru evidence_screen_ids ile HEM tam-destek HEM soluklaştırma ekranlarına çoğul bağlı). Her görev sınıfı TAM görevdir, konu başlığı değil. Ekranlardaki _phase alanları belgeleme içindir.",
+  "_template_version": 2,
+  "_note": "C4 4C/ID Karmaşık Beceri şablonu (references/pedagogy/4cid.md). worked_example (F1 #112) YAYINDA — şablon gerçek şemayla kuruludur ve sunucu lint'inden geçer (0 hata / 0 uyarı / coverage 1.0). Kopyala-uyarla: görev sınıflarını, çözümlü örnekleri ve soru içeriğini değiştir; görev sınıflarının basit→karmaşık dizisini, fading ilerlemesini (full → partial → problem_only → bağımsız skorlu) ve skor/kanıt sözleşmesini KORU (worked_example yapısal skorsuz — puan alanı YOK; skor yalnız gorev_bagimsiz fazında; skorlu soru evidence_screen_ids ile worked_example ekranlarına ÇOĞUL bağlı). Her görev sınıfı TAM görevdir, konu başlığı değil. Her adımda rationale_html zorunlu ruhu taşır: boş gerekçe sunucuda step_without_rationale WARN üretir. assets[] içindeki PLACEHOLDER görsellerini gerçek yanıt ekran görüntüleriyle değiştir (artifact_caption hem figcaption hem alt-text kaynağıdır). Ekranlardaki _phase alanları belgeleme içindir (sunucu yok sayar).",
   "_yontem_beyani": [
     "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
     "- kazanım: O1 (tür: problem çözme · PK: 3 · hata maliyeti: orta · bütçe: 9 dk)",
     "  paket: 4cid",
     "  kaplamalar: []",
     "  elenenler: [rosenshine-di (uygun aday ama görev çok alt-becerili — ton + çözüm + telafi koordinasyonu ister; tek-yollu prosedür değil), merrill-fpi (uygun aday; görev SINIFLARI + destek soluklaştırma gerektiği için büyüğü olan 4cid seçildi — ölçek farkı), 5e-inquiry (outcome_types kavram/ilke — kapsam dışı)]",
-    "  gerekçe: \"Şikâyet yanıtı tek doğru yolu olmayan, çok alt-becerili bir bütün görevdir; basitten karmaşığa TAM görev sınıfları + adım adım çekilen destek (çözümlü örnek → tamamlama → bağımsız) 4C/ID'nin tam profili. ŞART: worked_example (F1) platformda var olmalı — yoksa bu beyan geçersizdir ve seçici paketi eler.\""
+    "  gerekçe: \"Şikâyet yanıtı tek doğru yolu olmayan, çok alt-becerili bir bütün görevdir; basitten karmaşığa TAM görev sınıfları + adım adım çekilen destek (full → partial → problem_only → bağımsız) 4C/ID'nin tam profili. ŞART karşılandı: worked_example (F1 #112) sunucu çekirdeğinde; requires_platform beyanı F1'siz eski hedeflerde paketi elemeyi sürdürür.\""
   ],
   "title": "Şikâyet E-postasına Yanıt Kurmak",
-  "description": "4C/ID mikrokursu — 4cid şablonu (TASLAK: F1/worked_example bekliyor)",
+  "description": "4C/ID mikrokursu — 4cid şablonu (worked_example soluklaştırma dizisi: full → partial → problem_only)",
   "scorm_version": "2004",
   "language": "tr",
   "theme": "modern-light",
@@ -22,6 +20,11 @@
     { "id": "O1",
       "description": "Müşteri şikâyet e-postasına kabul → çözüm → telafi yapısıyla, savunuculuğa kaçmadan yanıt kurar.",
       "success_criteria": "Yeni bir şikâyette üç ögeyi de taşıyan ve savunucu dilden kaçınan yanıtı gerekçesiyle seçer." } ],
+  "assets": [
+    { "id": "yanit_kargo", "filename": "PLACEHOLDER_yanit_kargo_DEGISTIR.png",
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" },
+    { "id": "yanit_ayakkabi", "filename": "PLACEHOLDER_yanit_ayakkabi_DEGISTIR.png",
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" } ],
   "screens": [
     { "id": "giris", "type": "title_slide",
       "title": "Şikâyet E-postasına Yanıt Kurmak",
@@ -34,22 +37,31 @@
         { "html": "<p>Sıralama okuma sırasıdır: kabul gelmeden çözüm 'savunma' gibi okunur — kızgın okuyucu ilk cümlede anlaşılmadığını hissederse gerisini okumaz. Bu yüzden kabul HEP öncedir.</p>" } ] },
 
     { "id": "ornek_sinif1", "type": "worked_example", "_phase": "gorev_tam_destek",
-      "fading_level": "full",
+      "fading": "full",
       "title": "Görev sınıfı 1 — çözümlü örnek: gecikmiş kargo",
-      "_f1_sozlesmesi": "worked_example (F1): fading_level 'full' → çözüm adım adım, gerekçeli gösterilir; 'completion' → adımların bir kısmı boş bırakılır (blank_accepted); son sınıfta ekran kullanılmaz (yalnız görev).",
+      "intro_html": "<p><b>Şikâyet:</b> \"3 gündür kargom gelmedi, aradığımda kimse dönmedi. Böyle hizmet olmaz.\" — Tam görev, tam destek: uzman yanıtını adım adım, gerekçeleriyle izle.</p>",
       "steps": [
-        { "html": "<p><b>Şikâyet:</b> \"3 gündür kargom gelmedi, aradığımda kimse dönmedi. Böyle hizmet olmaz.\"</p>" },
-        { "html": "<p><b>1 — Kabul:</b> \"Haklısınız — kargonuz 3 gün gecikti ve dönüş sözümüzü tutamadık; yaşattığımız belirsizlik için özür dileriz.\" Neden: olgu (3 gün) + duygu (belirsizlik) adlandırıldı; genel 'üzgünüz' kalıbı değil.</p>" },
-        { "html": "<p><b>2 — Çözüm:</b> \"Gönderiniz bugün 14:00'te dağıtıma çıktı; takip numaranız X. Yarın 18:00'e kadar elinizde olmazsa bu numaradan doğrudan bana ulaşın.\" Neden: fiil + saat + kaçış yolu — 'ilgileneceğiz' yok.</p>" },
-        { "html": "<p><b>3 — Telafi:</b> \"Bir sonraki gönderinizde kargo bizden.\" Neden: gecikmeyle orantılı, koşulsuz, hemen kullanılabilir.</p>" } ] },
+        { "action_html": "<p><b>1 — Kabul:</b> \"Haklısınız — kargonuz 3 gün gecikti ve dönüş sözümüzü tutamadık; yaşattığımız belirsizlik için özür dileriz.\"</p>",
+          "rationale_html": "<p>Olgu (3 gün) + duygu (belirsizlik) adlandırıldı; genel 'üzgünüz' kalıbı değil. Özür suç kabulü değildir — yaşananı adlandırmak savunma kapısını baştan kapatır.</p>" },
+        { "action_html": "<p><b>2 — Çözüm:</b> \"Gönderiniz bugün 14:00'te dağıtıma çıktı; takip numaranız X. Yarın 18:00'e kadar elinizde olmazsa bu numaradan doğrudan bana ulaşın.\"</p>",
+          "rationale_html": "<p>Fiil + saat + kaçış yolu: 'ilgileneceğiz' fiil değildir; tarih verilmeyen çözüm okuyucuya söz değil oyalama gibi okunur.</p>" },
+        { "action_html": "<p><b>3 — Telafi:</b> \"Bir sonraki gönderinizde kargo bizden.\"</p>",
+          "rationale_html": "<p>Gecikmeyle orantılı, koşulsuz, hemen kullanılabilir jest. Orantısız telafi ya samimiyetsiz görünür ya sürdürülemez olur.</p>",
+          "artifact_asset_id": "yanit_kargo",
+          "artifact_caption": "Bitmiş yanıt e-postasının tamamı: kabul → çözüm → telafi sırasıyla üç öge tek mesajda (yer tutucu görsel — gerçek ekran görüntüsüyle değiştir)" } ] },
 
     { "id": "tamamlama_sinif2", "type": "worked_example", "_phase": "gorev_soluklastirma",
-      "fading_level": "completion", "points": 0,
-      "title": "Görev sınıfı 2 — tamamla: kızgın müşteri, yanlış fatura",
+      "fading": "partial",
+      "title": "Görev sınıfı 2 — kızgın müşteri, yanlış fatura: gerekçeyi önce sen kur",
+      "intro_html": "<p><b>Şikâyet:</b> \"İkinci kez fazla fatura kesildi. Bir daha olursa aboneliği iptal ediyorum.\" — Destek azaldı: eylemler açık; her adımın GEREKÇESİNİ önce kendin kur, sonra uzmanınkiyle karşılaştır.</p>",
       "steps": [
-        { "html": "<p><b>Şikâyet:</b> \"İkinci kez fazla fatura kesildi. Bir daha olursa aboneliği iptal ediyorum.\" Yanıtın çözüm ve telafi adımları verildi; İLK adımı sen yaz — hangi omurga ögesi, hangi olguyu adlandırmalı?</p>" },
-        { "html": "<p><b>1 — ___:</b> (senin cümlen) · <b>2 — Çözüm:</b> \"Fazla tutar 2 iş günü içinde iade edilecek; faturayı düzelttik, düzeltilmiş hali ektedir.\" · <b>3 — Telafi:</b> \"Bu ay hizmet bedelinden %20 indirim uyguladık.\"</p>",
-          "blank_accepted": ["Kabul", "kabul"] } ] },
+        { "action_html": "<p><b>1 — Kabul:</b> \"Haklısınız — üst üste iki ay fazla tutar yansıdı; aynı hatayı tekrarlamamızın güveninizi sarstığının farkındayız.\"</p>",
+          "rationale_html": "<p>Tekrar olgusu ('ikinci kez') açıkça adlandırılmalı: üst üste mağdur olan okuyucu ilk cümlede anlaşılmadığını hissederse çözümü okumadan iptale gider.</p>" },
+        { "action_html": "<p><b>2 — Çözüm:</b> \"Fazla tutar 2 iş günü içinde iade edilecek; faturayı düzelttik, düzeltilmiş hali ektedir.\"</p>",
+          "rationale_html": "<p>Fiil + süre + kanıt (ek): iade sözünün ölçülebilir olması, 'bir daha olursa' tehdidini karşılıklı bir sözleşmeye çevirir.</p>" },
+        { "action_html": "<p><b>3 — Telafi:</b> \"Bu ay hizmet bedelinden %20 indirim uyguladık.\"</p>",
+          "rationale_html": "<p>Tekrarlanan hataya orantılı jest: ilk hatada özür yeterken ikinci hatada somut bir bedel gerekir — indirim, sözün arkasında maliyet olduğunu gösterir.</p>" } ],
+      "self_explanation_prompt_html": "<p>Gerekçeleri açmadan önce: kabul cümlesi neden 'ikinci kez' olgusunu adlandırmak ZORUNDA? Kendi gerekçeni yaz, sonra uzmanınkiyle karşılaştır. (Skorsuz — LMS'e yazılmaz.)</p>" },
 
     { "id": "tamamlama_dogrula", "type": "fill_blank", "_phase": "gorev_soluklastirma", "points": 0,
       "title": "Soluklaştırma kontrolü: sıra neden bozulmaz?",
@@ -57,11 +69,26 @@
       "blanks": [ { "id": "b1", "accepted": ["önce", "once"] } ],
       "feedback": {
         "correct_html": "<p>Evet — ikinci kez mağdur olmuş okuyucu ilk cümlede anlaşılmadığını hissederse çözümü okumadan iptale gider; kabulün öne gelmesi bu yüzden yapısaldır, nezaket değil.</p>",
-        "incorrect_html": "<p>Çözümlü örneğin 'Neden' satırlarına geri dön: omurganın sırası okuma sırasıdır — kabul gelmeden çözüm savunma gibi okunur.</p>" } },
+        "incorrect_html": "<p>Çözümlü örneğin gerekçe satırlarına geri dön: omurganın sırası okuma sırasıdır — kabul gelmeden çözüm savunma gibi okunur.</p>" } },
+
+    { "id": "iskelet_sinif3", "type": "worked_example", "_phase": "gorev_soluklastirma",
+      "fading": "problem_only",
+      "title": "Görev sınıfı 3 — yanlış numara, düğün yarın: önce kendin kur",
+      "intro_html": "<p><b>Şikâyet:</b> \"Sitenizden aldığım ayakkabı 42 değil 40 numara geldi; yarın düğüne gidiyorum!\" — Destek sıfıra iniyor: yalnız şikâyet açık. Yanıtın üç ögesini ÖNCE kendin kur, sonra uzman adımlarını tek tek açıp karşılaştır.</p>",
+      "steps": [
+        { "action_html": "<p><b>1 — Kabul:</b> \"Haklısınız — yanlış numara gönderdik ve düğün telaşınıza bizim hatamız eklendi; özür dileriz.\"</p>",
+          "rationale_html": "<p>Olgu (yanlış numara) + duygu (zaman baskısı): aciliyeti adlandırmamak, okuyucuya derdinin anlaşılmadığını söyler.</p>" },
+        { "action_html": "<p><b>2 — Çözüm:</b> \"Doğru numara bugün aynı-gün kuryeyle çıkıyor, yarın 12:00'den önce elinizde; yanlış ürünü kurye aynı anda teslim alacak.\"</p>",
+          "rationale_html": "<p>Çözümün hızı şikâyetin aciliyetiyle orantılı seçilir: fiil + saat + zahmetsiz iade — müşteriye ek iş çıkarmayan tek akış.</p>" },
+        { "action_html": "<p><b>3 — Telafi:</b> \"Kurye ücreti bizden; ayrıca bir sonraki siparişinizde geçerli bir hediye çeki tanımladık.\"</p>",
+          "rationale_html": "<p>Orantılı: müşterinin ek maliyeti sıfırlanır + küçük jest. Abartılı telafi (ürünü bedavaya vermek) hatayı ödüle çevirirdi.</p>",
+          "artifact_asset_id": "yanit_ayakkabi",
+          "artifact_caption": "Uzmanın tam yanıtı: aciliyete uyan çözüm saati ve orantılı telafiyle üç öge (yer tutucu görsel — gerçek ekran görüntüsüyle değiştir)" } ],
+      "self_explanation_prompt_html": "<p>Adımları açmadan önce kendi yanıtını üç öge (kabul → çözüm → telafi) halinde buraya yaz; sonra uzman çözümüyle farklarını not et. (Skorsuz — LMS'e yazılmaz.)</p>" },
 
     { "id": "q_yanit_bagimsiz", "type": "mcq", "_phase": "gorev_bagimsiz", "points": 50,
       "objective_ids": ["O1"],
-      "evidence_screen_ids": ["ornek_sinif1", "tamamlama_sinif2"],
+      "evidence_screen_ids": ["ornek_sinif1", "tamamlama_sinif2", "iskelet_sinif3"],
       "title": "Skorlu tam görev: yeni şikâyet, desteksiz",
       "prompt_html": "<p>Şikâyet: <i>\"Eğitim videonuz açılmıyor, yarın sınavım var!\"</i> Hangi yanıt üç ögeyi de doğru sırayla taşıyor?</p>",
       "options": [
@@ -69,11 +96,11 @@
         { "id": "b", "text_html": "\"Videolarımız düzenli test ediliyor; sorun büyük olasılıkla tarayıcınızdadır. Önbelleği temizleyip yeniden deneyin.\"" },
         { "id": "c", "text_html": "\"Yaşadığınız sorun için çok üzgünüz, geri bildiriminiz bizim için değerli. En kısa sürede ilgileneceğiz.\"" } ],
       "feedback": {
-        "correct_html": "<p>Doğru — kabul (stres + olgu), çözüm (fiil + süre + kaçış yolu), telafi (orantılı: çevrimdışı erişim) ve sıra yerinde. Sınıf-1 örneğinin omurgasını yeni vakaya desteksiz taşıdın.</p>",
-        "incorrect_html": "<p>Birinde kabul yok ve suç okuyucuya atılıyor (savunma), diğerinde fiil ve tarih yok ('ilgileneceğiz' çözüm değildir). 'Görev sınıfı 1' çözümlü örneğinin 'Neden' satırlarına ve sınıf-2'de yazdığın kabul adımına geri dön.</p>" } },
+        "correct_html": "<p>Doğru — kabul (stres + olgu), çözüm (fiil + süre + kaçış yolu), telafi (orantılı: çevrimdışı erişim) ve sıra yerinde. Sınıf-1 örneğinin omurgasını, sınıf-2'de kurduğun gerekçeleri ve sınıf-3'te desteksiz yazdığın yanıtı yeni vakaya taşıdın.</p>",
+        "incorrect_html": "<p>Birinde kabul yok ve suç okuyucuya atılıyor (savunma), diğerinde fiil ve tarih yok ('ilgileneceğiz' çözüm değildir). 'Görev sınıfı 1' çözümlü örneğinin gerekçe satırlarına ve sınıf-3'te kendi kurduğun yanıta geri dön.</p>" } },
 
     { "id": "ozet", "type": "summary", "title": "Özet: kabul → çözüm → telafi, destek sıfırda",
-      "body_html": "<p>Üç ögeyi tam destekle izledin, yarım destekle tamamladın, desteksiz kurdun. Sonraki modül: aynı omurga, daha karmaşık sınıf (çok taraflı şikâyet).</p>",
+      "body_html": "<p>Üç ögeyi tam destekle izledin (full), gerekçesini kendin kurdun (partial), yanıtı desteksiz yazdın (problem_only) ve skorlu görevde taşıdın. Sonraki modül: aynı omurga, daha karmaşık sınıf (çok taraflı şikâyet).</p>",
       "show_score": true, "show_completion": true }
   ]
 }
