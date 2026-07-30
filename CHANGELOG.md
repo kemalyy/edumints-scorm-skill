@@ -52,6 +52,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   ön-maddede bildirildi: mevzuat bağlamında kaplama içerik ATLATAMAZ, yalnız EK destek ekleyip
   çıkarabilir (gezinme, karar-noktası düzeyi); ayrıca deneme-önce (destek enjekte etmez) ve
   model-önce (gösterim kısalır ama kanıt ekranı kalkmaz) bildirimleri.
+- **`references/overlays/assessment-alignment.md` — D5 Ölçme Hizası (#34).** A2/H1–H3'ün
+  pratiğe dökülmüş karar seti; karar noktaları `[olcme, ekran_secimi]`. Kurucu kural:
+  "hatırlama düzeyinde soruyla uygulama hedefi ölçülemez" — skorlu sorunun düzeyi hedef
+  FİİLİNİN düzeyine eşit (Anderson & Krathwohl 2001 altı düzey doğrulandı; alt-düzey madde
+  yalnız skorsuz ısınma olarak meşru, Z1). SOLO (Biggs & Collis 1982 doğrulandı) çeldirici
+  cetveli olarak bağlandı (doğru seçenek ilişkisel, çeldiriciler tek-/çok-yönlü okumalar).
+  H2 tablosuna iki DÜZEY sütunu eklendi (hedef fiili ↔ soru; eşitsiz satır = düzelt ya da
+  hedefi daralt). Soru sorabilen tiplerin (sunucu QUIZ_TYPES kümesi) tip × rahat-taşıdığı-düzey
+  tablosu + kazanım türü → doğru/yanlış biçim eşlemesi (prosedür→sorting/simulation,
+  kavram→yeni-örnek sınıflama, tutum→davranış seçimi; olguyu senaryoya sarmak = uygulama
+  tiyatrosu). Kanon-alan bağı: artefakta-uygulama kalıbı düzeyi kendiliğinden yükseltir.
+  Skor ağırlığı: hedefe orantılı pay + `passing_score` tutarlılığı (tek ucuz soruyla eşik
+  aşılamaz — D2 uyumu). Çakışma bildirimi: tazeleme paketinde hatırlama-düzeyi geri getirme
+  paketin özü — düzey itirazı yalnız hedef fiili uygulama+ iken işler.
 
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat
