@@ -1,4 +1,4 @@
-# Screen-type decision guide (28 types)
+# Screen-type decision guide (30 types)
 
 Pick by *intent*, not habit. Vary them.
 
@@ -47,6 +47,28 @@ Pick by *intent*, not habit. Vary them.
   `difficulty` (logit; harder = higher) + an `explain_html` each. Use for drill/review that should fit
   each learner instead of a fixed quiz.
 
+## Evidence primitives (not scored — unconditional evidence carriers)
+- **worked_example** — expert solution shown step by step; every step is an **action + rationale**
+  pair (+ optional artifact image with caption). `fading` controls support: `full` (everything
+  open) → `partial` (actions open, rationales behind per-step reveal — learner builds their own
+  rationale first) → `problem_only` (only the problem/`intro_html` open, steps revealed one by
+  one). Optional `self_explanation_prompt_html` renders an UNSCORED free-text field (never
+  written to the LMS). Structurally unscorable (no `points` field — grading a supported attempt
+  measures the support, not the learner). Evidence role: K1 type 1 (worked solution) — the most
+  direct carrier; scored questions bind to it via `evidence_screen_ids`. Engine of the `4cid`
+  and `rosenshine-di` fading progressions. Empty rationale → `step_without_rationale` WARN;
+  artifact steps count toward the visual budget (`artifact_caption` = figcaption + alt-text).
+- **exploration** — learner input (attempt, prediction, classification) is STORED under
+  `store_key` and REPLAYED by later screens via `<span data-exploration-ref="store_key"></span>`
+  ("your prediction was…" attribution is real, not imitated in feedback text). `input_kind`:
+  `text` (observation note; `placeholder`, `min_length`), `choice` (classify), `prediction`
+  (commit-then-see; requires ≥2 `choices` — any `correct` flags are ignored). Structurally
+  unscorable (no `points` — grading the attempt turns inquiry into a guessing contest).
+  Evidence role: K1 type 2 (the learner's OWN produced output) — unconditional evidence carrier.
+  `store_key` must be unique course-wide (`[a-z0-9_-]+`, ≤64; hard validation error on clash);
+  values are truncated at 500 chars (SCORM 1.2 suspend budget). Preferred kesfet mechanic of
+  `5e-inquiry`; attempt log for productive-failure patterns.
+
 ## Visual content
 - **data_chart** — server-side inline SVG chart (`bar`/`line`/`pie`). Passive data presentation /
   comparison; **not scored**. Use real data to make a point, not decoration.
@@ -69,7 +91,9 @@ Pick by *intent*, not habit. Vary them.
 drag_drop/matching; process order → sorting; software "do it" → simulation; "what would you do?" /
 consequence game → decision_scenario; **mechanic-driven serious game** (score/lives/timer/hints +
 branching, intrinsic integration) → game; **adapt difficulty to the learner** → adaptive_practice;
-cross-screen routing → branching; dense optional detail → accordion/tabs; visual concept →
-lottie/video. After 1–2 content screens, insert a practice type.
+**show an expert solution with fading support** (demonstration-first, complex skill) →
+worked_example; **commit a prediction / record an attempt, then refer back to it** (inquiry-first,
+"your prediction was…") → exploration; cross-screen routing → branching; dense optional detail →
+accordion/tabs; visual concept → lottie/video. After 1–2 content screens, insert a practice type.
 Game design patterns & scoring: see the server's `docs/GAME-PATTERNS.md`, `docs/GAME-ECD.md`,
 `docs/GAME-ADAPTIVE.md`. Before publishing a game/adaptive course, run `lint_course` (anti-slop gate).
