@@ -27,6 +27,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   değil karar-noktası düzeyinde (kaplama tarafında `destek_dozu` bildirimi) çözülür.
   `conflicts_with: [rosenshine-di]` — C1'in tek taraflı beyanı KARŞILIKLI hale geldi. Birincil
   kaynak doğrulandı: Kapur (2008) C&I 26(3) + Kapur & Bielaczyc (2012) JLS 21(1) faz adları.
+- **`references/pedagogy/pbl-case.md` — C7 Vaka/Problem Temelli Öğrenme (Barrows) (#24).**
+  Problem-önce paket: vaka_dosyasi (kursun inşa ettiği artefakt ailesi + bütün-vaka sürükleyici
+  soru) → problem_tanimlama (hipotez, skorsuz) → analiz_arastirma (aşamalı ifşa: ek belgeler —
+  kanıt ailesi 2) → cozum_onerisi (skorlu vaka kararı) → karsilastirma_genelleme (uzman
+  karşılaştırması + transfer). `evidence_phases: [vaka_dosyasi, analiz_arastirma]` (ÇOĞUL);
+  amiral-gemisi bulgusunun panzehiri: skorlu soru vaka dosyasına bağlanmak ZORUNDA, kritik olgu
+  yalnız dosya ekranlarında yaşar (K4) — kanon-alan kalıbı paketin yerlisi. PK 6–10 (vaka
+  zenginliği acemiye gürültü); `requires_platform: []` (F2 hipotez notu için opsiyonel
+  iyileştirme). `conflicts_with: []` gerekçeli: gösterim-önce adaylarla PK aralıkları ayrık —
+  aynı hedefte zaten birlikte sağ kalamazlar. Birincil kaynak doğrulandı: Barrows (1986)
+  Medical Education 20(6), 481–486.
 
 ### Changed — v2.1 F1/F2 entegrasyonu (worked_example + exploration YAYINDA)
 - **`references/pedagogy/4cid.md` — F1 gerçek şemaya geçiş.** build_from_spec örneği eski
