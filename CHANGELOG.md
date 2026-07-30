@@ -38,6 +38,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   iyileştirme). `conflicts_with: []` gerekçeli: gösterim-önce adaylarla PK aralıkları ayrık —
   aynı hedefte zaten birlikte sağ kalamazlar. Birincil kaynak doğrulandı: Barrows (1986)
   Medical Education 20(6), 481–486.
+- **`references/pedagogy/kolb-experiential.md` — C8 Kolb Deneyimsel Öğrenme Döngüsü (#25).**
+  Deneyim-önce döngü: somut_deneyim (karar + bedel, anlatı içinde — puanlanmaz) →
+  yansitici_gozlem (açık uçlu, exploration/F2 tercihli — SAKLANIR, kanıt fazı DEĞİL: köprü) →
+  soyut_kavramsallastirma (deneyime atıflı kanonik çerçeve) → aktif_deneme (YENİ senaryoda
+  skorlu DAVRANIŞ seçimi — tutumun davranışsal kanıtı, "iddia+quiz" zincirinin panzehiri).
+  `evidence_phases: [somut_deneyim, soyut_kavramsallastirma]` (ÇOĞUL). PK [1,10] ve error_cost
+  tam liste — gerekçeli: deneyim malzemesini kurs üretir, saha bedeli simülasyona taşınmaz.
+  `requires_platform: []` (decision_scenario/branching çekirdek; F2 yansıtma geri-oynatması
+  iyileştirme). `arcs` kaplaması doğal eş (yalnız eşleme notu — kaplama uygulanmadı).
+  `conflicts_with: []` gerekçeli (tutumda yarışan paket yok; outcome kesişimi boş). Birincil
+  kaynak doğrulandı: Kolb (1984) *Experiential Learning*, Prentice-Hall — dört evre adı;
+  öğrenme-stilleri iddiası paket DIŞI bırakıldı (Pashler vd. 2008 sınır notu).
 
 ### Changed — v2.1 F1/F2 entegrasyonu (worked_example + exploration YAYINDA)
 - **`references/pedagogy/4cid.md` — F1 gerçek şemaya geçiş.** build_from_spec örneği eski
