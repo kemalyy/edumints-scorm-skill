@@ -47,7 +47,8 @@ authoring-scorm-courses/
 │   │   ├── productive-failure.md    # C6 — Kapur productive failure: unscored struggle → consolidation (requires exploration; PK floor 4)
 │   │   ├── pbl-case.md              # C7 — Barrows case/problem-based learning: case file = evidence artifact family (high PK)
 │   │   ├── kolb-experiential.md     # C8 — Kolb experiential cycle: concrete experience → reflection → concepts → active experimentation (attitudes)
-│   │   └── sim-drill.md             # C9 — simulation drill: model run → unscored try-mode → debrief → part-task loop → scored scenario
+│   │   ├── sim-drill.md             # C9 — simulation drill: model run → unscored try-mode → debrief → part-task loop → scored scenario
+│   │   └── gagne-9.md               # C10 — Gagné's nine events (compliance/mandatory training; documented fallback default)
 │   ├── overlays/                    # Layer 2 — method-orthogonal overlays (D series)
 │   │   └── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes

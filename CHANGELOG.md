@@ -18,6 +18,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   doğrulayıcısı zorlar). Birincil kaynaklar doğrulandı: de Jong & van Joolingen (1998) RER 68(2)
   + Ericsson, Krampe & Tesch-Römer (1993) Psych. Review 100(3) + Wightman & Lintern (1985)
   Human Factors 27(3).
+- **`references/pedagogy/gagne-9.md` — C10 Gagné'nin Dokuz Öğretim Olayı (#27).** Tam-kapsama
+  iskeleti (mevzuat/zorunlu eğitim; Katman 0'ın belgeli varsayılanı): dikkat → hedef → ön bilgi
+  → uyaran sunumu (kanıt 1) → öğrenme rehberliği (kanıt 2) → skorsuz performans çıkarma →
+  gerekçeli geri bildirim → skorlu değerlendirme → kalıcılık/transfer. Olay adları Gagné (1985)
+  4. baskıdan doğrulandı; `outcome_types` TAM liste (beş öğrenme alanı yedi türü kapsar —
+  genişlik = nötrlük, özelleşmiş paket sağ kalmışken varsayılan seçilmez). "9 olay ekran DEĞİL
+  işlevdir" uyarısı paketin en kritik bölümü (örnek 9 olayı 8 ekranda birleştirerek gösterir).
+  Mevzuat bağlamı: herkes aynı içeriği görür (uyarlanabilir atlama YOK; expertise-adaptive
+  gerilimi karar-noktası düzeyinde, D4 yazılırken kaplama tarafında bildirilecek). KANON-ALAN
+  kuralı paketin yerlisi: uyum içeriği kamusal kanon → sorular kanonu değil kanonun kurs-üretimi
+  artefakta uygulanmasını ölçer (evidence-binding.md "Kanon-alan içerikleri" bölümüne atıf).
+  `mastery-learning` ile bileşim tamamlayıcılık (çakışma değil — seçici örnek 4). Birincil
+  kaynak doğrulandı: Gagné (1985) Conditions of Learning 4. baskı + Gagné, Briggs & Wager (1992).
 
 ### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
 - **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:
