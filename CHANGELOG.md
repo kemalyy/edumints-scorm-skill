@@ -4,6 +4,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 Katman-2 kaplamaları (D1–D6)
+- **`references/overlays/cognitive-load.md` — D1 Bilişsel Yük Yönetimi (#30).** İçsel/konu-dışı/
+  üretken yük ayrımı; karar noktaları `[ekran_secimi, icerik_dozu, medya, destek_dozu]`. Denetim
+  bulgusunun cevabı merkezde: kelime bütçesi mekanizmayı kesiyorsa karar BÖLMEKTİR, kısaltmak
+  değil (segmenting → `blocks[]`/`worked_example` adımları/`reveal:"click"`; ön-eğitim →
+  terimler mekanizmadan önce ayrı düşük-yük ekranda). Kip/gereksizlik/tutarlılık/işaretleme
+  ilkeleri anti-slop B2/C1/C4/A3'ün yük-kuramsal gerekçesi olarak bağlandı; bölünmüş-dikkat
+  kuralı ("soru, artefaktıyla aynı ekranda") `ekran_secimi`'nde. `destek_dozu` çakışma bildirimi
+  C6'nın beklediği biçimde yazıldı: deneme bölümünde destek düşük kalır (kasıtlı zorluk = üretken
+  yük, kaplama susar), kanonik çözüm bölümünde yükselir (Sinha & Kapur 2021 sınır koşulları);
+  ayrıca vaka-dosyası zenginliği (icerik_dozu) ve dikkat-medyası (medya, coherence öncelikli)
+  bildirimleri. Literatür doğrulandı: Sweller 1988 + Sweller/van Merriënboer/Paas 1998 + Mayer &
+  Fiorella (Eds.) 2022 Handbook 3. baskı (altı ilke adı ve kategorileri) + Mayer & Moreno 2003.
+
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat
   paketi (psikomotor/prosedür): brifing (hedef + akıcılık ölçütü) → gösterim turu (worked_example
