@@ -17,6 +17,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   ayrıca vaka-dosyası zenginliği (icerik_dozu) ve dikkat-medyası (medya, coherence öncelikli)
   bildirimleri. Literatür doğrulandı: Sweller 1988 + Sweller/van Merriënboer/Paas 1998 + Mayer &
   Fiorella (Eds.) 2022 Handbook 3. baskı (altı ilke adı ve kategorileri) + Mayer & Moreno 2003.
+- **`references/overlays/udl.md` — D2 Evrensel Tasarım (#31).** CAST UDL Guidelines 3.0 (yayın
+  30 Temmuz 2024 — üç ilke doğrulandı) kaplama diline çevrildi; karar noktaları `[ekran_secimi,
+  medya, olcme, gezinme]`. Kurucu kural: UDL kanıt kaynağını ÇOĞALTIR, icat etmez — ikinci kip
+  aynı kanıtın kipidir ve skorlu sorunun `evidence_screen_ids`'ine EKLENİR (kör test iki kipi de
+  söker; K5 güvenliği). 30 tipin temsil-kanalı haritası (yazılı/görsel/işitsel/hareketli/keşif);
+  işitsel kanal DÜRÜSTLÜK sınırı sunucunun uygunluk belgesine bağlandı: anlatım her zaman
+  `narration_text` ile (metinsiz ses = transkriptsiz kanal), video senkron altyazı taşımaz →
+  konuşmalı video ancak K1 dış-medya şartını karşılıyorsa temsil sayılır. Eylem/ifade: aynı
+  beceriye biçim seçenekleri (drag_drop ↔ matching, fill_blank hedef-fiile bağlı, exploration/
+  poll ifade kanalı). Katılım: `branching` bağlam seçimi (iki kol aynı kanıt yapısı). Çakışma
+  bildirimleri: cognitive-load (temsil sayısı ≤ 2/ekran, bölmede o öncelikli) + accessibility
+  (sınır: çelişkide teknik uyum önceliklidir — erişilemeyen temsil çeşitlilik sayılmaz).
 
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat

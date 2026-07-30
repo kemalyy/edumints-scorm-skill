@@ -53,7 +53,8 @@ authoring-scorm-courses/
 │   │   └── retrieval-spaced.md      # C12 — retrieval practice + spacing (refresher-only; evidence = the re-exposure reference artifact)
 │   ├── overlays/                    # Layer 2 — method-orthogonal overlays (D series)
 │   │   ├── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
-│   │   └── cognitive-load.md        # D1 — cognitive-load management: segmenting/pre-training/modality/coherence/redundancy/signaling → screen decisions
+│   │   ├── cognitive-load.md        # D1 — cognitive-load management: segmenting/pre-training/modality/coherence/redundancy/signaling → screen decisions
+│   │   └── udl.md                   # D2 — UDL (CAST 3.0): multiply representations of the SAME evidence source; response-format options; honest audio/caption limits
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
