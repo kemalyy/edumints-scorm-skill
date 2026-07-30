@@ -1,6 +1,6 @@
 ---
 name: authoring-scorm-courses
-description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp). Covers instructional design, screen-type selection, assessment, theming, variables/gamification, media (TTS/ffmpeg), animation, and the build→preview→feedback→fix loop. Enforces an anti-slop discipline: a one-line Training Read (Bölüm 0), parametric dials, and a mechanical pre-flight gate.
+description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp) — including turning a brief, document, policy table, or cheat-sheet into a course. This skill SELECTS a teaching method before outlining — outcome type + PRIOR_KNOWLEDGE + error cost feed a Layer-0 selector that picks from 12 pedagogy packs (direct instruction, 5E inquiry, PBL, mastery, retrieval practice…) plus 6 overlays (cognitive load, UDL, ARCS, accessibility…) — and enforces evidence binding (every scored question bound to in-course evidence, K1–K6). Covers 30 screen types, assessment, theming, variables/gamification, media (TTS/ffmpeg), the build→preview→feedback→fix loop, and a mechanical anti-slop pre-flight gate.
 ---
 
 # Authoring SCORM courses with scorm-mcp
@@ -151,10 +151,10 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/eval/blind-test.md` — **kör test protokolü:** kanıt kaynakları çıkarılınca skorlanan sorular hâlâ cevaplanabiliyor mu? Geçme eşiği ≥ 1/2 + sonuç kayıt şablonu + pilot koşu.
 - `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
-- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 28 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
+- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 30 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).
 - `references/instructional-design.md` — objectives, structure, microlearning, anti-template-fatigue.
-- `references/screen-types.md` — decision guide for all 28 screen types (incl. simulation, decision_scenario, **composable game**, **adaptive practice**).
+- `references/screen-types.md` — decision guide for all 30 screen types (incl. simulation, decision_scenario, **worked_example**, **exploration**, **composable game**, **adaptive practice**).
 - `references/assessment.md` — question/feedback/scoring design.
 - `references/interactivity-and-gamification.md` — variables, conditions, timer, points, branching, **composable game engine** (game), **adaptive practice** (Elo/BKT), **xAPI/cmi5** telemetry.
 - `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie, **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id).

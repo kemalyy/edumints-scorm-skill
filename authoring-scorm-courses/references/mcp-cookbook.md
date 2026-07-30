@@ -180,7 +180,7 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   → Türkçe mp3 narration asset (ücretsiz, çevrimdışı). Üst kalite/başka dil için kendi TTS MCP'n +
   `add_asset` (birincil). Detay: **`references/media.md`**.
 - `preview(project_id)` → `{ inline_html, hosted_url }`. `validate_package` then `build_package` → download.
-- `list_screen_types()` / `list_themes()` — discovery: the 28 screen types + theme presets (no auth).
+- `list_screen_types()` / `list_themes()` — discovery: the 30 screen types + theme presets (no auth).
 - **`lint_course(project_id)`** → `{ error_count, warn_count, clean, issues[] }`. Anti-slop quality gate for
   game/adaptive screens (intrinsic integration, no fake choice, scaffolding, adaptive spread, a11y).
   Structural bugs are errors (also block the build); pedagogical smells are warnings. **Run before publishing
