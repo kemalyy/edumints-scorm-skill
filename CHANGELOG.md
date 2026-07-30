@@ -15,6 +15,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   ekranı iki yol açar, düzeltici kol paralel formatif ile ana hatta geri bağlanır. Birincil
   kaynak doğrulandı: Bloom (1968) *Learning for Mastery*, Evaluation Comment 1(2) + Keller
   (1968) PSI.
+- **`references/pedagogy/productive-failure.md` — C6 Üretken Başarısızlık (Kapur) (#23,
+  needs-decision ÇÖZÜM ÖNERİLİ).** Deneme-ÖNCE paket: problem_deneme (kanonsuz skorsuz boğuşma —
+  exploration/F2 denemeyi SAKLAR) → deneme_karsilastirma (geri oynatma; kanon sızdırmaz, K5) →
+  konsolidasyon (kanonik çözüm denemeye AÇIK atıfla — worked_example) → uygulama (skorlu).
+  Kanıt = K1 türü 5'in iki ayağı: `evidence_phases: [problem_deneme, konsolidasyon]` (ÇOĞUL).
+  `requires_platform: [exploration]` SERT (F2'siz "kendi denemenle karşılaştır" taklide düşer).
+  **Karar önerisi (kullanıcı onayına):** PK tabanı 4/10 bağlayıcı (`prior_knowledge: [4, 8]`) —
+  Kapur örneklemlerinin önkoşul-bilgi profili + Sinha & Kapur (2021) sınır koşulları + Kirschner
+  vd. (2006) acemi ucu; `error_cost: [düşük]` yalnız; cognitive-load çakışması hedef-düzeyi
+  değil karar-noktası düzeyinde (kaplama tarafında `destek_dozu` bildirimi) çözülür.
+  `conflicts_with: [rosenshine-di]` — C1'in tek taraflı beyanı KARŞILIKLI hale geldi. Birincil
+  kaynak doğrulandı: Kapur (2008) C&I 26(3) + Kapur & Bielaczyc (2012) JLS 21(1) faz adları.
 
 ### Changed — v2.1 F1/F2 entegrasyonu (worked_example + exploration YAYINDA)
 - **`references/pedagogy/4cid.md` — F1 gerçek şemaya geçiş.** build_from_spec örneği eski
