@@ -4,6 +4,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 kapanış dokümantasyonu (F4 + G1–G3)
+- **`examples/example-multipack-ergonomics.json` — F4 çok-paketli vitrin örneği (#36).**
+  "Aynı Sandalye, Üç Kat, Üç Sonuç": O2 kavram hedefi `5e-inquiry` (exploration tahmin-kilidi +
+  data_chart deneyi), O1 prosedür hedefi `rosenshine-di` (çözümlü model + iki vaka artefaktı) —
+  iki paket karşılıklı `conflicts_with` beyan ederken FARKLI hedeflerde meşru birliktelik
+  (hedef-kapsamlı çakışma semantiği canlıda). Hedef başına YÖNTEM BEYANI, `assessment-alignment`
+  kaplaması (H2 düzey sütunlu tablo + hedef-bazlı `results_breakdown`), 4 özgün öğreten SVG
+  (inline data-URI, placeholder yok). Gerçek sunucu strict lint: 0 hata / 0 uyarı / coverage 1.0.
+  E4 kör testi 3 iterasyon + 3 temiz-bağlam okuyucuyla koşuldu, son oran 3/3 GEÇTİ; bulunan
+  sızıntı kanalları düzeltmeleriyle `eval/results/2026-07-30-e4-ergonomi-multipack.md`'de.
+  Kör testi geçemeyen eski amiral gemisi (`example-cybersecurity-course.json`, pilot 1/4)
+  `_deprecated` notuyla negatif örneğe dönüştü.
+- **`references/migration-v1-to-v2.md` — G2 geçiş rehberi (#38).** 8 kırıcı değişiklik +
+  giderme reçeteleri, Pattern A → `rosenshine-di` eşleme tablosu, 3 canlı demonun v2
+  yükseltmesinde gerçekten izlenen 7 adımlık oyun kitabı (K1 boşluğu / K4 başlık / K5 kapanış /
+  K6 kopya gerçek bulgularıyla), "ne yeniden yazılmaz" bölümü ve uçtan uca lint-doğrulanmış
+  v1→v2 örneği (v1: 3 uyarı + strict FAIL + coverage 0.0 → v2: 0/0 + coverage 1.0).
+- **`references/source-expansion.md` — G3 sıkıştırılmış kaynak açma prosedürü (#39).**
+  Kopya kâğıdı / politika tablosu / mevzuat özeti girdilerinde kanıt hammaddesi yoktur —
+  7 adımlı pozitif prosedür (satır → mekanizma sorusu → artefakt → K4'lü kanıt ekranı →
+  uygulamayı ölçen bağlı soru), satır-türü → açma hamlesi tablosu, 2 tam açma örneği
+  (KVKK 72-saat satırının doğru hali + yangın tablosu "ASLA su" satırı), `retrieval-spaced`
+  meşru istisna sınırı, halüsinasyon/kaynak-doğrulama uyarısı. E3-05 istemiyle gerçek koşu:
+  `eval/results/2026-07-30-e3-05-kaynak-acma.md` (mini spec strict 0/0, coverage 1.0,
+  `source_item_parity` 0; K2 ve parity ara-yakalamaları kayıtta).
+
+### Changed — v2.2 kapanış dokümantasyonu
+- **SKILL.md ön-madde `description` yeniden yazıldı (G1, #37):** beceri artık yöntem SEÇEN
+  sistem olarak tetikleniyor — kazanım türü + PRIOR_KNOWLEDGE + hata maliyeti, 12 paket +
+  6 kaplama, kanıt bağlama (K1–K6) ve sıkıştırılmış-kaynak senaryoları description'da;
+  852 karakter (loader limiti içinde), YAML şeması doğrulandı. Gövde sayım süpürmesi:
+  bayat "28 ekran tipi" → 30 (SKILL.md ×2, mcp-cookbook, method-selector).
+
 ### Added — v2.2 Katman-2 kaplamaları (D1–D6)
 - **`references/overlays/cognitive-load.md` — D1 Bilişsel Yük Yönetimi (#30).** İçsel/konu-dışı/
   üretken yük ayrımı; karar noktaları `[ekran_secimi, icerik_dozu, medya, destek_dozu]`. Denetim
