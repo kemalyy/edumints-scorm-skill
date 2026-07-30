@@ -71,7 +71,7 @@ authoring-scorm-courses/
 │   ├── video-generation.md          # programmatic motion-graphic / data-viz video
 │   └── themes.md
 ├── templates/                       # copy-and-adapt blueprints
-└── examples/                        # a complete, high-quality example course spec
+└── examples/                        # flagship multi-pack example (evidence-bound, blind-test passed) + deprecated v1 pilot
 ```
 
 ## Requirements

@@ -184,4 +184,11 @@ lint clean (0 errors, 0 warns, `evidence_binding_coverage` 1.0) — keep that in
   experiment data; the scored question binds to both explore screens and the explain slide.
 - `templates/4cid.json` — C4 4C/ID complex-skill training, **`_draft: true`**: uses the
   `worked_example` screen type (F1); same gate.
-- `examples/example-cybersecurity-course.json` — a complete, high-quality build_from_spec to study and adapt.
+- `examples/example-multipack-ergonomics.json` — **v2 vitrini (F4):** çok-paketli tam kurs — O2
+  kavram hedefi `5e-inquiry`, O1 prosedür hedefi `rosenshine-di` (karşılıklı `conflicts_with`
+  beyanına rağmen FARKLI hedeflerde meşru birliktelik — hedef-kapsamlı çakışma semantiği),
+  `assessment-alignment` kaplaması, hedef başına YÖNTEM BEYANI, strict lint 0/0 + coverage 1.0,
+  E4 kör testi 3 iterasyonda GEÇTİ (kayıt: depo kökünde `eval/results/2026-07-30-e4-ergonomi-multipack.md`).
+- `examples/example-cybersecurity-course.json` — **KULLANIMDAN KALDIRILDI** (kör test pilotunda
+  1/4 ile KALDI — `references/eval/blind-test.md`); negatif örnek/pilot kaydı olarak duruyor,
+  yeni kurslara şablon alma.
