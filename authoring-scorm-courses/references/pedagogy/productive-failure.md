@@ -34,7 +34,7 @@ phases:
     skorlanabilir: true
 evidence_phases: [problem_deneme, konsolidasyon]
 scoring_allowed_from: skorlu_uygulama
-conflicts_with: [rosenshine-di]
+conflicts_with: [rosenshine-di, cognitive-apprenticeship]
 ---
 
 # productive-failure — Üretken Başarısızlık (C6)
@@ -149,6 +149,10 @@ bantta yaşar — ama bandın alt sınırı beyan edilmezse seçici paketi acemi
   çakışmayı kendi tarafından zaten bildirir): doğrudan öğretim çözümü denemeden ÖNCE gösterir,
   PF denemeyi çözümden önce ister; aynı kazanımda ikisi birden uygulanamaz. Farklı kazanımlarda
   aynı kursta birlikte yaşayabilirler (kapsam HEDEFTİR — `_SCHEMA.md` B2 örneği tam budur).
+- `cognitive-apprenticeship` — **aynı kazanım üzerinde** birleştirilemez (KARŞILIKLI beyan —
+  C11 paketi kendi tarafından da bildirir): çıraklık uzman modelini (sesli-düşünme) denemeden
+  ÖNCE gösterir, PF denemeyi kanonik çözümden önce ister; ortak `ilke` kazanımında sıra
+  beyanları taban tabana zıttır.
 - `5e-inquiry` bilinçli olarak LİSTEDE DEĞİL: iki yöntem de deneme-önce ailesindendir; aradaki
   fark çakışma değil DOZ kararıdır (5E rehberli keşif + erken açıklama; PF desteksiz boğuşmayı
   daha uzun tutar) — 5E paketi de aynı gerekçeyle PF'yi listelemez, beyanlar simetriktir.

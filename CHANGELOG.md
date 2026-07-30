@@ -4,6 +4,67 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added — v2.2 son paketler (C9–C12, ikinci yarı)
+- **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat
+  paketi (psikomotor/prosedür): brifing (hedef + akıcılık ölçütü) → gösterim turu (worked_example
+  model icra — kanıt 1) → serbest deneme (simulation `points: 0` + deneme gözlemi exploration ile
+  SAKLANIR) → çıktı çözümleme (deneme ↔ model karşılaştırması, zayıf alt-görev teşhisi — kanıt 2)
+  → parça-görev döngüsü (`sonraki`/`tekrar_kosulu`: yalnız teşhisli alt-görev tekrar edilir,
+  Wightman & Lintern fractionation) → senaryolu skorlu ölçüm (YENİ varyant, bütün görev).
+  `evidence_phases: [gosterim_turu, cikti_cozumleme]` (ÇOĞUL — simülasyon ekranı çift şapkalı:
+  pratik aracı + çıktısı kanıt). `requires_platform: [simulation, worked_example, exploration]`
+  SERT (F2'siz "denemeni modelle karşılaştır" taklide düşer — issue denetim bulgusunun beyanı).
+  Süreli oyun varyantı yalnız `allow_extend` + `allow_disable` ile (WCAG 2.2.1 — platform
+  doğrulayıcısı zorlar). Birincil kaynaklar doğrulandı: de Jong & van Joolingen (1998) RER 68(2)
+  + Ericsson, Krampe & Tesch-Römer (1993) Psych. Review 100(3) + Wightman & Lintern (1985)
+  Human Factors 27(3).
+- **`references/pedagogy/gagne-9.md` — C10 Gagné'nin Dokuz Öğretim Olayı (#27).** Tam-kapsama
+  iskeleti (mevzuat/zorunlu eğitim; Katman 0'ın belgeli varsayılanı): dikkat → hedef → ön bilgi
+  → uyaran sunumu (kanıt 1) → öğrenme rehberliği (kanıt 2) → skorsuz performans çıkarma →
+  gerekçeli geri bildirim → skorlu değerlendirme → kalıcılık/transfer. Olay adları Gagné (1985)
+  4. baskıdan doğrulandı; `outcome_types` TAM liste (beş öğrenme alanı yedi türü kapsar —
+  genişlik = nötrlük, özelleşmiş paket sağ kalmışken varsayılan seçilmez). "9 olay ekran DEĞİL
+  işlevdir" uyarısı paketin en kritik bölümü (örnek 9 olayı 8 ekranda birleştirerek gösterir).
+  Mevzuat bağlamı: herkes aynı içeriği görür (uyarlanabilir atlama YOK; expertise-adaptive
+  gerilimi karar-noktası düzeyinde, D4 yazılırken kaplama tarafında bildirilecek). KANON-ALAN
+  kuralı paketin yerlisi: uyum içeriği kamusal kanon → sorular kanonu değil kanonun kurs-üretimi
+  artefakta uygulanmasını ölçer (evidence-binding.md "Kanon-alan içerikleri" bölümüne atıf).
+  `mastery-learning` ile bileşim tamamlayıcılık (çakışma değil — seçici örnek 4). Birincil
+  kaynak doğrulandı: Gagné (1985) Conditions of Learning 4. baskı + Gagné, Briggs & Wager (1992).
+- **`references/pedagogy/cognitive-apprenticeship.md` — C11 Bilişsel Çıraklık (#28).**
+  "Düşünmeyi görünür kılma" paketi; altı faz = CBN'nin altı yöntemi: modelleme (worked_example
+  gerekçesi = uzmanın İÇ KONUŞMASI — kanıt 1) → koçluk (skorsuz + anında gerekçeli düzeltme) →
+  iskele/soluklaştırma (`fading: partial → problem_only` motor) → dile getirme (exploration
+  text `store_key` — öğrenenin strateji metni SAKLANIR, kanıt 2) → yansıtma (öğrenen metni ↔
+  uzman modeli, `data-exploration-ref` birebir atıf) → keşif (YENİ problemde skorlu bağımsız
+  icra). `evidence_phases: [modelleme, dile_getirme]` (ÇOĞUL — öğrenenin kendi dile-getirmesi
+  kanıt kaynağı, K1 türü 2). `requires_platform: [worked_example, exploration]` SERT — F2
+  yayında olduğundan issue'daki fill_blank/poll geçici yedeği kaldırıldı, şart sertleştirildi.
+  `conflicts_with: [productive-failure, 5e-inquiry]` GERÇEK ve KARŞILIKLI (ortak `ilke`
+  kazanımında model-önce ↔ deneme/keşif-önce sıra zıtlığı): C6 ve C3 dosyalarına karşı beyan
+  eklendi. Birincil kaynak doğrulandı: Collins, Brown & Newman (1989), Resnick (Ed.) *Knowing,
+  Learning, and Instruction* içinde s. 453–494 + Collins, Brown & Holum (1991) American Educator.
+- **`references/pedagogy/productive-failure.md` + `references/pedagogy/5e-inquiry.md` —
+  karşılıklı çakışma beyanı (C11'in yan etkisi).** İki dosyanın `conflicts_with` listesine
+  `cognitive-apprenticeship` eklendi + Çakışmalar bölümlerine gerekçe cümlesi (tek taraflı
+  beyan yeterliydi; karşılıklılık C6'nın rosenshine-di emsalini izler).
+- **`references/pedagogy/retrieval-spaced.md` — C12 Geri Getirme + Aralıklı Pratik (#29).**
+  TAZELEME paketi — İLK öğretim yapmaz: skorsuz ön-yoklama (geri getirme yeniden-sunumdan
+  ÖNCE — testing effect; feedback cevabı vermez) → referans artefakt yeniden-sunumu (tek
+  KANIT fazı; sıkıştırılmış-kaynak girdisinin/G3 meşru alanı) → artan aralıklı skorsuz turlar
+  (`sonraki`/`tekrar_kosulu` döngüsü: grup başına ≥2 tur, ikincisi daha uzak) → karışık pratik
+  (interleaving) → summatif tur (PARALEL maddeler). `evidence_phase: referans_artefakt`
+  (TEKİL — bilinçli). Kanıt-bağlama DÜRÜSTLÜK NOTU paketin merkezi: sorular içerik olarak
+  önceki kursun öğrettiğini test eder; kurs-içi savunma kanıt = BU kurstaki yeniden-sunum
+  ekranları (kritik olgu yalnız artefaktta, K4). "Ne zaman seçilmemeli" bilinçli SERT: ilk
+  öğretimde kullanım = v1 iddia+quiz deseninin arka kapıdan dönüşü; önceki kurs brief'e
+  yazılamıyorsa paket seçilemez. Tek-kurs "aralık"ının minyatür olduğu, gerçek karşılığın
+  kurs DİZİSİ olduğu beyan edildi (Cepeda: optimum aralık hatırlama ufkuyla büyür). PK 7–10
+  sert kısıt. `requires_platform: []` (adaptive_practice tercihli taşıyıcı, şart değil);
+  `term_match_race` yalnız `allow_extend`+`allow_disable` ile (WCAG 2.2.1). Birincil kaynaklar
+  doğrulandı: Roediger & Karpicke (2006) Psych. Science 17(3) + Cepeda, Pashler, Vul, Wixted
+  & Rohrer (2006) Psych. Bulletin 132(3).
+
 ### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
 - **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:
   ünite sunumu → skorsuz formatif eşik (%80, BKT ustalık kestirimi) → eşik-altı DÜZELTİCİ tur
