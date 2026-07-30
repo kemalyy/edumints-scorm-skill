@@ -2,7 +2,13 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [Unreleased]
+## [2.0.0] — 2026-07-30
+
+Mimari revizyon: "iddia + yoklama" üretimini bitiren kanıt-bağlama çekirdeği. Katman-1
+(K1-K6 + kör-test protokolü), Katman-0 seçici, 12 takılabilir yöntem paketi, 6 kaplama,
+2 yeni kanıt-primitifi ekran tipi (worked_example/exploration, sunucu 30 tipe çıktı),
+şablonlar coverage 1.0, eval seti + gerçek kör-test döngüleri. v1 kursları için geçiş
+rehberi: references/migration-v1-to-v2.md.
 
 ### Added — v2.2 kapanış dokümantasyonu (F4 + G1–G3)
 - **`examples/example-multipack-ergonomics.json` — F4 çok-paketli vitrin örneği (#36).**
