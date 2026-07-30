@@ -31,6 +31,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   artefakta uygulanmasını ölçer (evidence-binding.md "Kanon-alan içerikleri" bölümüne atıf).
   `mastery-learning` ile bileşim tamamlayıcılık (çakışma değil — seçici örnek 4). Birincil
   kaynak doğrulandı: Gagné (1985) Conditions of Learning 4. baskı + Gagné, Briggs & Wager (1992).
+- **`references/pedagogy/cognitive-apprenticeship.md` — C11 Bilişsel Çıraklık (#28).**
+  "Düşünmeyi görünür kılma" paketi; altı faz = CBN'nin altı yöntemi: modelleme (worked_example
+  gerekçesi = uzmanın İÇ KONUŞMASI — kanıt 1) → koçluk (skorsuz + anında gerekçeli düzeltme) →
+  iskele/soluklaştırma (`fading: partial → problem_only` motor) → dile getirme (exploration
+  text `store_key` — öğrenenin strateji metni SAKLANIR, kanıt 2) → yansıtma (öğrenen metni ↔
+  uzman modeli, `data-exploration-ref` birebir atıf) → keşif (YENİ problemde skorlu bağımsız
+  icra). `evidence_phases: [modelleme, dile_getirme]` (ÇOĞUL — öğrenenin kendi dile-getirmesi
+  kanıt kaynağı, K1 türü 2). `requires_platform: [worked_example, exploration]` SERT — F2
+  yayında olduğundan issue'daki fill_blank/poll geçici yedeği kaldırıldı, şart sertleştirildi.
+  `conflicts_with: [productive-failure, 5e-inquiry]` GERÇEK ve KARŞILIKLI (ortak `ilke`
+  kazanımında model-önce ↔ deneme/keşif-önce sıra zıtlığı): C6 ve C3 dosyalarına karşı beyan
+  eklendi. Birincil kaynak doğrulandı: Collins, Brown & Newman (1989), Resnick (Ed.) *Knowing,
+  Learning, and Instruction* içinde s. 453–494 + Collins, Brown & Holum (1991) American Educator.
+- **`references/pedagogy/productive-failure.md` + `references/pedagogy/5e-inquiry.md` —
+  karşılıklı çakışma beyanı (C11'in yan etkisi).** İki dosyanın `conflicts_with` listesine
+  `cognitive-apprenticeship` eklendi + Çakışmalar bölümlerine gerekçe cümlesi (tek taraflı
+  beyan yeterliydi; karşılıklılık C6'nın rosenshine-di emsalini izler).
 
 ### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
 - **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:

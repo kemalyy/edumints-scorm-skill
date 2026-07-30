@@ -35,7 +35,7 @@ phases:
     skorlanabilir: true
 evidence_phases: [kesfet, acikla]
 scoring_allowed_from: degerlendir
-conflicts_with: [rosenshine-di]
+conflicts_with: [rosenshine-di, cognitive-apprenticeship]
 ---
 
 # 5e-inquiry — 5E Sorgulama Döngüsü (C3)
@@ -118,6 +118,10 @@ Faz notları:
   felsefeleri zıttır; ikisini aynı kazanımda harmanlamak ya keşfi öldürür (cevap önceden
   gösterildi) ya da modeli sulandırır. Farklı kazanımlar için ayrı modüllere bölerek
   kullanılabilir (seçici kuralı: "kursu böl ya da tek pakete karar ver").
+- `cognitive-apprenticeship` — **aynı kazanım üzerinde** birleştirilemez (KARŞILIKLI beyan —
+  C11 paketi kendi tarafından da bildirir): çıraklık uzmanın sesli-düşünme modeliyle AÇILIR,
+  5E açıklamayı keşiften SONRAYA saklar; ortak `ilke` kazanımında ve kesişen PK bandında iki
+  sıra beyanı zıttır.
 - `productive-failure` bilinçli olarak LİSTEDE DEĞİL: iki yöntem de deneme-önce ailesindendir
   ve sıra felsefeleri uyumludur; ikisi arasında seçim çakışma değil doz kararıdır (PF, çözümsüz
   boğuşmayı daha uzun tutar).
