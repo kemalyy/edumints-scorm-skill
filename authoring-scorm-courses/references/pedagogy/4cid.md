@@ -56,10 +56,12 @@ bilgisidir (K1 türü 1) + soluklaştırma denemelerinin çıktıları (K1 tür�
 `evidence_screen_ids` (ÇOĞUL — scorm-mcp CONTRACTS §1.3 E1) ile bu ekranlara açıkça bağlanır.
 
 **Platform şartı (`requires_platform: [worked_example]`):** soluklaştırma bu paketin motorudur
-ve `worked_example` ekran tipinin soluklaştırma düzeyleriyle (tam çözüm → boşluklu tamamlama →
-yalnız görev; kemalyy/edumints-scorm-mcp F1 konusu) doğallaşır. Yetenek yoksa Katman 0 seçici
-paketi eler (varsayılan platform varsayımı altında seçilemez — bilinçli beyan; F1 gelene dek
-rosenshine-di + simulation ile yaklaşık kurulabilir ama o zaman dürüst seçim rosenshine-di'dir).
+ve `worked_example` ekran tipinin soluklaştırma düzeyleriyle doğallaşır — tip YAYINDA
+(kemalyy/edumints-scorm-mcp F1 #112, `fading: "full" | "partial" | "problem_only"`): `full`
+tam çözüm, `partial` eylemler açık + gerekçeler adım başına reveal ardında, `problem_only`
+yalnız problem açık. Beyan kalır ve artık karşılanabilirdir: F1 taşıyan sunucuda paket
+seçilebilir; yeteneği olmayan (eski) bir hedefte Katman 0 seçici paketi yine eler — o durumda
+dürüst seçim rosenshine-di'dir, worked_example'ı content_slide + fill_blank ile taklit etmek değil.
 
 ## Faz rehberi
 
@@ -69,16 +71,21 @@ rosenshine-di + simulation ile yaklaşık kurulabilir ama o zaman dürüst seçi
 | `gorev_soluklastirma` | Ara sınıflar: tamamlama problemleri, azalan ipucu; skorsuz — **kanıt 2** (döngü: destek 0'a inene dek) | worked_example*, fill_blank, simulation, mcq, drag_drop, sorting, matching, decision_scenario, adaptive_practice | ✗ |
 | `gorev_bagimsiz` | Son sınıf: desteksiz, skorlu tam görev | hepsi | ✓ |
 
-\* `worked_example` = `requires_platform` beyanındaki F1 tipi (çekirdek 28'in dışında; paket
-ancak bu yetenek varken seçilebilir olduğundan listede yer alır). Diğer adlar çekirdek 28'dendir.
+\* `worked_example` = `requires_platform` beyanındaki F1 tipi — YAYINDA (sunucu çekirdeğinde,
+30 tipin 29.'su; şema: `steps[{action_html, rationale_html, artifact_asset_id?,
+artifact_caption?}]` ≥2 + `fading` + ops. `intro_html` / `self_explanation_prompt_html`;
+PUAN ALANI YOK — yapısal skorsuz, koşulsuz kanıt-taşıyabilir). Beyan, paketi F1'siz eski
+hedeflerde seçilemez tutmayı sürdürür.
 
 Faz notları:
 
 - **Görev sınıfı ≠ konu başlığı:** her sınıf, GERÇEK görevin basitleştirilmiş ama bütün bir
   sürümüdür (SQL örneği: "tek tablodan rapor çek" bütün bir görevdir; "SELECT sözdizimi" değildir).
-- Sınıf içi soluklaştırma sırası: çözümlü örnek → tamamlama problemi (çözümün bir kısmı boş) →
-  bağımsız deneme. `gorev_soluklastirma` döngüsü (`sonraki` + `tekrar_kosulu`) hem sınıf içinde
-  desteği düşürmeyi hem yeni (daha karmaşık) sınıfa geçmeyi taşır.
+- Sınıf içi soluklaştırma sırası `fading` düzeyleriyle kurulur: `full` (tam çözümlü örnek) →
+  `partial` (eylemler açık, gerekçeyi öğrenen önce KENDİSİ kurar, sonra reveal ile karşılaştırır)
+  → `problem_only` (yalnız problem açık, her adım tek tek açılır) → bağımsız deneme.
+  `gorev_soluklastirma` döngüsü (`sonraki` + `tekrar_kosulu`) hem sınıf içinde desteği düşürmeyi
+  hem yeni (daha karmaşık) sınıfa geçmeyi taşır.
 - Skor SADECE destek sıfırlandıktan sonra (`scoring_allowed_from: gorev_bagimsiz`): destekli
   denemeyi puanlamak, desteği ölçmektir — öğreneni değil (Z2/Z3).
 - Mikrokurs bütçesine sığdırma: 3 görev sınıfı × 2–3 ekran tipik tavandır; daha fazlası kurs
@@ -123,18 +130,28 @@ sorusunu cevaplayan bir SQL raporu kurar."* Görev sınıfları: (1) tek tablo +
     // ── FAZ gorev_tam_destek — görev sınıfı 1: TAM görev + TAM destek (KANIT 1) ──
     { "type": "content_slide", "id": "destek_bilgi", "title": "Destekleyici bilgi: bir rapor sorgusunun anatomisi",
       "body_html": "<p>Her rapor sorgusu aynı soruyu cevaplar: <b>hangi tablodan</b> (FROM), <b>hangi satırlar</b> (WHERE), <b>hangi sütunlar</b> (SELECT). Yönetici sorusunu bu üç parçaya çevirmek, sözdiziminden önce gelir.</p>" },
-    // worked_example = F1 tipi: fading_level "full" → çözüm adım adım, gerekçeli
-    { "type": "worked_example", "id": "ornek_sinif1", "title": "Çözümlü örnek: 'Mart'ta İzmir satışları?'", "fading_level": "full",
+    // worked_example (F1 — YAYINDA): fading "full" → her adım eylem + gerekçe, tam açık
+    { "type": "worked_example", "id": "ornek_sinif1", "title": "Çözümlü örnek: 'Mart'ta İzmir satışları?'", "fading": "full",
+      "intro_html": "<p>Görev sınıfı 1 — tam görev, tam destek: uzmanın çözümünü adım adım, gerekçeleriyle izle.</p>",
       "steps": [
-        { "html": "<p><b>1 — Soruyu çevir:</b> tablo = satislar; satırlar = ay='Mart' VE sehir='İzmir'; sütunlar = tarih, tutar.</p>" },
-        { "html": "<p><b>2 — Kur:</b> <code>SELECT tarih, tutar FROM satislar WHERE ay='Mart' AND sehir='İzmir';</code></p>" },
-        { "html": "<p><b>3 — Doğrula:</b> dönen satır sayısı mantıklı mı? (Mart ≈ 30 gün → yüzlerce satır beklenir, 0 satır = filtre hatası.)</p>" } ] },
+        { "action_html": "<p><b>Soruyu çevir:</b> tablo = satislar; satırlar = ay='Mart' VE sehir='İzmir'; sütunlar = tarih, tutar.</p>",
+          "rationale_html": "<p>Yönetici sorusu üç parçaya çevrilmeden sorgu kurulamaz: FROM (hangi tablo), WHERE (hangi satırlar), SELECT (hangi sütunlar) — sözdiziminden önce gelir.</p>" },
+        { "action_html": "<p><b>Kur:</b> <code>SELECT tarih, tutar FROM satislar WHERE ay='Mart' AND sehir='İzmir';</code></p>",
+          "rationale_html": "<p>İki koşul birden gerektiği için AND: yalnız ay filtresi İzmir dışını da getirir, yalnız şehir filtresi diğer ayları da getirir.</p>" },
+        { "action_html": "<p><b>Doğrula:</b> dönen satır sayısı mantıklı mı? Mart ≈ 30 gün → yüzlerce satır beklenir.</p>",
+          "rationale_html": "<p>0 satır = büyük olasılıkla filtre hatası; beklenti kurmak hatayı sorgu çalıştığı anda yakalatır.</p>" } ] },
 
-    // ── FAZ gorev_soluklastirma — görev sınıfı 2: tamamlama problemi (destek azaldı; KANIT 2) ──
-    { "type": "worked_example", "id": "tamamlama_sinif2", "title": "Görev sınıfı 2: 'Şehir başına Mart toplamı?' — çözümü TAMAMLA", "fading_level": "completion", "points": 0,
+    // ── FAZ gorev_soluklastirma — görev sınıfı 2: fading "partial" → eylemler açık, gerekçeler
+    //    adım başına REVEAL ardında (öğrenen gerekçeyi önce kendisi kurar; KANIT 2).
+    //    Dikkat: worked_example PUAN ALANI taşımaz — yapısal skorsuz (Z3), "points": 0 bile yazılmaz.
+    { "type": "worked_example", "id": "tamamlama_sinif2", "title": "Görev sınıfı 2: 'Şehir başına Mart toplamı?' — gerekçeyi önce sen kur", "fading": "partial",
+      "intro_html": "<p>Destek azaldı: eylemler açık, her adımın gerekçesini önce KENDİN kur, sonra uzmanınkiyle karşılaştır.</p>",
       "steps": [
-        { "html": "<p>Soru yeni bir öğe istiyor: şehir BAŞINA toplam → gruplama. Çevirisi verildi, sorgunun boşluğunu sen doldur:</p>" },
-        { "html": "<p><code>SELECT sehir, SUM(tutar) FROM satislar WHERE ay='Mart' ____ sehir;</code></p>", "blank_accepted": ["GROUP BY", "group by"] } ] },
+        { "action_html": "<p><b>Soruyu çevir:</b> şehir BAŞINA toplam → yeni öğe: gruplama (GROUP BY sehir) + toplam (SUM(tutar)).</p>",
+          "rationale_html": "<p>'Başına' kelimesi her zaman gruplamaya işaret eder: satır satır liste değil, grup başına TEK özet satırı istenmektedir.</p>" },
+        { "action_html": "<p><b>Kur:</b> <code>SELECT sehir, SUM(tutar) FROM satislar WHERE ay='Mart' GROUP BY sehir;</code></p>",
+          "rationale_html": "<p>WHERE gruplamadan ÖNCE çalışır: önce Mart satırları süzülür, sonra kalanlar şehre göre gruplanır — sıra ters olsaydı diğer aylar toplama karışırdı.</p>" } ],
+      "self_explanation_prompt_html": "<p>Kendi cümlelerinle: <b>GROUP BY</b> bu soruda neden zorunlu? WHERE tek başına neden yetmez? (Skorsuz — LMS'e yazılmaz.)</p>" },
     { "type": "fill_blank", "id": "tamamlama_dogrula", "title": "Tamamlama: doğrulama adımı", "points": 0,
       "prompt_html": "<p>Sınıf-1 örneğindeki 3. adımı bu sorguya uygula: şehir sayın 12 ise sonuç en fazla ___ satır olmalı.</p>",
       "blanks": [ { "id": "b1", "accepted": ["12", "on iki", "oniki"] } ],
@@ -160,9 +177,11 @@ sorusunu cevaplayan bir SQL raporu kurar."* Görev sınıfları: (1) tek tablo +
 ```
 
 Denetim izi: skorlu tek ekran (`q_rapor_bagimsiz`) → `evidence_screen_ids: ["ornek_sinif1",
-"tamamlama_sinif2"]` — ÇOĞUL bağ, iki kanıt fazına birden (`evidence_phases`). Soluklaştırma
-denemeleri `points: 0` (Z3 — destekli denemeyi puanlamak desteği ölçer); skor yalnız destek
-sıfırlandıktan sonra.
+"tamamlama_sinif2"]` — ÇOĞUL bağ, iki kanıt fazına birden (`evidence_phases`). `worked_example`
+ekranları yapısal olarak skorsuzdur (puan alanı YOK — Z3: destekli denemeyi puanlamak desteği
+ölçer); soluklaştırma fazının quiz denemeleri (`tamamlama_dogrula`) `points: 0` taşır; skor
+yalnız destek sıfırlandıktan sonra. Lint-temiz tam fikstür: sunucu deposunda
+`examples/worked-example-4cid.tr.json` (3 fading düzeyi + kanıt bağı).
 
 ## Literatür
 

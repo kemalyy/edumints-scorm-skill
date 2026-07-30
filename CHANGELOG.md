@@ -4,6 +4,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed — v2.1 F1/F2 entegrasyonu (worked_example + exploration YAYINDA)
+- **`references/pedagogy/4cid.md` — F1 gerçek şemaya geçiş.** build_from_spec örneği eski
+  taslak alanlardan (`fading_level`, `steps[].html`, `blank_accepted`, worked_example üstünde
+  `points`) gerçek şemaya yazıldı: `steps[{action_html, rationale_html, artifact_asset_id?,
+  artifact_caption?}]` (≥2), `fading: "full" | "partial" | "problem_only"`, `intro_html`,
+  `self_explanation_prompt_html` — yapısal skorsuz (puan alanı YOK). Platform şartı notu:
+  worked_example gelecek tip değil YAYINDA (F1 #112); `requires_platform: [worked_example]`
+  beyanı kalır ve artık karşılanabilirdir (F1'siz eski hedeflerde paketi elemeyi sürdürür).
+- **`references/pedagogy/5e-inquiry.md` — exploration (F2 #113) kesfet fazının TERCİH edilen
+  taahhüt mekaniği.** Girdi `store_key` altında saklanır, acikla ekranı
+  `<span data-exploration-ref="store_key">` ile birebir geri oynatır ("senin tahminin şuydu"
+  atfı artık gerçek); puan-0 formatif quiz YEDEK olarak geçerli kalır (F2'siz hedefler).
+  `requires_platform: []` değişmedi. build_from_spec örneği gerçek F2 şemasına yazıldı
+  (prediction taahhüdü + text gözlem notu; stale `trials`/`{{exploration:...}}` kaldırıldı).
+- **`templates/4cid.json` — `_draft` kaldırıldı, gerçek build.** worked_example soluklaştırma
+  dizisi (full → partial → problem_only) + öz-açıklama istemleri + iki adım artefaktı; skorlu
+  soru `evidence_screen_ids` ile ÇOĞUL üç worked_example ekranına bağlı. Gerçek sunucu
+  doğrulaması: `build_from_spec` + `lint_course(strict=True)` → **0 hata / 0 uyarı /
+  evidence_binding_coverage 1.0**.
+- **`templates/5e-inquiry.json` — kesfet taahhüdü exploration'a taşındı.** points-0 mcq →
+  `exploration` (prediction, `store_key: tahmin_yonetici`); acikla slaytına geri-oynatma
+  span'ı; açığa-çıkarma rolü data_chart'a geçti. Aynı harness: **0 / 0 / 1.0**.
+- **`references/screen-types.md` — karar rehberi 30 tipe çıktı.** Yeni "Evidence primitives"
+  grubu: worked_example (K1 tür 1) + exploration (K1 tür 2) kullanım/kanıt/seçim-sezgisi
+  notlarıyla; `references/core/alignment.md` tip sayısı 30'a güncellendi (soru sorabilen 13
+  değişmedi — F1/F2 yapısal skorsuz).
+
 ### Changed — v2.0 E4 kural revizyonu (kanıt bağlama tabanı)
 - **`references/core/evidence-binding.md` — K4: gövde kendine-yeterliliği yasağı (E4-R1, #52).**
   Skorlu sorunun gövdesi, cevabın türetilmesi için gereken kursa-özgü kritik olguyu İÇEREMEZ;

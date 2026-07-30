@@ -1,6 +1,6 @@
 # Hedef–ölçme hizası (Katman 1)
 
-Soru üretmek kolaydır; hizalamak kuraldır. 28 ekran tipinin 13'ü soru sorabilir — bu doküman
+Soru üretmek kolaydır; hizalamak kuraldır. 30 ekran tipinin 13'ü soru sorabilir (worked_example ve exploration yapısal olarak skorsuzdur — soru soramaz, kanıt taşır) — bu doküman
 **hangi sorunun var olmaya hakkı olduğunu** belirler. Yöntemden bağımsızdır: hedefe giden yol
 serbesttir, hedefsiz ölçme yasaktır.
 
