@@ -49,7 +49,8 @@ authoring-scorm-courses/
 │   │   ├── kolb-experiential.md     # C8 — Kolb experiential cycle: concrete experience → reflection → concepts → active experimentation (attitudes)
 │   │   ├── sim-drill.md             # C9 — simulation drill: model run → unscored try-mode → debrief → part-task loop → scored scenario
 │   │   ├── gagne-9.md               # C10 — Gagné's nine events (compliance/mandatory training; documented fallback default)
-│   │   └── cognitive-apprenticeship.md  # C11 — Collins/Brown/Newman: expert think-aloud model → coaching → fading → articulation → reflection → exploration
+│   │   ├── cognitive-apprenticeship.md  # C11 — Collins/Brown/Newman: expert think-aloud model → coaching → fading → articulation → reflection → exploration
+│   │   └── retrieval-spaced.md      # C12 — retrieval practice + spacing (refresher-only; evidence = the re-exposure reference artifact)
 │   ├── overlays/                    # Layer 2 — method-orthogonal overlays (D series)
 │   │   └── _FRAMEWORK.md            # overlay file format + pack-independence rule + conflict format
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes

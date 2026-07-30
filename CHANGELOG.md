@@ -48,6 +48,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   karşılıklı çakışma beyanı (C11'in yan etkisi).** İki dosyanın `conflicts_with` listesine
   `cognitive-apprenticeship` eklendi + Çakışmalar bölümlerine gerekçe cümlesi (tek taraflı
   beyan yeterliydi; karşılıklılık C6'nın rosenshine-di emsalini izler).
+- **`references/pedagogy/retrieval-spaced.md` — C12 Geri Getirme + Aralıklı Pratik (#29).**
+  TAZELEME paketi — İLK öğretim yapmaz: skorsuz ön-yoklama (geri getirme yeniden-sunumdan
+  ÖNCE — testing effect; feedback cevabı vermez) → referans artefakt yeniden-sunumu (tek
+  KANIT fazı; sıkıştırılmış-kaynak girdisinin/G3 meşru alanı) → artan aralıklı skorsuz turlar
+  (`sonraki`/`tekrar_kosulu` döngüsü: grup başına ≥2 tur, ikincisi daha uzak) → karışık pratik
+  (interleaving) → summatif tur (PARALEL maddeler). `evidence_phase: referans_artefakt`
+  (TEKİL — bilinçli). Kanıt-bağlama DÜRÜSTLÜK NOTU paketin merkezi: sorular içerik olarak
+  önceki kursun öğrettiğini test eder; kurs-içi savunma kanıt = BU kurstaki yeniden-sunum
+  ekranları (kritik olgu yalnız artefaktta, K4). "Ne zaman seçilmemeli" bilinçli SERT: ilk
+  öğretimde kullanım = v1 iddia+quiz deseninin arka kapıdan dönüşü; önceki kurs brief'e
+  yazılamıyorsa paket seçilemez. Tek-kurs "aralık"ının minyatür olduğu, gerçek karşılığın
+  kurs DİZİSİ olduğu beyan edildi (Cepeda: optimum aralık hatırlama ufkuyla büyür). PK 7–10
+  sert kısıt. `requires_platform: []` (adaptive_practice tercihli taşıyıcı, şart değil);
+  `term_match_race` yalnız `allow_extend`+`allow_disable` ile (WCAG 2.2.1). Birincil kaynaklar
+  doğrulandı: Roediger & Karpicke (2006) Psych. Science 17(3) + Cepeda, Pashler, Vul, Wixted
+  & Rohrer (2006) Psych. Bulletin 132(3).
 
 ### Added — v2.2 ikinci dalga yöntem paketleri (C5–C8, ilk yarı)
 - **`references/pedagogy/mastery-learning.md` — C5 Tam Öğrenme (Bloom) (#22).** Döngülü paket:
