@@ -1,0 +1,478 @@
+{
+  "_packs": [
+    "5e-inquiry",
+    "rosenshine-di"
+  ],
+  "_kaplamalar": [
+    "assessment-alignment"
+  ],
+  "_note": "F4 çok-paketli vitrin örneği (issue #36). Neyi gösterir: (1) HEDEF-kapsamlı çakışma semantiği — rosenshine-di ile 5e-inquiry birbirlerini conflicts_with'te beyan eder, yine de bu kursta MEŞRU birlikte yaşarlar çünkü farklı hedeflere bağlılar (O2 kavram → 5e-inquiry, O1 prosedür → rosenshine-di; pedagogy/_SCHEMA.md: kapsam HEDEFTİR, kurs değil). (2) Hedef başına YÖNTEM BEYANI (_yontem_beyani_O1/_O2). (3) assessment-alignment kaplaması: H2 tablosu düzey sütunlu (_hiza_tablosu) + results_breakdown hedef bazlı. (4) Kanıt bağlama K1-K6: skorlu 3 sorunun kritik olguları (kat yerleşimleri, deney değerleri, kayıt saatleri) YALNIZ kanıt ekranlarında yaşar; gövdeler atıf yapar (K4), özet/advice cevap kurmaz (K5), maddeler birbirini çözmez (K6 — E4 koşusunda q_sira ile eski eşleştirme sorusu aynı saat yüzeyini paylaşıp çapraz türetilebildi; ölçüm AYRI artefakta [Selin'in planı] taşındı, şıklar çıplak satır numarası). Kör test kaydı: eval/results/2026-07-30-e4-ergonomi-multipack.md. Bu örnek, kör testi geçemeyen eski amiral gemisi örneğin (example-cybersecurity-course.json — artık negatif örnek/pilot kaydı) halefidir. Varlıksız tasarım bilinçlidir: tüm kanıt metin/veri-taşıyıcı ekranlarda (data_chart sunucuda inline-SVG üretir) — kopyala-uyarla ederken PLACEHOLDER değiştirme derdi yok.",
+  "_yontem_beyani_O2": [
+    "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
+    "- kazanım: O2 (tür: kavram · PK: 4 · hata maliyeti: düşük · bütçe: ~5 dk)",
+    "  paket: 5e-inquiry",
+    "  kaplamalar: [assessment-alignment]",
+    "  elenenler: [rosenshine-di (sağ-kalan aday ama AYNI hedefte conflicts_with: model-önce sıra, tahminini-kilitle keşfini öldürür), productive-failure (PK tabanı 4'te sınırda; çürütülecek zengin ön-kavram seti yok — tek yanılgı var), retrieval-spaced (yeni kavram, tazeleme değil), sim-drill (requires_platform: simülasyon senaryosu yok)]",
+    "  gerekçe: \"'Pahalı donanım = az ağrı' ön-kavramı yaygın ve yanılması ucuz (hata maliyeti düşük): öğrenenin kilitlenmiş tahmininin üç-kat deney verisiyle çürümesi, kavramı anlatımdan daha derin işletir.\""
+  ],
+  "_yontem_beyani_O1": [
+    "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
+    "- kazanım: O1 (tür: prosedür · PK: 2 · hata maliyeti: orta · bütçe: ~4 dk)",
+    "  paket: rosenshine-di",
+    "  kaplamalar: [assessment-alignment]",
+    "  elenenler: [5e-inquiry (outcome_types kavram/ilke — prosedür kapsam dışı; ayrıca AYNI hedefte olsaydı conflicts_with zaten yasaklardı), 4cid (requires_platform worked_example karşılanır ama tek görev-sınıflı kısa prosedürde görev dizisi gereksiz), sim-drill (requires_platform: ekran görüntülü simülasyon bu varlıksız örnekte yok)]",
+    "  gerekçe: \"Kurulum sırası tek-yollu, gerekçesi zincirleme bir prosedür ve kitle ilk kez yapıyor (PK 2): çözümlü model + skorsuz rehberli deneme + kayıt-artefaktına bağlı skorlu ölçüm en kısa güvenli yol.\"",
+    "  çakışma notu: rosenshine-di ↔ 5e-inquiry karşılıklı conflicts_with beyan eder; kapsam HEDEF olduğundan (pedagogy/_SCHEMA.md) O1/O2 ayrımıyla aynı kursta birleşimleri meşrudur."
+  ],
+  "_hiza_tablosu": [
+    "H2 + assessment-alignment düzey sütunu (core/alignment.md · overlays/assessment-alignment.md)",
+    "| Hedef (fiil) | Düzey (hedef) | Soru (id + tip) | Düzey (soru) | Kanıt kaynağı |",
+    "| O2 — yerleşim farkını nötr duruşla açıklar, verideki karşılaştırmanın kanıt gücünü çözümler | çözümle | q_kavram (mcq) | çözümle ✓ | kesif_tahmin + veri_agri + acikla_notr |",
+    "| O1 — kurulum sırasını uygular, kayıttaki sıra ihlalini teşhis eder | uygula/çözümle | q_sira (mcq) | çözümle ✓ | model_kurulum + vaka_kayit + rehberli_kat3 |",
+    "| O1 — zinciri YENİ vakaya (henüz uygulanmamış plan) transfer eder | uygula | q_selin (mcq) | uygula ✓ | model_kurulum + vaka_plan + vaka_kayit |",
+    "Skorlu 3 ≤ hedef sayısı (2) + 1 → H3 uyarı eşiği aşılmadı."
+  ],
+  "_kor_test": "E4 koşusu (3 iterasyon + 3 kör okuyucu): eval/results/2026-07-30-e4-ergonomi-multipack.md — son durumda kanıt ekranları (kesif_tahmin, veri_agri, acikla_notr, model_kurulum, vaka_kayit, vaka_plan, rehberli_kat3) sökülünce 3/3 soru kaynak gerektirdi → GEÇTİ (eşik ≥ 1/2). İterasyon bulguları (rehberli-feedback kanalı, çapraz-madde saat-yüzeyi paylaşımı) kayıtta.",
+  "title": "Aynı Sandalye, Üç Kat, Üç Sonuç",
+  "description": "Çok-paketli ergonomi mikrokursu: nötr duruş kavramı (5e-inquiry) + kurulum sırası prosedürü (rosenshine-di), ölçme-hizası kaplamalı",
+  "scorm_version": "2004",
+  "language": "tr",
+  "theme": "clinical-calm",
+  "tracking": {
+    "completion_rule": "viewed_all_and_passed",
+    "passing_score": 70
+  },
+  "variables": [
+    {
+      "name": "name",
+      "type": "text",
+      "default": "Öğrenci"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "O1",
+      "description": "Çalışma istasyonu kurulum sırasını (gövde referansı → giriş araçları → ekran yüksekliği → mesafe) gerekçesiyle uygular ve gerçek bir kurulum kaydındaki sıra ihlalini teşhis eder.",
+      "success_criteria": "Kurulum kaydındaki yeniden-ayar satırını doğru sıra ihlaline bağlar; her adımı sabitlediği referansla eşler."
+    },
+    {
+      "id": "O2",
+      "description": "Aynı donanımla farklı ağrı sonuçları üreten yerleşimleri nötr duruş kavramıyla açıklar ve deney verisinde hangi karşılaştırmanın neyi kanıtladığını çözümler.",
+      "success_criteria": "Deney verisinde tek değişkenli karşılaştırmayı seçip gerekçelendirir."
+    }
+  ],
+  "screens": [
+    {
+      "id": "giris",
+      "type": "title_slide",
+      "title": "Aynı Sandalye, Üç Kat, Üç Sonuç",
+      "subtitle": "Merhaba {{name}} · ~9 dk · Bölüm 1: neden — Bölüm 2: nasıl"
+    },
+    {
+      "id": "celiski",
+      "type": "content_slide",
+      "section": "Bölüm 1 · Neden: nötr duruş",
+      "_phase": "5e-inquiry/merak",
+      "title": "İK bütçeyi bastı; ağrı bildirimlerinin biri kıpırdamadı",
+      "body_html": "<p>Şirket üç katına da <b>aynı model</b> üst-segment çalışma sandalyesinden aldı — aynı bütçe, aynı kurulum haftası. Altı hafta sonra fizyoterapi başvuruları bir katta neredeyse sıfırlandı, bir katta <b>hiç değişmedi</b>. Kimse sandalyeyi yanlış kullanmıyor; kimse yalan söylemiyor.</p><p>Burada cevap yok — önce tahminini kilitleyeceksin.</p>",
+      "narration_text": "Üç kat, aynı sandalye, üç farklı sonuç. Açıklamayı okumadan önce kendi tahminini kilitle."
+    },
+    {
+      "id": "kesif_tahmin",
+      "type": "exploration",
+      "section": "Bölüm 1 · Neden: nötr duruş",
+      "_phase": "5e-inquiry/kesfet",
+      "input_kind": "prediction",
+      "store_key": "tahmin_kat",
+      "title": "Tahminini kilitle: hangi kat düzelir?",
+      "prompt_html": "<p>Bu bir deney, ders değil. Katların masaüstü yerleşimi şöyle:</p><ul><li><b>Kat 1:</b> dizüstü bilgisayar doğrudan masada; harici ekran ve ayrı klavye yok.</li><li><b>Kat 2:</b> harici ekran (yüksekliği oturarak ayarlanmış) + ayrı klavye ve fare.</li><li><b>Kat 3:</b> geniş kavisli premium ekran, montaj kolunda <b>sabit yüksek</b> konumda + ayrı klavye ve fare.</li></ul><p>Altı hafta sonra ağrı bildirimi en çok hangi katta düşer? Taahhüt et — tahminin saklanacak ve açıklama ekranında karşına gelecek.</p>",
+      "choices": [
+        {
+          "id": "kat1",
+          "text_html": "Kat 1 — sadelik kazanır"
+        },
+        {
+          "id": "kat2",
+          "text_html": "Kat 2 — ayarlı harici ekran + ayrı klavye"
+        },
+        {
+          "id": "kat3",
+          "text_html": "Kat 3 — en pahalı ekran donanımı"
+        }
+      ]
+    },
+    {
+      "id": "veri_agri",
+      "type": "data_chart",
+      "section": "Bölüm 1 · Neden: nötr duruş",
+      "_phase": "5e-inquiry/kesfet",
+      "title": "Deney verisi: altı haftada üç eğri",
+      "chart_type": "bar",
+      "prompt_html": "<p>Kilitlediğin tahminle karşılaştır: haftalık ağrı bildirimi sayısı, kurulumdan önce (hafta 0) ve altı hafta sonra.</p>",
+      "data": [
+        {
+          "label": "Kat 1 · hafta 0",
+          "value": 15
+        },
+        {
+          "label": "Kat 1 · hafta 6",
+          "value": 14
+        },
+        {
+          "label": "Kat 2 · hafta 0",
+          "value": 13
+        },
+        {
+          "label": "Kat 2 · hafta 6",
+          "value": 3
+        },
+        {
+          "label": "Kat 3 · hafta 0",
+          "value": 14
+        },
+        {
+          "label": "Kat 3 · hafta 6",
+          "value": 9
+        }
+      ],
+      "caption": "Sandalye üç katta da aynı. Kat 2 neredeyse sıfırladı (13→3), Kat 3 yarı yolda kaldı (14→9), Kat 1 kıpırdamadı (15→14). Desenin adı bir sonraki ekranda."
+    },
+    {
+      "id": "acikla_notr",
+      "type": "content_slide",
+      "section": "Bölüm 1 · Neden: nötr duruş",
+      "_phase": "5e-inquiry/acikla",
+      "title": "Gözleminin adı: nötr duruş",
+      "blocks": [
+        {
+          "html": "<p>Kilitlediğin tahmin şuydu: <b><span data-exploration-ref=\"tahmin_kat\"></span></b>. Verinin gösterdiği desen: sonucu donanımın fiyatı değil, çalışırken eklemlerinin hangi açıda beklediği belirledi. Buna <b>nötr duruş</b> denir: dirsek yaklaşık dik, boyun öne ya da yukarı eğilmemiş, bilek düz — eklemler doğal açısındayken kaslar <i>statik yük</i> taşımaz.</p>"
+        },
+        {
+          "asset_id": "sema_notr",
+          "caption": "Nötr duruşun dört işareti yan görünümde: dirsek yaklaşık dik açıda, bakış hizası ekranın üst kenarında, bilek düz, ayak tabanı yerde — nötr açıda kas beklerken yük taşımaz, sapma sürekli statik yüke dönüşür.",
+          "width": "70%"
+        },
+        {
+          "html": "<p>Nötrden her sapma tek başına küçüktür; ama saatler boyu <b>sürekli</b> kas gerilimine dönüşür ve ağrı birikir. Şimdi üç katı bu gözle oku: <b>Kat 1</b>'de dizüstü masada — bakış aşağıda, boyun bütün gün öne eğik: sandalye ne kadar iyi olursa olsun boyun nötr değil (15→14). <b>Kat 2</b>'de ekran oturan kişiye göre ayarlı — boyun ve dirsek nötr (13→3). <b>Kat 3</b>'te ekran premium ama sabit YÜKSEK — bu kez bakış yukarı, sapma yön değiştirdi ama kayboldu mu? Veri cevabı verdi: yarım düzelme (14→9).</p>"
+        },
+        {
+          "html": "<p>Kural tek cümle: <b>ağrıyı donanımın sınıfı değil, eklem açısının nötrden sapması öngörür.</b> Bu yüzden aynı sandalye üç farklı sonuç üretti.</p>"
+        }
+      ]
+    },
+    {
+      "id": "transfer_tablet",
+      "type": "mcq",
+      "section": "Bölüm 1 · Neden: nötr duruş",
+      "_phase": "5e-inquiry/derinlestir",
+      "points": 0,
+      "title": "Yeni bağlam (puan yok): tablet ve kalem",
+      "prompt_html": "<p>Bir grafiker bütün gün masada düz yatan tablete kalemle çiziyor. Nötr duruş kavramıyla bakınca ana sapma hangisi?</p>",
+      "options": [
+        {
+          "id": "a",
+          "text_html": "Bakış hedefi masada — boyun saatlerce öne eğik bekliyor",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text_html": "Tablet ekranı küçük — gözler yorulur, sorun görme keskinliği"
+        },
+        {
+          "id": "c",
+          "text_html": "Kalem tutmak fare tutmaktan fazla kas gücü ister"
+        }
+      ],
+      "feedback": {
+        "correct_html": "<p>Evet — deneydeki Kat 1 deseninin birebir taşınması: sorun cihazın kendisi değil, bakış hedefinin eklem açısını nötrden koparması.</p>",
+        "incorrect_html": "<p>Göz yorgunluğu ve kas gücü anlık maliyetler; nötr duruş sorusu 'eklem hangi açıda SAATLERCE bekliyor?' diye sorar. Deney grafiğindeki kıpırdamayan kata ve 'Gözleminin adı' ekranındaki tek-cümle kurala geri dön.</p>"
+      }
+    },
+    {
+      "id": "q_kavram",
+      "type": "mcq",
+      "section": "Bölüm 1 · Neden: nötr duruş",
+      "_phase": "5e-inquiry/degerlendir",
+      "points": 30,
+      "objective_ids": [
+        "O2"
+      ],
+      "evidence_screen_ids": [
+        "kesif_tahmin",
+        "veri_agri",
+        "acikla_notr"
+      ],
+      "title": "Skorlu: şüpheci yöneticiyi veriyle ikna et",
+      "prompt_html": "<p>Bir yönetici itiraz ediyor: 'Ağrı farkı yerleşimden değil, katların donanım farkından.' Deney grafiğindeki hangi kat <b>ikilisi</b>, tek başına, 'belirleyici olan eklem açısı, donanım sınıfı değil' iddiasını kanıtlar? (Yerleşim listesine ve grafiğe dön.)</p>",
+      "options": [
+        {
+          "id": "a",
+          "text_html": "Kat 1 ile Kat 2"
+        },
+        {
+          "id": "b",
+          "text_html": "Kat 2 ile Kat 3",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text_html": "Kat 1 ile Kat 3"
+        }
+      ],
+      "feedback": {
+        "correct_html": "<p>Doğru — o ikilide donanım sınıfı eşit hatta pahalı olan üstün (ikisinde de harici ekran + ayrı klavye; birinde premium panel), değişen tek şey ekranın oturan kişiye göre KONUMU; sonuçlar yine ayrıştı. Tek değişkenli karşılaştırma budur.</p>",
+        "incorrect_html": "<p>Seçtiğin ikilide iki değişken birden değişiyor (dizüstü ↔ harici donanım VE yerleşim) — yönetici 'bak, donanım da farklıydı' der ve kurtulur. Yerleşim listesinde donanımı denk olan iki katı bul, sonra grafikte sonuçlarını karşılaştır.</p>"
+      }
+    },
+    {
+      "id": "tekrar_notr",
+      "type": "flashcards",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/gunluk_tekrar",
+      "title": "Isınma: Bölüm 1'den iki kart (puan yok)",
+      "prompt_html": "<p>Skorsuz geri-getirme — önce kendi cevabını kur, sonra kartı çevir.</p>",
+      "cards": [
+        {
+          "front_html": "<b>Nötr duruş neydi?</b>",
+          "back_html": "<p>Eklemlerin doğal açısında beklemesi — kaslar statik yük taşımaz; sapma küçük ama sürekliyse ağrı birikir.</p>"
+        },
+        {
+          "front_html": "<b>Sapmayı büyüten şey ne: şiddeti mi, süresi mi?</b>",
+          "back_html": "<p>Süresi — küçük bir açı sapması, saatlerce sürünce ağrıya dönüşür. İyi kurulumun işi bekleme açılarını nötrlemek.</p>"
+        }
+      ]
+    },
+    {
+      "id": "model_kurulum",
+      "type": "content_slide",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/sunum_model",
+      "title": "Çözümlü örnek: Kat 2'yi Kat 2 yapan dört adım — bu sırayla",
+      "blocks": [
+        {
+          "html": "<p>Kat 2'nin kurulumunu yapan tekniker sırayı şöyle kurdu ve her adımın nedeni bir sonrakini kilitliyor:</p><p><b>Adım 1 — gövde referansı (sandalye):</b> otur; ayak tabanların yere tam bassın, sandalye yüksekliğini dirseklerin masa yüzeyiyle yaklaşık dik açı yapana dek ayarla. <i>Neden önce bu:</i> bütün öteki ölçüler OTURAN gövdeye göre alınır — gövde referansı sonradan değişirse hepsi bozulur.</p>"
+        },
+        {
+          "html": "<p><b>Adım 2 — giriş araçları (klavye + fare):</b> dirsekler gövdenin yanında, bilekler düz kalacak uzaklığa koy. <i>Neden ikinci:</i> dik-dirsek referansını az önce sandalye sabitledi; klavye o referansa yerleşir.</p><p><b>Adım 3 — ekran yüksekliği:</b> ekranın ÜST kenarını oturan bakış hizana getir. <i>Neden üçüncü:</i> bakış hizası oturma yüksekliğine bağlıdır — gövdeden önce ayarlanan ekran, gövde ayarlanınca ikinci kez ayarlanmak zorunda kalır.</p>"
+        },
+        {
+          "html": "<p><b>Adım 4 — mesafe:</b> ekranı yaklaşık kol boyuna it; başını öne uzatmadan okuyabildiğin en yakın nokta. <i>Neden son:</i> yükseklik sabitlenmeden mesafe, bakış açısını yeniden değiştirir.</p><p>Zinciri tek cümlede oku: her adım, bir sonrakinin ölçü aldığı referansı sabitler — sıra bu yüzden pazarlıksız.</p>"
+        },
+        {
+          "asset_id": "sema_zincir",
+          "caption": "Dört adımlık kurulum zinciri: 1 sandalye gövde referansını, 2 klavye-fare kol yerleşimini, 3 ekran yüksekliği bakış hedefini, 4 mesafe okuma açısını sabitler; referanstan önce ayarlanan her şey ikinci kez ayarlanır.",
+          "width": "80%"
+        }
+      ]
+    },
+    {
+      "id": "vaka_kayit",
+      "type": "timeline",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/sunum_model",
+      "title": "Vaka dosyası: Kat 1'den Deniz'in kurulum kaydı (BT destek notu)",
+      "events": [
+        {
+          "date": "10:02",
+          "title": "Harici ekran kuruldu",
+          "body_html": "<p>Ekran masaya yerleştirildi; yükseklik ayaklıkla ayarlandı. Not: Deniz ölçüyü ayakta göz kararı aldı.</p>"
+        },
+        {
+          "date": "10:11",
+          "title": "Klavye ve fare bağlandı",
+          "body_html": "<p>Masanın ön kenarına yerleştirildi.</p>"
+        },
+        {
+          "date": "10:19",
+          "title": "Sandalye ayarlandı",
+          "body_html": "<p>Deniz oturunca dirsekleri masa yüzeyinin belirgin altında kaldı; sandalye yükseltildi, ayak desteği eklendi.</p>"
+        },
+        {
+          "date": "10:26",
+          "title": "Ekran yüksekliği YENİDEN ayarlandı",
+          "body_html": "<p>Oturuş yükseldiği için 10:02'deki ayar tutmadı; ayaklık söküldü, yükseklik baştan alındı.</p>",
+          "image_asset_id": "not_kayit",
+          "image_alt": "BT destek kurulum kaydı #4127 kartı: 10:02 harici ekran kuruldu, 10:11 klavye ve fare bağlandı, 10:19 sandalye yükseltildi, 10:26 ekran yüksekliği yeniden ayarlandı, 10:31 kayıt kapatıldı; tekniker notu: sıra ters, bir adım iki kez yapıldı."
+        },
+        {
+          "date": "10:31",
+          "title": "Kayıt kapatıldı",
+          "body_html": "<p>Toplam süre 29 dk; tekniker nota 'sıra ters — bir adım iki kez yapıldı' yazdı ama HANGİ adımın kimin önüne geçmesi gerektiğini yazmadı. O teşhis senin işin.</p>"
+        }
+      ]
+    },
+    {
+      "id": "rehberli_kat3",
+      "type": "mcq",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/rehberli_pratik",
+      "points": 0,
+      "title": "Sıra sende (puan yok): yarın Kat 3'tesin",
+      "prompt_html": "<p>Kat 3'ü düzeltmeye gidiyorsun; göze batan sorun montaj kolundaki sabit-yüksek ekran. Modeldeki zincire göre İLK dokunacağın şey hangisi?</p>",
+      "options": [
+        {
+          "id": "a",
+          "text_html": "Montaj kolu — görünür sorun neyse oradan başlanır"
+        },
+        {
+          "id": "b",
+          "text_html": "Sandalye — sorun ekranda görünse bile önce referans kurulur",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text_html": "Klavye — giriş araçları her düzenin başlangıcıdır"
+        }
+      ],
+      "feedback": {
+        "correct_html": "<p>Evet — ekranın 'doğru' yüksekliği diye bir şey tek başına yok; doğru yükseklik OTURAN gövdeye göredir. Referans kurulmadan yapılan her ekran ayarı, Deniz'in kaydındaki gibi ikinci kez yapılır.</p>",
+        "incorrect_html": "<p>Görünür soruna ya da alışkanlığa gitmek tam da Deniz'in tuzağı: ölçü alacağın referans daha ortada yok. Çözümlü örnekteki Adım 1'in gerekçesini yeniden oku — hangi adım ötekilerin ölçü aldığı referansı sabitliyor?</p>"
+      }
+    },
+    {
+      "id": "q_sira",
+      "type": "mcq",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/bagimsiz_pratik",
+      "points": 35,
+      "objective_ids": [
+        "O1"
+      ],
+      "evidence_screen_ids": [
+        "model_kurulum",
+        "vaka_kayit",
+        "rehberli_kat3"
+      ],
+      "title": "Skorlu: yeniden-ayarın faturası hangi ihlale kesilir?",
+      "prompt_html": "<p>Deniz'in kaydına dön: 10:26'daki yeniden-ayar hangi sıra ihlalinin faturası? (Kayıttaki saatlerin hangi adım olduğunu kayıttan, sıranın gerekçesini modelden oku.)</p>",
+      "options": [
+        {
+          "id": "a",
+          "text_html": "10:02 satırındaki adım, zincirde olması gerekenden ERKEN yapılmıştı",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text_html": "10:11 satırındaki adım, zincirde olması gerekenden erken yapılmıştı"
+        },
+        {
+          "id": "c",
+          "text_html": "Hiçbir satır erken değildi — 10:26 her kurulumda görülen rutin bir ince ayardır"
+        }
+      ],
+      "feedback": {
+        "correct_html": "<p>Doğru — o satırdaki adım, ölçü aldığı referans henüz kurulmadan yapılmıştı; referans 10:19'da kurulunca ölçü geçersizleşti ve 10:26'da baştan alındı. Kayıttaki 'bir adım iki kez yapıldı' notunun teşhisi bu; zincirin gerekçesini modelde okudun.</p>",
+        "incorrect_html": "<p>Kayıttaki satırları modeldeki zincire tek tek yerleştir: 10:26 satırının gerekçe cümlesi ('oturuş yükseldiği için tutmadı') hangi satırın ölçüsünün bozulduğunu söylüyor? Rutin ince ayar, kaydı 29 dakikaya uzatıp tekniker notu düşürtmez.</p>"
+      }
+    },
+    {
+      "id": "vaka_plan",
+      "type": "content_slide",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/bagimsiz_pratik",
+      "title": "İkinci vaka dosyası: Selin'in Kat 3 planı (henüz uygulanmadı)",
+      "blocks": [
+        {
+          "html": "<p>Deniz'in kaydı kapandı; şimdi Kat 3 sırada. Selin düzeltme için bir yapılacaklar notu bıraktı — <b>henüz uygulanmadı</b>. Planı incele: uygulanırsa ne olur?</p>"
+        },
+        {
+          "asset_id": "plan_selin",
+          "width": "60%",
+          "caption": "Selin'in el notu, dört satır: 1) montaj kolundaki ekranı göz kararı sabitle (ayakta), 2) sandalyeyi otur-ayarla, 3) klavye ve fareyi yerleştir, 4) ekran mesafesini ayarla."
+        }
+      ]
+    },
+    {
+      "id": "q_selin",
+      "type": "mcq",
+      "section": "Bölüm 2 · Nasıl: kurulum sırası",
+      "_phase": "rosenshine-di/bagimsiz_pratik",
+      "points": 35,
+      "objective_ids": [
+        "O1"
+      ],
+      "evidence_screen_ids": [
+        "model_kurulum",
+        "vaka_plan",
+        "vaka_kayit"
+      ],
+      "title": "Skorlu: faturayı ödemeden yakala",
+      "prompt_html": "<p>Selin'in planını modeldeki zincire karşı oku: plan bu sırayla uygulanırsa hangi satırdaki iş, sonraki bir satır uygulandığında <b>geçersiz kalıp baştan yapılmak</b> zorunda kalır?</p>",
+      "options": [
+        {
+          "id": "a",
+          "text_html": "1. satır",
+          "correct": true
+        },
+        {
+          "id": "b",
+          "text_html": "3. satır"
+        },
+        {
+          "id": "c",
+          "text_html": "Hiçbiri — plan bu haliyle temiz"
+        }
+      ],
+      "feedback": {
+        "correct_html": "<p>Doğru — o satırdaki iş, ölçüsünü OTURAN gövdeden alması gerekirken referans kurulmadan (üstelik ayakta, göz kararı) yapılıyor; 2. satır uygulandığı anda ölçü geçersizleşir ve iş baştan alınır — Deniz'in kaydındaki desenin birebir tekrarı.</p>",
+        "incorrect_html": "<p>Plandaki her satır için sor: bu işin ölçü aldığı referans, o satıra gelindiğinde kurulmuş mu? Modeldeki zinciri ve Deniz'in kaydındaki yeniden-ayar satırının gerekçesini yan yana koy.</p>"
+      }
+    },
+    {
+      "id": "sonuc",
+      "type": "results_breakdown",
+      "title": "Sonuçların — hedef bazında",
+      "body_html": "<p>İki hedef, üç skorlu karar:</p>",
+      "weak_threshold": 60,
+      "show_total": true,
+      "sections": [
+        {
+          "title": "O2 · Nötr duruş kavramı",
+          "screen_ids": [
+            "q_kavram"
+          ],
+          "advice_html": "<p>Deney grafiğine ve 'Gözleminin adı' ekranına dön; üç katın yerleşim listesini yeniden oku.</p>"
+        },
+        {
+          "title": "O1 · Kurulum sırası",
+          "screen_ids": [
+            "q_sira",
+            "q_selin"
+          ],
+          "advice_html": "<p>Çözümlü örnekteki dört adımın gerekçe zincirini, Deniz'in kaydını ve Selin'in planını yan yana koyarak yeniden çalış.</p>"
+        }
+      ]
+    },
+    {
+      "id": "ozet",
+      "type": "summary",
+      "title": "Kapanış: bir deney, bir kayıt",
+      "body_html": "<p>İki bölümde iki tür karar verdin: Bölüm 1'de üç katın deney verisinden bir kavramın sınırlarını çıkardın; Bölüm 2'de iki vaka dosyasını modelin gerekçe zinciriyle okudun. Bir sonraki masada ikisi de senin: önce sonucu neyin belirlediğini gör, sonra sırayı o gerekçeyle kur.</p>",
+      "narration_text": "Bir deney, iki vaka dosyası. Sıradaki masa senin: kavramı gör, sırayı gerekçesiyle kur.",
+      "show_score": true,
+      "show_completion": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "sema_notr",
+      "filename": "sema_notr.svg",
+      "source": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDAwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIj4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y2ZjlmYSIvPgogIDx0ZXh0IHg9IjMyMCIgeT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWEzYzQwIj5Ow7Z0ciBkdXJ1xZ86IGVrbGVtbGVyIGRvxJ9hbCBhw6fEsXPEsW5kYSBiZWtsZXI8L3RleHQ+CiAgPCEtLSB6ZW1pbiAtLT4KICA8bGluZSB4MT0iNDAiIHkxPSIzNjAiIHgyPSI2MDAiIHkyPSIzNjAiIHN0cm9rZT0iIzliYjhiZCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPCEtLSBtYXNhIC0tPgogIDxyZWN0IHg9IjMwMCIgeT0iMjMwIiB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjNmI4Zjk1Ii8+CiAgPHJlY3QgeD0iMzMwIiB5PSIyNDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM2YjhmOTUiLz4KICA8cmVjdCB4PSI1MjAiIHk9IjI0MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzZiOGY5NSIvPgogIDwhLS0gbW9uaXTDtnI6IMO8c3Qga2VuYXIgZ8O2eiBoaXphc8SxbmRhIC0tPgogIDxyZWN0IHg9IjQzMCIgeT0iMTIwIiB3aWR0aD0iMTQiIGhlaWdodD0iOTAiIHJ4PSIzIiBmaWxsPSIjMmY1NzVkIi8+CiAgPHJlY3QgeD0iNDQwIiB5PSIxMTIiIHdpZHRoPSI5MCIgaGVpZ2h0PSI2NCIgcng9IjQiIGZpbGw9IiMyZjU3NWQiLz4KICA8cmVjdCB4PSI0NDYiIHk9IjExOCIgd2lkdGg9Ijc4IiBoZWlnaHQ9IjUyIiByeD0iMiIgZmlsbD0iI2RmZWVmMSIvPgogIDwhLS0gZ8O2eiBoaXphc8SxIGtlc2lrIMOnaXpnaXNpIC0tPgogIDxsaW5lIHgxPSIxNTAiIHkxPSIxMTIiIHgyPSI1NDAiIHkyPSIxMTIiIHN0cm9rZT0iI2MyNmIzZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSI3IDUiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjEwMiIgZm9udC1zaXplPSIxMyIgZmlsbD0iI2MyNmIzZCI+YmFrxLHFnyBoaXphc8SxID0gZWtyYW7EsW4gw5xTVCBrZW5hcsSxPC90ZXh0PgogIDwhLS0gc2FuZGFseWUgLS0+CiAgPHJlY3QgeD0iMTUwIiB5PSIyMzUiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxMiIgcng9IjQiIGZpbGw9IiM0MDY2NmMiLz4KICA8cmVjdCB4PSIxNDYiIHk9IjE0MCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEwNyIgcng9IjQiIGZpbGw9IiM0MDY2NmMiLz4KICA8cmVjdCB4PSIxODYiIHk9IjI0NyIgd2lkdGg9IjEwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjNDA2NjZjIi8+CiAgPCEtLSBmaWfDvHI6IGJhxZ8gLS0+CiAgPGNpcmNsZSBjeD0iMjA1IiBjeT0iMTIwIiByPSIxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWEzYzQwIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8IS0tIGfDtnZkZSBkaWsgLS0+CiAgPGxpbmUgeDE9IjIwNSIgeTE9IjEzOCIgeDI9IjIwNSIgeTI9IjIzMCIgc3Ryb2tlPSIjMWEzYzQwIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8IS0tIMO8c3Qga29sIGHFn2HEn8SxLCDDtm5rb2wgbWFzYXlhIHBhcmFsZWw6IGRpcnNlayB+OTDCsCAtLT4KICA8bGluZSB4MT0iMjA1IiB5MT0iMTcwIiB4Mj0iMjM1IiB5Mj0iMjE1IiBzdHJva2U9IiMxYTNjNDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIDxsaW5lIHgxPSIyMzUiIHkxPSIyMTUiIHgyPSIzMDAiIHkyPSIyMTUiIHN0cm9rZT0iIzFhM2M0MCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTSAyNDggMjE1IEEgMTQgMTQgMCAwIDAgMjI3IDIwMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzI2YjNkIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIyNTIiIHk9IjIwMCIgZm9udC1zaXplPSIxMyIgZmlsbD0iI2MyNmIzZCI+ZGlyc2VrIH45MMKwPC90ZXh0PgogIDwhLS0gYmlsZWsgZMO8eiBub3R1IC0tPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjA1IiBmb250LXNpemU9IjEyIiBmaWxsPSIjNDA2NjZjIj5iaWxlayBkw7x6PC90ZXh0PgogIDwhLS0gYmFjYWs6IHV5bHVrIHlhdGF5LCBiYWxkxLFyIGRpaywgYXlhayB5ZXJkZSAtLT4KICA8bGluZSB4MT0iMjA1IiB5MT0iMjMwIiB4Mj0iMjY1IiB5Mj0iMjM1IiBzdHJva2U9IiMxYTNjNDAiIHN0cm9rZS13aWR0aD0iMyIvPgogIDxsaW5lIHgxPSIyNjUiIHkxPSIyMzUiIHgyPSIyNjUiIHkyPSIzNTUiIHN0cm9rZT0iIzFhM2M0MCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGxpbmUgeDE9IjI2NSIgeTE9IjM1NSIgeDI9IjI5NSIgeTI9IjM1NSIgc3Ryb2tlPSIjMWEzYzQwIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8dGV4dCB4PSIxODAiIHk9IjM4MiIgZm9udC1zaXplPSIxMyIgZmlsbD0iIzQwNjY2YyI+YXlhayB0YWJhbsSxIHllcmUgdGFtIGJhc2FyPC90ZXh0PgogIDwhLS0gc2FwbWEgdXlhcsSxc8SxIGt1dHVzdSAtLT4KICA8cmVjdCB4PSI2MCIgeT0iMTgwIiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9IiNjMjZiM2QiLz4KICA8dGV4dCB4PSI4MiIgeT0iMTkyIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMWEzYzQwIj5uw7Z0cmRlbiBzYXBtYSA9IHPDvHJla2xpIHN0YXRpayBrYXMgecO8a8O8PC90ZXh0PgogIDxyZWN0IHg9IjYwIiB5PSIyMDUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgZmlsbD0iIzJmOGE1YiIvPgogIDx0ZXh0IHg9IjgyIiB5PSIyMTciIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiMxYTNjNDAiPm7DtnRyIGHDp8SxID0ga2FzIGJla2xlcmtlbiB5w7xrIHRhxZ/EsW1hejwvdGV4dD4KPC9zdmc+Cg=="
+    },
+    {
+      "id": "sema_zincir",
+      "filename": "sema_zincir.svg",
+      "source": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzYwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIj4KICA8cmVjdCB3aWR0aD0iNjQwIiBoZWlnaHQ9IjM2MCIgZmlsbD0iI2Y2ZjlmYSIvPgogIDx0ZXh0IHg9IjMyMCIgeT0iMzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWEzYzQwIj5LdXJ1bHVtIHppbmNpcmk6IGhlciBhZMSxbSBiaXIgc29ucmFraW5pbiBSRUZFUkFOU0lOSSBzYWJpdGxlcjwvdGV4dD4KICA8IS0tIGFkxLFtIGt1dHVsYXLEsSAtLT4KICA8Zz4KICAgIDxyZWN0IHg9IjMwIiB5PSI2MCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSIxMTAiIHJ4PSIxMCIgZmlsbD0iI2U3ZjFmMyIgc3Ryb2tlPSIjMmY1NzVkIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxjaXJjbGUgY3g9IjU1IiBjeT0iODUiIHI9IjE0IiBmaWxsPSIjMmY1NzVkIi8+PHRleHQgeD0iNTUiIHk9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+MTwvdGV4dD4KICAgIDx0ZXh0IHg9Ijk1IiB5PSI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxYTNjNDAiPlNhbmRhbHllPC90ZXh0PgogICAgPHRleHQgeD0iOTUiIHk9IjExNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzQwNjY2YyI+YXlhayB5ZXJkZSw8L3RleHQ+CiAgICA8dGV4dCB4PSI5NSIgeT0iMTMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNDA2NjZjIj5kaXJzZWsgZGlrIGHDp8SxZGE8L3RleHQ+CiAgICA8dGV4dCB4PSI5NSIgeT0iMTUzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2MyNmIzZCI+4oaSIGfDtnZkZSByZWZlcmFuc8SxPC90ZXh0PgogIDwvZz4KICA8Zz4KICAgIDxyZWN0IHg9IjE5MCIgeT0iNjAiIHdpZHRoPSIxMzAiIGhlaWdodD0iMTEwIiByeD0iMTAiIGZpbGw9IiNlN2YxZjMiIHN0cm9rZT0iIzJmNTc1ZCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8Y2lyY2xlIGN4PSIyMTUiIGN5PSI4NSIgcj0iMTQiIGZpbGw9IiMyZjU3NWQiLz48dGV4dCB4PSIyMTUiIHk9IjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iYm9sZCI+MjwvdGV4dD4KICAgIDx0ZXh0IHg9IjI1NSIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWEzYzQwIj5LbGF2eWUgwrcgZmFyZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjI1NSIgeT0iMTE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNDA2NjZjIj5kaXJzZWsgZ8O2dmRlIHlhbsSxbmRhLDwvdGV4dD4KICAgIDx0ZXh0IHg9IjI1NSIgeT0iMTMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNDA2NjZjIj5iaWxlayBkw7x6PC90ZXh0PgogICAgPHRleHQgeD0iMjU1IiB5PSIxNTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzI2YjNkIj7ihpIga29sIHJlZmVyYW5zxLFuYSBvdHVydXI8L3RleHQ+CiAgPC9nPgogIDxnPgogICAgPHJlY3QgeD0iMzUwIiB5PSI2MCIgd2lkdGg9IjEzMCIgaGVpZ2h0PSIxMTAiIHJ4PSIxMCIgZmlsbD0iI2U3ZjFmMyIgc3Ryb2tlPSIjMmY1NzVkIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxjaXJjbGUgY3g9IjM3NSIgY3k9Ijg1IiByPSIxNCIgZmlsbD0iIzJmNTc1ZCIvPjx0ZXh0IHg9IjM3NSIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmYiIGZvbnQtd2VpZ2h0PSJib2xkIj4zPC90ZXh0PgogICAgPHRleHQgeD0iNDE1IiB5PSI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxYTNjNDAiPkVrcmFuIHnDvGtzZWtsacSfaTwvdGV4dD4KICAgIDx0ZXh0IHg9IjQxNSIgeT0iMTE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNDA2NjZjIj7DvHN0IGtlbmFyLCBPVFVSQU48L3RleHQ+CiAgICA8dGV4dCB4PSI0MTUiIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzQwNjY2YyI+Z8O2eiBoaXphc8SxbmRhPC90ZXh0PgogICAgPHRleHQgeD0iNDE1IiB5PSIxNTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzI2YjNkIj7ihpIgYmFrxLHFnyBoZWRlZmk8L3RleHQ+CiAgPC9nPgogIDxnPgogICAgPHJlY3QgeD0iNTEwIiB5PSI2MCIgd2lkdGg9IjExMCIgaGVpZ2h0PSIxMTAiIHJ4PSIxMCIgZmlsbD0iI2U3ZjFmMyIgc3Ryb2tlPSIjMmY1NzVkIiBzdHJva2Utd2lkdGg9IjIiLz4KICAgIDxjaXJjbGUgY3g9IjUzNSIgY3k9Ijg1IiByPSIxNCIgZmlsbD0iIzJmNTc1ZCIvPjx0ZXh0IHg9IjUzNSIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmYiIGZvbnQtd2VpZ2h0PSJib2xkIj40PC90ZXh0PgogICAgPHRleHQgeD0iNTY1IiB5PSI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxYTNjNDAiPk1lc2FmZTwvdGV4dD4KICAgIDx0ZXh0IHg9IjU2NSIgeT0iMTE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNDA2NjZjIj55YWtsYcWfxLFrIGtvbCBib3l1LDwvdGV4dD4KICAgIDx0ZXh0IHg9IjU2NSIgeT0iMTMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIiBmaWxsPSIjNDA2NjZjIj5iYcWfIMO2bmUgZ2l0bWV6PC90ZXh0PgogICAgPHRleHQgeD0iNTY1IiB5PSIxNTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzI2YjNkIj7ihpIgb2t1bWEgYcOnxLFzxLE8L3RleHQ+CiAgPC9nPgogIDwhLS0gb2tsYXIgLS0+CiAgPGcgc3Ryb2tlPSIjYzI2YjNkIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9IiNjMjZiM2QiPgogICAgPGxpbmUgeDE9IjE2MCIgeTE9IjExNSIgeDI9IjE4NiIgeTI9IjExNSIvPjxwYXRoIGQ9Ik0xODYgMTE1IGwtOSAtNSB2MTAgeiIvPgogICAgPGxpbmUgeDE9IjMyMCIgeTE9IjExNSIgeDI9IjM0NiIgeTI9IjExNSIvPjxwYXRoIGQ9Ik0zNDYgMTE1IGwtOSAtNSB2MTAgeiIvPgogICAgPGxpbmUgeDE9IjQ4MCIgeTE9IjExNSIgeDI9IjUwNiIgeTI9IjExNSIvPjxwYXRoIGQ9Ik01MDYgMTE1IGwtOSAtNSB2MTAgeiIvPgogIDwvZz4KICA8IS0tIHRlcnMgc8SxcmEgdXlhcsSxc8SxIC0tPgogIDxyZWN0IHg9IjcwIiB5PSIyMTUiIHdpZHRoPSI1MDAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiNmYmVlZTciIHN0cm9rZT0iI2MyNmIzZCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMzIwIiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzI2YjNkIj5TxLFyYSB0ZXJzbGVuaXJzZSBuZSBvbHVyPzwvdGV4dD4KICA8dGV4dCB4PSIzMjAiIHk9IjI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMi41IiBmaWxsPSIjMWEzYzQwIj5SZWZlcmFuc3RhbiDDlk5DRSBheWFybGFuYW4gaGVyIMWfZXksIHJlZmVyYW5zIGt1cnVsdW5jYSBnZcOnZXJzaXpsZcWfaXI8L3RleHQ+CiAgPHRleHQgeD0iMzIwIiB5PSIyOTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIuNSIgZmlsbD0iIzFhM2M0MCI+dmUgxLBLxLBOQ8SwIGtleiBheWFybGFuxLFyIOKAlCBrYXnEsXQgZGVmdGVyaW5kZWtpICJ5ZW5pZGVuIGF5YXJsYW5kxLEiIHNhdMSxcsSxIGJ1ZHVyLjwvdGV4dD4KPC9zdmc+Cg=="
+    },
+    {
+      "id": "not_kayit",
+      "filename": "not_kayit.svg",
+      "source": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MjAgMzMwIiBmb250LWZhbWlseT0idWktbW9ub3NwYWNlLCBNZW5sbywgbW9ub3NwYWNlIj4KICA8cmVjdCB3aWR0aD0iNTIwIiBoZWlnaHQ9IjMzMCIgZmlsbD0iI2VlZjJmMyIvPgogIDwhLS0ga2FydCAtLT4KICA8cmVjdCB4PSIzMCIgeT0iMjAiIHdpZHRoPSI0NjAiIGhlaWdodD0iMjkwIiByeD0iOCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjOWJiOGJkIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cmVjdCB4PSIzMCIgeT0iMjAiIHdpZHRoPSI0NjAiIGhlaWdodD0iNDYiIHJ4PSI4IiBmaWxsPSIjMmY1NzVkIi8+CiAgPHRleHQgeD0iNDYiIHk9IjQ5IiBmb250LXNpemU9IjE1IiBmaWxsPSIjZmZmZmZmIiBmb250LXdlaWdodD0iYm9sZCI+QlQgREVTVEVLIMK3IEt1cnVsdW0gS2F5ZMSxICM0MTI3IOKAlCBLYXQgMSwgbWFzYSAxNDwvdGV4dD4KICA8IS0tIHNhdMSxcmxhciAtLT4KICA8ZyBmb250LXNpemU9IjEzLjUiIGZpbGw9IiMxYTNjNDAiPgogICAgPHRleHQgeD0iNTAiIHk9Ijk2Ij4xMDowMiAgSGFyaWNpIGVrcmFuIGt1cnVsZHUgKHnDvGtzZWtsaWs6IGF5YWtsxLFrKTwvdGV4dD4KICAgIDx0ZXh0IHg9IjUwIiB5PSIxMjQiPjEwOjExICBLbGF2eWUgKyBmYXJlIGJhxJ9sYW5kxLE8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMTUyIj4xMDoxOSAgU2FuZGFseWUgecO8a3NlbHRpbGRpICsgYXlhayBkZXN0ZcSfaTwvdGV4dD4KICAgIDx0ZXh0IHg9IjUwIiB5PSIxODAiIGZvbnQtd2VpZ2h0PSJib2xkIj4xMDoyNiAgRWtyYW4gecO8a3Nla2xpxJ9pIFlFTsSwREVOIGF5YXJsYW5kxLE8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMjA4Ij4xMDozMSAgS2F5xLF0IGthcGF0xLFsZMSxIChzw7xyZTogMjkgZGspPC90ZXh0PgogIDwvZz4KICA8bGluZSB4MT0iNDYiIHkxPSIyMjYiIHgyPSI0NzQiIHkyPSIyMjYiIHN0cm9rZT0iI2M5ZDhkYiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPCEtLSB0ZWtuaWtlciBub3R1IC0tPgogIDx0ZXh0IHg9IjUwIiB5PSIyNTQiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiNjMjZiM2QiIGZvbnQtd2VpZ2h0PSJib2xkIj5URUtOxLBLRVIgTk9UVTogInPEsXJhIHRlcnMg4oCUIGJpciBhZMSxbSBpa2kga2V6IHlhcMSxbGTEsSI8L3RleHQ+CiAgPHRleHQgeD0iNTAiIHk9IjI4MCIgZm9udC1zaXplPSIxMi41IiBmaWxsPSIjNDA2NjZjIj5IYW5naSBhZMSxbcSxbiBraW1pbiDDtm7DvG5lIGdlw6dtZXNpIGdlcmVrdGnEn2kgeWF6xLFsbWFtxLHFny48L3RleHQ+Cjwvc3ZnPgo="
+    },
+    {
+      "id": "plan_selin",
+      "filename": "plan_selin.svg",
+      "source": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MjAgMzAwIiBmb250LWZhbWlseT0idWktbW9ub3NwYWNlLCBNZW5sbywgbW9ub3NwYWNlIj4KICA8cmVjdCB3aWR0aD0iNTIwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2VlZjJmMyIvPgogIDxyZWN0IHg9IjMwIiB5PSIyMCIgd2lkdGg9IjQ2MCIgaGVpZ2h0PSIyNjAiIHJ4PSI4IiBmaWxsPSIjZmZmZWY3IiBzdHJva2U9IiNjOWI0NTgiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxyZWN0IHg9IjMwIiB5PSIyMCIgd2lkdGg9IjQ2MCIgaGVpZ2h0PSI0NCIgcng9IjgiIGZpbGw9IiM4YTdhMWUiLz4KICA8dGV4dCB4PSI0NiIgeT0iNDgiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiNmZmZmZmYiIGZvbnQtd2VpZ2h0PSJib2xkIj5ZQVBJTEFDQUtMQVIg4oCUIEthdCAzIGTDvHplbHRtZXNpIChTZWxpbidpbiBlbCBub3R1KTwvdGV4dD4KICA8ZyBmb250LXNpemU9IjEzLjUiIGZpbGw9IiMzYTNhMmEiPgogICAgPHRleHQgeD0iNTAiIHk9Ijk2Ij4xKSBNb250YWoga29sdW5kYWtpIGVrcmFuxLEgZ8O2eiBrYXJhcsSxIHNhYml0bGU8L3RleHQ+CiAgICA8dGV4dCB4PSI3MCIgeT0iMTE0IiBmb250LXNpemU9IjExLjUiIGZpbGw9IiM4YTdhMWUiPihheWFrdGEsIGtvbHUgw7xzdCBzxLFuxLFyZGFuIGluZGlyZXJlayk8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMTQ2Ij4yKSBTYW5kYWx5ZXlpIG90dXItYXlhcmxhICh5w7xrc2VrbGlrICsgYXlhayBkZXN0ZcSfaSk8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMTc4Ij4zKSBLbGF2eWUgdmUgZmFyZXlpIHllcmxlxZ90aXI8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMjEwIj40KSBFa3JhbiBtZXNhZmVzaW5pIGF5YXJsYTwvdGV4dD4KICA8L2c+CiAgPGxpbmUgeDE9IjQ2IiB5MT0iMjMwIiB4Mj0iNDc0IiB5Mj0iMjMwIiBzdHJva2U9IiNlMGQ5YjAiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjUwIiB5PSIyNTgiIGZvbnQtc2l6ZT0iMTIuNSIgZmlsbD0iIzhhN2ExZSI+Tm90OiAiWWFyxLFtIHNhYXR0ZSBiaXRlciIg4oCUIFNlbGluPC90ZXh0Pgo8L3N2Zz4K"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "_deprecated": "v2 UYARISI (F4/#36): bu v1-dönemi örnek KÖR TESTİ GEÇEMEDİ (references/eval/blind-test.md pilot koşusu — oran 1/4: skorlu sorular ağırlıkla ön bilgiyi ölçüyor; q1'in cevabı kursta hiç öğretilmiyor, K1 ihlali). Negatif örnek / pilot kaydı olarak tutuluyor; yeni kurslara ŞABLON ALMA. Güncel vitrin: example-multipack-ergonomics.json (çok-paketli, kanıt-bağlı, strict lint 0 hata / 0 uyarı / coverage 1.0). Buradan hâlâ öğrenilebilecekler: stage/timeline kullanımı, simülasyon adım yapısı, puan HUD'u, skora bağlı kutlama — kanıt disiplini DEĞİL.",
   "_note": "A complete, high-quality build_from_spec reference course (Pattern A + gamification). Stage modu + timeline reveal VARSAYILANDIR: içerik ekranları narration_text + reveal ile akışlı görünür. Study the structure: varied screen types, narration intent, a simulation with click+input steps, points HUD, branching, and a celebration animation gated by score. In a real build, add narration_asset_id to each screen (timeline sese senkron olsun) ve real screenshot/video/lottie assets via add_asset.",
   "title": "Siber Güvenlik Temelleri",
   "description": "Çalışan farkındalık mikro-eğitimi",

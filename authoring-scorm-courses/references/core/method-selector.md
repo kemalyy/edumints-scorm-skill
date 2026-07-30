@@ -94,7 +94,7 @@ olarak bu adımın yokluğuydu.
 | PRIOR_KNOWLEDGE | **3 varsay** (acemi-eğilimli) ve beyan et | Acemiye fazla gösterim, uzmana eksik gösterimden daha az zarar verir. |
 | Hata maliyeti | `orta`; uyum/sağlık/güvenlik bağlamında `yüksek` | Sessiz `düşük` varsayma — keşif yöntemini yanlışlıkla ucuzlatır. |
 | Zaman bütçesi | Mikroöğrenme 3–8 dk | SKILL.md workflow 1 ile aynı. |
-| Platform | 28 çekirdek ekran tipi var, ek araç yok varsay | `requires_platform` beyan eden paketleri eler; elemeyi çıktıda listele. |
+| Platform | 30 çekirdek ekran tipi var, ek araç yok varsay | `requires_platform` beyan eden paketleri eler; elemeyi çıktıda listele. |
 | Kazanım türü çıkarılamıyor | **TEK soru sor** (Bölüm 0 kuralı) | Tür seçicinin birincil anahtarıdır; tahminle geçilmez. |
 
 Varsayılan kullandıysan çıktı beyanında işaretle — sessiz varsayılan = ihlal.

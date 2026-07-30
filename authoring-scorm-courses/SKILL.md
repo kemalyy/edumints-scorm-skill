@@ -1,6 +1,6 @@
 ---
 name: authoring-scorm-courses
-description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp). Covers instructional design, screen-type selection, assessment, theming, variables/gamification, media (TTS/ffmpeg), animation, and the build→preview→feedback→fix loop. Enforces an anti-slop discipline: a one-line Training Read (Bölüm 0), parametric dials, and a mechanical pre-flight gate.
+description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp) — including turning a brief, document, policy table, or cheat-sheet into a course. This skill SELECTS a teaching method before outlining — outcome type + PRIOR_KNOWLEDGE + error cost feed a Layer-0 selector that picks from 12 pedagogy packs (direct instruction, 5E inquiry, PBL, mastery, retrieval practice…) plus 6 overlays (cognitive load, UDL, ARCS, accessibility…) — and enforces evidence binding (every scored question bound to in-course evidence, K1–K6). Covers 30 screen types, assessment, theming, variables/gamification, media (TTS/ffmpeg), the build→preview→feedback→fix loop, and a mechanical anti-slop pre-flight gate.
 ---
 
 # Authoring SCORM courses with scorm-mcp
@@ -149,12 +149,14 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/pedagogy/_SCHEMA.md` — **Katman 3 paket sözleşmesi:** her yöntem paketinin ön-madde şeması (`pack-frontmatter.schema.json`); `evidence_phase(s)` ZORUNLU, kanıt beyanı çoğul olabilir; döngü/koşul ifade edilebilir; doğrulama komutu belgeli.
 - `references/overlays/_FRAMEWORK.md` — **Katman 2 kaplama çerçevesi:** 6 kaplama (cognitive-load, udl, arcs, expertise-adaptive, assessment-alignment, accessibility) + "sıra dayatan = paket, sırasız değiştiren = kaplama" ayracı + paket-bağımsızlık kuralı + çakışma bildirim biçimi.
 - `references/eval/blind-test.md` — **kör test protokolü:** kanıt kaynakları çıkarılınca skorlanan sorular hâlâ cevaplanabiliyor mu? Geçme eşiği ≥ 1/2 + sonuç kayıt şablonu + pilot koşu.
+- `references/source-expansion.md` — **sıkıştırılmış kaynak açma prosedürü:** brief bir kopya kâğıdı / politika tablosu / mevzuat özetiyse kanıt hammaddesi girdide YOKTUR — satır → mekanizma sorusu → artefakt kararı → kanıt ekranı → uygulamayı ölçen bağlı soru (7 adım + kazanım-türü→açma-hamlesi tablosu + 2 tam açma örneği + retrieval-spaced istisna sınırı + kaynak-doğrulama uyarısı). Bu tür girdilerde outline'dan önce oku.
+- `references/migration-v1-to-v2.md` — **v1→v2 geçiş rehberi:** kırıcı değişiklikler + giderme reçeteleri, Pattern A → rosenshine-di eşleme tablosu, 3 canlı demonun gerçek yükseltme oyun kitabı (K1 boşluğu bulguları + K4/K5/K6 süpürmeleri), uçtan uca lint-doğrulanmış v1→v2 örneği. Elinde v1-dönemi kurs/şablon varsa buradan başla.
 - `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
-- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 28 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
+- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 30 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).
 - `references/instructional-design.md` — objectives, structure, microlearning, anti-template-fatigue.
-- `references/screen-types.md` — decision guide for all 28 screen types (incl. simulation, decision_scenario, **composable game**, **adaptive practice**).
+- `references/screen-types.md` — decision guide for all 30 screen types (incl. simulation, decision_scenario, **worked_example**, **exploration**, **composable game**, **adaptive practice**).
 - `references/assessment.md` — question/feedback/scoring design.
 - `references/interactivity-and-gamification.md` — variables, conditions, timer, points, branching, **composable game engine** (game), **adaptive practice** (Elo/BKT), **xAPI/cmi5** telemetry.
 - `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie, **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id).
@@ -184,4 +186,11 @@ lint clean (0 errors, 0 warns, `evidence_binding_coverage` 1.0) — keep that in
   experiment data; the scored question binds to both explore screens and the explain slide.
 - `templates/4cid.json` — C4 4C/ID complex-skill training, **`_draft: true`**: uses the
   `worked_example` screen type (F1); same gate.
-- `examples/example-cybersecurity-course.json` — a complete, high-quality build_from_spec to study and adapt.
+- `examples/example-multipack-ergonomics.json` — **v2 vitrini (F4):** çok-paketli tam kurs — O2
+  kavram hedefi `5e-inquiry`, O1 prosedür hedefi `rosenshine-di` (karşılıklı `conflicts_with`
+  beyanına rağmen FARKLI hedeflerde meşru birliktelik — hedef-kapsamlı çakışma semantiği),
+  `assessment-alignment` kaplaması, hedef başına YÖNTEM BEYANI, strict lint 0/0 + coverage 1.0,
+  E4 kör testi 3 iterasyonda GEÇTİ (kayıt: depo kökünde `eval/results/2026-07-30-e4-ergonomi-multipack.md`).
+- `examples/example-cybersecurity-course.json` — **KULLANIMDAN KALDIRILDI** (kör test pilotunda
+  1/4 ile KALDI — `references/eval/blind-test.md`); negatif örnek/pilot kaydı olarak duruyor,
+  yeni kurslara şablon alma.
