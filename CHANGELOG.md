@@ -29,6 +29,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   poll ifade kanalı). Katılım: `branching` bağlam seçimi (iki kol aynı kanıt yapısı). Çakışma
   bildirimleri: cognitive-load (temsil sayısı ≤ 2/ekran, bölmede o öncelikli) + accessibility
   (sınır: çelişkide teknik uyum önceliklidir — erişilemeyen temsil çeşitlilik sayılmaz).
+- **`references/overlays/arcs.md` — D3 ARCS Motivasyon Tasarımı (#32).** Keller (1987, JID
+  10(3) 2–10 — dört bileşen doğrulandı) üslup değil YAPISAL karar olarak kaplandı; karar
+  noktaları `[ekran_secimi, medya, dil_ton, destek_dozu, geri_bildirim]`. Dikkat = bilişsel
+  çatışma taşıyan artefakt (soru-başlık, sezgi-kıran data_chart) — süs görsel dikkat tasarımı
+  DEĞİL (E1 öğreten-artefakt denetimiyle uyum; cognitive-load çakışması: coherence öncelikli).
+  İlgililik = B1'in yapısal hali (bedel/çatışma açılışı, hedef-değer bağı). Güven = erken
+  skorsuz kazanım (ilk üçte bir, points:0/Z1) + `adaptive_practice` elo rampası (yayılmış
+  difficulty) + şeffaf beklenti. Doyum = transfer fırsatı + içsel ustalaşma kapanışı; AÇIK
+  BEYAN: doyum ≠ dekoratif oyunlaştırma — anti-slop D1/D2 kaplamanın altında aynen geçerli,
+  ARCS kutlama efekti gerekçesi yapılamaz. TONE kadranıyla 5 satırlık üslup↔yapı ayrım tablosu
+  (TONE 2'de de 8'de de ARCS kararları aynı).
 
 ### Added — v2.2 son paketler (C9–C12, ikinci yarı)
 - **`references/pedagogy/sim-drill.md` — C9 Simülasyon Tatbikatı (#26).** Gösterim-önce tatbikat
