@@ -1,7 +1,7 @@
 {
   "_pack": "5e-inquiry",
   "_template_version": 1,
-  "_note": "C3 5E Sorgulama Döngüsü şablonu (references/pedagogy/5e-inquiry.md). Keşif mekaniği (F2 exploration ekranı olmadan): kesfet fazı 'tahminini kilitle' deseniyle kurulur — skorsuz (points: 0) mcq tahmini kaydettirir, feedback'i ders anlatmaz yalnız DENEY SONUCUNU açıklar (reveal); deney verisi data_chart ile gösterilir. Öğrenenin kendi tahmini + gözlenen veri = kanıt kaynağı 1, acikla slaytı = kanıt kaynağı 2. Kopyala-uyarla: kavramı, denemeleri ve soruları değiştir; faz SIRASINI ve skor/kanıt sözleşmesini KORU (merak ÖĞRETMEZ; skor yalnız degerlendir fazında; skorlu soru evidence_screen_ids ile kesfet VE acikla ekranlarına çoğul bağlı). assets[] içindeki PLACEHOLDER görseli gerçek bir karşılaştırma görseliyle değiştir. Ekranlardaki _phase alanları belgeleme içindir (sunucu yok sayar).",
+  "_note": "C3 5E Sorgulama Döngüsü şablonu (references/pedagogy/5e-inquiry.md). Keşif mekaniği (F2 exploration — TERCİH): kesfet fazında exploration ekranı tahmin taahhüdünü alır (input_kind: prediction), girdi store_key altında saklanır ve acikla slaytı <span data-exploration-ref=\"store_key\"></span> ile BİREBİR geri oynatır ('senin tahminin şuydu' atfı gerçek; runtime yalnız textContent yazar). Deney verisi data_chart ile açığa çıkarılır (reveal). Öğrenenin kendi tahmini + gözlenen veri = kanıt kaynağı 1, acikla slaytı = kanıt kaynağı 2. YEDEK (F2'siz eski hedefler): tahmini points: 0 mcq kaydettirir, açığa-çıkarma feedback'e taşınır. Kopyala-uyarla: kavramı, denemeleri ve soruları değiştir; faz SIRASINI ve skor/kanıt sözleşmesini KORU (merak ÖĞRETMEZ; exploration yapısal skorsuz — puan alanı YOK; store_key kurs genelinde TEKİL; skor yalnız degerlendir fazında; skorlu soru evidence_screen_ids ile kesfet VE acikla ekranlarına çoğul bağlı). assets[] içindeki PLACEHOLDER görseli gerçek bir karşılaştırma görseliyle değiştir. Ekranlardaki _phase alanları belgeleme içindir (sunucu yok sayar).",
   "_yontem_beyani": [
     "YÖNTEM BEYANI (references/core/method-selector.md çıktı biçimi)",
     "- kazanım: O1 (tür: kavram · PK: 4 · hata maliyeti: düşük · bütçe: 8 dk)",
@@ -32,16 +32,14 @@
       "title": "Maaş 'ortalaması' 42.000 ₺ — ama 10 kişiden 8'i bunun altında",
       "body_html": "<p>Bir ekibin ilanı 'ortalama maaş 42.000 ₺' diyor; işe girenler çoğunluğun 30.000 ₺ civarı aldığını görüyor. Kimse yalan söylemedi. Bu nasıl mümkün? Burada cevap yok — önce tahminini kilitleyeceksin.</p>" },
 
-    { "id": "kesif_tahmin", "type": "mcq", "_phase": "kesfet", "points": 0,
+    { "id": "kesif_tahmin", "type": "exploration", "_phase": "kesfet",
+      "input_kind": "prediction", "store_key": "tahmin_yonetici",
       "title": "Tahminini kilitle: yönetici takıma katılırsa?",
-      "prompt_html": "<p>Puan yok — bu bir deney, ders değil. 9 kişilik takımda herkes 30.000 ₺ alıyor; takıma 150.000 ₺ alan bir yönetici katılıyor. Ortalama ve medyan (sıralı listenin ortası) ne yapar?</p>",
-      "options": [
+      "prompt_html": "<p>Bu bir deney, ders değil — cevabı henüz açıklamıyoruz. 9 kişilik takımda herkes 30.000 ₺ alıyor; takıma 150.000 ₺ alan bir yönetici katılıyor. Ortalama ve medyan (sıralı listenin ortası) ne yapar? Taahhüt et — tahminin saklanacak ve açıklama ekranında karşına gelecek.</p>",
+      "choices": [
         { "id": "a", "text_html": "İkisi de belirgin yükselir" },
-        { "id": "b", "text_html": "Ortalama yükselir, medyan yerinde kalır", "correct": true },
-        { "id": "c", "text_html": "İkisi de 30.000 civarında kalır" } ],
-      "feedback": {
-        "correct_html": "<p>Deney sonucu: ortalama 30.000 → 42.000'e fırladı; medyan 30.000'de kaldı. Tahminin gözlemle örtüştü — bir sonraki ekranda sayıların kendisini gör.</p>",
-        "incorrect_html": "<p>Deney sonucu tahmininden farklı çıktı: ortalama 42.000'e fırladı, medyan 30.000'de kaldı. Neden böyle olduğunu henüz açıklamıyoruz — önce bir sonraki ekranda veriye kendin bak, deseni yakala.</p>" } },
+        { "id": "b", "text_html": "Ortalama yükselir, medyan yerinde kalır" },
+        { "id": "c", "text_html": "İkisi de 30.000 civarında kalır" } ] },
 
     { "id": "veri_deney", "type": "data_chart", "_phase": "kesfet",
       "title": "Deney verisi: aynı ekleme, iki ölçüye iki farklı etki",
@@ -57,7 +55,7 @@
     { "id": "aciklama_medyan", "type": "content_slide", "_phase": "acikla",
       "title": "Gözleminin adı: uç değere dayanıklılık",
       "blocks": [
-        { "html": "<p>Kilitlediğin tahminle deney verisini karşılaştırdın: tek uç değer ortalamayı 30.000'den 42.000'e çekti — çünkü ortalama HER değeri toplama katar, uç değer payı büyütür. Medyan ise sıralı listenin ORTASINI okur: uçtaki değerin büyüklüğü ortayı taşımaz.</p>" },
+        { "html": "<p>Kilitlediğin tahmin şuydu: <b><span data-exploration-ref=\"tahmin_yonetici\"></span></b>. Deney verisi ne gösterdi: tek uç değer ortalamayı 30.000'den 42.000'e çekti — çünkü ortalama HER değeri toplama katar, uç değer payı büyütür. Medyan ise sıralı listenin ORTASINI okur: uçtaki değerin büyüklüğü ortayı taşımaz.</p>" },
         { "asset_id": "gorsel_iki_olcu",
           "caption": "Aynı veri kümesinde ortalama ile medyanın konumu: uç değer eklenince yalnız ortalama kayar (yer tutucu görsel — gerçek karşılaştırma görseliyle değiştir)" },
         { "html": "<p>Seçim kuralı: veri kümesinde uç değer varsa merkez için <b>medyan</b>; simetrik dağılımda ikisi de iş görür. Soru 'tipik üye ne alıyor?' ise ortayı, 'toplam ne dağıtılıyor?' ise ortalamayı sor. İlandaki 42.000 işte bu yüzden 'kimse yalan söylemeden' yanıltıyordu.</p>" } ] },
