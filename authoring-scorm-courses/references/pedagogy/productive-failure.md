@@ -28,12 +28,12 @@ phases:
     amac: "Consolidation & knowledge assembly — kanonik çözüm, öğrenenin denemesine AÇIK atıfla kurulur (başarısız deneme + kanonik çözüm karşılaştırması = K1 türü 5'in 'kanon' ayağı)."
     izinli_ekran_tipleri: [worked_example, content_slide, tabs, accordion, video, data_chart]
     skorlanabilir: false
-  - id: uygulama
+  - id: skorlu_uygulama
     amac: "Kanonik kavram YENİ duruma skorlu uygulanır; kanıt bağı deneme + konsolidasyon ekranlarına ÇOĞUL kurulur."
     izinli_ekran_tipleri: hepsi
     skorlanabilir: true
 evidence_phases: [problem_deneme, konsolidasyon]
-scoring_allowed_from: uygulama
+scoring_allowed_from: skorlu_uygulama
 conflicts_with: [rosenshine-di]
 ---
 
@@ -72,7 +72,7 @@ alternatif `5e-inquiry`(F2'siz yedeğiyle) ya da `rosenshine-di`dir.
 | `problem_deneme` | Kanonsuz, skorsuz boğuşma; deneme SAKLANIR — **kanıt ayağı 1** | content_slide (problem sunumu), exploration*, data_chart, image_compare, simulation | ✗ |
 | `deneme_karsilastirma` | Deneme çıktılarının geri oynatımı + tipik yaklaşımların kırılma noktaları | content_slide, accordion, tabs, data_chart, image_compare | ✗ |
 | `konsolidasyon` | Kanonik çözüm, denemeye AÇIK atıfla — **kanıt ayağı 2** | worked_example, content_slide, tabs, accordion, video, data_chart | ✗ |
-| `uygulama` | Yeni duruma skorlu transfer | hepsi | ✓ |
+| `skorlu_uygulama` | Yeni duruma skorlu transfer | hepsi | ✓ |
 
 \* `exploration` = `requires_platform` beyanındaki F2 tipi (sunucu çekirdeğinde, 30 tipin
 30.'su): `input_kind: "text"` çözüm taslağı/gerekçe notu, `"prediction"`/`"choice"` taahhüt;
@@ -94,7 +94,7 @@ Faz notları:
   denemesindeki bir karara ya da tipik yaklaşımlardan birine bağlanır ("senin taslağın aralığı
   ölçtü; aralık iki uç değere teslimdir — kanonik çözüm her değeri hesaba katar…"). Kopuk
   konsolidasyon, pahalı bir rosenshine-di'dir.
-- **`uygulama` soruları K2/K4 denetiminden geçmeli:** kavram kamusal kanonsa (istatistik,
+- **`skorlu_uygulama` soruları K2/K4 denetiminden geçmeli:** kavram kamusal kanonsa (istatistik,
   fizik yasası…) soru kanonu değil kanonun YENİ VERİYE uygulanmasını ölçer; yeni veri gövdeye
   değil bir kanıt ekranına konur (K4 — aşağıdaki örnekte `veri_yeni`).
 
@@ -205,7 +205,7 @@ ortalama hesabını akıcı bilen, dağılım kavramını hiç görmemiş yetiş
         { "action_html": "<p><b>Adım 3:</b> karelerin ortalaması = varyans; karekökü = standart sapma. Aylin ≈ 3,1 · Baran ≈ 0,8.</p>",
           "rationale_html": "<p>Tek sayıya iniş, senin ölçünün de hedefiydi — fark şu: bu sayı 6 ayın HEPSİNİ okur ve birimi veriye döner (karekök). Küçük değer = tutarlı: taahhüdünü bu sayıyla sına.</p>" } ] },
 
-    // ── FAZ uygulama (SKORLU; yeni veri GÖVDEDE DEĞİL kanıt ekranında — K4; kanıt bağı ÇOĞUL) ──
+    // ── FAZ skorlu_uygulama (SKORLU; yeni veri GÖVDEDE DEĞİL kanıt ekranında — K4; kanıt bağı ÇOĞUL) ──
     { "type": "content_slide", "id": "veri_yeni", "title": "Yeni vaka: iki tedarikçinin teslim süreleri",
       "body_html": "<p>Son 6 teslimatın süreleri (gün):<br><b>Tedarikçi K:</b> 5 · 9 · 4 · 10 · 5 · 9 — <b>Tedarikçi L:</b> 7 · 7 · 8 · 6 · 7 · 7.<br>İkisinin de ortalaması 7 gün.</p>" },
     { "type": "mcq", "id": "q_uygulama", "title": "Skorlu: tutarlı tedarikçiyi seç", "points": 50,
@@ -229,7 +229,7 @@ Denetim izi: skorlu tek ekran (`q_uygulama`) → `evidence_screen_ids: ["deneme_
 çözüm) + yeni-vaka verisi bir kanıt ekranında (K4: sayılar gövdede DEĞİL `veri_yeni`
 artefaktında yaşar; gövde ona atıf yapar). Deneme ekranları yapısal skorsuz (`exploration` — puan alanı YOK, Z3);
 `deneme_karsilastirma` kanonu SÖYLEMEZ (K5: kanon yalnız `kanonik_cozum`'da kurulur); skor
-yalnız `uygulama` fazında. `store_key`'ler kurs genelinde TEKİL.
+yalnız `skorlu_uygulama` fazında. `store_key`'ler kurs genelinde TEKİL.
 
 ## Literatür
 
