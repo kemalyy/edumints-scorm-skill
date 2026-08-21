@@ -1,4 +1,4 @@
-# Screen-type decision guide (30 types)
+# Screen-type decision guide (31 types)
 
 Pick by *intent*, not habit. Vary them.
 
@@ -87,6 +87,17 @@ Pick by *intent*, not habit. Vary them.
   decisions. (For a self-contained multi-step decision **game with score**, prefer `decision_scenario`.)
 - **summary** — close: score, completion, recap.
 
+## Escape hatch (custom HTML)
+- **embed_html** — an arbitrary **self-contained HTML artifact** (simulation, calculator, bespoke
+  visualization) hosted in a sandboxed iframe; the launcher reports completion to the LMS and the
+  artifact may `postMessage` score/status over a small bridge. `completion`: `on_view` (screen entry,
+  default) / `time_threshold` (`min_seconds` after entry — a minimum-exposure signal, not an audit-grade
+  timer) / `on_message` (only when the artifact reports `{scorm:'complete'}`). `aspect`: `fill`
+  (default) / `16:9` / `4:3`. **Not scored** (outside QUIZ_TYPES) and `passing_score` never sees the
+  bridge's score. Use it ONLY when no native type expresses the interactivity — an artifact is not
+  themed, not translated, not linted, and its accessibility is entirely on you. Full guide (tool calls,
+  bridge vocabulary, 1.2 vs 2004, limits): **`references/artifact-to-scorm.md`**.
+
 **Selection heuristics:** sequence → timeline; terms → flashcards/term recall; categorize →
 drag_drop/matching; process order → sorting; software "do it" → simulation; "what would you do?" /
 consequence game → decision_scenario; **mechanic-driven serious game** (score/lives/timer/hints +
@@ -94,6 +105,7 @@ branching, intrinsic integration) → game; **adapt difficulty to the learner** 
 **show an expert solution with fading support** (demonstration-first, complex skill) →
 worked_example; **commit a prediction / record an attempt, then refer back to it** (inquiry-first,
 "your prediction was…") → exploration; cross-screen routing → branching; dense optional detail →
-accordion/tabs; visual concept → lottie/video. After 1–2 content screens, insert a practice type.
+accordion/tabs; visual concept → lottie/video; **genuinely custom interactivity no native type covers** →
+embed_html (last resort). After 1–2 content screens, insert a practice type.
 Game design patterns & scoring: see the server's `docs/GAME-PATTERNS.md`, `docs/GAME-ECD.md`,
 `docs/GAME-ADAPTIVE.md`. Before publishing a game/adaptive course, run `lint_course` (anti-slop gate).

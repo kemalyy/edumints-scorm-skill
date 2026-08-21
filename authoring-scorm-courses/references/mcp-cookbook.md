@@ -169,6 +169,32 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   Package a **Claude-generated SVG** without base64 — pass the raw `<svg>…</svg>` string. Validates SVG,
   returns `id` for `media_asset_id`/`image_asset_id`/block `asset_id`. `rasterize=true` → PNG (needs
   cairosvg). **NEVER inline `<svg>` in `body_html`** — it is sanitized away; this is the correct path.
+- `html_to_asset(project_id, html_content, filename="app.html")` → AssetRef. Raw self-contained HTML
+  (a Claude artifact) → a `text/html` asset — **no base64**, pass the string (the `svg_to_asset` pattern).
+  Use the returned `id` as the `html_asset_id` of an `embed_html` screen:
+  ```jsonc
+  { "type": "embed_html", "id": "sim1", "title": "Deney: çubuğu ısıt",
+    "html_asset_id": "asset_…",        // REQUIRED, non-empty; from html_to_asset
+    "completion": "time_threshold",     // "on_view"(vars.) | "on_message" | "time_threshold"
+    "min_seconds": 120,                 // ≥0; YALNIZ time_threshold tüketir
+    "aspect": "16:9" }                  // "fill"(vars.) | "16:9" | "4:3"
+  ```
+  ⚠️ `add_asset(source="https://…/app.html")` HTML KABUL ETMEZ (https kolu medya mime allowlist'iyle
+  sınırlı → `asset_error: İzin verilmeyen mime: text/html`). Yol: `html_to_asset` (yerel string) ya da
+  `wrap_artifact(source_url=…)` (uzak dosya).
+- `wrap_artifact(html_content=None, source_url=None, title="Untitled", scorm_version="1.2", language="tr",
+  completion="on_view", min_seconds=0)` → `{ project_id, screen_id, asset_id }`. **Tek adımda** keyfi
+  HTML → yeni proje + `embed_html` ekranı; sonra `preview` / `build_package`.
+  ```
+  wrap_artifact(html_content="<!doctype html>…", title="Compound interest simulator",
+                scorm_version="2004", language="en", completion="on_message")
+  wrap_artifact(source_url="https://…/app.html", title="Triage simulator")   # büyük/uzak (SSRF-korumalı)
+  ```
+  `html_content` VEYA `source_url` — tam olarak biri (boş string de "verilmiş" sayılır, reddedilir).
+  `completion="time_threshold"` ise `min_seconds > 0` ZORUNLU; diğer modlarda yok sayılır. `language`
+  proje yaratıldıktan sonra DEĞİŞTİRİLEMEZ → İngilizce kurs için burada ver. Her zaman `aspect:"fill"`
+  üretir (başka oran gerekiyorsa compose yolu / `update_screen`). Köprü, sınırlar ve `completion`
+  semantiği: **`references/artifact-to-scorm.md`**.
 - `make_video_from_image_audio(project_id, image_asset_id, audio_asset_id, filename)` → video asset (ffmpeg).
 - `normalize_audio_asset(project_id, audio_asset_id, filename)` → mp3.
 - **Faz 10 — programatik video (HyperFrames):** `render_motion_video(project_id, video_spec, filename,
@@ -180,7 +206,7 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   → Türkçe mp3 narration asset (ücretsiz, çevrimdışı). Üst kalite/başka dil için kendi TTS MCP'n +
   `add_asset` (birincil). Detay: **`references/media.md`**.
 - `preview(project_id)` → `{ inline_html, hosted_url }`. `validate_package` then `build_package` → download.
-- `list_screen_types()` / `list_themes()` — discovery: the 30 screen types + theme presets (no auth).
+- `list_screen_types()` / `list_themes()` — discovery: the 31 screen types + theme presets (no auth).
 - **`lint_course(project_id)`** → `{ error_count, warn_count, clean, issues[] }`. Anti-slop quality gate for
   game/adaptive screens (intrinsic integration, no fake choice, scaffolding, adaptive spread, a11y).
   Structural bugs are errors (also block the build); pedagogical smells are warnings. **Run before publishing

@@ -1,6 +1,6 @@
 ---
 name: authoring-scorm-courses
-description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp) — including turning a brief, document, policy table, or cheat-sheet into a course. This skill SELECTS a teaching method before outlining — outcome type + PRIOR_KNOWLEDGE + error cost feed a Layer-0 selector that picks from 12 pedagogy packs (direct instruction, 5E inquiry, PBL, mastery, retrieval practice…) plus 6 overlays (cognitive load, UDL, ARCS, accessibility…) — and enforces evidence binding (every scored question bound to in-course evidence, K1–K6). Covers 30 screen types, assessment, theming, variables/gamification, media (TTS/ffmpeg), the build→preview→feedback→fix loop, and a mechanical anti-slop pre-flight gate.
+description: Use when the user wants to create, build, or improve a SCORM-compliant training course, e-learning module, quiz, or interactive lesson with the scorm-mcp connector (your self-hosted server, e.g. http://localhost:8000/mcp) — including turning a brief, document, policy table, or cheat-sheet into a course. This skill SELECTS a teaching method before outlining — outcome type + PRIOR_KNOWLEDGE + error cost feed a Layer-0 selector that picks from 12 pedagogy packs (direct instruction, 5E inquiry, PBL, mastery, retrieval practice…) plus 6 overlays (cognitive load, UDL, ARCS, accessibility…) — and enforces evidence binding (every scored question bound to in-course evidence, K1–K6). Covers 31 screen types, assessment, theming, variables/gamification, media (TTS/ffmpeg), the build→preview→feedback→fix loop, and a mechanical anti-slop pre-flight gate.
 ---
 
 # Authoring SCORM courses with scorm-mcp
@@ -137,6 +137,11 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - **Programmatic video** (`references/video-generation.md`): `render_motion_video` (scene-spec →
   motion-graphic/data-viz MP4) + `render_screen_video` (stage screen → MP4). Use for explainer
   intros, animated data viz, summaries — passive content that teaches, not for assessment.
+- **Arbitrary self-contained HTML** (`references/artifact-to-scorm.md`): an `embed_html` screen runs a
+  custom HTML artifact (simulation, calculator, bespoke visualization) in a sandboxed iframe, tracked by
+  the launcher plus an optional postMessage bridge. `wrap_artifact` does it in one call; `html_to_asset` +
+  `add_screen` composes it into a bigger course. **Escape hatch, not a shortcut** — prefer a native screen
+  type whenever one fits (native types are scored, themed, accessible and linted; an artifact is none of these).
 
 ## Reference files (load as needed)
 - `references/anti-slop.md` — **ÖNCE BUNU OKU.** SCORM slop'unun somut/ikili yasakları + override yolları + ÖNCE/SONRA JSON. Her ekran üretmeden önce buna karşı denetle.
@@ -153,13 +158,14 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/migration-v1-to-v2.md` — **v1→v2 geçiş rehberi:** kırıcı değişiklikler + giderme reçeteleri, Pattern A → rosenshine-di eşleme tablosu, 3 canlı demonun gerçek yükseltme oyun kitabı (K1 boşluğu bulguları + K4/K5/K6 süpürmeleri), uçtan uca lint-doğrulanmış v1→v2 örneği. Elinde v1-dönemi kurs/şablon varsa buradan başla.
 - `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
-- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 30 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
+- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 31 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).
 - `references/instructional-design.md` — objectives, structure, microlearning, anti-template-fatigue.
-- `references/screen-types.md` — decision guide for all 30 screen types (incl. simulation, decision_scenario, **worked_example**, **exploration**, **composable game**, **adaptive practice**).
+- `references/screen-types.md` — decision guide for all 31 screen types (incl. simulation, decision_scenario, **worked_example**, **exploration**, **composable game**, **adaptive practice**, **embed_html**).
 - `references/assessment.md` — question/feedback/scoring design.
 - `references/interactivity-and-gamification.md` — variables, conditions, timer, points, branching, **composable game engine** (game), **adaptive practice** (Elo/BKT), **xAPI/cmi5** telemetry.
 - `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie, **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id).
+- `references/artifact-to-scorm.md` — **artifact → SCORM (`embed_html`):** keyfi kendine-yeten HTML'i izlenebilir kursa çevirme — `wrap_artifact` (tek çağrı) / `html_to_asset` + `add_screen`, `completion` modları ve kapı sınırları, postMessage köprüsü (1.2 vs 2004), sanitize edilmeme + güven sınırı, `passing_score`'un artifact skorunu GÖRMEMESİ.
 - `references/video-generation.md` — programatik video (VideoSpec → HyperFrames MP4): motion-graphic, veri-viz, slayt→video.
 - `references/themes.md` — preset themes + customization.
 
@@ -167,6 +173,10 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - **No raw `<svg>`/`<canvas>`/`<script>` in `body_html`** — the sanitizer strips them. Diagrams go
   through the asset pipeline: `svg_to_asset` (preferred) or `add_asset` → `media_asset_id`/`image_asset_id`/
   block `asset_id` (rendered as `<img>`). See `references/media.md` → "SVG diagrams".
+  **Sanctioned escape hatch:** when the content genuinely needs live `<script>`/`<canvas>` (a simulation,
+  a calculator, a custom visualization), don't fight the sanitizer — ship it as an `embed_html` screen
+  (sandboxed iframe, not sanitized, tracked). See `references/artifact-to-scorm.md`. This does **not**
+  relax the rule above: `body_html` is still sanitized, always.
 - **Animations** — canvas/JS animations don't survive packaging. Use a **Lottie** asset or an **MP4**
   (`render_motion_video` / `make_video_from_image_audio`).
 - **`render_motion_video`** — needs Chromium on the server; if absent it returns `render_unavailable`.
