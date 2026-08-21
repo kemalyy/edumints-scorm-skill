@@ -44,7 +44,7 @@ cevap kanalına (K5 ihlali) dönüşmez.
 ### `medya` + `ekran_secimi` — çoklu temsil: aynı kanıt, en az iki kip
 
 Ölçmenin bağlandığı **her kanıt kaynağı** için en az iki kip hedeflenir (ikili denetim: kritik
-kanıt tek kanalda mı yaşıyor?). 30 ekran tipinin temsil-kanalı haritası:
+kanıt tek kanalda mı yaşıyor?). 31 ekran tipinin temsil-kanalı haritası:
 
 | Kanal | Taşıyıcı tipler |
 |---|---|
