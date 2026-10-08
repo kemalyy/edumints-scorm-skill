@@ -60,8 +60,8 @@ metni (`worked_example`) + `timeline`; durum değişimi → önce/sonra metni + 
 **Dürüstlük sınırı (işitsel kanal — sunucunun belgeli sınırlarına dayanır,
 `docs/ACCESSIBILITY-CONFORMANCE.md`):** işitsel kip ancak `narration_text` YAZILIYSA çift
 yönlüdür — metin varsa oynatıcı hem TTS/sesi hem CC bandını sunar. Yalnız ses varlığı yüklemek
-(metinsiz) transkriptsiz kanal üretir; `video` için senkron altyazı desteği YOKTUR (`<track>`
-yok). Bu yüzden kaplama kuralı ikilidir: **anlatım = her zaman `narration_text` ile**; konuşma
+(metinsiz) transkriptsiz kanal üretir; `video` senkron altyazıyı ancak yazar bir WebVTT
+dosyası verirse taşır (`captions_asset_id` — sunucu üretmez). Bu yüzden kaplama kuralı ikilidir: **anlatım = her zaman `narration_text` ile**; konuşma
 taşıyan `video` ancak içeriği spec'ten doğrulanabiliyorsa (caption/transcript metni cevabı
 gerçekten taşıyorsa — K1 dış-medya şartıyla aynı) temsil sayılır. "Videoda vardır" temsil değildir.
 
@@ -146,5 +146,5 @@ seçilir (hiza `assessment-alignment` kaplamasının işidir; buradaki karar ayn
 - Kuramsal köken: Meyer, A., Rose, D. H., & Gordon, D. (2014). *Universal Design for Learning:
   Theory and Practice.* Wakefield, MA: CAST Professional Publishing.
 - Teknik uyum sınırının dayanağı: scorm-mcp `docs/ACCESSIBILITY-CONFORMANCE.md` (WCAG 2.2 AA
-  kısmi uygunluk beyanı — video senkron altyazı yok; `narration_text` yoksa transkript yok;
+  kısmi uygunluk beyanı — video altyazısı yalnız yazarın WebVTT'siyle; `narration_text` yoksa transkript yok;
   `drag_drop` işaretçi-bağımlı). Bu kaplama o sınırların ÜSTÜNDE vaat kurmaz.

@@ -14,17 +14,23 @@ Pick by *intent*, not habit. Vary them.
 
 > **Inline media (W9):** any `*_html` field accepts `{{asset:<id>}}` to embed a packaged asset inline in
 > flowing text, plus inline base64 `<img src="data:image/…">`. Reorder screens with `reorder_screens`.
-- **video** — demonstrations, talking-head, screen capture. `require_complete` to gate.
+- **video** — demonstrations, talking-head, screen capture. `require_complete` to gate. Speech-carrying
+  video: attach a WebVTT file as `captions_asset_id` (WCAG 1.2.2 — the server never generates one).
 - **lottie** — designer-made animation (concept reveal, celebration, illustration). Opt-in/lazy.
 
 ## Practice / assessment (scored → tracked)
 - **mcq** — single or multi (`multi_select`) select; the workhorse. Write plausible distractors.
+  Per-option `feedback_html` = why THAT option is right/wrong (shown after answering, only for the chosen one).
 - **true_false** — quick check; avoid ambiguity.
 - **fill_blank** — recall of exact terms; list all `accepted` variants.
 - **drag_drop** — categorize / map items to targets.
 - **matching** — pair two columns (accessible select UI).
 - **sorting** — order steps/ranking (give items in CORRECT order; runtime shuffles).
-- **hotspot** — "find it on the image" (anatomy, UI, diagrams). Needs an image asset.
+- **hotspot** — "find it on the image" (anatomy, UI, diagrams). Needs an image asset. `mode`:
+  `quiz` (default, scored) | `explore` (UNSCORED — clicking a region opens its `label_html` /
+  `feedback_html`; evidence carrier). `require_all: true` (explore only) = "find them all" before the
+  screen counts as visited. Per-region `feedback_html` = region-specific rationale. Shapes: `rect` /
+  `circle` (`poly` is rejected at build). Always write `label_html` — it becomes the region's accessible name.
 - **simulation** — guided multi-step software "try-mode" (İzle→Uygula→Sıra Sizde'nin "Uygula"sı):
   each step = a screenshot + a click region OR a text input; wrong → hint, all correct → scored.
 - **decision_scenario** — branching **decision game** in one screen: stateful (score) narrative
@@ -45,7 +51,11 @@ Pick by *intent*, not habit. Vary them.
   (**`elo`** — closest-to-target difficulty, flow) or mastery (**`bkt`** — Bayesian Knowledge Tracing,
   mastery + early stop) and serves the next item at the right difficulty. Give ≥4 items with spread
   `difficulty` (logit; harder = higher) + an `explain_html` each. Use for drill/review that should fit
-  each learner instead of a fixed quiz.
+  each learner instead of a fixed quiz. **Mastery loop** (opt-in): `loop_mode: "mastery"` → on a wrong
+  answer show the item's `scaffold_html` hint (`scaffold_on_wrong: true` — a hint, NOT the answer), serve a
+  DIFFERENT item of the same skill (`related_retry`, default on), repeat until correct;
+  `score_mode: "mastery"` = 100% only when every item is solved; `max_consecutive_wrong` (default 5)
+  moves on. Defaults keep the classic `sample` behaviour.
 
 ## Evidence primitives (not scored — unconditional evidence carriers)
 - **worked_example** — expert solution shown step by step; every step is an **action + rationale**
@@ -62,7 +72,9 @@ Pick by *intent*, not habit. Vary them.
   `store_key` and REPLAYED by later screens via `<span data-exploration-ref="store_key"></span>`
   ("your prediction was…" attribution is real, not imitated in feedback text). `input_kind`:
   `text` (observation note; `placeholder`, `min_length`), `choice` (classify), `prediction`
-  (commit-then-see; requires ≥2 `choices` — any `correct` flags are ignored). Structurally
+  (commit-then-see; requires ≥2 `choices` — any `correct` flags are ignored), `slider` (numeric
+  commitment — "what percentage?", Likert, "how many years?": `min_value` 0, `max_value` 100, `step` 1,
+  optional `unit`; nothing is stored until the learner moves the thumb). Structurally
   unscorable (no `points` — grading the attempt turns inquiry into a guessing contest).
   Evidence role: K1 type 2 (the learner's OWN produced output) — unconditional evidence carrier.
   `store_key` must be unique course-wide (`[a-z0-9_-]+`, ≤64; hard validation error on clash);

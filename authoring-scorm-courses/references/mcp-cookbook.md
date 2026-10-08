@@ -63,7 +63,8 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
     {"html":"<p>1. Veri toplanır</p>"}, {"asset_id":"slide1","caption":"Şekil 1","width":"60%"},
     {"html":"<p>2. Model eğitilir</p>"} ] }
 { "type": "mcq", "title": "Soru", "prompt_html": "<p>…?</p>", "points": 10, "multi_select": false,
-  "options": [ {"id":"a","text_html":"4","correct":true}, {"id":"b","text_html":"5"} ],
+  "options": [ {"id":"a","text_html":"4","correct":true,"feedback_html":"<p>2+2 = 4.</p>"},
+               {"id":"b","text_html":"5","feedback_html":"<p>Bir fazla saydın.</p>"} ],   // ops. şıka özel gerekçe
   "on_correct": [ {"var":"points","op":"add","value":10} ] }            // gamification hook
 { "type": "true_false", "title":"…", "prompt_html":"…", "correct": false, "points": 10 }
 { "type": "fill_blank", "title":"…", "prompt_html":"… ___", "points":10,
@@ -71,10 +72,14 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 { "type": "drag_drop", "title":"…", "prompt_html":"…", "points":10,
   "items":[{"id":"i1","text_html":"…","correct_target_id":"t1"}], "targets":[{"id":"t1","label_html":"…"}] }
 { "type": "hotspot", "title":"…", "prompt_html":"…", "image_asset_id":"img", "points":10,
-  "regions":[{"id":"r1","shape":"rect","coords":[10,10,40,40],"correct":true}] }
+  "regions":[{"id":"r1","shape":"rect","coords":[10,10,40,40],"correct":true,
+             "label_html":"Gönderen adresi","feedback_html":"<p>Alan adı bir harf farklı.</p>"}] }
+// hotspot keşif kipi (skorsuz): "mode":"explore", "require_all":true — bölge tıklanınca label/feedback açılır
+//   (rect: [x,y,w,h], circle: [cx,cy,r]; poly build'de reddedilir)
 { "type": "branching", "title":"Senaryo", "prompt_html":"…",
   "choices":[ {"id":"c1","text_html":"…","goto_screen_id":"end","set_vars":[{"var":"points","op":"add","value":5}]} ] }
-{ "type": "video", "title":"…", "video_asset_id":"vid", "caption":"…", "require_complete": false }
+{ "type": "video", "title":"…", "video_asset_id":"vid", "caption":"…", "require_complete": false,
+  "captions_asset_id":"vtt1" }   // WebVTT (add_asset, text/vtt) → <track kind=captions>; srclang = kurs dili
 { "type": "summary", "title":"Tebrikler", "show_score": true, "show_completion": true }
 // Faz 1b content interactions (W9 — her item'a ops. görsel: image_asset_id / front_asset_id / back_asset_id):
 { "type": "accordion", "title":"SSS", "items":[ {"title":"Soru","body_html":"<p>Cevap</p>","image_asset_id":"img1"} ] }
@@ -234,6 +239,8 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   "target_success": 0.7,
   "items": [ { "id":"q1", "difficulty":-1.5, "prompt_html":"<p>…</p>", "explain_html":"<p>…</p>",
       "options":[{"id":"a","text_html":"…","correct":true},{"id":"b","text_html":"…"}] } /* ≥4, spread */ ] }
+// mastery loop (opt-in): "loop_mode":"mastery", "scaffold_on_wrong":true, "score_mode":"mastery"
+//   + each item a "scaffold_html" hint (NOT the answer); related_retry (default true) serves another item of the same skill
 ```
 Optional course-level telemetry: `"xapi": { "enabled": true, "mode": "cmi5" }` (default off; no LRS → no-op).
 
