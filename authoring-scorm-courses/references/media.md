@@ -7,7 +7,8 @@ scorm-mcp, which assembles + processes it into the package.
 `add_asset(project_id, source, filename)` — `source` is either:
 - a **data-URI** (`data:<mime>;base64,…`) — for bytes you produce or read from a local file, or
 - an **https URL** — fetched server-side, **SSRF-guarded** (internal IPs blocked, redirects re-checked,
-  size-capped, mime allowlisted: images, mp4/webm/ogg video, mp3/m4a/aac/ogg/wav/webm audio, pdf, json).
+  size-capped, mime allowlisted: images, mp4/webm/ogg video, mp3/m4a/aac/ogg/wav/webm audio, pdf, json, WebVTT
+  captions `text/vtt` — use as a video's `captions_asset_id`).
 
 Typical orchestration (**primary path** for all media — audio/image/video):
 - **Narration:** call a TTS MCP → get audio (URL or bytes) → `add_asset` → use as `narration_asset_id`

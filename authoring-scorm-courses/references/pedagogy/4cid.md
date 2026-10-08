@@ -72,7 +72,7 @@ dürüst seçim rosenshine-di'dir, worked_example'ı content_slide + fill_blank 
 | `gorev_bagimsiz` | Son sınıf: desteksiz, skorlu tam görev | hepsi | ✓ |
 
 \* `worked_example` = `requires_platform` beyanındaki F1 tipi — YAYINDA (sunucu çekirdeğinde,
-30 tipin 29.'su; şema: `steps[{action_html, rationale_html, artifact_asset_id?,
+31 tipin 29.'su; şema: `steps[{action_html, rationale_html, artifact_asset_id?,
 artifact_caption?}]` ≥2 + `fading` + ops. `intro_html` / `self_explanation_prompt_html`;
 PUAN ALANI YOK — yapısal skorsuz, koşulsuz kanıt-taşıyabilir). Beyan, paketi F1'siz eski
 hedeflerde seçilemez tutmayı sürdürür.

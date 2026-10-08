@@ -77,7 +77,7 @@ gelir. `requires_platform` boş kalır: F2 iyileştirmedir, ön koşul değil.
 | `derinlestir` | Elaborate: yeni bağlama skorsuz transfer | mcq, drag_drop, matching, sorting, simulation, decision_scenario, branching | ✗ |
 | `degerlendir` | Evaluate: skorlu ölçüm | hepsi | ✓ |
 
-\* `exploration` = F2 tipi — YAYINDA (sunucu çekirdeğinde, 30 tipin 30.'su; şema: `prompt_html`,
+\* `exploration` = F2 tipi — YAYINDA (sunucu çekirdeğinde, 31 tipin 30.'su; şema: `prompt_html`,
 `input_kind: "text" | "choice" | "prediction"`, choice/prediction'da `choices` ≥2, `store_key`
 `[a-z0-9_-]+` ≤64 ve kurs genelinde TEKİL). Taahhüt mekaniğinin tercih edilen taşıyıcısıdır ve
 öğrenen girdisinin geri oynatımını ekler; `requires_platform` yine boş — puan-0 quiz yedeği

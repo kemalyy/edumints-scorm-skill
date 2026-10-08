@@ -57,9 +57,10 @@ Sunucu uygunluk matrisinin bilinen sınırları yazım kararına şöyle çevril
   geri sayımın öğrenen denetimi yok). Karar: `timer_sec` içerik/ölçüm ekranlarında KULLANILMAZ;
   `on_timeout`/`timeout_goto` ile içerik ya da soru kilitleme yasak karardır. Süre isteyen tek
   meşru yer yukarıdaki `game` zamanlayıcısıdır.
-- **`hotspot` bölge adı `title` özniteliğine dayanır** (belgeli sınır — yardımcı teknolojide
-  tutarsız). Karar: her bölgeye `label` yazılır ve bölgenin İÇERİĞİ (hangi cümle/öge olduğu)
-  etikette adlandırılır; "bölge 1" etiket değildir.
+- **`hotspot` bölgesinin erişilebilir adı `label_html`'den gelir** (#138 ile `aria-label`; etiket
+  yoksa jenerik "Bölge {n}" — `lint_course` `hotspot_region_without_label` uyarır). Karar: her
+  bölgeye `label_html` yazılır ve bölgenin İÇERİĞİ (hangi cümle/öge olduğu) etikette
+  adlandırılır; "bölge 1" etiket değildir.
 
 ### `medya` — alt metin KALİTESİ, grafik/video dürüstlüğü
 
@@ -75,10 +76,11 @@ yazarın kararıdır** ve bu kaplamanın kuralı ikilidir:
 - **`data_chart` SVG'si programatik ad taşımaz** (belgeli sınır). Karar: `caption` alanı
   ZORUNLU yazılır ve grafiğin çıkarımını metinle kurar ("Gece→Sabah geçişi 20 dk bandında") —
   eksen okuyamayan kullanıcının tek güvenilir kanalı budur.
-- **`video` senkron altyazı taşımaz** (belgeli sınır — `<track>`/WebVTT yok; 1.2.2). Karar:
-  konuşma taşıyan video ancak içeriği `caption` + `narration_text` ile spec'te tam veriliyorsa
-  kullanılır (K1 dış-medya şartıyla aynı test); veremiyorsan aynı içeriği anlatımlı ekran
-  dizisine çevir. Ses anlatımı HER ZAMAN `narration_text` ile gelir — metinsiz ses yüklemek
+- **`video` altyazısı yazarın WebVTT dosyasıyla gelir** (#145: `captions_asset_id` →
+  `<track kind="captions">`; sunucu altyazı ÜRETMEZ, tek iz, dil seçici yok; sesli betimleme
+  1.2.3/1.2.5 kapsam dışı). Karar: konuşma taşıyan videoya VTT eklenir; VTT veremiyorsan video
+  ancak içeriği `caption` + `narration_text` ile spec'te tam veriliyorsa kullanılır (K1
+  dış-medya şartıyla aynı test), aksi hâlde aynı içeriği anlatımlı ekran dizisine çevir. Ses anlatımı HER ZAMAN `narration_text` ile gelir — metinsiz ses yüklemek
   transkriptsiz kanal üretir (belgeli sınır), yasak karardır.
 - **`lottie` `prefers-reduced-motion`'ı yok sayar ve durdurulamaz** (belgeli sınır). Karar:
   döngülü/uzun animasyon kritik içerik TAŞIYAMAZ; lottie yalnız kısa, tek-geçişli, içeriği
@@ -139,7 +141,7 @@ yazarın kararıdır** ve bu kaplamanın kuralı ikilidir:
   verir; uygunluk beyanının kaynağı her zaman `docs/ACCESSIBILITY-CONFORMANCE.md`'dir.
 - Pedagojik temsil çeşitliliği kurmaz (o `udl`); tema estetiği seçmez (o `themes.md` +
   anti-slop C3).
-- Kursun ÜSTÜNDE uygunluk iddiası üretmez: platform beyanı KISMİdir (video altyazı, lottie,
+- Kursun ÜSTÜNDE uygunluk iddiası üretmez: platform beyanı KISMİdir (VTT'siz video, lottie,
   `timer_sec`, `drag_drop` sınırları belgeli) — kaplamanın işi bu sınırlara ÇARPMAYAN yazım
   kararları vermektir; sınıra çarpan bir tip bilinçli seçiliyorsa pre-flight'a tek cümle
   gerekçe + telafi kanalı yazılır.
@@ -151,6 +153,7 @@ yazarın kararıdır** ve bu kaplamanın kuralı ikilidir:
   1.2.2, 1.4.1, 1.4.3, 2.1.1, 2.2.1, 2.5.7 (2.2'nin yeni AA kriteri: sürüklemeye tek-işaretçi
   alternatif) DOĞRULANDI.
 - Platform durumu (dürüst taban): kemalyy/edumints-scorm-mcp `docs/ACCESSIBILITY-CONFORMANCE.md`
-  — 29 ekran tipi × kriter matrisi, bilinen sınırlar (video altyazı yok; `narration_text`'siz
+  — 31 ekran tipi × kriter matrisi, bilinen sınırlar (video altyazısı yalnız yazar WebVTT
+  verirse; `narration_text`'siz
   ses transkriptsiz; `drag_drop` işaretçi-bağımlı; `term_match_race`/`timer_sec` süre denetimsiz;
   lottie hareket-azaltmaya duyarsız; `data_chart` SVG adsız) ve test metodolojisi.

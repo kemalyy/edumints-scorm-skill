@@ -2,6 +2,26 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.1.0] — 2026-10-08
+
+Sunucu 1.6.0 ile senkron (31 ekran tipi, 43 tool).
+
+### Added
+- **artifact→SCORM** — `references/artifact-to-scorm.md`: kendine-yeten HTML artifact'ini
+  `embed_html` ekranı / `wrap_artifact` / `html_to_asset` ile izlenebilir SCORM'a çevirme;
+  tamamlanma modları, postMessage köprüsü, `passing_score` sınırı. Ekran tipi sayımları 30 → 31.
+- **mcq** — şıka özel gerekçe (`options[].feedback_html`).
+- **hotspot v2** — `mode: "explore"` (skorsuz keşif), `require_all`, bölgeye özel
+  `feedback_html`; `label_html` erişilebilir ad olur.
+- **exploration** — `input_kind: "slider"` (`min_value`/`max_value`/`step`/`unit`).
+- **adaptive_practice** — ustalık döngüsü (`loop_mode`/`scaffold_on_wrong`/`score_mode`/
+  `related_retry`/`max_consecutive_wrong`).
+- **video** — WebVTT altyazı (`captions_asset_id`; `add_asset` `text/vtt` kabul eder).
+
+### Fixed
+- `overlays/accessibility.md` + `overlays/udl.md`: bayatlamış "video altyazı desteği yok" ve
+  "hotspot adı `title`'a dayanır" sınırları güncel uygunluk beyanına göre düzeltildi.
+
 ## [2.0.0] — 2026-07-30
 
 Mimari revizyon: "iddia + yoklama" üretimini bitiren kanıt-bağlama çekirdeği. Katman-1

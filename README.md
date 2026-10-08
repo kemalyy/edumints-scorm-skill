@@ -71,6 +71,7 @@ authoring-scorm-courses/
 │   ├── interactivity-and-gamification.md
 │   ├── media.md                     # cross-MCP media + built-in Turkish TTS + local helper
 │   ├── video-generation.md          # programmatic motion-graphic / data-viz video
+│   ├── artifact-to-scorm.md         # escape hatch: arbitrary interactive HTML → tracked SCORM (embed_html / wrap_artifact + postMessage bridge)
 │   └── themes.md
 ├── templates/                       # copy-and-adapt blueprints
 └── examples/                        # flagship multi-pack example (evidence-bound, blind-test passed) + deprecated v1 pilot

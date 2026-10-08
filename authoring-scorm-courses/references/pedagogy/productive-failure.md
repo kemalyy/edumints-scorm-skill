@@ -74,7 +74,7 @@ alternatif `5e-inquiry`(F2'siz yedeğiyle) ya da `rosenshine-di`dir.
 | `konsolidasyon` | Kanonik çözüm, denemeye AÇIK atıfla — **kanıt ayağı 2** | worked_example, content_slide, tabs, accordion, video, data_chart | ✗ |
 | `skorlu_uygulama` | Yeni duruma skorlu transfer | hepsi | ✓ |
 
-\* `exploration` = `requires_platform` beyanındaki F2 tipi (sunucu çekirdeğinde, 30 tipin
+\* `exploration` = `requires_platform` beyanındaki F2 tipi (sunucu çekirdeğinde, 31 tipin
 30.'su): `input_kind: "text"` çözüm taslağı/gerekçe notu, `"prediction"`/`"choice"` taahhüt;
 girdi `store_key` altında saklanır, sonraki fazlar `data-exploration-ref` ile birebir geri
 oynatır. Yapısal skorsuz (puan alanı YOK — Z3), koşulsuz kanıt-taşıyabilir.
