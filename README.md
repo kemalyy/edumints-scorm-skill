@@ -61,6 +61,7 @@ authoring-scorm-courses/
 │   │   └── accessibility.md         # D6 — WCAG 2.2 AA authoring-time decisions on top of the platform's honest conformance statement (alt-text quality, keyboard-safe types, learner-controlled timers)
 │   ├── migration-v1-to-v2.md        # v1→v2 migration guide: breaking changes + recipes + Pattern A→rosenshine-di mapping + the 3-demo playbook
 │   ├── source-expansion.md          # compressed-source expansion: cheat-sheet line → mechanism question → artifact → bound question (2 worked conversions)
+│   ├── composition.md               # focal point on the thirds, Z/F eye flow, symmetric vs asymmetric, E1–E5 emphasis, course rhythm
 │   ├── visual-storytelling.md       # narrative thread + per-screen visual budget + mockup-SVG recipes
 │   ├── authoring-recommendations.md # when/how/why decision guide
 │   ├── mcp-cookbook.md              # exact tool calls + full build_from_spec shape
