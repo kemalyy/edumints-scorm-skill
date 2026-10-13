@@ -2,6 +2,18 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.2.0] — 2026-10-12
+
+Sunucu kompozisyon sistemi K1 ile senkron (45 tool).
+
+### Added
+- **`references/composition.md`** — odak noktası (üçler kuralı), göz akışı (Z/F), simetri/asimetri kararı,
+  E1–E5 vurgu kademeleri (`kicker`, `lead`, `<mark>`), kurs ritmi; `composition` alanı üç biçimde
+  (desen adı · desen + ince ayar · serbest ızgara). Yeni projeler `auto` — sunucu varsayılanı seçer,
+  Claude anlamın gerektirdiği yerde ezer.
+- `mcp-cookbook.md` / `screen-types.md` / `SKILL.md`: yeni alanlar + `list_compositions` /
+  `set_composition`; yeni varsayılan palet `mint` (+ `ink`, `slate`).
+
 ## [2.1.0] — 2026-10-08
 
 Sunucu 1.6.0 ile senkron (31 ekran tipi, 43 tool).

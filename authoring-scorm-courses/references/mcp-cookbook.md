@@ -160,6 +160,14 @@ icons/figures inside a paragraph; inline `<img src="data:image/…">` (base64) i
 skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[{"var":"x","op":"set|add","value":…}]`.
 
 ## Granular & utility tools
+- **K1 — composition:** every screen takes `kicker`, `lead` and `composition` (pattern name, `{preset, mirror,
+  focal, whitespace, intensity}` or a free grid `{grid, areas, focal, flow}`); `<mark>` in `*_html` = E3 emphasis.
+  `list_compositions()` = the catalogue; `set_composition(project_id, "auto"|"classic")` upgrades an older project.
+  New projects are `auto` (default palette `mint`; also `ink`, `slate`). `lint_course`/`preview` return the resolved
+  `compositions` per screen. Example:
+  `{"type":"content_slide","title":"Check the sender","kicker":"Step 1","lead":"The domain is one letter off.",
+  "media_asset_id":"mail","body_html":"<p>Read it <mark>letter by letter</mark>.</p>","composition":"split-thirds"}`.
+  Guide: `references/composition.md`.
 - `create_project(title, scorm_version, language)` → project_id; then `add_screen(project_id, screen)`,
   `update_screen`, `remove_screen`, `list_screens`, `set_theme(project_id, theme_tokens)` (deep-merges).
 - **W9 — `reorder_screens(project_id, screen_ids_in_order)`**: `add_screen` always appends; use this to
