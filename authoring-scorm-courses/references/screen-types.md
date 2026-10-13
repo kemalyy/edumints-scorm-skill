@@ -4,8 +4,10 @@ Pick by *intent*, not habit. Vary them.
 
 > **Every screen also takes** `kicker` (E3 label), `lead` (E1 — the one message) and `composition`
 > (pattern name or `{preset, mirror, focal, …}` / a free grid). In `auto` projects (all new ones) the
-> server picks a balanced pattern when you leave it out — see `references/composition.md`. Current
-> release renders composition on `title_slide` and `content_slide`.
+> server picks a balanced pattern when you leave it out — see `references/composition.md`. Composition
+> renders on **all 31 screen types**; ask the user's layout preference while building
+> (`composition_defaults`, `composition_questions`). Questions, polls, explorations and branching
+> also take an optional case (`stimulus`).
 
 ## Content / presentation
 - **title_slide** — open the course; set relevance. Supports `{{var}}` + background.

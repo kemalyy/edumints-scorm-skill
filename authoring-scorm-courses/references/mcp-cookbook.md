@@ -66,6 +66,14 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
   "options": [ {"id":"a","text_html":"4","correct":true,"feedback_html":"<p>2+2 = 4.</p>"},
                {"id":"b","text_html":"5","feedback_html":"<p>Bir fazla saydın.</p>"} ],   // ops. şıka özel gerekçe
   "on_correct": [ {"var":"points","op":"add","value":10} ] }            // gamification hook
+// application question (K3): new case in "stimulus" (text and/or image+alt), answer NOT in the case
+{ "type": "mcq", "title": "Ne yaparsın?", "points": 10, "evidence_screen_ids": ["s-verify"],
+  "stimulus": { "asset_id": "mail1", "alt": "Acil fatura onayı isteyen e-posta",
+                "text_html": "<p>Elif'e “acil fatura onayı” e-postası geldi; bağlantı başka bir alan adına gidiyor.</p>",
+                "caption": "Pazartesi 08:47" },
+  "prompt_html": "<p>Elif'in ilk adımı ne olmalı?</p>",
+  "options": [ {"id":"a","text_html":"Göndereni telefonla doğrulamak","correct":true},
+               {"id":"b","text_html":"Bağlantıyı açıp faturaya bakmak"} ] }
 { "type": "true_false", "title":"…", "prompt_html":"…", "correct": false, "points": 10 }
 { "type": "fill_blank", "title":"…", "prompt_html":"… ___", "points":10,
   "blanks":[ {"id":"b1","accepted":["2FA","MFA"]} ], "case_sensitive": false }
@@ -78,6 +86,11 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 //   (rect: [x,y,w,h], circle: [cx,cy,r]; poly build'de reddedilir)
 { "type": "branching", "title":"Senaryo", "prompt_html":"…",
   "choices":[ {"id":"c1","text_html":"…","goto_screen_id":"end","set_vars":[{"var":"points","op":"add","value":5}]} ] }
+// decision moment with a case (K5): branching takes a "stimulus" too
+{ "type": "branching", "title":"Ne yaparsın?", "prompt_html":"<p>Hangi yolu seçersin?</p>",
+  "stimulus": { "text_html": "<p>Müşteri toplantısı 10 dakika sonra; sunum dosyası açılmıyor.</p>" },
+  "choices":[ {"id":"a","text_html":"Yedekten aç","goto_screen_id":"s-yedek"},
+              {"id":"b","text_html":"Toplantıyı ertele","goto_screen_id":"s-ertele"} ] }
 { "type": "video", "title":"…", "video_asset_id":"vid", "caption":"…", "require_complete": false,
   "captions_asset_id":"vtt1" }   // WebVTT (add_asset, text/vtt) → <track kind=captions>; srclang = kurs dili
 { "type": "summary", "title":"Tebrikler", "show_score": true, "show_completion": true }
@@ -144,6 +157,10 @@ varsayılan **960×540** = 16:9; 4:3 için 960×720; dikey/kare için kendin aya
 { "type": "poll", "title":"Görüşün", "prompt_html":"<p>En faydalı bölüm hangisiydi?</p>", "multi":false,
   "options":[ {"id":"a","text_html":"Senaryo"}, {"id":"b","text_html":"Oyun"} ],
   "allow_text":false, "reflection_html":"<p>Geri bildirimin için teşekkürler.</p>" }
+// reflection on a case (K4): poll/exploration take a "stimulus" like questions do (unscored)
+{ "type": "exploration", "title":"Ne yapardın?", "store_key":"case1", "input_kind":"text",
+  "stimulus": { "text_html": "<p>Ekibine “acil fatura onayı” e-postası geldi; gönderen tanıdık ama bağlantı başka bir alan adına gidiyor.</p>" },
+  "prompt_html":"<p>İlk adımın ne olurdu? Kısaca yaz.</p>" }
 { "type": "image_compare", "title":"Önce / Sonra", "before_asset_id":"before", "after_asset_id":"after",
   "before_label":"Önce", "after_label":"Sonra", "caption":"Sürükleyerek karşılaştır" }
 // results_breakdown: bölüm oranı, öğrencinin cevaplarından GÖSTERİM-ZAMANINDA hesaplanır; eşik altı →
@@ -164,7 +181,10 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   focal, whitespace, intensity}` or a free grid `{grid, areas, focal, flow}`); `<mark>` in `*_html` = E3 emphasis.
   `list_compositions()` = the catalogue; `set_composition(project_id, "auto"|"classic")` upgrades an older project.
   New projects are `auto` (default palette `mint`; also `ink`, `slate`). `lint_course`/`preview` return the resolved
-  `compositions` per screen. Example:
+  `compositions` per screen and (K2) `composition_questions` — ask the user, apply each `apply`, re-preview.
+  Course-level preference: `"composition_defaults": {"visual": "stack"|"split"|"auto"}` in the spec, or
+  `set_composition(project_id, "auto", visual="stack")`; one screen only: `set_screen_composition(project_id,
+  screen_id, "split-thirds")` (other fields untouched). Example:
   `{"type":"content_slide","title":"Check the sender","kicker":"Step 1","lead":"The domain is one letter off.",
   "media_asset_id":"mail","body_html":"<p>Read it <mark>letter by letter</mark>.</p>","composition":"split-thirds"}`.
   Guide: `references/composition.md`.
@@ -246,7 +266,8 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
   "adaptive": { "strategy": "elo", "ability": 0.0 },   // or {"strategy":"bkt","mastery_stop":0.9}
   "target_success": 0.7,
   "items": [ { "id":"q1", "difficulty":-1.5, "prompt_html":"<p>…</p>", "explain_html":"<p>…</p>",
-      "options":[{"id":"a","text_html":"…","correct":true},{"id":"b","text_html":"…"}] } /* ≥4, spread */ ] }
+      "options":[{"id":"a","text_html":"…","correct":true},{"id":"b","text_html":"…"}],
+      "stimulus": { "text_html": "<p>case for this item…</p>" } } /* ≥4, spread; stimulus optional, per item */ ] }
 // mastery loop (opt-in): "loop_mode":"mastery", "scaffold_on_wrong":true, "score_mode":"mastery"
 //   + each item a "scaffold_html" hint (NOT the answer); related_retry (default true) serves another item of the same skill
 ```

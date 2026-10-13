@@ -2,6 +2,21 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.3.0] — 2026-10-13
+
+Sunucu 1.8.0 ile senkron — kompozisyon sistemi 31 ekran tipinin tamamında (46 tool).
+
+### Changed
+- **`references/composition.md` tek akışlı rehber:** iş akışı → 31 tipin tek tablosu (varsayılan desen,
+  neyle değişir, odak; tablo sunucu kodundan doğrulanır) → odak/üçler kuralı/göz akışı → simetri →
+  E1–E5 vurgu → üretim sırasında sor (`composition_questions`, `visual` + `question` tercihleri) → özel
+  düzenler (vaka/uyaran, tabs ana–detay, oyun sahnesi, uzun içerik, gömülü) → ekran ezme → önce/sonra.
+- `references/assessment.md`: **uygulama sorusu deseni** — yeni vaka (`stimulus`) + öğrenilmiş kavram;
+  cevap vakaya yazılmaz (`stimulus_answer_leak`), kanıt bağı kavramı öğreten ekrana.
+- `references/mcp-cookbook.md`: `stimulus` örnekleri (mcq, adaptive öğe, exploration, branching);
+  `set_composition(..., question=…)`, `set_screen_composition`.
+- `references/screen-types.md`: kompozisyon notu 31 tip + uyaran.
+
 ## [2.2.0] — 2026-10-12
 
 Sunucu kompozisyon sistemi K1 ile senkron (45 tool).
