@@ -3,6 +3,21 @@
 **Align to the objective.** Test what you taught, at the right Bloom level. If the objective is "apply",
 use a scenario MCQ, not a recall true/false.
 
+**Application questions (stimulus).** To test *apply*, give a **new case** and ask what to do in it:
+put the case in `stimulus` (`text_html`, and/or an image with `alt`), the decision in `prompt_html`,
+and bind the question with `evidence_screen_ids` to the screen that **taught the concept** — the case
+is where the concept is applied, not where it was taught. Never copy the answer into the case: the
+learner must reason, not match words (`stimulus_answer_leak` flags it; strict blocks it).
+
+- BEFORE (recall, answer leaks): stimulus *"Policy: verify the sender through a known channel."* →
+  "What does the policy say?" → correct option *"Verify the sender through a known channel"*.
+- AFTER (application): stimulus *"Elif gets an 'urgent invoice approval' email; the link goes to a
+  different domain."* → "What should Elif do first?" → correct *"Confirm with the sender by phone"*,
+  distractors from real mistakes (*"Open the link to check the invoice"*), evidence → the screen that
+  taught sender verification.
+
+In `adaptive_practice` each item can carry its own `stimulus` (shown with that item).
+
 **Question quality:**
 - Stem: one clear question; no negatives/trick wording.
 - Distractors (MCQ): plausible, parallel in length/grammar; based on real misconceptions; no "all/none of
