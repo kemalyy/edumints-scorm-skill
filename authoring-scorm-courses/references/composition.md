@@ -15,10 +15,13 @@ layout questions it asks and to override a screen only where the meaning demands
 1. Build with `composition: "auto"` (the default). Do **not** set `composition` on screens up front.
 2. Write content with a clear hierarchy: a `title`, at most one `lead` (the one message, ≤ 20 words),
    an optional `kicker` (≤ 40 characters), then the body. Give case-based screens a `stimulus`.
-3. Call `lint_course` or `preview`. Read `compositions` (the layout chosen per screen) and
+3. Call `lint_course` or `preview` (light by default — show the user `hosted_url`; pass
+   `include_html=true` only if you need the full page). Read `compositions` (the layout chosen per screen) and
    `composition_questions` (the decisions the server wants from the user) — see §6.
 4. Ask the user those questions, apply the answers, preview again.
 5. Override a screen (`set_screen_composition`) only when the chosen layout contradicts the meaning.
+   `update_screen` keeps an override when you leave `composition` out (send `null` to clear it); an
+   invalid pattern is rejected at write time (`composition_not_applicable` lists the patterns that fit).
 
 ## 2. What the server chooses — all 31 types
 
@@ -67,9 +70,12 @@ The table is checked against the code by a test, so it is exact. Two rules sit o
   explanation screens `calm`, practice `normal`; never three `high` in a row; never the same pattern
   four times in a row (except a run of plain questions in `question-column` — consistency is the
   point there — and anything the user chose explicitly).
-- **Reading order** (what phones and screen readers get): the title and prompt come first; a case
-  (stimulus) comes before the question it belongs to; check / submit buttons and feedback always come
-  after the answers.
+- **Reading order** (what phones and screen readers get): the kicker + title always come first; then a
+  case (stimulus) before the question it belongs to; check / submit buttons and feedback always come
+  after the answers. On image-first layouts the title sits on top of the text column.
+- **Why a screen got its layout:** each `compositions[]` entry carries `source` (`auto`, `rhythm`,
+  `course:visual=…`, `course:question=…`, `screen`), a short `reason` (e.g. `stimulus_words=46>40`) and
+  `dom_order`. Read `source` before overriding — `rhythm` means variety, `course:*` means the user chose it.
 
 ## 3. Focal point, the rule of thirds, eye flow
 

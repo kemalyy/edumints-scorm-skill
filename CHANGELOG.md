@@ -2,6 +2,17 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.3.1] — 2026-10-14
+
+For MCP v1.8.1.
+- `composition.md`: the title is always read first; how to read the decision trace (`source`, `reason`,
+  `dom_order`) before overriding; `preview` is light by default (`include_html=true` for the full page);
+  `update_screen` keeps an override when `composition` is left out; invalid patterns are rejected at
+  write time (`composition_not_applicable`).
+- `mcp-cookbook.md`: SVG assets inside the spec (`assets[].svg`, no base64); one list of alt-text fields
+  per image field; new `preview` shape.
+- `artifact-to-scorm.md`: new `preview` shape.
+
 ## [2.3.0] — 2026-10-13
 
 Sunucu 1.8.0 ile senkron — kompozisyon sistemi 31 ekran tipinin tamamında (46 tool).
