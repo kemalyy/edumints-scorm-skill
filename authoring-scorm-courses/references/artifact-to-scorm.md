@@ -37,7 +37,7 @@ wrap_artifact(
   → { project_id: "prj_…", screen_id: "scr_…", asset_id: "asset_…" }
 
 # then the normal loop:
-preview(project_id)  →  { inline_html, hosted_url }
+preview(project_id)  →  { hosted_url, … }   # include_html=true → + inline_html
 build_package(project_id)  →  download URL for the LMS
 ```
 

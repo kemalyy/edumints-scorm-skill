@@ -176,6 +176,17 @@ icons/figures inside a paragraph; inline `<img src="data:image/…">` (base64) i
 `visible_if`: `{"var":"points","cmp":">=","value":100}`
 skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[{"var":"x","op":"set|add","value":…}]`.
 
+### SVG assets inside the spec (no base64)
+```jsonc
+"assets": [ { "id": "flow", "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 360'>…</svg>" } ]
+// exactly one of `svg` / `source`; scripts, event handlers and external links are stripped
+```
+
+### Alt text fields
+`media_alt` (content media) · `image_alt` (hotspot, diagram, simulation steps, accordion/tabs/timeline
+items, scenario/game nodes) · `front_alt`/`back_alt` (flashcards) · `before_alt`/`after_alt`
+(image_compare) · `caption` (content blocks) · `stimulus.alt` (case image — required).
+
 ## Granular & utility tools
 - **K1 — composition:** every screen takes `kicker`, `lead` and `composition` (pattern name, `{preset, mirror,
   focal, whitespace, intensity}` or a free grid `{grid, areas, focal, flow}`); `<mark>` in `*_html` = E3 emphasis.
@@ -238,7 +249,7 @@ skips the screen when false. `on_enter`/`on_timeout`/`set_vars`/`on_correct`: `[
 - **Faz 11 — dahili Türkçe TTS (Piper):** `synthesize_speech(project_id, text, voice=None, filename)`
   → Türkçe mp3 narration asset (ücretsiz, çevrimdışı). Üst kalite/başka dil için kendi TTS MCP'n +
   `add_asset` (birincil). Detay: **`references/media.md`**.
-- `preview(project_id)` → `{ inline_html, hosted_url }`. `validate_package` then `build_package` → download.
+- `preview(project_id)` → `{ hosted_url, compositions, composition_questions, size_bytes }` (light; `include_html=true` adds `inline_html`). `validate_package` then `build_package` → download.
 - `list_screen_types()` / `list_themes()` — discovery: the 31 screen types + theme presets (no auth).
 - **`lint_course(project_id)`** → `{ error_count, warn_count, clean, issues[] }`. Anti-slop quality gate for
   game/adaptive screens (intrinsic integration, no fake choice, scaffolding, adaptive spread, a11y).

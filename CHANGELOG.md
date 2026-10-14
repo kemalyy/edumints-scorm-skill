@@ -2,6 +2,17 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.3.1] — 2026-10-14
+
+Sunucu 1.8.1 ile senkron.
+- `composition.md`: başlık her zaman önce okunur; ezmeden önce karar izini (`source`, `reason`,
+  `dom_order`) okuma; `preview` varsayılan hafif (tam sayfa `include_html=true`); `update_screen`,
+  `composition` gönderilmezse ezmeyi korur; geçersiz desen yazma anında reddedilir
+  (`composition_not_applicable`).
+- `mcp-cookbook.md`: spec içinde SVG (`assets[].svg`, base64'süz); görsel alanı başına alt metin alanları
+  listesi; yeni `preview` yanıtı.
+- `artifact-to-scorm.md`: yeni `preview` yanıtı.
+
 ## [2.3.0] — 2026-10-13
 
 Sunucu 1.8.0 ile senkron — kompozisyon sistemi 31 ekran tipinin tamamında (46 tool).
