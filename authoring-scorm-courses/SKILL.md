@@ -99,6 +99,11 @@ Kadran → seçici etkisi (uzmanlık-tersinme etkisi):
 
 ## Workflow
 
+0. **Sunucu rehberi (her oturumun ilk çağrısı):** `get_guide(skill_version="2.4.0")`. `skill_status`
+   `outdated` ya da `incompatible` ise `notice`'i kullanıcıya ilet (indirme linki içinde). Araç çağrıları,
+   `build_from_spec` şekli, alan adları ve kompozisyon kuralları için güncel kaynak sunucudur:
+   `get_guide(topic="cookbook")`, ekran alanları için `get_guide(topic="schema:<tip>")`. Bu skill'deki
+   yöntem dosyaları (pedagoji, kanıt bağlama, anti-slop, pre-flight) yerelde kalır.
 1. **Clarify** (briefly): audience, one measurable learning objective, duration (target microlearning:
    3–8 min), source material, SCORM target (1.2 vs 2004 — use **2004** for branching/variables/games).
 2. **Yöntemi seç (Katman 0), sonra outline'ı tasarla.** Önce seçiciyi çalıştır
@@ -156,19 +161,19 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/eval/blind-test.md` — **kör test protokolü:** kanıt kaynakları çıkarılınca skorlanan sorular hâlâ cevaplanabiliyor mu? Geçme eşiği ≥ 1/2 + sonuç kayıt şablonu + pilot koşu.
 - `references/source-expansion.md` — **sıkıştırılmış kaynak açma prosedürü:** brief bir kopya kâğıdı / politika tablosu / mevzuat özetiyse kanıt hammaddesi girdide YOKTUR — satır → mekanizma sorusu → artefakt kararı → kanıt ekranı → uygulamayı ölçen bağlı soru (7 adım + kazanım-türü→açma-hamlesi tablosu + 2 tam açma örneği + retrieval-spaced istisna sınırı + kaynak-doğrulama uyarısı). Bu tür girdilerde outline'dan önce oku.
 - `references/migration-v1-to-v2.md` — **v1→v2 geçiş rehberi:** kırıcı değişiklikler + giderme reçeteleri, Pattern A → rosenshine-di eşleme tablosu, 3 canlı demonun gerçek yükseltme oyun kitabı (K1 boşluğu bulguları + K4/K5/K6 süpürmeleri), uçtan uca lint-doğrulanmış v1→v2 örneği. Elinde v1-dönemi kurs/şablon varsa buradan başla.
-- `references/composition.md` — **odak + vurgu hiyerarşisi + denge:** üçler kuralı, göz akışı (Z/F), simetri/asimetri kararı, E1–E5 vurgu kademeleri (`lead`/`kicker`/`<mark>`), kurs ritmi; `composition` alanı (desen adı · desen + ince ayar · serbest ızgara). Yeni projeler `auto` — sunucu varsayılanı seçer, sen anlamın gerektirdiği yerde ezersin.
+- `references/composition.md` — **odak + vurgu hiyerarşisi + denge:** üçler kuralı, göz akışı (Z/F), simetri/asimetri kararı, E1–E5 vurgu kademeleri (`lead`/`kicker`/`<mark>`), kurs ritmi; `composition` alanı (desen adı · desen + ince ayar · serbest ızgara). Yeni projeler `auto` — sunucu varsayılanı seçer, sen anlamın gerektirdiği yerde ezersin. → **sunucudan:** `get_guide(topic="composition")`
 - `references/visual-storytelling.md` — **sıradanlık panzehiri:** anlatı ipliği (tek sahne), ekran-başına görsel bütçesi, "oku değil BUL" dönüşümleri (simulation/image_compare/timeline), gerçekçi artefakt mockup SVG reçetesi, stat-kartı deseni, `search_images` → `add_asset` akışı.
 - `references/authoring-recommendations.md` — **karar rehberi: ne zaman/nasıl/neden.** Stage/timeline modu, narration yazımı, reveal seçimi, pedagojik ritim.
-- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 31 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop.
+- `references/mcp-cookbook.md` — exact tool calls, full build_from_spec shape (all 31 screen types) + game/adaptive shapes, `content_slide` `blocks[]` inline multi-image, per-item visuals (accordion/tabs/flashcards/timeline), `reorder_screens`, `auto_tts`, `add_asset` (callable directly, may not surface in tool-search), `lint_course`/`export_qti` + the feedback loop. → **sunucudan:** `get_guide(topic="cookbook")`
 - `references/course-patterns.md` — proven course structures to build (tool training, concept lesson, gamified, branching).
 - `references/instructional-design.md` — objectives, structure, microlearning, anti-template-fatigue.
-- `references/screen-types.md` — decision guide for all 31 screen types (incl. simulation, decision_scenario, **worked_example**, **exploration**, **composable game**, **adaptive practice**, **embed_html**).
+- `references/screen-types.md` — decision guide for all 31 screen types (incl. simulation, decision_scenario, **worked_example**, **exploration**, **composable game**, **adaptive practice**, **embed_html**). → **sunucudan:** `get_guide(topic="screen-types")`
 - `references/assessment.md` — question/feedback/scoring design.
 - `references/interactivity-and-gamification.md` — variables, conditions, timer, points, branching, **composable game engine** (game), **adaptive practice** (Elo/BKT), **xAPI/cmi5** telemetry.
-- `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie, **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id).
-- `references/artifact-to-scorm.md` — **artifact → SCORM (`embed_html`):** keyfi kendine-yeten HTML'i izlenebilir kursa çevirme — `wrap_artifact` (tek çağrı) / `html_to_asset` + `add_screen`, `completion` modları ve kapı sınırları, postMessage köprüsü (1.2 vs 2004), sanitize edilmeme + güven sınırı, `passing_score`'un artifact skorunu GÖRMEMESİ.
-- `references/video-generation.md` — programatik video (VideoSpec → HyperFrames MP4): motion-graphic, veri-viz, slayt→video.
-- `references/themes.md` — preset themes + customization.
+- `references/media.md` — TTS/image/video ingestion + ffmpeg + Lottie, **Canva cross-MCP pipeline** (generate → export → `add_asset` → asset id). → **sunucudan:** `get_guide(topic="media")`
+- `references/artifact-to-scorm.md` — **artifact → SCORM (`embed_html`):** keyfi kendine-yeten HTML'i izlenebilir kursa çevirme — `wrap_artifact` (tek çağrı) / `html_to_asset` + `add_screen`, `completion` modları ve kapı sınırları, postMessage köprüsü (1.2 vs 2004), sanitize edilmeme + güven sınırı, `passing_score`'un artifact skorunu GÖRMEMESİ. → **sunucudan:** `get_guide(topic="artifact")`
+- `references/video-generation.md` — programatik video (VideoSpec → HyperFrames MP4): motion-graphic, veri-viz, slayt→video. → **sunucudan:** `get_guide(topic="video")`
+- `references/themes.md` — preset themes + customization. → **sunucudan:** `get_guide(topic="themes")`
 
 ## Known limits (Claude → SCORM pipeline)
 - **No raw `<svg>`/`<canvas>`/`<script>` in `body_html`** — the sanitizer strips them. Diagrams go

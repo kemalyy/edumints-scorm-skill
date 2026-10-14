@@ -2,6 +2,17 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [2.4.0] — 2026-10-14
+
+Sunucu 1.9.0 ile senkron — sunucuya bağlı rehberler artık sunucudan gelir.
+- SKILL.md'nin ilk adımı `get_guide(skill_version="2.4.0")`: güncel rehber listesi + skill sürüm kontrolü
+  (eski skill'de `notice` indirme linkiyle döner).
+- 7 referans dosyası (`mcp-cookbook`, `composition`, `screen-types`, `artifact-to-scorm`, `media`, `themes`,
+  `video-generation`) yönlendirmeye dönüştü: içerik `get_guide(topic=…)` ile her deploy'da güncel gelir;
+  ekran alanları `get_guide(topic="schema:<tip>")` ile doğrudan sunucu modelinden. Sunucuya erişilemezse
+  yönlendirmedeki public link (edumints-scorm-mcp `guides/`).
+- Yöntem dosyaları (pedagoji paketleri, kaplamalar, kanıt bağlama, anti-slop, pre-flight) skill'de kalır.
+
 ## [2.3.1] — 2026-10-14
 
 Sunucu 1.8.1 ile senkron.
