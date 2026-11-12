@@ -45,8 +45,15 @@ Sıra önemli: önce **niyet** (0–2), sonra **anti-slop sayımı** (3–9), so
 ## Mekanik & teslim
 - [ ] **10. Sahne ritmi:** anlatımlı ekranlarda `narration_text` + uygun `reveal`; ekran başına
   **3–6 reveal bloğu**; quiz dışı içerik `stage` modunda akıyor. (`authoring-recommendations.md` §1–3)
-- [ ] **11. Tema açık/nötr/kontrast**, görsellerde `alt` tam, dil sade, `scorm_version` doğru
-  (branching/variables/games → **2004**)?
+- [ ] **11. Tema açık/nötr/kontrast**, görsellerde `alt` tam, dil sade, **`scorm_version` hedef
+  LMS'ten türetildi mi**? Kanıt olarak `SCORM HEDEF KARARI` kaydı dolu olmalı (LMS adı+sürümü ·
+  oynatma yolu: yerleşik / ek modül · kanıt bağlantısı veya kurulum testi · seçilen hedef + LMS'e
+  dayanan gerekçe · sınırlamalar · test yolu · doğrulanmayanlar). Kayıt yoksa bu kutu
+  işaretlenemez. Yerleşik Moodle → **1.2**; **2004** yalnız ayrıca doğrulanmış bir
+  oynatıcı/entegrasyon varsa. Dallanma/değişken/oyun **tek başına 2004 seçtirmez** (motor
+  tarafında koşar). Hedef LMS bilinmiyorsa teslim uyumu **doğrulanmış sayılmaz** — "doğrulanmadı"
+  yazıldı mı? Hedefin kaydetmediği bir özellik sessizce düşürüldü mü (düşürme = ihlal)?
+  Kural Workflow adım 1 ile aynı dosyadadır: `lms-target-selection.md`.
 - [ ] **12. Değerlendirme hizalı:** sorular "uygula" düzeyinde (senaryo > tanım); `passing_score` ile
   `completion_rule` tutarlı? Hedef→soru→kanıt eşleme tablosu dolu mu (`core/alignment.md` H2);
   skorlanan ekran sayısı > hedef + 1 ise tek cümle gerekçe yazıldı mı (H3)?

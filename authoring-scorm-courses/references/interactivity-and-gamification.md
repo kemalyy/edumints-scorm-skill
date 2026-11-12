@@ -1,6 +1,9 @@
 # Interactivity, variables & gamification
 
-These build on the **variables** system (declare in `variables`, persist in suspend_data → SCORM 2004).
+These build on the **variables** system (declare in `variables`, persist in `suspend_data`).
+`suspend_data` SCORM 1.2'de spesifikasyon gereği dardır (4096 karakter), 2004'te belirgin biçimde
+geniştir — ama **hedefi LMS seçer, özellik seçmez**: yerleşik Moodle 1.2'dir ve orada durumun
+korunduğu **ölçülür, varsayılmaz**. Kural ve karar kaydı: `lms-target-selection.md`.
 
 ## Variables
 ```jsonc

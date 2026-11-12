@@ -2,6 +2,27 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Added
+- `references/lms-target-selection.md` — **LMS → SCORM hedef seçimi (#69).** Sürüm seçimi artık
+  brief'in özellik listesinden değil hedef LMS'in oynatma yolundan çıkar: önce LMS adı + sürümü +
+  (yerleşik / ek modül) + kanıt kaydedilir, sonra desteklenen hedef gerekçelendirilir. Yerleşik
+  Moodle → **1.2** ([Moodle SCORM FAQ](https://docs.moodle.org/en/SCORM_FAQ): core'da SCORM 2004
+  desteklenmiyor, 1.2 ve AICC destekli); **2004** yalnız ayrıca doğrulanmış bir oynatıcı/entegrasyon
+  varsa. Dosya `SCORM HEDEF KARARI` kayıt biçimini, dallanmalı+oyunlu bir Moodle brief'i için tam bir
+  örnek kararı ve iki karşı örnek (2004 oynatımı belgelenmiş LMS · LMS'i belirsiz brief) içerir.
+
+### Changed
+- **Workflow adım 1 ve pre-flight Madde 11 artık AYNI kuralı kullanır** (#69): ikisi de
+  `lms-target-selection.md`'ye işaret eder. Madde 11, `scorm_version`'ı işaretlemek için dolu bir
+  `SCORM HEDEF KARARI` kaydı ister; hedef LMS bilinmiyorsa teslim uyumu "doğrulanmadı" sayılır.
+- `course-patterns.md`, `assessment.md`, `interactivity-and-gamification.md`: koşulsuz
+  "branching/variables/games → 2004" ifadeleri kaldırıldı (#69). Dallanma/değişken/oyun kursun kendi
+  motorunda koşar; 2004'ün gerçek kazancı ayrı `completion_status`/`success_status` ve daha geniş
+  `suspend_data`'dır — ama hedefi **LMS** seçer. 1.2 hedefinde tek `cmi.core.lesson_status`'un
+  hangisini taşıdığı karar kaydına yazılır ve raporda iki ayrı sütun vaat edilmez.
+
 ## [2.4.0] — 2026-10-14
 
 Sunucu 1.9.0 ile senkron — sunucuya bağlı rehberler artık sunucudan gelir.

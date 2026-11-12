@@ -27,6 +27,7 @@ authoring-scorm-courses/
 ├── references/
 │   ├── anti-slop.md                 # anti-slop discipline: training read + parametric dials (read FIRST)
 │   ├── pre-flight.md                # MANDATORY pre-build quality-gate matrix
+│   ├── lms-target-selection.md      # LMS → SCORM target: record LMS/version/playback route first, then justify 1.2 vs 2004
 │   ├── core/                        # Layer 1 — method-independent core rules (+ the Layer-0 selector)
 │   │   ├── method-selector.md       # Layer 0 — outcome type + dials → method pack(s) + overlay(s)
 │   │   ├── evidence-binding.md      # every scored question binds to an in-course evidence source (K1–K6)

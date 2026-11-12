@@ -105,7 +105,15 @@ Kadran → seçici etkisi (uzmanlık-tersinme etkisi):
    `get_guide(topic="cookbook")`, ekran alanları için `get_guide(topic="schema:<tip>")`. Bu skill'deki
    yöntem dosyaları (pedagoji, kanıt bağlama, anti-slop, pre-flight) yerelde kalır.
 1. **Clarify** (briefly): audience, one measurable learning objective, duration (target microlearning:
-   3–8 min), source material, SCORM target (1.2 vs 2004 — use **2004** for branching/variables/games).
+   3–8 min), source material, **hedef LMS (ad + sürüm + oynatma yolu)**.
+   **SCORM hedefini LMS belirler, özellik listesi değil:** önce LMS adı/sürümü ve SCORM oynatmasının
+   yerleşik mi ek modülle mi olduğu kaydedilir, sonra desteklenen hedef (1.2 / 2004) gerekçelendirilir.
+   Yerleşik Moodle için hedef **1.2**'dir (Moodle core SCORM 2004'ü desteklemiyor); 2004 ancak ayrıca
+   doğrulanmış bir oynatıcı/entegrasyon varsa seçilir. Dallanma/değişken/oyun kursun **kendi
+   motorunda** koşar ve tek başına 2004 seçtirmez. LMS bilinmiyorsa teslim uyumu **doğrulanmış
+   sayılmaz**: taban 1.2 seçilir, "doğrulanmadı" yazılır ve Bölüm 0'ın TEK sorusu buna harcanır.
+   **Kural + `SCORM HEDEF KARARI` kaydı + örnekler: `references/lms-target-selection.md`**
+   (pre-flight Madde 11 aynı kuralı kullanır).
 2. **Yöntemi seç (Katman 0), sonra outline'ı tasarla.** Önce seçiciyi çalıştır
    (`references/core/method-selector.md`): kazanım türü (7 tür) + PRIOR_KNOWLEDGE + hata maliyeti +
    zaman/platform/bağlam → paket(ler) (`references/pedagogy/`) + kaplama(lar) (`references/overlays/`).
@@ -157,6 +165,7 @@ anti-slop sayımı (`references/anti-slop.md`) ve mekanik/teslim adımlarını s
 - `references/core/feedback-anatomy.md` — **Katman 1 tabanı:** gerekçeli geri bildirimin 3 zorunlu öğesi (G1–G3): neden doğru + neden yanlış + kanıta geri işaret.
 - `references/core/scoring-timing.md` — **Katman 1:** formatif/summatif ayrımı (Z1–Z3): "kanıt kaynağı üretilmeden skor yok" + skorsuz erken-deneme istisnası.
 - `references/pedagogy/_SCHEMA.md` — **Katman 3 paket sözleşmesi:** her yöntem paketinin ön-madde şeması (`pack-frontmatter.schema.json`); `evidence_phase(s)` ZORUNLU, kanıt beyanı çoğul olabilir; döngü/koşul ifade edilebilir; doğrulama komutu belgeli.
+- `references/lms-target-selection.md` — **LMS → SCORM hedef seçimi (üretimin ilk kararı):** LMS adı/sürümü + oynatma yolu (yerleşik / ek modül) + kanıt → desteklenen hedef; yerleşik Moodle → 1.2, 2004 yalnız doğrulanmış oynatıcıyla; özellik türü tek başına seçtirmez; `SCORM HEDEF KARARI` kayıt biçimi, bir örnek + iki karşı örnek. Workflow adım 1 ve pre-flight Madde 11 **aynı** kuraldır.
 - `references/overlays/_FRAMEWORK.md` — **Katman 2 kaplama çerçevesi:** 6 kaplama (cognitive-load, udl, arcs, expertise-adaptive, assessment-alignment, accessibility) + "sıra dayatan = paket, sırasız değiştiren = kaplama" ayracı + paket-bağımsızlık kuralı + çakışma bildirim biçimi.
 - `references/eval/blind-test.md` — **kör test protokolü:** kanıt kaynakları çıkarılınca skorlanan sorular hâlâ cevaplanabiliyor mu? Geçme eşiği ≥ 1/2 + sonuç kayıt şablonu + pilot koşu.
 - `references/source-expansion.md` — **sıkıştırılmış kaynak açma prosedürü:** brief bir kopya kâğıdı / politika tablosu / mevzuat özetiyse kanıt hammaddesi girdide YOKTUR — satır → mekanizma sorusu → artefakt kararı → kanıt ekranı → uygulamayı ölçen bağlı soru (7 adım + kazanım-türü→açma-hamlesi tablosu + 2 tam açma örneği + retrieval-spaced istisna sınırı + kaynak-doğrulama uyarısı). Bu tür girdilerde outline'dan önce oku.
