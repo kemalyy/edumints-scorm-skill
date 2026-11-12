@@ -39,4 +39,5 @@ For conceptual content (definitions, frameworks, why-it-matters):
 ## Universal quality rules
 - Microlearning: one objective, ~4–8 min. Vary screen types (anti template-fatigue).
 - Interaction at least every ~2 content screens. Feedback on correct AND incorrect.
-- SCORM **2004** for branching/variables/games. Narrate everything. Accessible + light theme.
+- **SCORM hedefi hedef LMS'ten türetilir** (`lms-target-selection.md`) — dallanma/değişken/oyun
+  tek başına 2004 seçtirmez; yerleşik Moodle → 1.2. Narrate everything. Accessible + light theme.

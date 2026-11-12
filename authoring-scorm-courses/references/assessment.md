@@ -30,8 +30,12 @@ corrects the misconception (not just "wrong"). `show_correct_answer: true` for l
 high-stakes graded items.
 
 **Scoring & completion:** put `points` on graded items; set `tracking.completion_rule`
-(`viewed_all` / `passed_quiz` / `viewed_all_and_passed`) and `passing_score`. Use **SCORM 2004** so
-completion_status and success_status are tracked separately.
+(`viewed_all` / `passed_quiz` / `viewed_all_and_passed`) and `passing_score`. **SCORM 2004**
+completion_status ile success_status'u AYRI taşır; SCORM 1.2'de tek `cmi.core.lesson_status` vardır,
+yani "tamamladı" ile "geçti" aynı alana sığar. Bu, 2004'ü seçmek için bir *gerekçe* olabilir ama
+**seçimi hedef LMS yapar** — yerleşik Moodle 2004'ü oynatmaz. 1.2 hedefinde lesson_status'un
+hangisini taşıdığı karar kaydına yazılır ve yöneticiye iki ayrı sütun vaat edilmez:
+`lms-target-selection.md`.
 
 **Gamify assessment (optional):** `on_correct: [{var:"points",op:"add",value:10}]` + `points_var` → a live
 points HUD. Add a `timer_sec` for time-pressure quizzes. Keep it *intrinsic* (mastery, challenge) — not
